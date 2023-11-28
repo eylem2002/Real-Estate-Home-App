@@ -1,0 +1,93 @@
+import 'package:flutter/material.dart';
+
+class LogIN extends StatefulWidget {
+  const LogIN({super.key});
+
+  @override
+  State<LogIN> createState() => _LogINState();
+}
+
+class _LogINState extends State<LogIN> {
+  final _formField = GlobalKey<FormState>();
+
+  bool? isChecked = false;
+  final emailController = TextEditingController();
+  final passController = TextEditingController();
+  bool passToggle = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xffEAEBEF),
+      body: Container(
+        padding: const EdgeInsets.only(top: 50),
+        child: Form(
+            key: _formField,
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 225,
+                    height: 225,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/batic_text.png'),
+                        fit: BoxFit.scaleDown,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(right: 250),
+                    child: const Text(
+                      "Sign In",
+                      style: TextStyle(
+                          fontSize: 30,
+                          color: Color(0xff263238),
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'Kadwa'),
+                    ),
+                  ),
+                  Container(
+                    height: 15,
+                  ),
+                  TextFormField(
+                    keyboardType: TextInputType.emailAddress,
+                    controller: emailController,
+                    decoration: InputDecoration(
+
+                      labelText: "Email",
+                      border: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.red),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      contentPadding: const EdgeInsets.all(24),
+                      floatingLabelBehavior: FloatingLabelBehavior.always,
+                    ),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Enter Email";
+                      }
+                      bool emailValid = RegExp(
+                              r"^[a-zA-Z0-9.a-zA-Z0-9.1#$&'*+-/=?^_ {|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                          .hasMatch(value);
+                      if (!emailValid) {
+                        return "Enter valid Email";
+                      }
+                      return null;
+                    },
+                  ),
+                ])),
+      ),
+    );
+  }
+}
+
+double widthNHeight0(BuildContext context, int number) {
+  if (number == 0) {
+    return MediaQuery.of(context).size.height;
+  } else {
+    return MediaQuery.of(context).size.width;
+  }
+}
+
+//test request
