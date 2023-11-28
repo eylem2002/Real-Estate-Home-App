@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:new_batic/signin.dart';
+import 'package:new_batic/view/screen/signin.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,10 +12,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: LogIN(),
+       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+
+
+        primarySwatch: Colors.blueGrey,
+      ),
+      home: const LogIN(),
 
 
     );
-    //here
+  
   }
 }
