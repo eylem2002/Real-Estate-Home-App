@@ -89,7 +89,7 @@ class _LogINState extends State<LogIN> {
                       padding: const EdgeInsets.only(left: 20, right: 20),
                       child: TextFormField(
                         keyboardType: TextInputType.emailAddress,
-                        obscureText: passtoggle,
+                        obscureText: passToggle,
                         controller: passController,
                         decoration: InputDecoration(
                           labelText: "Password",
