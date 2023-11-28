@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 Widget defaultButton({
   double width=double.infinity,
   double height=50.0,
-  Color background=const Color(0xFFFF7643),
+  Color background=const Color(0xFF6482C4),
+  Color TextColor= Colors.white,
+  Color borderColor=const Color(0xFF6482C4),
   final Function()? function,
   required String text,
   double fontSize=20.0,
@@ -12,6 +14,7 @@ Widget defaultButton({
   width: width,
   height: height,
   decoration: BoxDecoration(
+    border: Border.all(color:borderColor),
     borderRadius: BorderRadiusDirectional.circular(borderRadius),
     color: background ,
   ),
@@ -23,7 +26,7 @@ Widget defaultButton({
       text,
       style: TextStyle(
         fontWeight: FontWeight.w400,
-        color: Colors.white,
+        color: TextColor,
         fontSize: fontSize,
         fontFamily: 'Muli',
       ),
@@ -37,46 +40,32 @@ Widget defaultFormField({
   final Function(String)? onFieldSubmitted,
   final Function(String)?onChanged,
   required String? Function(String?)?validator,
-  required String text,
   required String label,
   Function()? onTap,
-  double radius=0.0,
-  IconData? suffixIcon,
   bool isPassword=false,
   Function()?suffixonPressed,
   bool isClickable=true,
 })=>Container(
-  width: 350.0,
-  height: 80.0,
-  child: TextFormField(
-    controller: controller,
-    keyboardType: tybe,
-    onFieldSubmitted: onFieldSubmitted,
-    onChanged:onChanged,
-    validator:validator,
-    obscureText:isPassword,
-    style: TextStyle(
-      fontFamily: 'Muli',
-    ),
-    onTap:onTap ,
-    enabled:isClickable ,
-    decoration: InputDecoration(
-      hintText: text,
-      labelText: label,
-      labelStyle: const TextStyle(
-        color: Colors.grey,
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderSide:const BorderSide(color: Colors.grey),
-        borderRadius: BorderRadius.circular(radius),
-      ),
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(radius),
-      ),
-      suffixIcon:IconButton(
-        icon:Icon(suffixIcon) ,
-        onPressed: suffixonPressed,
-      ),
-    ),
-  ),
+    width: 360,
+    height: 70,
+    child: TextFormField(
+        onTap: onTap,
+        obscureText: isPassword,
+        keyboardType: tybe,
+        controller: controller,
+        decoration: InputDecoration(
+          labelText:label ,
+          focusedBorder:const OutlineInputBorder(
+            borderSide: BorderSide(color: Color(0xff6482C4)),
+            borderRadius:BorderRadius.all(Radius.circular(10)),
+          ),
+          border: OutlineInputBorder(
+            borderSide:const BorderSide(color: Color(0xff6482C4)),
+            borderRadius: BorderRadius.circular(10),
+
+          ),
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+        ),
+        validator: validator
+    )
 );
