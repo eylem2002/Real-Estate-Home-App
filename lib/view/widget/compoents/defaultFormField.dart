@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:new_batic/view/screen/signin.dart';
 
 class TextFormFieldWidget extends StatelessWidget {
   final bool passToggle;
@@ -30,7 +31,7 @@ class TextFormFieldWidget extends StatelessWidget {
               borderSide:
                   BorderSide(color: const Color(0xff6482c4).withOpacity(0.8),
                       width: 2),
-          borderRadius: const BorderRadius.all(Radius.circular(10))),
+          borderRadius: BorderRadius.all(Radius.circular(10))),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
                 color: const Color(0xff6482c4).withOpacity(0.8),
