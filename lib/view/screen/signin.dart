@@ -36,24 +36,22 @@ class _LogINState extends State<LogIN> {
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
+                  SizedBox(
                     width: 210,
                     height: 210,
                   child: Image.asset(ImageAsses.logo),
                   ),
                   Container(
-                    child: Container(
-                      margin: EdgeInsets.only(
-                          right: MediaQuery.of(context).size.width * 0.70,
-                          bottom: MediaQuery.of(context).size.height * 0.01),
-                      child: const Text(
-                        "Sign In",
-                        style: TextStyle(
-                            fontSize: 25,
-                            color: Color(0xff263238),
-                            fontWeight: FontWeight.w600,
-                            fontFamily: 'Kadwa'),
-                      ),
+                    margin: EdgeInsets.only(
+                        right: MediaQuery.of(context).size.width * 0.70,
+                        bottom: MediaQuery.of(context).size.height * 0.01),
+                    child: const Text(
+                      "Sign In",
+                      style: TextStyle(
+                          fontSize: 25,
+                          color: Color(0xff263238),
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'Kadwa'),
                     ),
                   ),
                   Container(
@@ -189,4 +187,3 @@ double widthNHeight0(BuildContext context,int number){
 }
 
 
-//test request
