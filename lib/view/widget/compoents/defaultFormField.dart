@@ -1,51 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:new_batic/view/screen/signin.dart';
 
-Widget defaultFormField({
-  required TextEditingController controller,
-  required TextInputType tybe,
-  final Function(String)? onFieldSubmitted,
-  final Function(String)?onChanged,
-  required String? Function(String?)?validator,
-  required String text,
-  required String label,
-  Function()? onTap,
-  double radius=0.0,
-  IconData? suffixIcon,
-  bool isPassword=false,
-  Function()?suffixonPressed,
-  bool isClickable=true,
-})=>Container(
-  width: 350.0,
-  height: 80.0,
-  child: TextFormField(
-    controller: controller,
-    keyboardType: tybe,
-    onFieldSubmitted: onFieldSubmitted,
-    onChanged:onChanged,
-    validator:validator,
-    obscureText:isPassword,
-    style: TextStyle(
-      fontFamily: 'Kadwa',
-    ),
-    onTap:onTap ,
-    enabled:isClickable ,
-    decoration: InputDecoration(
-      hintText: text,
-      labelText: label,
-      labelStyle: const TextStyle(
-        color: Colors.grey,
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderSide:const BorderSide(color: Colors.grey),
-        borderRadius: BorderRadius.circular(radius),
-      ),
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(radius),
-      ),
-      suffixIcon:IconButton(
-        icon:Icon(suffixIcon) ,
-        onPressed: suffixonPressed,
-      ),
-    ),
-  ),
-);
+class TextFormFieldWidget extends StatelessWidget {
+final double height;
+final double width;
+final bool passToggle;
+final String label_text;
+final TextEditingController passController;
+final String? Function(String?)?  validat;
+
+
+  const TextFormFieldWidget({super.key,
+  required this.height,
+  required this.width,
+  required this.passToggle,
+  required this.passController,
+  required this.label_text,
+    required this.validat,
+
+
+
+
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return    SizedBox(
+      width: widthNHeight0(context, 1)*width,
+      height: widthNHeight0(context, 0)*height,
+                      child: TextFormField(
+                        // keyboardType: TextInputType.emailAddress,
+                        obscureText: passToggle,
+                        controller: passController,
+                        decoration: InputDecoration(
+                          labelText:label_text ,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5),
+                              borderSide: const BorderSide(
+                                  color: Colors.red, width: 2)),
+                          contentPadding: const EdgeInsets.all(20),
+                          isDense: true,
+                          floatingLabelBehavior: FloatingLabelBehavior.always,
+                        ),
+                        validator:validat
+                      ));
+  }
+}

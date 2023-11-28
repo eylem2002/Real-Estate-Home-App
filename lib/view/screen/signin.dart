@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:new_batic/core/constant/imageAsses.dart';
+
 import 'package:new_batic/view/screen/Home.dart';
+import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
 
 class LogIN extends StatefulWidget {
   const LogIN({super.key});
@@ -8,7 +11,14 @@ class LogIN extends StatefulWidget {
   State<LogIN> createState() => _LogINState();
 }
 
+// AppImageAsses appImageAsses= AppImageAsses();
+
 class _LogINState extends State<LogIN> {
+
+
+ final TextEditingController _controller =TextEditingController();
+  final TextEditingController _controller_pass =TextEditingController();
+
   final _formField = GlobalKey<FormState>();
 
   bool? isChecked = false;
@@ -29,12 +39,7 @@ class _LogINState extends State<LogIN> {
                   Container(
                     width: 210,
                     height: 210,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/batic_text.png'),
-                        fit: BoxFit.scaleDown,
-                      ),
-                    ),
+                  child: Image.asset(ImageAsses.logo),
                   ),
                   Container(
                     child: Container(
@@ -54,63 +59,44 @@ class _LogINState extends State<LogIN> {
                   Container(
                     height: 20,
                   ),
-                  Container(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: TextFormField(
-                        keyboardType: TextInputType.emailAddress,
-                        controller: emailController,
-                        decoration: InputDecoration(
-                          labelText: "Email",
-                          border: OutlineInputBorder(
-                            borderSide:
-                                const BorderSide(color: Color(0xff6482C4)),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          contentPadding: const EdgeInsets.all(20),
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                        ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Enter Email";
-                          }
-                          bool emailValid = RegExp(
-                                  r"^[a-zA-Z0-9.a-zA-Z0-9.1#$&'*+-/=?^_ {|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                              .hasMatch(value);
-                          if (!emailValid) {
-                            return "Enter valid Email";
-                          }
-                          return null;
-                        },
-                      )),
+                  
+                   TextFormFieldWidget(height:0.068,width: 0.9,passToggle: false,passController: _controller,label_text: 'Email',validat:  (value) {
+                      if (value!.isEmpty) {
+                        return "Enter Email";
+                      }
+                      bool emailValid = RegExp(
+                              r"^[a-zA-Z0-9.a-zA-Z0-9.1#$&'*+-/=?^_ {|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                          .hasMatch(value);
+                      if (!emailValid) {
+                        return "Enter valid Email";
+                      }
+                      return null;
+                    }
+                  ,),
+
                   Container(
                     height: 30,
                   ),
-                  Container(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: TextFormField(
-                        keyboardType: TextInputType.emailAddress,
-                        obscureText: passToggle,
-                        controller: passController,
-                        decoration: InputDecoration(
-                          labelText: "Password",
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5),
-                              borderSide: const BorderSide(
-                                  color: Colors.red, width: 2)),
-                          contentPadding: const EdgeInsets.all(20),
-                          isDense: true,
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                        ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Enter Password";
-                          } else if (passController.text.length < 6) {
-                            return "Password length should be more than 6 characters";
-                          }
-                          return null;
-                        },
-                      )),
-                  Container(height: MediaQuery.of(context).size.height * 0.01),
+
+
+                  TextFormFieldWidget(height:0.068,width: 0.9,passToggle: true,passController: _controller_pass,label_text: 'password',validat: 
+                    (value) {
+                   
+                     if(value!.isEmpty){
+                      return "Enter Password";
+                     }else if(value.length<6){
+                                            return "Password length should be more than 6 characters";
+
+                     }else{
+                      return null;
+                     }
+                     
+                      
+
+                    }
+                  ,)
+                ,
+                SizedBox(height: widthNHeight0(context, 0)*0.07,),
                   Container(
                     padding: const EdgeInsets.only(left: 30, right: 30),
                     height: 60,
@@ -128,7 +114,7 @@ class _LogINState extends State<LogIN> {
                       },
                       child: Container(
                        // height: MediaQuery.of(context).size.width * .40,
-                        width: MediaQuery.of(context).size.width * 0.7,
+                      width: widthNHeight0(context, 0)*0.7, //////////////////edit the width
                         decoration: BoxDecoration(
                             color: const Color(0xff6482C4),
                             borderRadius: BorderRadius.circular(5)),
