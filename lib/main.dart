@@ -11,7 +11,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
     return MaterialApp(
        debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -20,11 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blueGrey,
       ),
       home: const LogIN(),
-=======
-    return const MaterialApp(
-      debugShowCheckedModeBanner:false ,
-      home: LogIN(),
->>>>>>> ibrahem
+
 
 
     );
