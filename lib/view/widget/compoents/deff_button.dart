@@ -24,7 +24,7 @@ Widget defaultButton({
       style: TextStyle(
         fontWeight: FontWeight.w400,
         color: Colors.white,
-        fontSize: fontSize,
+        fontSize: fontSize,//////
         fontFamily: 'Kadwa',
       ),
     ),
