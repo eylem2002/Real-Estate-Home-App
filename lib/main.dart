@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:new_batic/signin.dart';
+import 'package:new_batic/view/screen/signin.dart';
 
 void main() {
   runApp(const MyApp());

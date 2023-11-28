@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:new_batic/Home.dart';
+import 'package:new_batic/view/screen/Home.dart';
 
 class LogIN extends StatefulWidget {
   const LogIN({super.key});
