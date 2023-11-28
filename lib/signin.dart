@@ -8,12 +8,12 @@ class LogIN extends StatefulWidget {
 }
 
 class _LogINState extends State<LogIN> {
-  final _formfield = GlobalKey<FormState>();
+  final _formField = GlobalKey<FormState>();
 
-  bool? ischecked = false;
+  bool? isChecked = false;
   final emailController = TextEditingController();
   final passController = TextEditingController();
-  bool passtoggle = true;
+  bool passToggle = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +21,7 @@ class _LogINState extends State<LogIN> {
       body: Container(
         padding:  const EdgeInsets.only(top: 50),
         child: Form(
-            key: _formfield,
+            key: _formField,
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -82,4 +82,15 @@ class _LogINState extends State<LogIN> {
       ),
     );
   }
+}
+
+
+double widthNHeight0(BuildContext context,int number){
+
+  if(number == 0){
+    return MediaQuery.of(context).size.height;
+  }else{
+    return MediaQuery.of(context).size.width;
+  }
+
 }
