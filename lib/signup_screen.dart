@@ -11,7 +11,7 @@ class SingUpScreen extends StatefulWidget {
 class _SingUpScreenState extends State<SingUpScreen> {
   var email=TextEditingController();
   var firstName=TextEditingController();
-  var SecondName=TextEditingController();
+  var secondName=TextEditingController();
   var password=TextEditingController();
   var phone=TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -60,7 +60,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                       ),
                       const SizedBox(height: 20),
                       defaultFormField(
-                        controller: SecondName,
+                        controller: secondName,
                         tybe: TextInputType.text,
                         validator: (value){
                           if(value!.isEmpty)
