@@ -8,27 +8,27 @@ class LogIN extends StatefulWidget {
 }
 
 class _LogINState extends State<LogIN> {
-  final _formfield = GlobalKey<FormState>();
+  final _formField = GlobalKey<FormState>();
 
-  bool? ischecked = false;
+  bool? isChecked = false;
   final emailController = TextEditingController();
   final passController = TextEditingController();
-  bool passtoggle = true;
+  bool passToggle = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffEAEBEF),
+      backgroundColor: const Color(0xffEAEBEF),
       body: Container(
-        padding:  EdgeInsets.only(top: 50),
+        padding:  const EdgeInsets.only(top: 50),
         child: Form(
-            key: _formfield,
+            key: _formField,
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
                     width: 225,
                     height: 225,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                     
                       image: DecorationImage(
                         image: AssetImage('assets/images/batic_text.png'),
@@ -38,15 +38,12 @@ class _LogINState extends State<LogIN> {
                   ),
                 
                   Container(
-                 
-                    child: Container(
-                      margin: EdgeInsets.only(right: 250),
-                      child: Text(
-                        "Sign In",
-                        
-                        
-                        style: TextStyle(fontSize: 30, color: Color(0xff263238),fontWeight: FontWeight.w600,fontFamily: 'Kadwa'),
-                      ),
+                    margin: const EdgeInsets.only(right: 250),
+                    child: const Text(
+                      "Sign In",
+
+
+                      style: TextStyle(fontSize: 30, color: Color(0xff263238),fontWeight: FontWeight.w600,fontFamily: 'Kadwa'),
                     ),
                   ),
                   Container(
@@ -61,7 +58,7 @@ class _LogINState extends State<LogIN> {
                         decoration: InputDecoration(
                           labelText: "Email",
                           border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xff6482C4)),
+                            borderSide: const BorderSide(color: Color(0xff6482C4)),
                             borderRadius: BorderRadius.circular(5),
                             
                           ),
@@ -85,4 +82,15 @@ class _LogINState extends State<LogIN> {
       ),
     );
   }
+}
+
+
+double widthNHeight0(BuildContext context,int number){
+
+  if(number == 0){
+    return MediaQuery.of(context).size.height;
+  }else{
+    return MediaQuery.of(context).size.width;
+  }
+
 }
