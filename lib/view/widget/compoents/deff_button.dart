@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 Widget defaultButton({
   double width=double.infinity,
   double height=50.0,
+  Color borderColor=const Color(0xff6482C4),
   Color background=const Color(0xff6482C4),
+  Color textColor = Colors.white,
   final Function()? function,
   required String text,
   double fontSize=20.0,
@@ -13,6 +15,7 @@ Widget defaultButton({
   height: height,
   decoration: BoxDecoration(
     borderRadius: BorderRadiusDirectional.circular(borderRadius),
+    border: Border.all(color: borderColor),
     color: background ,
   ),
   clipBehavior: Clip.antiAlias,
@@ -23,7 +26,7 @@ Widget defaultButton({
       text,
       style: TextStyle(
         fontWeight: FontWeight.w400,
-        color: Colors.white,
+        color: textColor,
         fontSize: fontSize,
         fontFamily: 'Kadwa',
       ),

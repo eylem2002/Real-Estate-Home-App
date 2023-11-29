@@ -5,16 +5,14 @@ import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
 import '../../core/constant/login_controller.dart';
 import 'signup_screen.dart';
 
-class LogIN extends StatefulWidget {
-  const LogIN({super.key});
+class LogIn extends StatefulWidget {
+  const LogIn({super.key});
 
   @override
-  State<LogIN> createState() => _LogINState();
+  State<LogIn> createState() => _LogInState();
 }
 
-class _LogINState extends State<LogIN> {
-
-
+class _LogInState extends State<LogIn> {
   bool? isChecked = false;
   bool passToggle = true;
   TextController textController = TextController();
@@ -34,19 +32,19 @@ class _LogINState extends State<LogIN> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     SizedBox(
-                      width: widthNHeight0(context, 1)*0.55,
-                      height: widthNHeight0(context, 0)*0.15,
+                      width: widthNHeight0(context, 1) * 0.55,
+                      height: widthNHeight0(context, 0) * 0.15,
                       child: Image.asset(ImageAsses.logo),
                     ),
                     SizedBox(
-                      height: widthNHeight0(context, 0)*0.32,
+                      height: widthNHeight0(context, 0) * 0.32,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
                             margin: EdgeInsets.only(
                                 right: widthNHeight0(context, 1) * 0.70,
-                                bottom:widthNHeight0(context, 0) * 0.01),
+                                bottom: widthNHeight0(context, 0) * 0.01),
                             child: const Text(
                               "Sign In",
                               style: TextStyle(
@@ -56,50 +54,50 @@ class _LogINState extends State<LogIN> {
                                   fontFamily: 'Kadwa'),
                             ),
                           ),
-
                           TextFormFieldWidget(
-                              passToggle: false,
-                              passController: textController.controllerEmail,
-                              label_text: 'Email',
-                              validat: (value) {
-                                if (value!.isEmpty) {
-                                  return "Enter Email";
-                                }
-                                bool emailValid = RegExp(
-                                        r"^[a-zA-Z0-9.a-zA-Z0-9.1#$&'*+-/=?^_ {|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                    .hasMatch(value);
-                                if (!emailValid) {
-                                  return "Enter valid Email";
-                                }
+                            passToggle: false,
+                            passController: textController.controllerEmail,
+                            labelText: 'Email',
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "Enter Email";
+                              }
+                              bool emailValid = RegExp(
+                                      r"^[a-zA-Z0-9.a-zA-Z0-9.1#$&'*+-/=?^_ {|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                  .hasMatch(value);
+                              if (!emailValid) {
+                                return "Enter valid Email";
+                              }
+                              return null;
+                            },
+                            str: " Enter Email",
+                          ),
+                          TextFormFieldWidget(
+                            passToggle: true,
+                            passController: textController.controllerPass,
+                            labelText: 'password',
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "Enter Password";
+                              } else if (value.length < 6) {
+                                return "Password length should be more than 6 characters";
+                              } else {
                                 return null;
-                              },
-                              str: " Enter Email"),
-
-                          TextFormFieldWidget(
-                              passToggle: true,
-                              passController: textController.controllerPass,
-                              label_text: 'password',
-                              validat: (value) {
-                                if (value!.isEmpty) {
-                                  return "Enter Password";
-                                } else if (value.length < 6) {
-                                  return "Password length should be more than 6 characters";
-                                } else {
-                                  return null;
-                                }
-                              },
-                              str: " Enter Password")
+                              }
+                            },
+                            str: " Enter Password",
+                          )
                         ],
                       ),
                     ),
-
                     Column(
                       children: [
                         SizedBox(
-                          width: widthNHeight0(context, 1)*0.85,
+                          width: widthNHeight0(context, 1) * 0.85,
                           child: InkWell(
                             onTap: () {
-                              if (textController.formField.currentState!.validate()) {
+                              if (textController.formField.currentState!
+                                  .validate()) {
                                 textController.controllerEmail.clear();
                                 textController.controllerPass.clear();
                                 Navigator.push(
@@ -146,7 +144,6 @@ class _LogINState extends State<LogIN> {
                         ),
                       ],
                     ),
-
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

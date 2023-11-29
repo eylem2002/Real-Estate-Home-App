@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:new_batic/view/screen/signin.dart';
 
@@ -11,12 +10,15 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
   void initState() {
     Timer(
       const Duration(seconds: 3),
-          () => Navigator.push(context, MaterialPageRoute(builder: (context) => const LogIN(),)),
+      () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const LogIn(),
+          )),
     );
     super.initState();
   }
@@ -26,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return SizedBox(
       width: widthNHeight0(context, 1),
       height: widthNHeight0(context, 0),
-      child: Image.asset(fit: BoxFit.cover,'assets/images/batik_splash.png'),
+      child: Image.asset(fit: BoxFit.cover, 'assets/images/batik_splash.png'),
     );
   }
 }
