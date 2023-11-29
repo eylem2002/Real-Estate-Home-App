@@ -7,6 +7,7 @@ class TextFormFieldWidget extends StatelessWidget {
   final TextEditingController passController;
   final String? Function(String?)? validat;
   final String str;
+  final double width;
 
   const TextFormFieldWidget({
     super.key,
@@ -15,6 +16,7 @@ class TextFormFieldWidget extends StatelessWidget {
     required this.label_text,
     required this.validat,
     required this.str,
+    this.width=0,
   });
 
   @override
@@ -22,6 +24,7 @@ class TextFormFieldWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 15, right: 15),
       child: SizedBox(
+
           child: TextFormField(
         keyboardType: TextInputType.emailAddress,
         obscureText: passToggle,
@@ -35,6 +38,12 @@ class TextFormFieldWidget extends StatelessWidget {
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
                 color: const Color(0xff6482c4).withOpacity(0.8),
+                width: 2,
+              ),
+              borderRadius: const BorderRadius.all(Radius.circular(10))),
+          errorBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color:  Colors.red.withOpacity(0.8),
                 width: 2,
               ),
               borderRadius: const BorderRadius.all(Radius.circular(10))),

@@ -39,7 +39,7 @@ class _LogINState extends State<LogIN> {
                       child: Image.asset(ImageAsses.logo),
                     ),
                     SizedBox(
-                      height: widthNHeight0(context, 0)*0.3,
+                      height: widthNHeight0(context, 0)*0.32,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
