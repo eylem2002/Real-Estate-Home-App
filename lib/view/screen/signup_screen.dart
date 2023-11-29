@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:new_batic/core/constant/signup_controller.dart';
 import 'package:new_batic/view/screen/signin.dart';
 import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
 
@@ -13,18 +14,14 @@ class SingUpScreen extends StatefulWidget {
 }
 
 class _SingUpScreenState extends State<SingUpScreen> {
-  var email = TextEditingController();
-  var firstName = TextEditingController();
-  var secondName = TextEditingController();
-  var password = TextEditingController();
-  var phone = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
+
+  SignUpController signUpController = SignUpController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Form(
-        key: _formKey,
+        key: signUpController.formKey,
         child: SizedBox(
           height: widthNHeight0(context, 0),
           child: SingleChildScrollView(
@@ -62,7 +59,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                     children: [
                       TextFormFieldWidget(
                           passToggle: false,
-                          passController: firstName,
+                          passController: signUpController.firstName,
                           label_text: '',
                           validat: (value) {
                             if (value!.isEmpty) {
@@ -73,7 +70,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                           str: 'First Name'),
                       TextFormFieldWidget(
                           passToggle: false,
-                          passController: secondName,
+                          passController: signUpController.secondName,
                           label_text: '',
                           validat: (value) {
                             if (value!.isEmpty) {
@@ -84,7 +81,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                           str: 'Last Name'),
                       TextFormFieldWidget(
                           passToggle: false,
-                          passController: email,
+                          passController: signUpController.email,
                           label_text: '',
                           validat: (value) {
                             if (value!.isEmpty) {
@@ -95,7 +92,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                           str: 'Email'),
                       TextFormFieldWidget(
                           passToggle: false,
-                          passController: phone,
+                          passController: signUpController.phone,
                           label_text: '',
                           validat: (value) {
                             if (value!.isEmpty) {
@@ -106,7 +103,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                           str: 'Phone'),
                       TextFormFieldWidget(
                           passToggle: true,
-                          passController: password,
+                          passController: signUpController.password,
                           label_text: '',
                           validat: (value) {
                             if (value!.isEmpty) {
@@ -125,7 +122,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                       width: 200,
                       borderRadius: 10,
                       function: () {
-                        if (_formKey.currentState!.validate()) {}
+                        if (signUpController.formKey.currentState!.validate()) {}
                       }),
                 ),
                 Row(
