@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_batic/view/screen/Search_Page.dart';
 import 'package:new_batic/view/screen/signin.dart';
+import 'package:new_batic/view/widget/CustomeBottomNavBar.dart';
 
 import '../widget/compoents/defaultFormField.dart';
 import '../widget/compoents/deff_button.dart';
@@ -29,7 +30,7 @@ class SearchBarScreen extends StatelessWidget {
                         onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const Search_Page(),
+                              builder: (context) => const CustomeBottomNavBar(),
                             )),
                         child: SizedBox(
                           width: widthNHeight0(context, 1) * 0.07,

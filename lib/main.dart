@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:new_batic/view/screen/Search_Page.dart';
+import 'package:new_batic/view/screen/Search_home_folder/Search_main.dart';
 import 'package:new_batic/view/screen/splash_screen.dart';
 
 void main() {
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
        debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: Search_main(),
     );//last one
   }
 
