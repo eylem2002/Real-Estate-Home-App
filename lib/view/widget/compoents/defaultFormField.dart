@@ -2,59 +2,67 @@ import 'package:flutter/material.dart';
 import 'package:new_batic/view/screen/signin.dart';
 
 class TextFormFieldWidget extends StatelessWidget {
-
   final bool passToggle;
-  final String label_text;
+  final String labelText;
   final TextEditingController passController;
-  final String? Function(String?)? validat;
+  final String? Function(String?)? validator;
   final String str;
+  final double width;
+  final double height;
+  final Color color;
+  final IconData iconSufData;
 
-  const TextFormFieldWidget({
-    super.key,
-    required this.passToggle,
-    required this.passController,
-    required this.label_text,
-    required this.validat,
+  const TextFormFieldWidget(
+      {super.key,
+      required this.passToggle,
+      required this.passController,
+      required this.labelText,
+      required this.validator,
       required this.str,
-   
-
-  
-
-  });
+      this.width = 0,
+      this.height = 0,
+      this.color = Colors.lime,
+      this.iconSufData = Icons.add});
 
   @override
   Widget build(BuildContext context) {
-    
     return Padding(
-     padding: const EdgeInsets.only(left: 15, right: 15),
+      padding: const EdgeInsets.only(left: 15, right: 15),
       child: SizedBox(
-          
-         
-               child: TextFormField(
-                
-                      keyboardType: TextInputType.emailAddress,
-                         obscureText: passToggle,
-                      controller: passController,
-                      decoration: InputDecoration(
-                        labelText:label_text,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        contentPadding: const EdgeInsets.all(24),
-                        isDense: true,
-                        hintText: str,
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                        
-                      ),
-                       validator: validat,
-                    )
-              
-              
-              ),
+          width: (width == 0) ? null : width,
+          height: (height == 0) ? null : height,
+          child: TextFormField(
+            keyboardType: TextInputType.emailAddress,
+            obscureText: passToggle,
+            controller: passController,
+            decoration: InputDecoration(
+              prefixIcon: Icon((iconSufData == Icons.add) ? null : iconSufData),
+              focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: (color == Colors.lime)
+                        ? const Color(0xff6482c4).withOpacity(0.8)
+                        : color,
+                  ),
+                  borderRadius: const BorderRadius.all(Radius.circular(10))),
+              enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: (color == Colors.lime)
+                        ? const Color(0xff6482c4).withOpacity(0.8)
+                        : color,
+                  ),
+                  borderRadius: const BorderRadius.all(Radius.circular(10))),
+              errorBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.red.withOpacity(0.8),
+                  ),
+                  borderRadius: const BorderRadius.all(Radius.circular(10))),
+              labelText: labelText,
+              isDense: true,
+              hintText: str,
+              floatingLabelBehavior: FloatingLabelBehavior.always,
+            ),
+            validator: validator,
+          )),
     );
-
-
-
-
   }
 }

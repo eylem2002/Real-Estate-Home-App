@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:new_batic/view/screen/signin.dart';
 import 'package:new_batic/view/screen/splash_screen.dart';
 
 void main() {
@@ -9,21 +8,12 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application. ////yap
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
        debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-
-
-        primarySwatch: Colors.blueGrey,
-      ),
-      home: const LogIN(),////
-
-
+      home: SplashScreen(),
     );
-  ////here is the final one//
   }
 
 }
