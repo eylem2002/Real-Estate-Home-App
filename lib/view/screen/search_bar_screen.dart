@@ -5,6 +5,7 @@ import 'package:new_batic/view/screen/signin.dart';
 import '../widget/compoents/defaultFormField.dart';
 import '../widget/compoents/deff_button.dart';
 import '../widget/location_supported_widget.dart';
+import 'filters_screen.dart';
 
 class SearchBarScreen extends StatelessWidget {
   SearchBarScreen({super.key});
@@ -129,8 +130,10 @@ class SearchBarScreen extends StatelessWidget {
                   ),
                   defaultButton(
                     text: 'Done',
+                    background: const Color(0xff6482C4),
                     width: widthNHeight0(context, 1) * 0.6,
                     borderRadius: 5,
+                    function: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const FiltersScreen(),)),
                   ),
                 ],
               ),
