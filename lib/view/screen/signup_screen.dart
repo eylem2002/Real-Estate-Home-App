@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:new_batic/core/constant/signup_controller.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:new_batic/controller/signup_controller.dart';
 import 'package:new_batic/view/screen/signin.dart';
 import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
 import '../../core/constant/imageAsses.dart';
@@ -18,6 +19,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffEAEBEF),
       body: Form(
         key: signUpController.formKey,
         child: SizedBox(
@@ -26,16 +28,36 @@ class _SingUpScreenState extends State<SingUpScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(
-                  child: SizedBox(
-                    width: widthNHeight0(context, 1) * 0.55,
-                    height: widthNHeight0(context, 0) * 0.15,
-                    child: Image(
-                      image: const AssetImage(ImageAsses.logo),
-                      width: widthNHeight0(context, 1) * 0.7,
+                  Center(
+                    
+                    child: Padding(
+                      padding:  EdgeInsets.only(top: widthNHeight0(context, 1) * 0.19),
+                      child: Container(
+                        
+                         //` color:  Colors.red,
+                             width: widthNHeight0(context, 1) * 0.5,
+                           height: widthNHeight0(context, 0) * 0.1,
+                          child: Padding(
+                            padding: EdgeInsets.all(0),
+                        
+                            child:  SvgPicture.asset(ImageAsses.logo) ,
+                          
+                          ),
+                        ),
                     ),
                   ),
-                ),
+                // Center(
+                //   // child: SizedBox(
+                //   //   width: widthNHeight0(context, 1) * 0.55,
+                //   //   height: widthNHeight0(context, 0) * 0.19,
+                //   //   child: Image(
+                //   //     image: const AssetImage(ImageAsses.logo),
+                //   //     width: widthNHeight0(context, 1) * 0.8,
+                //   //  //  height: widthNHeight0(context, 0)*0.40,
+                //   //   ),
+                //   // ),
+                  
+                // ),
                 Padding(
                   padding:
                       EdgeInsets.only(left: widthNHeight0(context, 1) * 0.05),
@@ -43,7 +65,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                     'Sign Up',
                     style: TextStyle(
                         color: Color(0xff263238),
-                        fontSize: 25,
+                        fontSize: 29,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Kadwa'),
                   ),
@@ -52,75 +74,76 @@ class _SingUpScreenState extends State<SingUpScreen> {
                   height: widthNHeight0(context, 0) * 0.04,
                 ),
                 SizedBox(
-                  height: widthNHeight0(context, 0) * 0.7,
+                  height: widthNHeight0(context, 0) * 0.5,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       TextFormFieldWidget(
                           passToggle: false,
                           passController: signUpController.firstName,
-                          labelText: '',
+                          labelText: 'First Name',
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'First Name must not be empty ';
                             }
                             return null;
                           },
-                          str: 'First Name'),
+                          str: ''),
                       TextFormFieldWidget(
                           passToggle: false,
                           passController: signUpController.secondName,
-                          labelText: '',
+                          labelText: 'Second Name',
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return 'First Name must not be empty ';
+                              return ' Name must not be empty ';
                             }
                             return null;
                           },
-                          str: 'Last Name'),
+                          str: ''),
                       TextFormFieldWidget(
                           passToggle: false,
                           passController: signUpController.email,
-                          labelText: '',
+                          labelText: 'Email',
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return 'First Name must not be empty ';
+                              return 'Email must not be empty ';
                             }
                             return null;
                           },
-                          str: 'Email'),
+                          str: ''),
                       TextFormFieldWidget(
                           passToggle: false,
                           passController: signUpController.phone,
-                          labelText: '',
+                          labelText: 'Phone',
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return 'First Name must not be empty ';
+                              return 'Phone must not be empty ';
                             }
                             return null;
                           },
-                          str: 'Phone'),
+                          str: ''),
                       TextFormFieldWidget(
                           passToggle: true,
                           passController: signUpController.password,
-                          labelText: '',
+                          labelText: 'Password',
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return 'First Name must not be empty ';
+                              return 'Password must not be empty ';
                             }
                             return null;
                           },
-                          str: 'Enter Password')
+                          str: '')
                     ],
                   ),
                 ),
                 SizedBox(
-                  height: widthNHeight0(context, 0) * 0.03,
+                  height: widthNHeight0(context, 0) * 0.04,
                 ),
                 Center(
                   child: defaultButton(
                       text: 'Sing Up',
-                      width: 200,
+                       height:  MediaQuery.of(context).size.width * .14,
+                      width:  MediaQuery.of(context).size.width * .58,
                       borderRadius: 10,
                       function: () {
                         if (signUpController.formKey.currentState!

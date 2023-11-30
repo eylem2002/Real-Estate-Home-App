@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:new_batic/view/screen/Home.dart';
+import 'package:new_batic/view/screen/Search_Page.dart';
 import 'package:new_batic/view/screen/signin.dart';
 
 import '../widget/compoents/defaultFormField.dart';
@@ -29,7 +29,7 @@ class SearchBarScreen extends StatelessWidget {
                         onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const Home_page(),
+                              builder: (context) => const Search_Page(),
                             )),
                         child: SizedBox(
                           width: widthNHeight0(context, 1) * 0.07,
@@ -37,7 +37,7 @@ class SearchBarScreen extends StatelessWidget {
                         ),
                       ),
                       TextFormFieldWidget(
-                        passToggle: true,
+                        passToggle: false,
                         passController: _controller,
                         labelText: '',
                         validator: (value) {
@@ -63,10 +63,17 @@ class SearchBarScreen extends StatelessWidget {
                       left: widthNHeight0(context, 1) * 0.05),
                   child: Row(
                     children: [
-                      SizedBox(
-                        width: widthNHeight0(context, 1) * 0.06,
-                        child: Image.network(
-                            'https://static-00.iconduck.com/assets.00/recent-icon-512x505-rl8e45ef.png'),
+                      GestureDetector(
+                        onTap: () {
+                          //here add ur code
+                          print('Image tapped!');
+                        },
+                        child: SizedBox(
+                          width: widthNHeight0(context, 1) * 0.06,
+                          child: Image.network(
+                            'https://static-00.iconduck.com/assets.00/recent-icon-512x505-rl8e45ef.png',
+                          ),
+                        ),
                       ),
                       SizedBox(
                         width: widthNHeight0(context, 1) * 0.03,
@@ -128,6 +135,7 @@ class SearchBarScreen extends StatelessWidget {
                     textColor: Colors.black,
                   ),
                   defaultButton(
+                    
                     text: 'Done',
                     width: widthNHeight0(context, 1) * 0.6,
                     borderRadius: 5,
