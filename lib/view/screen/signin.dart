@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:new_batic/core/constant/imageAsses.dart';
-import 'package:new_batic/view/screen/Home.dart';
+import 'package:new_batic/view/screen/Search_Page.dart';
+import 'package:new_batic/view/widget/CustomeBottomNavBar.dart';
 import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
-import '../../core/constant/login_controller.dart';
+import '../../controller/login_controller.dart';
 import 'signup_screen.dart';
 
 class LogIn extends StatefulWidget {
@@ -31,13 +33,20 @@ class _LogInState extends State<LogIn> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    SizedBox(
-                      width: widthNHeight0(context, 1) * 0.55,
-                      height: widthNHeight0(context, 0) * 0.15,
-                      child: Image.asset(ImageAsses.logo),
+                    Container(
+                     //` color:  Colors.red,
+                         width: widthNHeight0(context, 1) * 0.5,
+                       height: widthNHeight0(context, 0) * 0.1,
+                      child: Padding(
+                        padding: EdgeInsets.all(0),
+                    
+                        child:  SvgPicture.asset(ImageAsses.logo) ,
+                      
+                      ),
                     ),
+                  
                     SizedBox(
-                      height: widthNHeight0(context, 0) * 0.32,
+                      height: widthNHeight0(context, 0) * 0.25,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -48,7 +57,7 @@ class _LogInState extends State<LogIn> {
                             child: const Text(
                               "Sign In",
                               style: TextStyle(
-                                  fontSize: 25,
+                                  fontSize: 29,
                                   color: Color(0xff263238),
                                   fontWeight: FontWeight.w600,
                                   fontFamily: 'Kadwa'),
@@ -93,7 +102,7 @@ class _LogInState extends State<LogIn> {
                     Column(
                       children: [
                         SizedBox(
-                          width: widthNHeight0(context, 1) * 0.85,
+                          width: widthNHeight0(context, 1) * 0.67,
                           child: InkWell(
                             onTap: () {
                               if (textController.formField.currentState!
@@ -103,12 +112,12 @@ class _LogInState extends State<LogIn> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (_) => const Home_page()));
+                                        builder: (_) => const CustomeBottomNavBar()));
                               }
                             },
                             child: Container(
-                              height: widthNHeight0(context, 0) * .08,
-                              width: widthNHeight0(context, 0) * 0.7,
+                              height: widthNHeight0(context, 0) * .068,
+                              width: widthNHeight0(context, 0) * 0.1,
                               //////////////////edit the width
                               decoration: BoxDecoration(
                                   color: const Color(0xff6482C4),

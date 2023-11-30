@@ -31,5 +31,5 @@ Widget defaultButton({
         fontFamily: 'Kadwa',
       ),
     ),
-  ),////////
+  ),
 );

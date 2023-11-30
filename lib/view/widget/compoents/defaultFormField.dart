@@ -43,19 +43,41 @@ class TextFormFieldWidget extends StatelessWidget {
                         ? const Color(0xff6482c4).withOpacity(0.8)
                         : color,
                   ),
-                  borderRadius: const BorderRadius.all(Radius.circular(10))),
+                  borderRadius: const BorderRadius.all(Radius.circular(5))),
               enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: (color == Colors.lime)
                         ? const Color(0xff6482c4).withOpacity(0.8)
                         : color,
                   ),
+
                   borderRadius: const BorderRadius.all(Radius.circular(10))),
               errorBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Colors.red.withOpacity(0.8),
+                    
                   ),
-                  borderRadius: const BorderRadius.all(Radius.circular(10))),
+                
+                  borderRadius: const BorderRadius.all(Radius.circular(10))
+                  ),
+                  focusedErrorBorder:  OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.red.withOpacity(0.8),
+                    
+                  ),
+                
+                  borderRadius: const BorderRadius.all(Radius.circular(10))
+                  ),
+                  disabledBorder:  OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.red.withOpacity(0.8),
+                    
+                  ),
+                
+                  borderRadius: const BorderRadius.all(Radius.circular(10))
+                  ),
+
+
               labelText: labelText,
               isDense: true,
               hintText: str,
