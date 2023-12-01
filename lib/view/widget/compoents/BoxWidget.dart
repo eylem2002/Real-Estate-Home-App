@@ -1,3 +1,4 @@
+// ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -24,7 +25,7 @@ class BoxWidget extends StatelessWidget {
       onTap: onPressed, // Call the onPressed callback when the box is tapped
       child: Column(
         children: [
-          Container(
+          SizedBox(
             width: 60,
             height: 60,
             

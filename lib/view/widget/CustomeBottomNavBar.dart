@@ -1,11 +1,13 @@
+// ignore_for_file: file_names, use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:get/state_manager.dart';
+import 'package:new_batic/view/screen/EngineerScreen_Profile.dart';
 import 'package:new_batic/view/screen/FavoriteScreen.dart';
 import 'package:new_batic/view/screen/Search_Page.dart';
 import 'package:new_batic/view/screen/MyHome.dart';
-import 'package:new_batic/view/screen/profile.dart';
-import 'package:new_batic/view/screen/search_bar_screen.dart';
+
 
 class NavigationDestination {
   final Icon icon;
@@ -28,7 +30,7 @@ class NavigationBar extends StatelessWidget {
   final List<NavigationDestination> destinations;
   final TextStyle labelStyle; 
 
-  NavigationBar({
+  const NavigationBar({super.key, 
     required this.backgroundColor,
     required this.height,
     required this.elevation,
@@ -107,11 +109,11 @@ class CustomeBottomNavBar extends StatelessWidget {
 }
 
 class NavigationController extends GetxController {
-  final Rx<int> selectedIndex = 0.obs;
+  final Rx<int> selectedIndex = 0.obs;// here the first value was zero
   final screens = [
     const FavoriteScreen(),
     const MyHome(),
      const Search_Page(),
-      SearchBarScreen(),
+     const EngineerScreen_Profile(),
   ];
 }

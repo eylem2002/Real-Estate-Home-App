@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:new_batic/core/constant/imageAsses.dart';
-import 'package:new_batic/view/screen/Search_Page.dart';
 import 'package:new_batic/view/widget/CustomeBottomNavBar.dart';
 import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
 import '../../controller/login_controller.dart';
@@ -33,12 +32,12 @@ class _LogInState extends State<LogIn> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Container(
+                    SizedBox(
                      //` color:  Colors.red,
                          width: widthNHeight0(context, 1) * 0.5,
                        height: widthNHeight0(context, 0) * 0.1,
                       child: Padding(
-                        padding: EdgeInsets.all(0),
+                        padding: const EdgeInsets.all(0),
                     
                         child:  SvgPicture.asset(ImageAsses.logo) ,
                       

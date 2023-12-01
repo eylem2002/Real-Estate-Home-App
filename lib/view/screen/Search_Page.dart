@@ -1,8 +1,9 @@
+// ignore_for_file: file_names, unused_element, camel_case_types, avoid_unnecessary_containers
+
 import 'package:flutter/material.dart';
 import 'package:new_batic/view/screen/search_bar_screen.dart';
 import 'package:new_batic/view/screen/signin.dart';
 import 'package:new_batic/view/widget/compoents/container_RB.dart';
-import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
 
 class Search_Page extends StatefulWidget {
   const Search_Page({super.key});
@@ -22,14 +23,13 @@ class _Home_pageState extends State<Search_Page> {
         children: [
           Stack(
             children: [
-              Container(
+              SizedBox(
                 height: widthNHeight0(context, 0) * .44,
                 width: widthNHeight0(context, 0) * .6,
-                child:
-                    Image.asset(fit: BoxFit.cover, 'assets/images/baticc.png'),
+                child: Image.asset(
+                    fit: BoxFit.cover, 'assets/images/png_pic/baticc.png'),
               ),
               Column(
-               
                 children: [
                   Padding(
                     padding: EdgeInsets.only(
@@ -51,21 +51,20 @@ class _Home_pageState extends State<Search_Page> {
                           width: widthNHeight0(context, 1) * 0.85,
                           height: widthNHeight0(context, 0) * 0.066,
                           decoration: BoxDecoration(
-                            color: Color(0xFFF0F2F6),
+                            color: const Color(0xFFF0F2F6),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
-                          padding:const  EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                               vertical: 15.0, horizontal: 10.0),
-                          child:const  Row(
+                          child: const Row(
                             children: [
                               Icon(Icons.search),
                               SizedBox(width: 10.0),
                               Text(
                                 'Search Area / location',
                                 style: TextStyle(
-                                  fontFamily: 'Kadwa',
-                                  color: Color(0xff9FA4A7)
-                                ),
+                                    fontFamily: 'Kadwa',
+                                    color: Color(0xff9FA4A7)),
                               ),
                             ],
                           ),
@@ -80,24 +79,25 @@ class _Home_pageState extends State<Search_Page> {
           Container(
             alignment: Alignment.topLeft,
             child: Padding(
-              padding: EdgeInsets.only(top: 70),
+              padding: const EdgeInsets.only(top: 70),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
+                  
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                              Search_Page(), ////here change to filter page name
+                              SearchBarScreen(), //here change to filter page name
                         ),
                       );
                     },
-                    child: const Positioned(
-                      child:
-                          container_RB(pic: 'rent_pic.svg', head_Text: "Rent"),
-                    ),
+
+                    child: const ContainerRB(
+                        pic: "assets/images/svg_pic/buy.svg",
+                        headText: "Buy"), //assets/images/png_pic/baticc.png
                   ),
                   GestureDetector(
                     onTap: () {
@@ -105,13 +105,14 @@ class _Home_pageState extends State<Search_Page> {
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                              Search_Page(), //here change to filter page name
+                              SearchBarScreen(), ////here change to filter page name
                         ),
                       );
                     },
-                    child: Positioned(
-                      child: container_RB(pic: 'buy.svg', head_Text: "Buy"),
-                    ),
+                    child: const ContainerRB(
+                        pic: "assets/images/svg_pic/rent.svg",
+                        headText:
+                            "Rent"), //assets/images/svg_pic/rent_pic.svg/
                   ),
                 ],
               ),

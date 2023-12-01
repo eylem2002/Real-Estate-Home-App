@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_getters_setters
+
 import 'package:flutter/material.dart';
 
 class SignUpController{
@@ -15,6 +17,7 @@ class SignUpController{
   set formKey(value) {
     _formKey = value;
   }
+
 
   TextEditingController get phone => _phone;
 

@@ -19,7 +19,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffEAEBEF),
+      backgroundColor: const Color(0xffEAEBEF),
       body: Form(
         key: signUpController.formKey,
         child: SizedBox(
@@ -32,13 +32,13 @@ class _SingUpScreenState extends State<SingUpScreen> {
                     
                     child: Padding(
                       padding:  EdgeInsets.only(top: widthNHeight0(context, 1) * 0.19),
-                      child: Container(
+                      child: SizedBox(
                         
                          //` color:  Colors.red,
                              width: widthNHeight0(context, 1) * 0.5,
                            height: widthNHeight0(context, 0) * 0.1,
                           child: Padding(
-                            padding: EdgeInsets.all(0),
+                            padding: const EdgeInsets.all(0),
                         
                             child:  SvgPicture.asset(ImageAsses.logo) ,
                           
@@ -148,7 +148,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                       function: () {
                         if (signUpController.formKey.currentState!
                             .validate()) {}
-                      }),
+                      }, onPressed: () {  }),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

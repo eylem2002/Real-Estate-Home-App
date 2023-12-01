@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:new_batic/view/screen/signin.dart';
 
@@ -25,7 +27,7 @@ class _headerState extends State<header> {
                 height: widthNHeight0(context, 0) * 0.058,
                 decoration: BoxDecoration(
                   border: Border.all(
-                      color: Color(0xFF263238),width: 2), 
+                      color: const Color(0xFF263238),width: 2), 
                   borderRadius: BorderRadius.circular(
                       5.0), 
                 ),
@@ -74,7 +76,7 @@ class _headerState extends State<header> {
                     // );
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Color(0xFFCCD8F4),
+                    backgroundColor: const Color(0xFFCCD8F4),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
@@ -92,7 +94,7 @@ class _headerState extends State<header> {
                     // );
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Color(0xFFCCD8F4),
+                    backgroundColor: const Color(0xFFCCD8F4),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
@@ -113,7 +115,7 @@ class _headerState extends State<header> {
                     // );
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Color(0xFFCCD8F4),
+                    backgroundColor: const Color(0xFFCCD8F4),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
@@ -133,13 +135,13 @@ class _headerState extends State<header> {
       children: [
         Icon(
           icon,
-          color: Color(0xFF263238),
+          color: const Color(0xFF263238),
         ),
-        SizedBox(width: 10.0,height: 50,),
+        const SizedBox(width: 10.0,height: 50,),
         Text(
           text,
           
-          style: TextStyle(
+          style: const TextStyle(
             color: Color(0xFF263238),
             fontFamily: 'Kadwa',
           

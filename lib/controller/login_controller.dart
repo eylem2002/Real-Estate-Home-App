@@ -7,8 +7,10 @@ class TextController{
   GlobalKey<FormState>_formField = GlobalKey<FormState>();
 
 
+  // ignore: unnecessary_getters_setters
   TextEditingController get controllerEmail => _controllerEmail;
 
+  // ignore: unnecessary_getters_setters
   TextEditingController get controllerPass => _controllerPass;
 
   GlobalKey<FormState> get formField => _formField;

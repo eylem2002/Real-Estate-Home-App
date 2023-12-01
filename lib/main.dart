@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:new_batic/view/screen/Search_home_folder/Search_main.dart';
-import 'package:new_batic/view/screen/splash_screen.dart';
+import 'package:new_batic/view/widget/CustomeBottomNavBar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,9 +10,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  const MaterialApp(
        debugShowCheckedModeBanner: false,
-      home: Search_main(),
+      home: CustomeBottomNavBar(),
     );//last one
   }
 

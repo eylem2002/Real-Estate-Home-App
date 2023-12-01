@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:new_batic/view/screen/Search_Page.dart';
+import 'package:new_batic/view/screen/Search_home_folder/Search_main.dart';
 import 'package:new_batic/view/screen/signin.dart';
 import 'package:new_batic/view/widget/CustomeBottomNavBar.dart';
 
@@ -34,7 +34,7 @@ class SearchBarScreen extends StatelessWidget {
                             )),
                         child: SizedBox(
                           width: widthNHeight0(context, 1) * 0.07,
-                          child: Image.asset('assets/images/close.png'),
+                          child: Image.asset('assets/images/png_pic/close.png'),
                         ),
                       ),
                       TextFormFieldWidget(
@@ -134,12 +134,29 @@ class SearchBarScreen extends StatelessWidget {
                     borderRadius: 5,
                     background: Colors.white,
                     textColor: Colors.black,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CustomeBottomNavBar(),
+                        ),
+                      );
+                    },
                   ),
                   defaultButton(
-                    
+                   
+
                     text: 'Done',
                     width: widthNHeight0(context, 1) * 0.6,
                     borderRadius: 5,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Search_Main(),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
