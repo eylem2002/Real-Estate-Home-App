@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:new_batic/view/screen/Search_Page.dart';
 import 'package:new_batic/view/screen/signin.dart';
 
 import '../widget/compoents/defaultFormField.dart';
@@ -54,8 +53,7 @@ class SearchBarScreen extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          //here add ur code
-                          print('Image tapped!');
+
                         },
                         child: SizedBox(
                           width: widthNHeight0(context, 1) * 0.06,
