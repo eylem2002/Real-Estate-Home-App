@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_getters_setters
+
 import '../model/propert_model.dart';
 
 class FilterController{

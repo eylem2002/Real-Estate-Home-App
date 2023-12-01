@@ -148,7 +148,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                       function: () {
                         if (signUpController.formKey.currentState!
                             .validate()) {}
-                      }, onPressed: () {  }),
+                      }, onPressed: () {  }, borderWidth: 0),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

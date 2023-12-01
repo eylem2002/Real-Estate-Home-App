@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, unused_element, camel_case_types, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
+import 'package:new_batic/view/screen/filters_screen.dart';
 import 'package:new_batic/view/screen/search_bar_screen.dart';
 import 'package:new_batic/view/screen/signin.dart';
 import 'package:new_batic/view/widget/compoents/container_RB.dart';
@@ -90,7 +91,7 @@ class _Home_pageState extends State<Search_Page> {
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                              SearchBarScreen(), //here change to filter page name
+                              FiltersScreen(), //here change to filter page name
                         ),
                       );
                     },
@@ -105,7 +106,7 @@ class _Home_pageState extends State<Search_Page> {
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                              SearchBarScreen(), ////here change to filter page name
+                              FiltersScreen(), ////here change to filter page name
                         ),
                       );
                     },

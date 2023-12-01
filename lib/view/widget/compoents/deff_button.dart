@@ -10,7 +10,7 @@ Widget defaultButton({
   required String text,
   double fontSize = 20.0,
   double borderRadius = 0.0,
-  required void Function() onPressed, // Change this line
+  required void Function() onPressed, required int borderWidth, // Change this line
 }) => Container(
       width: width,
       height: height,

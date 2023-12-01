@@ -39,7 +39,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
               width: widthNHeight0(context, 1) * 0.9,
               borderColor: Colors.grey.withOpacity(0.3),
               borderWidth: 3,
-              borderRadius: 10),
+              borderRadius: 10, onPressed: () {  }),
           const Divider(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -219,7 +219,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 width: widthNHeight0(context, 1) * 0.3,
                 borderRadius: 5,
                 background: Colors.white,
-                textColor: Colors.black,
+                textColor: Colors.black, onPressed: () {  }, borderWidth: 0,
               ),
               defaultButton(
                 text: 'Done',
@@ -230,7 +230,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => const FiltersScreen(),
-                    )),
+                    )), onPressed: () {  }, borderWidth: 0,
               ),
             ],
           )
