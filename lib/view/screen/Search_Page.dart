@@ -26,7 +26,7 @@ class _Home_pageState extends State<Search_Page> {
                 height: widthNHeight0(context, 0) * .44,
                 width: widthNHeight0(context, 0) * .6,
                 child:
-                    Image.asset(fit: BoxFit.cover, 'assets/images/baticc.png'),
+                    Image.asset(fit: BoxFit.cover, 'assets/images/png_pic/baticc.png'),
               ),
               Column(
                
@@ -96,7 +96,7 @@ class _Home_pageState extends State<Search_Page> {
                     },
                     child: const Positioned(
                       child:
-                          container_RB(pic: 'rent_pic.svg', head_Text: "Rent"),
+                          container_RB(pic: 'svg_pic/rent_pic.svg', head_Text: "Rent"),
                     ),
                   ),
                   GestureDetector(
@@ -109,8 +109,8 @@ class _Home_pageState extends State<Search_Page> {
                         ),
                       );
                     },
-                    child: Positioned(
-                      child: container_RB(pic: 'buy.svg', head_Text: "Buy"),
+                    child: const Positioned(
+                      child: container_RB(pic: 'svg_pic/buy.svg', head_Text: "Buy"),
                     ),
                   ),
                 ],

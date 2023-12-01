@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:new_batic/view/screen/signin.dart';
-
+import '../../controller/filter_controller.dart';
 import '../widget/compoents/deff_button.dart';
+import '../widget/propert_widget.dart';
 import '../widget/search_area_widget.dart';
 
 class FiltersScreen extends StatefulWidget {
@@ -13,29 +13,17 @@ class FiltersScreen extends StatefulWidget {
 }
 
 class _FiltersScreenState extends State<FiltersScreen> {
-
-  double _currentSliderValueMin = 60000;
-  double _currentSliderValueMax = 250000;
-  List<String> building = [
-    'Any',
-    'New',
-    '5+',
-    '10+'
-  ];
+  FilterController filterController = FilterController();
 
   @override
   Widget build(BuildContext context) {
-    print(widthNHeight0(context, 1)*0.87-widthNHeight0(context, 1));
     return Scaffold(
       appBar: AppBar(
         title: const Text('Filters', style: TextStyle(fontFamily: 'Kadwa')),
         centerTitle: true,
-        leading: GestureDetector(
-          onTap: () => Navigator.pop(context),
-          child: Padding(
-            padding: EdgeInsets.all(widthNHeight0(context, 1) * 0.05),
-            child: Image.asset('assets/images/close.png'),
-          ),
+        leading: IconButton(
+          icon: Icon(Icons.close, size: widthNHeight0(context, 1) * 0.08),
+          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: Column(
@@ -45,7 +33,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
             height: widthNHeight0(context, 0) * 0.01,
           ),
           defaultButton(
-            background: Theme.of(context).scaffoldBackgroundColor,
+              background: Theme.of(context).scaffoldBackgroundColor,
               text: 'Buy',
               textColor: Colors.black,
               width: widthNHeight0(context, 1) * 0.9,
@@ -57,7 +45,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               SizedBox(
-                width: widthNHeight0(context, 1)*0.4,
+                width: widthNHeight0(context, 1) * 0.4,
                 child: Text(
                   'Search Area',
                   style: TextStyle(
@@ -67,7 +55,9 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 ),
               ),
               const SizedBox(),
-              const SearchAreaWidget(text: 'Any',),
+              const SearchAreaWidget(
+                text: 'Any',
+              ),
             ],
           ),
           const Divider(),
@@ -75,7 +65,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               SizedBox(
-                width: widthNHeight0(context, 1)*0.4,
+                width: widthNHeight0(context, 1) * 0.4,
                 child: Text(
                   'Bedrooms',
                   style: TextStyle(
@@ -85,12 +75,14 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 ),
               ),
               const SizedBox(),
-              const SearchAreaWidget(text: 'Any',),
+              const SearchAreaWidget(
+                text: 'Any',
+              ),
             ],
           ),
           const Divider(),
           SizedBox(
-            width: widthNHeight0(context, 1)*0.87,
+            width: widthNHeight0(context, 1) * 0.87,
             child: Text(
               'Price',
               style: TextStyle(
@@ -100,49 +92,64 @@ class _FiltersScreenState extends State<FiltersScreen> {
             ),
           ),
           RangeSlider(
-
             inactiveColor: Colors.black.withOpacity(0.5),
             activeColor: const Color(0xffCCD8F4),
-            values: RangeValues(_currentSliderValueMin, _currentSliderValueMax),
+            values: RangeValues(filterController.currentSliderValueMin, filterController.currentSliderValueMax),
             min: 50,
             max: 300000,
             divisions: 6000,
-            labels: RangeLabels(
-              _currentSliderValueMin.round().toString(),
-              _currentSliderValueMax.round().toString(),
-            ),
             onChanged: (RangeValues values) {
               setState(() {
-                _currentSliderValueMin = values.start;
-                _currentSliderValueMax = values.end;
+                filterController.currentSliderValueMin = values.start;
+                filterController.currentSliderValueMax = values.end;
               });
             },
           ),
-
-
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Column(
                 children: [
-                  SearchAreaWidget(text: '${_currentSliderValueMin.round().toString()}\$',iconData: Icons.abc,),
-                  SizedBox(height: widthNHeight0(context, 0)*0.005,),
-                  const Text('Minimum',style: TextStyle(fontFamily: 'Kadwa',fontWeight: FontWeight.bold),)
+                  SearchAreaWidget(
+                    text: '${filterController.currentSliderValueMin.round().toString()}\$',
+                    iconData: Icons.abc,
+                  ),
+                  SizedBox(
+                    height: widthNHeight0(context, 0) * 0.005,
+                  ),
+                  const Text(
+                    'Minimum',
+                    style: TextStyle(
+                        fontFamily: 'Kadwa', fontWeight: FontWeight.bold),
+                  )
                 ],
               ),
-              const Text('To',style: TextStyle(fontFamily: 'Kadwa',fontWeight: FontWeight.bold),),
+              const Text(
+                'To',
+                style:
+                    TextStyle(fontFamily: 'Kadwa', fontWeight: FontWeight.bold),
+              ),
               Column(
                 children: [
-                  SearchAreaWidget(text: '${_currentSliderValueMax.round().toString()}\$',iconData: Icons.abc,),
-                  SizedBox(height: widthNHeight0(context, 0)*0.005,),
-                  const Text('Maximum',style: TextStyle(fontFamily: 'Kadwa',fontWeight: FontWeight.bold),)
+                  SearchAreaWidget(
+                    text: '${filterController.currentSliderValueMax.round().toString()}\$',
+                    iconData: Icons.abc,
+                  ),
+                  SizedBox(
+                    height: widthNHeight0(context, 0) * 0.005,
+                  ),
+                  const Text(
+                    'Maximum',
+                    style: TextStyle(
+                        fontFamily: 'Kadwa', fontWeight: FontWeight.bold),
+                  )
                 ],
               ),
             ],
           ),
           const Divider(),
           SizedBox(
-            width: widthNHeight0(context, 1)*0.87,
+            width: widthNHeight0(context, 1) * 0.87,
             child: Text(
               'Building Age',
               style: TextStyle(
@@ -154,15 +161,21 @@ class _FiltersScreenState extends State<FiltersScreen> {
           SizedBox(
             height: 50,
             child: ListView.builder(
-              padding: EdgeInsets.only(left: widthNHeight0(context, 1)*(0.13/2)),
+              padding:
+                  EdgeInsets.only(left: widthNHeight0(context, 1) * (0.13 / 2)),
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
-              itemCount: building.length,
+              itemCount: filterController.building.length,
               itemBuilder: (context, index) {
                 return Row(
                   children: [
-                    SearchAreaWidget(text: building[index],iconData: Icons.abc,),
-                    const SizedBox(width: 5,)
+                    SearchAreaWidget(
+                      text: filterController.building[index],
+                      iconData: Icons.abc,
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    )
                   ],
                 );
               },
@@ -170,7 +183,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
           ),
           const Divider(),
           SizedBox(
-            width: widthNHeight0(context, 1)*0.87,
+            width: widthNHeight0(context, 1) * 0.87,
             child: Text(
               'Propert Type',
               style: TextStyle(
@@ -179,11 +192,25 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   fontSize: widthNHeight0(context, 1) * 0.05),
             ),
           ),
-          SizedBox(
-            height: widthNHeight0(context, 0)*0.2,
-            child: SvgPicture.asset('assets/images/svg_pic/undraw_sweet_home_dkhr 5.svg'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(filterController.propert.length, (index) {
+              return Row(
+                children: [
+                  PropertWidget(
+                      text: filterController.propert[index].text, path: filterController.propert[index].path),
+                  if (index != filterController.propert.length - 1) ...[
+                    SizedBox(
+                      width: widthNHeight0(context, 1) * 0.1,
+                    )
+                  ]
+                ],
+              );
+            }),
           ),
-          SizedBox(height: widthNHeight0(context, 0)*0.01,),
+          SizedBox(
+            height: widthNHeight0(context, 0) * 0.01,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -199,11 +226,14 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 background: const Color(0xff6482C4),
                 width: widthNHeight0(context, 1) * 0.6,
                 borderRadius: 5,
-                function: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const FiltersScreen(),)),
+                function: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const FiltersScreen(),
+                    )),
               ),
             ],
           )
-
         ],
       ),
     );

@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return SizedBox(
       width: widthNHeight0(context, 1),
       height: widthNHeight0(context, 0),
-      child: Image.asset(fit: BoxFit.cover, 'assets/images/batik_splash.png'),
+      child: Image.asset(fit: BoxFit.cover, 'assets/images/png_pic/batik_splash.png'),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:new_batic/view/screen/Search_Page.dart';
 import 'package:new_batic/view/screen/signin.dart';
 
@@ -15,6 +16,28 @@ class SearchBarScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(onPressed: () {
+          Navigator.pop(context);
+        }, icon: Icon(Icons.close,size: widthNHeight0(context, 1)*0.08,)),
+        title: TextFormFieldWidget(
+          passToggle: false,
+          passController: _controller,
+          labelText: '',
+          validator: (value) {
+            if (value!.isEmpty) {
+              return "Search Area / location ";
+            } else {
+              return null;
+            }
+          },
+          str: "Search Area / location",
+          width: widthNHeight0(context, 1) * 0.75,
+          height: widthNHeight0(context, 0) * 0.07,
+          iconSufData: Icons.search,
+          color: Colors.black,
+        ),
+      ),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -22,41 +45,6 @@ class SearchBarScreen extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: EdgeInsets.all(widthNHeight0(context, 1) * 0.05),
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const Search_Page(),
-                            )),
-                        child: SizedBox(
-                          width: widthNHeight0(context, 1) * 0.07,
-                          child: Image.asset('assets/images/close.png'),
-                        ),
-                      ),
-                      TextFormFieldWidget(
-                        passToggle: false,
-                        passController: _controller,
-                        labelText: '',
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Search Area / location ";
-                          } else {
-                            return null;
-                          }
-                        },
-                        str: "Search Area / location",
-                        width: widthNHeight0(context, 1) * 0.75,
-                        height: widthNHeight0(context, 0) * 0.07,
-                        iconSufData: Icons.search,
-                        color: Colors.black,
-                      ),
-                    ],
-                  ),
-                ),
                 const Divider(),
                 Padding(
                   padding: EdgeInsets.only(
@@ -71,9 +59,7 @@ class SearchBarScreen extends StatelessWidget {
                         },
                         child: SizedBox(
                           width: widthNHeight0(context, 1) * 0.06,
-                          child: Image.network(
-                            'https://static-00.iconduck.com/assets.00/recent-icon-512x505-rl8e45ef.png',
-                          ),
+                          child: SvgPicture.asset('assets/images/svg_pic/recent 1.svg'),
                         ),
                       ),
                       SizedBox(

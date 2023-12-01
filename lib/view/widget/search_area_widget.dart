@@ -22,13 +22,16 @@ class SearchAreaWidget extends StatelessWidget {
               color: Colors.grey.withOpacity(0.2)
           ),
           child:  Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: (iconData == Icons.keyboard_arrow_down_rounded)?MainAxisAlignment.end:MainAxisAlignment.center,
             children: [
                Text(text,
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontFamily: 'Kadwa')),
               SizedBox(width: widthNHeight0(context, 1)*0.02,),
-              Icon((iconData == Icons.keyboard_arrow_down_rounded)? iconData:null),
+              if(iconData == Icons.keyboard_arrow_down_rounded)...[
+                Icon(iconData),
+
+              ]
             ],
           ),
         )
