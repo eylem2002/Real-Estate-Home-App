@@ -55,9 +55,10 @@ class SearchBarScreen extends StatelessWidget {
                         onTap: () {
 
                         },
-                        child: SizedBox(
+                        child: Container(
                           width: widthNHeight0(context, 1) * 0.06,
-                          child: SvgPicture.asset('assets/images/svg_pic/recent 1.svg'),
+                          height: widthNHeight0(context, 0)*0.03,
+                          child: SvgPicture.asset('assets/images/svg_pic/undraw_coming_home_re_ausc 2.svg'),
                         ),
                       ),
                       SizedBox(
