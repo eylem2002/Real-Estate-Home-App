@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:new_batic/view/screen/Search_home_folder/Search_main.dart';
+import 'package:new_batic/view/screen/Search_Page.dart';
 import 'package:new_batic/view/screen/signin.dart';
 import 'package:new_batic/view/widget/CustomeBottomNavBar.dart';
 
 import '../widget/compoents/defaultFormField.dart';
 import '../widget/compoents/deff_button.dart';
 import '../widget/location_supported_widget.dart';
+import 'filters_screen.dart';
 
 class SearchBarScreen extends StatelessWidget {
   SearchBarScreen({super.key});
@@ -30,11 +31,11 @@ class SearchBarScreen extends StatelessWidget {
                         onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const CustomeBottomNavBar(),
+                              builder: (context) => const Search_Page(),
                             )),
                         child: SizedBox(
                           width: widthNHeight0(context, 1) * 0.07,
-                          child: Image.asset('assets/images/png_pic/close.png'),
+                          child: Image.asset('assets/images/close.png'),
                         ),
                       ),
                       TextFormFieldWidget(
@@ -66,14 +67,12 @@ class SearchBarScreen extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          //here add ur code
-                          print('Image tapped!');
+
                         },
                         child: SizedBox(
                           width: widthNHeight0(context, 1) * 0.06,
-                          child: Image.network(
-                            'https://static-00.iconduck.com/assets.00/recent-icon-512x505-rl8e45ef.png',
-                          ),
+                          height: widthNHeight0(context, 0)*0.03,
+                          child: SvgPicture.asset('assets/images/svg_pic/recent 1.svg'),
                         ),
                       ),
                       SizedBox(
@@ -147,16 +146,9 @@ class SearchBarScreen extends StatelessWidget {
                    
 
                     text: 'Done',
+                    background: const Color(0xff6482C4),
                     width: widthNHeight0(context, 1) * 0.6,
                     borderRadius: 5,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const Search_Main(),
-                        ),
-                      );
-                    },
                   ),
                 ],
               ),
