@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../screen/signin.dart';
+import '../screen/Sign in/up/signin.dart';
 
 class PropertWidget extends StatelessWidget {
   const PropertWidget({

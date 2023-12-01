@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:new_batic/view/screen/signin.dart';
-import '../../controller/filter_controller.dart';
-import '../widget/compoents/deff_button.dart';
-import '../widget/propert_widget.dart';
-import '../widget/search_area_widget.dart';
+import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
+import '../../../../../controller/filter_controller.dart';
+import '../../../../widget/compoents/deff_button.dart';
+import '../../../../widget/propert_widget.dart';
+import '../../../../widget/search_area_widget.dart';
 
 class FiltersScreen extends StatefulWidget {
   const FiltersScreen({super.key});

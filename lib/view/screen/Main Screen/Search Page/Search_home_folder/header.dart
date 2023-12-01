@@ -1,7 +1,7 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:new_batic/view/screen/signin.dart';
+import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
 
 class header extends StatefulWidget {
   const header({super.key});

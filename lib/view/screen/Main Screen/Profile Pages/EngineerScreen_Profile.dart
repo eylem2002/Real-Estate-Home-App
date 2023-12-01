@@ -2,14 +2,14 @@
 
 import 'package:flutter/material.dart';
 
-class EngineerScreen_Profile extends StatefulWidget {
-  const EngineerScreen_Profile({super.key});
+class EngineerScreenProfile extends StatefulWidget {
+  const EngineerScreenProfile({super.key});
 
   @override
-  State<EngineerScreen_Profile> createState() => _EngineerScreenState();
+  State<EngineerScreenProfile> createState() => _EngineerScreenState();
 }
 
-class _EngineerScreenState extends State<EngineerScreen_Profile> {
+class _EngineerScreenState extends State<EngineerScreenProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -33,8 +33,10 @@ class TextFormFieldWidget extends StatelessWidget {
           width: (width == 0) ? null : width,
           height: (height == 0) ? null : height,
           child: TextFormField(
+           textAlign: TextAlign.left,
             keyboardType: TextInputType.emailAddress,
             obscureText: passToggle,
+            
             controller: passController,
             decoration: InputDecoration(
               prefixIcon: Icon((iconSufData == Icons.add) ? null : iconSufData),
@@ -82,6 +84,7 @@ class TextFormFieldWidget extends StatelessWidget {
               labelText: labelText,
               isDense: true,
               hintText: str,
+            
               floatingLabelBehavior: FloatingLabelBehavior.always,
             ),
             validator: validator,

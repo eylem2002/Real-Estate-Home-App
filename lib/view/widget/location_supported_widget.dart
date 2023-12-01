@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../screen/signin.dart';
+import '../screen/Sign in/up/signin.dart';
 
 class LocationSupportedWidget extends StatelessWidget {
   const LocationSupportedWidget({

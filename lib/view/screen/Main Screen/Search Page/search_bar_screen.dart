@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:new_batic/view/screen/Search_home_folder/Search_main.dart';
-import 'package:new_batic/view/screen/signin.dart';
+import 'package:new_batic/view/screen/Main%20Screen/Search%20Page/Search_home_folder/Search_main.dart';
+import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
 import 'package:new_batic/view/widget/CustomeBottomNavBar.dart';
 
-import '../widget/compoents/defaultFormField.dart';
-import '../widget/compoents/deff_button.dart';
-import '../widget/location_supported_widget.dart';
+import '../../../widget/compoents/defaultFormField.dart';
+import '../../../widget/compoents/deff_button.dart';
+import '../../../widget/location_supported_widget.dart';
 
 class SearchBarScreen extends StatelessWidget {
   SearchBarScreen({super.key});

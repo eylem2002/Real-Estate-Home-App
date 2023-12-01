@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../screen/signin.dart';
+import '../screen/Sign in/up/signin.dart';
 
 class SearchAreaWidget extends StatelessWidget {
   const SearchAreaWidget({

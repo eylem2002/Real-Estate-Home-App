@@ -1,9 +1,9 @@
 // ignore_for_file: file_names, unused_element, camel_case_types, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
-import 'package:new_batic/view/screen/filters_screen.dart';
-import 'package:new_batic/view/screen/search_bar_screen.dart';
-import 'package:new_batic/view/screen/signin.dart';
+import 'package:new_batic/view/screen/Main%20Screen/Search%20Page/Search_home_folder/filters_screen.dart';
+import 'package:new_batic/view/screen/Main%20Screen/Search%20Page/search_bar_screen.dart';
+import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
 import 'package:new_batic/view/widget/compoents/container_RB.dart';
 
 class Search_Page extends StatefulWidget {

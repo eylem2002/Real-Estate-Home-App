@@ -1,7 +1,7 @@
 // ignore_for_file: camel_case_types, file_names
 
 import 'package:flutter/material.dart';
-import 'package:new_batic/view/screen/Search_home_folder/header.dart';
+import 'package:new_batic/view/screen/Main%20Screen/Search%20Page/Search_home_folder/header.dart';
 
 class Search_Main extends StatefulWidget {
   const Search_Main({super.key});

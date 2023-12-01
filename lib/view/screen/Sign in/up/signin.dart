@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:new_batic/core/constant/imageAsses.dart';
 import 'package:new_batic/view/widget/CustomeBottomNavBar.dart';
 import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
-import '../../controller/login_controller.dart';
+import '../../../../controller/login_controller.dart';
 import 'signup_screen.dart';
 
 class LogIn extends StatefulWidget {
@@ -30,7 +30,7 @@ class _LogInState extends State<LogIn> {
               key: textController.formField,
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     SizedBox(
                      //` color:  Colors.red,
@@ -45,13 +45,14 @@ class _LogInState extends State<LogIn> {
                     ),
                   
                     SizedBox(
-                      height: widthNHeight0(context, 0) * 0.25,
+                      height: widthNHeight0(context, 0) * 0.28,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                         children: [
                           Container(
                             margin: EdgeInsets.only(
-                                right: widthNHeight0(context, 1) * 0.70,
+                                right: widthNHeight0(context, 1) * 0.65,
                                 bottom: widthNHeight0(context, 0) * 0.01),
                             child: const Text(
                               "Sign In",
@@ -78,7 +79,7 @@ class _LogInState extends State<LogIn> {
                               }
                               return null;
                             },
-                            str: " Enter Email",
+                            str: "Batic@gmail.com",
                           ),
                           TextFormFieldWidget(
                             passToggle: true,
@@ -93,7 +94,7 @@ class _LogInState extends State<LogIn> {
                                 return null;
                               }
                             },
-                            str: " Enter Password",
+                            str: "MyBatic",
                           )
                         ],
                       ),
@@ -114,16 +115,18 @@ class _LogInState extends State<LogIn> {
                                         builder: (_) => const CustomeBottomNavBar()));
                               }
                             },
+
+                            
                             child: Container(
                               height: widthNHeight0(context, 0) * .068,
-                              width: widthNHeight0(context, 0) * 0.1,
+                          //    width: widthNHeight0(context, 1) * 0.1,
                               //////////////////edit the width
                               decoration: BoxDecoration(
                                   color: const Color(0xff6482C4),
                                   borderRadius: BorderRadius.circular(5)),
                               child: const Center(
                                 child: Text(
-                                  "Sign In",
+                                  "Continue",
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 20,
@@ -163,6 +166,7 @@ class _LogInState extends State<LogIn> {
                               fontFamily: 'Kadwa',
                               color: Colors.grey[600]),
                         ),
+                       
                         TextButton(
                             onPressed: () {
                               Navigator.push(
@@ -174,13 +178,18 @@ class _LogInState extends State<LogIn> {
                             child: Text(
                               "Sign Up",
                               style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                 fontWeight: FontWeight.w600,
                                   fontSize:
-                                      MediaQuery.of(context).size.width * .033,
+                                      13,
                                   fontFamily: 'Kadwa',
+                                  
                                   color: Colors.grey[700]),
                             ))
                       ],
                     ),
+                    
+                
                   ])),
         ),
       ),

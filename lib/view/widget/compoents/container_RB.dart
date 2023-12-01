@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:new_batic/view/screen/signin.dart';
+import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
 
 class ContainerRB extends StatelessWidget {
  final String pic;

@@ -3,10 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:get/state_manager.dart';
-import 'package:new_batic/view/screen/EngineerScreen_Profile.dart';
-import 'package:new_batic/view/screen/FavoriteScreen.dart';
-import 'package:new_batic/view/screen/Search_Page.dart';
-import 'package:new_batic/view/screen/MyHome.dart';
+import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/EngineerScreen_Profile.dart';
+import 'package:new_batic/view/screen/Main%20Screen/FavoriteScreen.dart';
+import 'package:new_batic/view/screen/Main%20Screen/Search%20Page/Search_Page.dart';
+import 'package:new_batic/view/screen/Main%20Screen/MyHome.dart';
 
 
 class NavigationDestination {
@@ -114,6 +114,6 @@ class NavigationController extends GetxController {
     const FavoriteScreen(),
     const MyHome(),
      const Search_Page(),
-     const EngineerScreen_Profile(),
+     const EngineerScreenProfile(),
   ];
 }

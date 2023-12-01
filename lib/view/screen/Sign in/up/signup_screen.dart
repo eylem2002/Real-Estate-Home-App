@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:new_batic/controller/signup_controller.dart';
-import 'package:new_batic/view/screen/signin.dart';
+import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
 import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
-import '../../core/constant/imageAsses.dart';
-import '../widget/compoents/deff_button.dart';
+import '../../../../core/constant/imageAsses.dart';
+import '../../../widget/compoents/deff_button.dart';
 
 class SingUpScreen extends StatefulWidget {
   const SingUpScreen({super.key});
