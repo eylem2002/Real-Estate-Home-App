@@ -1,6 +1,8 @@
 // ignore_for_file: camel_case_types, unnecessary_string_interpolations, file_names, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/personalDetils_screen.dart';
+import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/sell_home_screen.dart';
 
 class EngineerScreenProfile extends StatefulWidget {
   const EngineerScreenProfile({super.key});
@@ -91,7 +93,13 @@ class _EngineerScreenState extends State<EngineerScreenProfile> {
                             ],
                           ),
                           IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const PersdonalDetilsScreen(),
+                                    ));
+                              },
                               icon:const Icon(
                                  Icons.arrow_forward_ios,
                                 size: 17,
@@ -255,7 +263,13 @@ class _EngineerScreenState extends State<EngineerScreenProfile> {
                             ],
                           ),
                           IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const SellHomeScreen(),
+                                    ));
+                              },
                               icon: Icon(
                                 Icons.arrow_forward_ios,
                                 size: 17,
