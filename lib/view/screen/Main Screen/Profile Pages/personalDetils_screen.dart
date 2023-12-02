@@ -50,7 +50,7 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
         child: Padding(
           padding: const EdgeInsets.only(left: 15.0,right: 15.0),
           child: Center(
-            child: Container(
+            child: SizedBox(
               width: widthNHeight0(context, 1)*0.9,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
