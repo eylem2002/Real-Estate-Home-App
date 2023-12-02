@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:new_batic/view/screen/search_bar_screen.dart';
 import 'package:new_batic/view/screen/splash_screen.dart';
 
 void main() {
