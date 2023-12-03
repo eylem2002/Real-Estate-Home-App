@@ -83,11 +83,13 @@ class TextFormFieldWidget extends StatelessWidget {
 
               labelText: labelText,
               isDense: true,
+              
               hintText: str,
             
               floatingLabelBehavior: FloatingLabelBehavior.always,
             ),
             validator: validator,
+           
           )),
     );
   }
