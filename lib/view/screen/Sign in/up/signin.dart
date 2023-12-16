@@ -96,7 +96,7 @@ class _LogInState extends State<LogIn> {
                               }
                             },
                             str: "MyBatic",
-                          )
+                          ),
                         ],
                       ),
                     ),
