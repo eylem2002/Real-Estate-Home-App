@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:new_batic/core/constant/imageAsses.dart';
-import 'package:new_batic/view/widget/CustomeBottomNavBar.dart';
+import 'package:new_batic/view/widget/BottomNavBar.dart';
 import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
 import '../../../../controller/login_controller.dart';
 import 'signup_screen.dart';
@@ -83,13 +83,14 @@ class _LogInState extends State<LogIn> {
                           ),
                           TextFormFieldWidget(
                             passToggle: true,
+                            
                             passController: textController.controllerPass,
                             labelText: 'password',
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return "Enter Password";
-                              } else if (value.length < 6) {
-                                return "Password length should be more than 6 characters";
+                              } else if (value.length < 7) {
+                                return "Password length should be more than 7 characters";
                               } else {
                                 return null;
                               }

@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:get/state_manager.dart';
-import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/EngineerScreen_Profile.dart';
+import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Screen_Profile.dart';
 import 'package:new_batic/view/screen/Main%20Screen/FavoriteScreen.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Search%20Page/Search_Page.dart';
 import 'package:new_batic/view/screen/Main%20Screen/MyHome.dart';
@@ -76,6 +76,11 @@ class CustomeBottomNavBar extends StatelessWidget {
           onDestinationSelected: (index) =>
               controller.selectedIndex.value = index,
           destinations: [
+             NavigationDestination(
+              icon: Icon(Icons.search),
+              label: 'Search',
+              selectedColor: Color(0xff6482C4),
+            ),
             NavigationDestination(
               icon: Icon(Icons.favorite),
               label: 'Saved',
@@ -86,11 +91,7 @@ class CustomeBottomNavBar extends StatelessWidget {
               label: 'My Home',
               selectedColor: Color(0xff6482C4),
             ),
-            NavigationDestination(
-              icon: Icon(Icons.search),
-              label: 'Search',
-              selectedColor: Color(0xff6482C4),
-            ),
+           
             NavigationDestination(
               icon: Icon(Icons.person),
               label: 'Account',
@@ -111,9 +112,9 @@ class CustomeBottomNavBar extends StatelessWidget {
 class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;// here the first value was zero
   final screens = [
-    const FavoriteScreen(),
-    const MyHome(),
      const Search_Page(),
-     const EngineerScreenProfile(),
+    const FavoriteScreen(),
+    const MyHome(), 
+     const ScreenProfile(),
   ];
 }

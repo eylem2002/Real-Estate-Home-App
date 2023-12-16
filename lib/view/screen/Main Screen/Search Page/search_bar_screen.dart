@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Search%20Page/Search_home_folder/Search_main.dart';
 import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
-import 'package:new_batic/view/widget/CustomeBottomNavBar.dart';
+import 'package:new_batic/view/widget/BottomNavBar.dart';
 
 import '../../../widget/compoents/defaultFormField.dart';
-import '../../../widget/compoents/deff_button.dart';
+import '../../../widget/compoents/bottoms/deff_button.dart';
 import '../../../widget/location_supported_widget.dart';
 
 class SearchBarScreen extends StatelessWidget {
@@ -23,21 +23,28 @@ class SearchBarScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsets.all(widthNHeight0(context, 1) * 0.05),
+                  padding: EdgeInsets.only(top:widthNHeight0(context, 1) * 0.05 ,left:widthNHeight0(context, 1) * 0.035,right: widthNHeight0(context, 1) * 0.035,bottom: widthNHeight0(context, 1) * 0.027 ),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      GestureDetector(
-                        onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const CustomeBottomNavBar(),
-                            )),
-                        child: SizedBox(
-                          width: widthNHeight0(context, 1) * 0.07,
-                          child: Image.asset('assets/images/png_pic/close.png'),
+                      Padding(
+                        padding:  EdgeInsets.only(bottom: widthNHeight0(context, 1)*0.05),
+                        child: GestureDetector(
+                          onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const CustomeBottomNavBar(),
+                              )),
+                          child: SizedBox(
+                            width: widthNHeight0(context, 0) * 0.025,
+                            height: widthNHeight0(context, 1) * 0.09,
+                             
+                            child: Image.asset('assets/images/png_pic/close.png'),
+                          ),
                         ),
                       ),
                       TextFormFieldWidget(
+                        
                         passToggle: false,
                         passController: _controller,
                         labelText: '',
@@ -49,8 +56,10 @@ class SearchBarScreen extends StatelessWidget {
                           }
                         },
                         str: "Search Area / location",
-                        width: widthNHeight0(context, 1) * 0.75,
-                        height: widthNHeight0(context, 0) * 0.07,
+                        width: widthNHeight0(context, 1) * 0.77,
+                        height: widthNHeight0(context, 0) * 0.08,
+                        maxlog: 25,
+                        
                         iconSufData: Icons.search,
                         color: Colors.black,
                       ),
@@ -111,7 +120,7 @@ class SearchBarScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: widthNHeight0(context, 0) * 0.04,
+                  height: widthNHeight0(context, 0) * 0.03,
                 ),
                 Row(
                   children: List.generate(3, (index) {

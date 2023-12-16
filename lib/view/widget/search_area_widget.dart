@@ -19,7 +19,7 @@ class SearchAreaWidget extends StatelessWidget {
           height: widthNHeight0(context, 0)*0.05,
           decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(10)),
-              color: Colors.grey.withOpacity(0.2)
+              color:Color(0xffF0F2F6),
           ),
           child:  Row(
             mainAxisAlignment: (iconData == Icons.keyboard_arrow_down_rounded)?MainAxisAlignment.end:MainAxisAlignment.center,

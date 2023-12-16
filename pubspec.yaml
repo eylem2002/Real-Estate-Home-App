@@ -31,14 +31,16 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
+  carousel_slider: ^4.2.1
   get: ^4.6.1
   # DateTime
   jiffy: ^6.2.1
   intl: ^0.18.1
-  http: ^1.1.0
+  http: ^1.1.2
   # Images
   cached_network_image: ^3.2.0 
-  image_picker: ^1.0.4
+  image_picker: ^1.0.5
+  
   # Animate
   show_up_animation: ^2.0.0
   auto_animated: ^3.0.1
@@ -49,7 +51,7 @@ dependencies:
   geocoding: ^2.0.4
   # Firebase And Notification 
   firebase_messaging: ^14.7.4
-  firebase_core: ^2.22.0
+  firebase_core: ^2.24.2
   flutter_local_notifications: ^16.1.0
   cloud_firestore: ^4.13.1
   # Local Data Cache
@@ -69,6 +71,8 @@ dependencies:
   fluttericon: ^2.0.0
   dartz: ^0.10.1
   google_fonts: ^6.1.0 
+  
+  
 
 dev_dependencies:
   flutter_test:
@@ -96,6 +100,7 @@ flutter:
   assets:
     - assets/images/svg_pic/
     - assets/images/png_pic/
+    - assets/images/jpg_pic/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
