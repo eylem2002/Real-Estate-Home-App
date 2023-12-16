@@ -1,27 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:new_batic/core/class/prodect.dart';
+import 'package:new_batic/core/functions/call.dart';
 import 'package:new_batic/core/services/MapScreen%202.dart';
-import 'package:new_batic/view/screen/Map%20Screen/EnterSevices.dart';
-import 'package:new_batic/view/screen/floorplan.dart';
+import 'package:new_batic/core/services/EnterSevices.dart';
+import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/addhomepic.dart';
+import 'package:new_batic/view/screen/details/floorplan.dart';
 import 'package:new_batic/view/widget/compoents/bottoms/deff_button%203.dart';
 import 'package:new_batic/view/widget/compoents/bottoms/deff_button%204.dart';
-import 'package:new_batic/view/widget/compoents/bottoms/deff_button.dart';
-import 'package:new_batic/view/widget/compoents/bottoms/deff_button2.dart';
+   
+   
+
 
 class DetailsScreen extends StatefulWidget {
+ 
   const DetailsScreen({Key? key, required this.product}) : super(key: key);
 
   final Product product;
+ 
 
   @override
   _DetailsScreenState createState() => _DetailsScreenState();
 }
 
 class _DetailsScreenState extends State<DetailsScreen> {
+
   int selectedImage = 0;
-  
+
   Key? get key => null;
+  double lon = 0, lat = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -214,7 +221,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         ),
                         Divider(height: 1, color: Colors.grey[300]),
                         Padding(
-                          padding:  EdgeInsets.only(left:widthNHeight0(context, 1)*0.03,right:widthNHeight0(context, 1)*0.03 ),
+                          padding: EdgeInsets.only(
+                              left: widthNHeight0(context, 1) * 0.03,
+                              right: widthNHeight0(context, 1) * 0.03),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -254,80 +263,97 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                   color: Color(0xFF263238),
                                 ),
                               ),
-                               SizedBox(
+                              SizedBox(
                                 height: widthNHeight0(context, 1) * 0.02,
                               ),
-                   
-                       Column(
-  mainAxisAlignment: MainAxisAlignment.start,
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Text("Type",style: TextStyle(fontFamily: "kadwa"),),
-        SizedBox(width: widthNHeight0(context, 0)*0.15),
-       Text(
-                                "\ ${widget.product.Type}",
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                 
-                                  fontFamily: "Kadwa",
-                                  color: Color(0xFF263238),
-                                ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Type",
+                                        style: TextStyle(fontFamily: "kadwa"),
+                                      ),
+                                      SizedBox(
+                                          width:
+                                              widthNHeight0(context, 0) * 0.15),
+                                      Text(
+                                        "\ ${widget.product.Type}",
+                                        style: const TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: "Kadwa",
+                                          color: Color(0xFF263238),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                      height: widthNHeight0(context, 1) * 0.02),
+                                  Divider(height: 2, color: Colors.grey[300]),
+                                  SizedBox(
+                                      height: widthNHeight0(context, 1) * 0.02),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Purpose",
+                                        style: TextStyle(fontFamily: "kadwa"),
+                                      ),
+                                      SizedBox(
+                                          width: widthNHeight0(context, 0) *
+                                              0.124),
+                                      Text(
+                                        "\ ${widget.product.Purpose}",
+                                        style: const TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: "Kadwa",
+                                          color: Color(0xFF263238),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                      height: widthNHeight0(context, 1) * 0.02),
+                                  Divider(height: 2, color: Colors.grey[300]),
+                                  SizedBox(
+                                      height: widthNHeight0(context, 1) * 0.02),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Added on",
+                                        style: TextStyle(fontFamily: "kadwa"),
+                                      ),
+                                      SizedBox(
+                                          width: widthNHeight0(context, 0) *
+                                              0.114),
+                                      Text(
+                                        "\ ${widget.product.Added}",
+                                        style: const TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: "Kadwa",
+                                          color: Color(0xFF263238),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                      height: widthNHeight0(context, 1) * 0.02),
+                                  Divider(height: 2, color: Colors.grey[300]),
+                                  SizedBox(
+                                      height: widthNHeight0(context, 1) * 0.02),
+                                ],
                               ),
-      ],
-    ),
-       SizedBox(height: widthNHeight0(context, 1)*0.02),
-      Divider(height: 2, color: Colors.grey[300]),
-         SizedBox(height: widthNHeight0(context, 1)*0.02),
-    Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Text("Purpose",style: TextStyle(fontFamily: "kadwa"),),
-        SizedBox(width: widthNHeight0(context, 0)*0.124),
-         Text(
-                                "\ ${widget.product.Purpose}",
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                 
-                                  fontFamily: "Kadwa",
-                                  color: Color(0xFF263238),
-                                ),
-                              ),
-      ],
-    ),
-       SizedBox(height: widthNHeight0(context, 1)*0.02),
-      Divider(height: 2, color: Colors.grey[300]),
-        SizedBox(height: widthNHeight0(context, 1)*0.02),
-    Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Text("Added on",style: TextStyle(fontFamily: "kadwa"),),
-        SizedBox(width: widthNHeight0(context, 0)*0.114),
-         Text(
-                                "\ ${widget.product.Added}",
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                 
-                                  fontFamily: "Kadwa",
-                                  color: Color(0xFF263238),
-                                ),
-                              ),
-
-      ],
-    ),
-       SizedBox(height: widthNHeight0(context, 1)*0.02),
-      Divider(height: 2, color: Colors.grey[300]),
-         SizedBox(height: widthNHeight0(context, 1)*0.02),
-        
-  ],
-)
-,
- Text(
+                              Text(
                                 "Validated Information",
                                 style: const TextStyle(
                                   fontSize: 19,
@@ -336,242 +362,315 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                   color: Color(0xFF263238),
                                 ),
                               ),
-                               SizedBox(
+                              SizedBox(
                                 height: widthNHeight0(context, 1) * 0.02,
                               ),
-                                Column(
-  mainAxisAlignment: MainAxisAlignment.start,
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Text("Developer",style: TextStyle(fontFamily: "kadwa"),),
-        SizedBox(width: widthNHeight0(context, 0)*0.11),
-       Text(
-                                "Alaa Abdelqader",
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                 
-                                  fontFamily: "Kadwa",
-                                  color: Color(0xFF263238),
-                                ),
-                              ),
-      ],
-    ),
-       SizedBox(height: widthNHeight0(context, 1)*0.02),
-      Divider(height: 2, color: Colors.grey[300]),
-         SizedBox(height: widthNHeight0(context, 1)*0.02),
-    Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Text("Parking Availability",style: TextStyle(fontFamily: "kadwa"),),
-        SizedBox(width: widthNHeight0(context, 0)*0.034),
-         Text(
-                                "\ ${widget.product.parking}",
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                 
-                                  fontFamily: "Kadwa",
-                                  color: Color(0xFF263238),
-                                ),
-                              ),
-      ],
-    ),
-       SizedBox(height: widthNHeight0(context, 1)*0.02),
-      Divider(height: 2, color: Colors.grey[300]),
-        SizedBox(height: widthNHeight0(context, 1)*0.02),
-    Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Text("Balcony size ",style: TextStyle(fontFamily: "kadwa"),),
-        SizedBox(width: widthNHeight0(context, 0)*0.09),
-         Text(
-                                "\ ${widget.product.balcony}",
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                 
-                                  fontFamily: "Kadwa",
-                                  color: Color(0xFF263238),
-                                ),
-                              ),
-      ],
-    ),
-       SizedBox(height: widthNHeight0(context, 1)*0.02),
-      Divider(height: 2, color: Colors.grey[300]),
-         SizedBox(height: widthNHeight0(context, 1)*0.02),
-         Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Text("Building Name",style: TextStyle(fontFamily: "kadwa"),),
-        SizedBox(width: widthNHeight0(context, 0)*0.075),
-         Text(
-                                "\ ${widget.product.buliding_name}",
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                 
-                                  fontFamily: "Kadwa",
-                                  color: Color(0xFF263238),
-                                ),
-                              ),
-      ],
-    ),
-    
-     SizedBox(height: widthNHeight0(context, 1)*0.02),
-      Divider(height: 2, color: Colors.grey[300]),
-         SizedBox(height: widthNHeight0(context, 1)*0.02),
-         Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Text("Year of build",style: TextStyle(fontFamily: "kadwa"),),
-        SizedBox(width: widthNHeight0(context, 0)*0.09),
-         Text(
-                                "\ ${widget.product.year_bulid}",
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                 
-                                  fontFamily: "Kadwa",
-                                  color: Color(0xFF263238),
-                                ),
-                              ),
-      ],
-    ),
-      SizedBox(height: widthNHeight0(context, 1)*0.02),
-      Divider(height: 2, color: Colors.grey[300]),
-         SizedBox(height: widthNHeight0(context, 1)*0.02),
-             Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Text("Total flour",style: TextStyle(fontFamily: "kadwa"),),
-        SizedBox(width: widthNHeight0(context, 0)*0.108),
-         Text(
-                                "\ ${widget.product.total_flour}",
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                 
-                                  fontFamily: "Kadwa",
-                                  color: Color(0xFF263238),
-                                ),
-                              ),
-      ],
-    ),
-      SizedBox(height: widthNHeight0(context, 1)*0.02),
-      Divider(height: 2, color: Colors.grey[300]),
-         SizedBox(height: widthNHeight0(context, 1)*0.02),
-             Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Text("Elevators",style: TextStyle(fontFamily: "kadwa"),),
-        SizedBox(width: widthNHeight0(context, 0)*0.12),
-         Text(
-                                "\ ${widget.product.elevetors}",
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                 
-                                  fontFamily: "Kadwa",
-                                  color: Color(0xFF263238),
-                                ),
-                              ),
-      ],
-    ),
-      SizedBox(height: widthNHeight0(context, 1)*0.02),
-      Divider(height: 2, color: Colors.grey[300]),
-         SizedBox(height: widthNHeight0(context, 1)*0.02),
-             Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Text("Disabled Services",style: TextStyle(fontFamily: "kadwa"),),
-        SizedBox(width: widthNHeight0(context, 0)*0.06),
-         Text(
-                                "\ ${widget.product.disabled}",
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                 
-                                  fontFamily: "Kadwa",
-                                  color: Color(0xFF263238),
-                                ),
-                              ),
-      ],
-    ),
-      SizedBox(height: widthNHeight0(context, 1)*0.02),
-      
-         SizedBox(height: widthNHeight0(context, 1)*0.02),
-        
-  ],
-)
-
-
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Developer",
+                                        style: TextStyle(fontFamily: "kadwa"),
+                                      ),
+                                      SizedBox(
+                                          width:
+                                              widthNHeight0(context, 0) * 0.11),
+                                      Text(
+                                        "Alaa Abdelqader",
+                                        style: const TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: "Kadwa",
+                                          color: Color(0xFF263238),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                      height: widthNHeight0(context, 1) * 0.02),
+                                  Divider(height: 2, color: Colors.grey[300]),
+                                  SizedBox(
+                                      height: widthNHeight0(context, 1) * 0.02),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Parking Availability",
+                                        style: TextStyle(fontFamily: "kadwa"),
+                                      ),
+                                      SizedBox(
+                                          width: widthNHeight0(context, 0) *
+                                              0.034),
+                                      Text(
+                                        "\ ${widget.product.parking}",
+                                        style: const TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: "Kadwa",
+                                          color: Color(0xFF263238),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                      height: widthNHeight0(context, 1) * 0.02),
+                                  Divider(height: 2, color: Colors.grey[300]),
+                                  SizedBox(
+                                      height: widthNHeight0(context, 1) * 0.02),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Balcony size ",
+                                        style: TextStyle(fontFamily: "kadwa"),
+                                      ),
+                                      SizedBox(
+                                          width:
+                                              widthNHeight0(context, 0) * 0.09),
+                                      Text(
+                                        "\ ${widget.product.balcony}",
+                                        style: const TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: "Kadwa",
+                                          color: Color(0xFF263238),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                      height: widthNHeight0(context, 1) * 0.02),
+                                  Divider(height: 2, color: Colors.grey[300]),
+                                  SizedBox(
+                                      height: widthNHeight0(context, 1) * 0.02),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Building Name",
+                                        style: TextStyle(fontFamily: "kadwa"),
+                                      ),
+                                      SizedBox(
+                                          width: widthNHeight0(context, 0) *
+                                              0.075),
+                                      Text(
+                                        "\ ${widget.product.buliding_name}",
+                                        style: const TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: "Kadwa",
+                                          color: Color(0xFF263238),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                      height: widthNHeight0(context, 1) * 0.02),
+                                  Divider(height: 2, color: Colors.grey[300]),
+                                  SizedBox(
+                                      height: widthNHeight0(context, 1) * 0.02),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Year of build",
+                                        style: TextStyle(fontFamily: "kadwa"),
+                                      ),
+                                      SizedBox(
+                                          width:
+                                              widthNHeight0(context, 0) * 0.09),
+                                      Text(
+                                        "\ ${widget.product.year_bulid}",
+                                        style: const TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: "Kadwa",
+                                          color: Color(0xFF263238),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                      height: widthNHeight0(context, 1) * 0.02),
+                                  Divider(height: 2, color: Colors.grey[300]),
+                                  SizedBox(
+                                      height: widthNHeight0(context, 1) * 0.02),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Total flour",
+                                        style: TextStyle(fontFamily: "kadwa"),
+                                      ),
+                                      SizedBox(
+                                          width: widthNHeight0(context, 0) *
+                                              0.108),
+                                      Text(
+                                        "\ ${widget.product.total_flour}",
+                                        style: const TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: "Kadwa",
+                                          color: Color(0xFF263238),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                      height: widthNHeight0(context, 1) * 0.02),
+                                  Divider(height: 2, color: Colors.grey[300]),
+                                  SizedBox(
+                                      height: widthNHeight0(context, 1) * 0.02),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Elevators",
+                                        style: TextStyle(fontFamily: "kadwa"),
+                                      ),
+                                      SizedBox(
+                                          width:
+                                              widthNHeight0(context, 0) * 0.12),
+                                      Text(
+                                        "\ ${widget.product.elevetors}",
+                                        style: const TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: "Kadwa",
+                                          color: Color(0xFF263238),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                      height: widthNHeight0(context, 1) * 0.02),
+                                  Divider(height: 2, color: Colors.grey[300]),
+                                  SizedBox(
+                                      height: widthNHeight0(context, 1) * 0.02),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Disabled Services",
+                                        style: TextStyle(fontFamily: "kadwa"),
+                                      ),
+                                      SizedBox(
+                                          width:
+                                              widthNHeight0(context, 0) * 0.06),
+                                      Text(
+                                        "\ ${widget.product.disabled}",
+                                        style: const TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: "Kadwa",
+                                          color: Color(0xFF263238),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                      height: widthNHeight0(context, 1) * 0.02),
+                                  SizedBox(
+                                      height: widthNHeight0(context, 1) * 0.02),
+                                ],
+                              )
                             ],
                           ),
                         ),
-                        SizedBox(height: widthNHeight0(context, 1)*0.04),
-                      Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          defaultButton3(
-                                          text: 'Floor Plan',//FloorPlan
-                                          width: widthNHeight0(context, 1) * 0.36,
-                                          borderRadius: 5,
-                                          background: Color(0xffCCD8F4),
-                                          textColor: Colors.black, onPressed: () {  Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                        builder: (context) => FloorPlan(product: widget.product),
+                        SizedBox(height: widthNHeight0(context, 1) * 0.04),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            defaultButton3(
+                              text: 'Floor Plan', //FloorPlan
+                              width: widthNHeight0(context, 1) * 0.36,
+                              borderRadius: 5,
+                              background: Color(0xffCCD8F4),
+                              textColor: Colors.black,
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        FloorPlan(product: widget.product),
+                                  ),
+                                );
+                              },
+                              borderWidth: 0,
+                            ),
+                            defaultButton3(
+                              text: 'View Map', //MapScreenLocation
+                              width: widthNHeight0(context, 1) * 0.36,
+                              borderRadius: 5,
+                              background: Color(0xffCCD8F4),
+                              textColor: Colors.black,
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => MapScreenLocation(
+                                        lon: widget.product.long,
+                                        lat: widget.product.late),
+                                  ),
+                                );
+                              },
+                              borderWidth: 0,
+                            ),
+                          ],
                         ),
-                      ); }, borderWidth: 0,
-                                        ),
-                                          defaultButton3(
-                                          text: 'View Map',//MapScreenLocation
-                                          width: widthNHeight0(context, 1) * 0.36,
-                                          borderRadius: 5,
-                                          background: Color(0xffCCD8F4),
-                                          textColor: Colors.black, onPressed: () {  Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>  MapScreenLocation(),
+                        SizedBox(height: widthNHeight0(context, 1) * 0.04),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            defaultButton3(
+                              text: 'Services',
+                              width: widthNHeight0(context, 1) * 0.36,
+                              borderRadius: 5,
+                              background: Color(0xffCCD8F4),
+                              textColor: Colors.black,
+                              onPressed: () {
+                                widget.product.long;
+                               widget.product.late;
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => EnterServices(
+                                        lon: widget.product.long,
+                                        lat: widget.product.late),
+                                  ),
+                                );
+                              },
+                              borderWidth: 0,
+                            ),
+                            defaultButton4(
+                              text: 'Call',
+                              width: widthNHeight0(context, 1) * 0.36,
+                              borderRadius: 5,
+                              background: Color(0xffF0F2F6),
+                              textColor: Color(0xff1A3166),
+                              onPressed: () {
+                               
+String num= widget.product.phone;
+                               
+                                   makePhoneCall(context, num);
+                              },
+                              borderWidth: 0,
+                            ),
+                          ],
                         ),
-                      ); }, borderWidth: 0,
-                                          
-                                        ),
-                        ],
-                      ),
-                        SizedBox(height: widthNHeight0(context, 1)*0.04),
-
-                          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          defaultButton3(
-                                          text: 'Services',
-                                          width: widthNHeight0(context, 1) * 0.36,
-                                          borderRadius: 5,
-                                          background: Color(0xffCCD8F4),
-                                          textColor: Colors.black, onPressed: () {  Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const EnterServices(),
-                        ),
-                      );  }, borderWidth: 0,
-                                           
-                                        ),
-                                          defaultButton4(
-                                          text: 'Call',
-                                          width: widthNHeight0(context, 1) * 0.36,
-                                          borderRadius: 5,
-                                          background: Color(0xffF0F2F6),
-                                          
-                                          textColor: Color(0xff1A3166), onPressed: () {  }, borderWidth: 0,
-                                        ),
-                        ],
-                      ),
-                      SizedBox(height: widthNHeight0(context, 1)*0.1),
-              
-                     
+                        SizedBox(height: widthNHeight0(context, 1) * 0.1),
                       ],
                     ),
                   ),

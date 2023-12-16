@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "558478102376",
+    "project_id": "batic-3900e",
+    "storage_bucket": "batic-3900e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:558478102376:android:5f9b2ff0e32112e21050dd",
+        "android_client_info": {
+          "package_name": "com.example.new_batic"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQ8WnWiX_v6NsLGbkxi0Om2cerf7NMOO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

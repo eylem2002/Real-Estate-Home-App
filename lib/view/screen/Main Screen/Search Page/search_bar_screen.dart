@@ -25,20 +25,26 @@ class SearchBarScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top:widthNHeight0(context, 1) * 0.05 ,left:widthNHeight0(context, 1) * 0.035,right: widthNHeight0(context, 1) * 0.035,bottom: widthNHeight0(context, 1) * 0.027 ),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      GestureDetector(
-                        onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const CustomeBottomNavBar(),
-                            )),
-                        child: SizedBox(
-                          width: widthNHeight0(context, 1) * 0.059,
-                           
-                          child: Image.asset('assets/images/png_pic/close.png'),
+                      Padding(
+                        padding:  EdgeInsets.only(bottom: widthNHeight0(context, 1)*0.05),
+                        child: GestureDetector(
+                          onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const CustomeBottomNavBar(),
+                              )),
+                          child: SizedBox(
+                            width: widthNHeight0(context, 0) * 0.025,
+                            height: widthNHeight0(context, 1) * 0.09,
+                             
+                            child: Image.asset('assets/images/png_pic/close.png'),
+                          ),
                         ),
                       ),
                       TextFormFieldWidget(
+                        
                         passToggle: false,
                         passController: _controller,
                         labelText: '',
@@ -50,8 +56,10 @@ class SearchBarScreen extends StatelessWidget {
                           }
                         },
                         str: "Search Area / location",
-                        width: widthNHeight0(context, 1) * 0.8,
-                        height: widthNHeight0(context, 0) * 0.06,
+                        width: widthNHeight0(context, 1) * 0.77,
+                        height: widthNHeight0(context, 0) * 0.08,
+                        maxlog: 25,
+                        
                         iconSufData: Icons.search,
                         color: Colors.black,
                       ),

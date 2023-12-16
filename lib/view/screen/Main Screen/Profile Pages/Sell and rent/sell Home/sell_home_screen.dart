@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/complete_sell_home_screen.dart';
+import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/complete_sell_home_screen.dart';
 import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
 import 'package:new_batic/view/widget/compoents/bottoms/deff_button.dart';
 
@@ -42,9 +42,9 @@ class _SellHomeScreenState extends State<SellHomeScreen> {
         backgroundColor: Colors.white,
         title: Padding(
           padding: const EdgeInsets.only(left: 20.0),
-          child: const Text('Sell My Home ',
+          child:  Text('Sell My Home',
               style: TextStyle(
-                fontSize: 25,
+                fontSize: widthNHeight0(context, 1)*0.058,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Kadwa',
               )),

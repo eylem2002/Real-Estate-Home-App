@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Search%20Page/Search_home_folder/body.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Search%20Page/Search_home_folder/header.dart';
-import 'package:new_batic/view/screen/Map%20Screen/EnterSevices.dart';
+import 'package:new_batic/core/services/EnterSevices.dart';
 
 class Search_Main extends StatefulWidget {
   const Search_Main({super.key});

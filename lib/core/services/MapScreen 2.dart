@@ -1,16 +1,20 @@
 import 'dart:async';
-import 'package:flutter/foundation.dart';
+
+
+import 'package:flutter/foundation.dart'
+;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:new_batic/core/class/prodect.dart';
-import 'package:new_batic/core/services/MapScreen.dart';
-import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
+
+import 'package:new_batic/core/services/EnterSevices.dart';
+
+
+//AIzaSyAoil6egyTbeRl_QsgScpxGzr13e9WXKu0
 
 class MapScreenLocation extends StatefulWidget {
-  const MapScreenLocation({Key? key}) : super(key: key);
+  const MapScreenLocation({Key? key, required this.lon, required this.lat}) : super(key: key);
+  final double lon, lat;
 
   @override
   _MapScreenState createState() => _MapScreenState();
@@ -19,15 +23,9 @@ class MapScreenLocation extends StatefulWidget {
 class _MapScreenState extends State<MapScreenLocation> {
   late BitmapDescriptor myIcon;
   String str_service = "";
-  final String mapKey = "AIzaSyAoil6egyTbeRl_QsgScpxGzr13e9WXKu0";
+  final String mapKey = "AIzaSyAoil6egyTbeRl_QsgScpxGzr13e9WXKu0"; // Replace with your actual API key
   late GoogleMapController mapController;
-
-  static CameraPosition cam_pos = CameraPosition(
-    bearing: 192.8334901395799,
-    target: LatLng(firstProduct.long, firstProduct.late),
-    tilt: 0,
-    zoom: 19,
-  );
+  static late CameraPosition cam_pos;
 
   final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
@@ -166,9 +164,7 @@ class _MapScreenState extends State<MapScreenLocation> {
 
   Future<void> performNearbySearch(
       GoogleMapController controller, String placeType) async {
-    Product firstProduct = demoProducts.first;
-    LatLng currentPosition =
-        LatLng(firstProduct.long, firstProduct.late);
+    LatLng currentPosition = LatLng(widget.lon, widget.lat);
 
     final Marker currentMarker = Marker(
       markerId: MarkerId("currentPosition"),
@@ -196,6 +192,16 @@ class _MapScreenState extends State<MapScreenLocation> {
         .then((onValue) {
       myIcon = onValue;
     });
+
+    // Initialize cam_pos here with the default values or other logic if needed
+    cam_pos = CameraPosition(
+      bearing: 192.8334901395799,
+      target: LatLng(widget.lon, widget.lat),
+      tilt: 0,
+      zoom: 19,
+    );
+
     super.initState();
   }
 }
+

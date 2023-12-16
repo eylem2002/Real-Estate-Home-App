@@ -11,6 +11,7 @@ class TextFormFieldWidget extends StatelessWidget {
   final double width;
   final double height;
   final Color color;
+  final int maxlin,maxlog;
   final IconData iconSufData;
 
   const TextFormFieldWidget(
@@ -22,6 +23,9 @@ class TextFormFieldWidget extends StatelessWidget {
       required this.str,
       this.width = 0,
       this.height = 0,
+      this.maxlin = 1,
+       this.maxlog = 30,
+      
       this.color = Colors.lime,
       this.iconSufData = Icons.add});
 
@@ -32,13 +36,20 @@ class TextFormFieldWidget extends StatelessWidget {
       child: SizedBox(
           width: (width == 0) ? null : width,
           height: (height == 0) ? null : height,
+
+        
           child: TextFormField(
-           textAlign: TextAlign.left,
+          maxLines: maxlin,
+          
+          maxLength:maxlog,
+         
+            textAlign: TextAlign.left,
             keyboardType: TextInputType.emailAddress,
             obscureText: passToggle,
-            
             controller: passController,
+               
             decoration: InputDecoration(
+              counterText: "",
               prefixIcon: Icon((iconSufData == Icons.add) ? null : iconSufData),
               focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
@@ -53,47 +64,35 @@ class TextFormFieldWidget extends StatelessWidget {
                         ? const Color(0xff6482c4).withOpacity(0.8)
                         : color,
                   ),
-
                   borderRadius: const BorderRadius.all(Radius.circular(10))),
               errorBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Colors.red.withOpacity(0.8),
-                    
                   ),
-                
-                  borderRadius: const BorderRadius.all(Radius.circular(10))
-                  ),
-                  focusedErrorBorder:  OutlineInputBorder(
+                  borderRadius: const BorderRadius.all(Radius.circular(10))),
+              focusedErrorBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Colors.red.withOpacity(0.8),
-                    
                   ),
-                
-                  borderRadius: const BorderRadius.all(Radius.circular(10))
-                  ),
-                  disabledBorder:  OutlineInputBorder(
+                  borderRadius: const BorderRadius.all(Radius.circular(10))),
+              disabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Colors.red.withOpacity(0.8),
-                    
                   ),
-                
-                  borderRadius: const BorderRadius.all(Radius.circular(10))
-                  ),
-
-
+                  borderRadius: const BorderRadius.all(Radius.circular(10))),
               labelText: labelText,
               isDense: true,
-              
               hintText: str,
-            
               floatingLabelBehavior: FloatingLabelBehavior.always,
+              
             ),
             validator: validator,
-           
+              
           )),
     );
   }
 }
+
 class TextFormWidget extends StatelessWidget {
   final bool passToggle;
   final TextEditingController passController;
@@ -102,29 +101,41 @@ class TextFormWidget extends StatelessWidget {
   final double height;
   final Color color;
   final IconData iconSufData;
+    final int maxlin,maxlog;
 
   const TextFormWidget(
       {super.key,
-        required this.passToggle,
-        required this.passController,
-        required this.str,
-        this.width = 0,
-        this.height = 0,
-        this.color = Colors.lime,
-        this.iconSufData = Icons.add});
+      required this.passToggle,
+      required this.passController,
+      required this.str,
+      this.width = 0,
+      this.height = 0,
+      
+      this.color = Colors.lime,
+      this.iconSufData = Icons.add,
+       this.maxlin = 1,
+       this.maxlog = 12,
+      required String? Function(dynamic value) validator});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
         width: (width == 0) ? null : width,
         height: (height == 0) ? null : height,
+        
         child: TextFormField(
+          
+              maxLines: maxlin,
+                maxLength:maxlog,
+        
           textAlign: TextAlign.left,
           keyboardType: TextInputType.emailAddress,
           obscureText: passToggle,
-
           controller: passController,
+          
           decoration: InputDecoration(
+            counterText: "",
+            
             prefixIcon: Icon((iconSufData == Icons.add) ? null : iconSufData),
             focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
@@ -139,37 +150,24 @@ class TextFormWidget extends StatelessWidget {
                       ? const Color(0xff6482c4).withOpacity(0.8)
                       : color,
                 ),
-
                 borderRadius: const BorderRadius.all(Radius.circular(5))),
             errorBorder: OutlineInputBorder(
                 borderSide: BorderSide(
                   color: Colors.red.withOpacity(0.8),
-
                 ),
-
-                borderRadius: const BorderRadius.all(Radius.circular(5))
-            ),
-            focusedErrorBorder:  OutlineInputBorder(
+                borderRadius: const BorderRadius.all(Radius.circular(5))),
+            focusedErrorBorder: OutlineInputBorder(
                 borderSide: BorderSide(
                   color: Colors.red.withOpacity(0.8),
-
                 ),
-
-                borderRadius: const BorderRadius.all(Radius.circular(5))
-            ),
-            disabledBorder:  OutlineInputBorder(
+                borderRadius: const BorderRadius.all(Radius.circular(5))),
+            disabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(
                   color: Colors.red.withOpacity(0.8),
-
                 ),
-
-                borderRadius: const BorderRadius.all(Radius.circular(5))
-            ),
-
-
+                borderRadius: const BorderRadius.all(Radius.circular(5))),
             isDense: true,
             hintText: str,
-
             floatingLabelBehavior: FloatingLabelBehavior.always,
           ),
         ));

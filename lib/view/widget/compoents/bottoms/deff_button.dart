@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 Widget defaultButton({
   double width = double.infinity,
   double height = 50.0,
+   FontWeight font_bor=FontWeight.w500,
   Color borderColor = const Color(0xff6482C4),
   Color background = const Color(0xff6482C4),
   Color textColor = Colors.white,
@@ -10,6 +11,7 @@ Widget defaultButton({
   required String text,
   double fontSize = 20.0,
   double borderRadius = 0.0,
+  TextAlign textalign= TextAlign.left, 
   required void Function() onPressed,
   required int borderWidth, // Change this line
 }) => Container(
@@ -26,11 +28,15 @@ Widget defaultButton({
         child: Text(
           text,
           style: TextStyle(
-            fontWeight: FontWeight.w500,
+            
+            fontWeight:font_bor,
             color: textColor,
             fontSize: fontSize,
+            
             fontFamily: 'Kadwa',
+            
           ),
+           textAlign:textalign,
         ),
       ),
     );
