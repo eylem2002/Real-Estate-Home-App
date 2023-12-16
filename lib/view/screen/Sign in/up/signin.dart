@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:new_batic/core/constant/imageAsses.dart';
-import 'package:new_batic/view/widget/CustomeBottomNavBar.dart';
+import 'package:new_batic/view/widget/BottomNavBar.dart';
 import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
 import '../../../../controller/login_controller.dart';
 import 'signup_screen.dart';

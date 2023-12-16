@@ -20,7 +20,7 @@ class LocationSupportedWidget extends StatelessWidget {
       decoration: BoxDecoration(
           color: Colors.grey.withOpacity(0.3),
           borderRadius: const BorderRadius.horizontal(
-              left: Radius.circular(35), right: Radius.circular(35))),
+              left: Radius.circular(15), right: Radius.circular(15))),
       child: Text(
         region,
         style: const TextStyle(fontFamily: 'Kadwa'),

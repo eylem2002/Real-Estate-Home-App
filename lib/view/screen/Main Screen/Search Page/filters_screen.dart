@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:new_batic/view/screen/Main%20Screen/Search%20Page/Search_home_folder/Search_main.dart';
 import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
-import '../../../../../controller/filter_controller.dart';
-import '../../../../widget/compoents/deff_button.dart';
-import '../../../../widget/propert_widget.dart';
-import '../../../../widget/search_area_widget.dart';
+import '../../../../controller/filter_controller.dart';
+import '../../../widget/compoents/bottoms/deff_button.dart';
+import '../../../widget/propert_widget.dart';
+import '../../../widget/search_area_widget.dart';
 
 class FiltersScreen extends StatefulWidget {
   const FiltersScreen({super.key});
@@ -14,7 +15,7 @@ class FiltersScreen extends StatefulWidget {
 
 class _FiltersScreenState extends State<FiltersScreen> {
   FilterController filterController = FilterController();
-
+  String selectedGovernorates = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,14 +33,39 @@ class _FiltersScreenState extends State<FiltersScreen> {
           SizedBox(
             height: widthNHeight0(context, 0) * 0.01,
           ),
-          defaultButton(
-              background: Theme.of(context).scaffoldBackgroundColor,
-              text: 'Buy',
-              textColor: Colors.black,
-              width: widthNHeight0(context, 1) * 0.9,
-              borderColor: Colors.grey.withOpacity(0.3),
-              borderWidth: 3,
-              borderRadius: 10, onPressed: () {  }),
+        Container(
+  width: widthNHeight0(context, 1) * 0.9,
+  height: widthNHeight0(context, 0) * 0.06,
+  alignment: Alignment.center,
+
+  decoration: BoxDecoration(
+    color: Theme.of(context).scaffoldBackgroundColor,
+    border: Border.all(
+      color: Color(0xffF0F2F6),
+      width: 3,
+    ),
+    borderRadius: BorderRadius.circular(10),
+  ),
+    
+
+      
+        child: Text(
+          
+          
+          'Buy',
+          textAlign: TextAlign.center ,
+          style: TextStyle(
+            fontSize: 20,
+            fontFamily: ("Kadwa"),
+            color: Colors.black,
+            fontWeight: FontWeight.w700
+          ),
+       
+      ),
+
+  
+)
+,
           const Divider(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -55,6 +81,41 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 ),
               ),
               const SizedBox(),
+                // Container(
+                //      width: widthNHeight0(context, 1) * 0.4,
+                //     height: widthNHeight0(context, 0)*0.05,
+                //     decoration: BoxDecoration(
+                //         border: Border.all(color: Color(0xff6482C4)),
+                //         borderRadius: BorderRadius.circular(5)
+                //     ),
+                //     child: Padding(
+                //       padding: const EdgeInsets.only(left: 15.0),
+                //       child: DropdownButton<String>(
+                //         style:const TextStyle(
+                //           fontSize: 20,
+                //           color: Colors.black,
+                //           fontWeight: FontWeight.w500,
+                //           fontFamily: 'Kadwa',
+                //         ),
+                //         isExpanded: true,
+                //         iconSize: 30,
+                //         value: selectedGovernorates,
+                //         onChanged: (String? newValue) {
+                //           setState(() {
+                //             selectedGovernorates = newValue!;
+                //           });
+                //         },
+                //         items: <String>['Any', 'Amman', 'Irbid','Zarqa','Balqa','Mafraq','Jerash','Ajloun','Karak','Tafilah','Ma\'an','Aqaba','Madaba']
+                //             .map<DropdownMenuItem<String>>((String value) {
+                //           return DropdownMenuItem<String>(
+                //             value: value,
+                //             child: Text(value),
+                //           );
+                //         }).toList(),
+                //       ),
+                //     ),
+                //   ),
+              
               const SearchAreaWidget(
                 text: 'Any',
               ),
@@ -159,7 +220,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
             ),
           ),
           SizedBox(
-            height: 50,
+            height:  widthNHeight0(context, 0) * 0.07,
             child: ListView.builder(
               padding:
                   EdgeInsets.only(left: widthNHeight0(context, 1) * (0.13 / 2)),
@@ -170,6 +231,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 return Row(
                   children: [
                     SearchAreaWidget(
+                  
                       text: filterController.building[index],
                       iconData: Icons.abc,
                     ),
@@ -192,6 +254,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   fontSize: widthNHeight0(context, 1) * 0.05),
             ),
           ),
+          SizedBox(height:  widthNHeight0(context, 0) * 0.015),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(filterController.propert.length, (index) {
@@ -215,11 +278,12 @@ class _FiltersScreenState extends State<FiltersScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               defaultButton(
-                text: 'Rest',
+                text: 'Back',
                 width: widthNHeight0(context, 1) * 0.3,
                 borderRadius: 5,
                 background: Colors.white,
                 textColor: Colors.black, onPressed: () {  }, borderWidth: 0,
+                
               ),
               defaultButton(
                 text: 'Done',
@@ -229,7 +293,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 function: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const FiltersScreen(),
+                      builder: (context) => const Search_Main(),
                     )), onPressed: () {  }, borderWidth: 0,
               ),
             ],

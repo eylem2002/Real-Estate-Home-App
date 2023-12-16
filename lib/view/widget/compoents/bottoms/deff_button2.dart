@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-Widget defaultButton({
+Widget defaultButton2({
   double width = double.infinity,
   double height = 50.0,
-  Color borderColor = const Color(0xff6482C4),
-  Color background = const Color(0xff6482C4),
-  Color textColor = Colors.white,
+  Color borderColor = const Color(0xffCCD8F4),
+  Color background = const Color(0xffCCD8F4),
+  Color textColor = Colors.black,
   final Function()? function,
   required String text,
   double fontSize = 20.0,
@@ -26,9 +26,11 @@ Widget defaultButton({
         child: Text(
           text,
           style: TextStyle(
-            fontWeight: FontWeight.w400,
+
+            fontWeight: FontWeight.w500,
             color: textColor,
             fontSize: fontSize,
+            
             fontFamily: 'Kadwa',
           ),
         ),

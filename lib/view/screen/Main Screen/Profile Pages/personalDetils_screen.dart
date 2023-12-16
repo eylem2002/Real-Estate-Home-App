@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:new_batic/controller/login_controller.dart';
 import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
 import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
-import 'package:new_batic/view/widget/compoents/deff_button.dart';
+import 'package:new_batic/view/widget/compoents/bottoms/deff_button.dart';
 
 class PersdonalDetilsScreen extends StatefulWidget {
   const PersdonalDetilsScreen({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/complete_sell_home_screen.dart';
 import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
-import 'package:new_batic/view/widget/compoents/deff_button.dart';
+import 'package:new_batic/view/widget/compoents/bottoms/deff_button.dart';
 
 class SellHomeScreen extends StatefulWidget {
   const SellHomeScreen({super.key});

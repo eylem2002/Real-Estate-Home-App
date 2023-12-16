@@ -76,6 +76,11 @@ class CustomeBottomNavBar extends StatelessWidget {
           onDestinationSelected: (index) =>
               controller.selectedIndex.value = index,
           destinations: [
+             NavigationDestination(
+              icon: Icon(Icons.search),
+              label: 'Search',
+              selectedColor: Color(0xff6482C4),
+            ),
             NavigationDestination(
               icon: Icon(Icons.favorite),
               label: 'Saved',
@@ -86,11 +91,7 @@ class CustomeBottomNavBar extends StatelessWidget {
               label: 'My Home',
               selectedColor: Color(0xff6482C4),
             ),
-            NavigationDestination(
-              icon: Icon(Icons.search),
-              label: 'Search',
-              selectedColor: Color(0xff6482C4),
-            ),
+           
             NavigationDestination(
               icon: Icon(Icons.person),
               label: 'Account',
@@ -111,9 +112,9 @@ class CustomeBottomNavBar extends StatelessWidget {
 class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;// here the first value was zero
   final screens = [
-    const FavoriteScreen(),
-    const MyHome(),
      const Search_Page(),
+    const FavoriteScreen(),
+    const MyHome(), 
      const EngineerScreenProfile(),
   ];
 }

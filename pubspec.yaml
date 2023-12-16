@@ -31,11 +31,12 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
+  carousel_slider: ^4.2.1
   get: ^4.6.1
   # DateTime
   jiffy: ^6.2.1
   intl: ^0.18.1
-  http: ^1.1.0
+  http: ^1.1.2
   # Images
   cached_network_image: ^3.2.0 
   image_picker: ^1.0.4
@@ -96,6 +97,7 @@ flutter:
   assets:
     - assets/images/svg_pic/
     - assets/images/png_pic/
+    - assets/images/jpg_pic/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

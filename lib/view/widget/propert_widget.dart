@@ -22,7 +22,7 @@ class PropertWidget extends StatelessWidget {
           height: widthNHeight0(context, 0) * 0.2,
           width: widthNHeight0(context, 1) * 0.4,
           decoration: BoxDecoration(
-              color: Colors.grey.withOpacity(0.2),
+              color: Color(0xffF0F2F6),
               borderRadius: const BorderRadius.all(Radius.circular(16))),
           child: Column(
             children: [

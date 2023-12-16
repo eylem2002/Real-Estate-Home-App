@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
-import 'package:new_batic/view/widget/compoents/deff_button.dart';
+import 'package:new_batic/view/widget/compoents/bottoms/deff_button.dart';
 
 class CompleteSellHomeScreen extends StatefulWidget {
   const CompleteSellHomeScreen({super.key});
