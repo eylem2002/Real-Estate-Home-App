@@ -20,7 +20,9 @@ class FavoriteScreen extends StatefulWidget {
         title: Text(
           "Saved",
           style: TextStyle(fontFamily: "Kadwa", fontWeight: FontWeight.w600),
+          
         ),
+         automaticallyImplyLeading: false,
       ),
       body: Column(
         children: [

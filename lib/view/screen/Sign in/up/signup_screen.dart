@@ -1,7 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:new_batic/controller/signup_controller.dart';
+import 'package:new_batic/features/Auth/user_auth/firebase_auth/firebase_auth.dart';
 import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
+import 'package:new_batic/view/widget/BottomNavBar.dart';
 import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
 import '../../../../core/constant/imageAsses.dart';
 import '../../../widget/compoents/bottoms/deff_button.dart';
@@ -16,7 +20,19 @@ class SingUpScreen extends StatefulWidget {
 class _SingUpScreenState extends State<SingUpScreen> {
   SignUpController signUpController = SignUpController();
 
+  final FirebaseAuthService _auth = FirebaseAuthService();
+  bool flag = false;
+
   @override
+  void dispose() {
+    signUpController.firstName.dispose();
+    signUpController.secondName.dispose();
+    signUpController.email.dispose();
+    signUpController.phone.dispose();
+    signUpController.password.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xffEAEBEF),
@@ -28,36 +44,22 @@ class _SingUpScreenState extends State<SingUpScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                  Center(
-                    
-                    child: Padding(
-                      padding:  EdgeInsets.only(top: widthNHeight0(context, 1) * 0.19),
-                      child: SizedBox(
-                        
-                         //` color:  Colors.red,
-                             width: widthNHeight0(context, 1) * 0.5,
-                           height: widthNHeight0(context, 0) * 0.1,
-                          child: Padding(
-                            padding: const EdgeInsets.all(0),
-                        
-                            child:  SvgPicture.asset(ImageAsses.logo) ,
-                          
-                          ),
-                        ),
+                Center(
+                  child: Padding(
+                    padding:
+                        EdgeInsets.only(top: widthNHeight0(context, 1) * 0.19),
+                    child: SizedBox(
+                      //` color:  Colors.red,
+                      width: widthNHeight0(context, 1) * 0.5,
+                      height: widthNHeight0(context, 0) * 0.1,
+                      child: Padding(
+                        padding: const EdgeInsets.all(0),
+                        child: SvgPicture.asset(ImageAsses.logo),
+                      ),
                     ),
                   ),
-                // Center(
-                //   // child: SizedBox(
-                //   //   width: widthNHeight0(context, 1) * 0.55,
-                //   //   height: widthNHeight0(context, 0) * 0.19,
-                //   //   child: Image(
-                //   //     image: const AssetImage(ImageAsses.logo),
-                //   //     width: widthNHeight0(context, 1) * 0.8,
-                //   //  //  height: widthNHeight0(context, 0)*0.40,
-                //   //   ),
-                //   // ),
-                  
-                // ),
+                ),
+            
                 Padding(
                   padding:
                       EdgeInsets.only(left: widthNHeight0(context, 1) * 0.05),
@@ -123,6 +125,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                           },
                           str: ''),
                       TextFormFieldWidget(
+                        
                           passToggle: true,
                           passController: signUpController.password,
                           labelText: 'Password',
@@ -142,13 +145,20 @@ class _SingUpScreenState extends State<SingUpScreen> {
                 Center(
                   child: defaultButton(
                       text: 'Sing Up',
-                       height:  MediaQuery.of(context).size.width * .14,
-                      width:  MediaQuery.of(context).size.width * .58,
+                      height: MediaQuery.of(context).size.width * .14,
+                      width: MediaQuery.of(context).size.width * .58,
                       borderRadius: 10,
                       function: () {
-                        if (signUpController.formKey.currentState!
-                            .validate()) {}
-                      }, onPressed: () {  }, borderWidth: 0),
+                     
+                      },
+                      onPressed: () {
+                         if (signUpController.formKey.currentState!.validate()) {
+                      
+                            _signUp();
+                      
+                        }
+                      },
+                      borderWidth: 0),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -184,5 +194,27 @@ class _SingUpScreenState extends State<SingUpScreen> {
         ),
       ),
     );
+  }
+
+  void _signUp() async {
+    String firstname = signUpController.firstName.text;
+    String lastname = signUpController.secondName.text;
+    String email = signUpController.email.text;
+    String pass = signUpController.password.text;
+    String phone = signUpController.phone.text;
+
+    User? user = await _auth.signupwithemailandpassword(email, pass);
+
+    if (user != null) {
+      print("User is successfully created");
+      // ignore: use_build_context_synchronously
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const CustomeBottomNavBar(),
+          ));
+    } else {
+      print("error is happend");
+    }
   }
 }

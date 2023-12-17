@@ -24,7 +24,9 @@ class _EngineerScreenState extends State<ScreenProfile> {
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Kadwa',
               )),
+              
         ),
+         automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
         child: Column(

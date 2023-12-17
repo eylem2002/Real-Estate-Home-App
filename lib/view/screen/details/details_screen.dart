@@ -169,7 +169,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                               width: widthNHeight0(context, 0) *
                                                   0.01),
                                           Text(
-                                              "\ ${widget.product.square} sqft",
+                                              "${widget.product.square} sqft",
                                               style: TextStyle(
                                                   fontFamily: "kadwa",
                                                   fontSize: widthNHeight0(
