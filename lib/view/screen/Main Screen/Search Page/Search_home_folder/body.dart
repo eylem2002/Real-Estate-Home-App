@@ -5,6 +5,7 @@ import 'package:new_batic/view/screen/details/details_screen.dart';
 import 'package:new_batic/view/widget/prodectCard.dart';
 
 class BodySearch extends StatefulWidget {
+  // ignore: use_super_parameters
   const BodySearch({Key? key}) : super(key: key);
 
   @override

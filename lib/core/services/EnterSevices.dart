@@ -102,11 +102,11 @@ class _EnterServicesState extends State<EnterServices> {
               ),
               SizedBox(height: widthNHeight0(context, 0) * 0.04,),
               defaultButton(
-                text: 'Bus',
+                text: 'Pets',
                 width: widthNHeight0(context, 1) * 0.9,
                 borderRadius: 5,
                 onPressed: () {
-                  _navigateToMapScreen("bus");
+                  _navigateToMapScreen("Pets");
                 },
                 borderWidth: 0,
               ),

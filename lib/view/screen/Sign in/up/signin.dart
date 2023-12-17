@@ -1,6 +1,10 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:new_batic/core/constant/imageAsses.dart';
+import 'package:new_batic/features/Auth/user_auth/firebase_auth/firebase_auth.dart';
 import 'package:new_batic/view/widget/BottomNavBar.dart';
 import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
 import '../../../../controller/login_controller.dart';
@@ -14,9 +18,21 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
+    TextController textController = TextController();
+ 
+  final FirebaseAuthService _auth = FirebaseAuthService();
+  bool flag = false;
+
+  @override
+  void dispose() {
+   
+    textController.controllerEmail.dispose();
+    textController.controllerPass.dispose();
+    super.dispose();
+  }
   bool? isChecked = false;
   bool passToggle = true;
-  TextController textController = TextController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -108,20 +124,17 @@ class _LogInState extends State<LogIn> {
                             onTap: () {
                               if (textController.formField.currentState!
                                   .validate()) {
-                                textController.controllerEmail.clear();
-                                textController.controllerPass.clear();
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (_) => const CustomeBottomNavBar()));
+                                    _signIp();
+                               textController.controllerEmail.clear();
+                               textController.controllerPass.clear();
+                              
                               }
                             },
 
                             
                             child: Container(
                               height: widthNHeight0(context, 0) * .068,
-                          //    width: widthNHeight0(context, 1) * 0.1,
-                              //////////////////edit the width
+                        
                               decoration: BoxDecoration(
                                   color: const Color(0xff6482C4),
                                   borderRadius: BorderRadius.circular(5)),
@@ -196,6 +209,50 @@ class _LogInState extends State<LogIn> {
       ),
     );
   }
+  
+
+
+   void _signIp() async {
+
+    String email = textController.controllerEmail.text;
+    String pass = textController.controllerPass.text;
+   
+
+    User? user = await _auth.signinwithemailandpassword(email, pass);
+
+    if (user != null) {
+      print("User is successfully Signin");
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const CustomeBottomNavBar(),
+          ));
+    } 
+    else {
+      print("error is happend");
+  
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      // Return the AlertDialog
+      return AlertDialog(
+        title: Text("Error"),
+        content: Text("An error has occurred.  don't have an account?"),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text("OK"),
+          ),
+        ],
+      );
+    },
+  );
+    }
+  }
+
+
 }
 
 double widthNHeight0(BuildContext context, int number) {
@@ -204,4 +261,7 @@ double widthNHeight0(BuildContext context, int number) {
   } else {
     return MediaQuery.of(context).size.width;
   }
+
+
+  
 }

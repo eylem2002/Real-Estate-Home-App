@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:new_batic/controller/login_controller.dart';
 import 'package:new_batic/controller/signup_controller.dart';

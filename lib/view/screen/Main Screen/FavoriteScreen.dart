@@ -1,3 +1,5 @@
+// ignore_for_file: use_super_parameters, library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:new_batic/core/class/prodect.dart';
 import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';

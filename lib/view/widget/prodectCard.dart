@@ -1,8 +1,9 @@
+// ignore_for_file: use_super_parameters
+
 import 'package:flutter/material.dart';
 import 'package:new_batic/core/class/prodect.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
-import 'package:flutter/material.dart';
-import 'package:new_batic/core/class/prodect.dart';
+
 
 class ProductCard extends StatefulWidget {
   const ProductCard({
@@ -20,6 +21,7 @@ class ProductCard extends StatefulWidget {
   final Function(bool isFavourite) onFavoriteChanged;
 
   @override
+  // ignore: library_private_types_in_public_api
   _ProductCardState createState() => _ProductCardState();
 }
 
@@ -89,7 +91,7 @@ class _ProductCardState extends State<ProductCard> {
                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "\JOD ${widget.product.price}",
+                          "JOD ${widget.product.price}",
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
@@ -107,7 +109,7 @@ class _ProductCardState extends State<ProductCard> {
                               children: [
                                 Icon(Icons.airline_seat_individual_suite_rounded, size: widthNHeight0(context, 1) * 0.04),
                                  SizedBox(width: widthNHeight0(context, 0)*0.01),
-                                Text("\ ${widget.product.bed}", style: TextStyle(fontFamily: "kadwa", fontSize: widthNHeight0(context, 1) * 0.027)),
+                                Text(" ${widget.product.bed}", style: TextStyle(fontFamily: "kadwa", fontSize: widthNHeight0(context, 1) * 0.027)),
                               ],
                             ),
                            SizedBox(width: widthNHeight0(context, 0)*0.01),
@@ -116,7 +118,7 @@ class _ProductCardState extends State<ProductCard> {
                               children: [
                                 Icon(Icons.bathtub_rounded, size: widthNHeight0(context, 1) * 0.04),
                                 SizedBox(width: widthNHeight0(context, 0)*0.01),
-                                Text( "\ ${widget.product.bath}", style: TextStyle(fontFamily: "kadwa", fontSize: widthNHeight0(context, 1) * 0.027)),
+                                Text( " ${widget.product.bath}", style: TextStyle(fontFamily: "kadwa", fontSize: widthNHeight0(context, 1) * 0.027)),
                               ],
                             ),
                              SizedBox(width: widthNHeight0(context, 0)*0.01),
@@ -124,14 +126,14 @@ class _ProductCardState extends State<ProductCard> {
                               children: [
                                 Icon(Icons.square_outlined, size: widthNHeight0(context, 1) * 0.04),
                                 SizedBox(width: widthNHeight0(context, 0)*0.01),
-                                Text("\ ${widget.product.square} sqft", style: TextStyle(fontFamily: "kadwa", fontSize: widthNHeight0(context, 1) * 0.027)),
+                                Text(" ${widget.product.square} sqft", style: TextStyle(fontFamily: "kadwa", fontSize: widthNHeight0(context, 1) * 0.027)),
                               ],
                             ),
                           ],
                         ),
                            SizedBox(height: widthNHeight0(context, 1)*0.028),
                         Text(
-                          "\ ${widget.product.title}",
+                          " ${widget.product.title}",
                           style: const TextStyle(
                             fontSize: 10,
                             fontWeight: FontWeight.w600,

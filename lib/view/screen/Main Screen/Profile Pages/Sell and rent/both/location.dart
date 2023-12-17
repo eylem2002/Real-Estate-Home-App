@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types, unused_import, sized_box_for_whitespace
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:new_batic/controller/signup_controller.dart';
@@ -104,6 +106,7 @@ class _location_bothState extends State<location_both> {
                           if (value!.isEmpty) {
                             return 'Enter the Street Name';
                           }
+                          return null;
                         },
                         passController: signUpController.firstName,
                         str: 'Amman,Star Street',
@@ -126,6 +129,7 @@ class _location_bothState extends State<location_both> {
                           if (value!.isEmpty) {
                             return 'Enter the Building Name';
                           }
+                          return null;
                         },
                         passController: signUpController.secondName,
                         str: 'Starlink',

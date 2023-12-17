@@ -2,8 +2,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/instance_manager.dart';
-import 'package:get/state_manager.dart';
 import 'package:new_batic/model/user_model.dart';
 //contain  create update delete 
 class UserRepository extends GetxController{
@@ -14,6 +12,7 @@ class UserRepository extends GetxController{
     snackPosition: SnackPosition.BOTTOM,
     backgroundColor: Colors.lightBlue.withOpacity(0.1),
     colorText: Colors.black), 
+    // ignore: body_might_complete_normally_catch_error, avoid_types_as_parameter_names, non_constant_identifier_names
     ).catchError((error,StackTrace) {
       Get.snackbar("Error", "Something went wrong.Try again",
       snackPosition: SnackPosition.BOTTOM,

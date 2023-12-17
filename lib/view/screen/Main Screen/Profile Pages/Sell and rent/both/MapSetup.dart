@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:new_batic/controller/Home_controller.dart';
 import 'package:new_batic/view/widget/BottomNavBar.dart';
@@ -82,7 +84,7 @@ class _MapSetUpState extends State<MapSetUp> {
                               color: Color(0xff263238)),
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: widthNHeight0(context, 1) * 0.89,
                         child: Text(
                           'This helps the customer see your home location clearly.',
@@ -120,6 +122,7 @@ class _MapSetUpState extends State<MapSetUp> {
                                       if (value!.isEmpty) {
                                         return 'Enter the Longitude';
                                       }
+                                      return null;
                                     },
                                     passController: homeconroller.longi,
                                     str: '',
@@ -142,6 +145,7 @@ class _MapSetUpState extends State<MapSetUp> {
                                       if (value!.isEmpty) {
                                         return 'Enter the Latitude';
                                       }
+                                      return null;
                                     },
                                     passController: homeconroller.lati,
                                     str: '',

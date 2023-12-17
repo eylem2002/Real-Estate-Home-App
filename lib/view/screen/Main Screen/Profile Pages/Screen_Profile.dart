@@ -1,9 +1,13 @@
+// ignore_for_file: file_names
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/rent%20Home/ForRent.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/firstBox/ChnagePass.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/firstBox/personalDetils_screen.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/sell%20Home/sell_home_screen.dart';
+import 'package:new_batic/view/screen/Sign%20in/up/signup_screen.dart';
 
 class ScreenProfile extends StatefulWidget {
   const ScreenProfile({super.key});
@@ -420,6 +424,15 @@ class _EngineerScreenState extends State<ScreenProfile> {
                   GestureDetector(
                     onTap: () {
                       print("sign out");
+                      FirebaseAuth.instance.signOut();
+                       Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const SingUpScreen(),
+                                ),
+                              );
+                      
                     },
                     child: Container(
                       width: double.infinity,

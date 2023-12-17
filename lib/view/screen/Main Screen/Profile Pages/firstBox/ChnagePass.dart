@@ -1,10 +1,13 @@
-import 'package:flutter/foundation.dart';
+// ignore: file_names
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:new_batic/controller/signup_controller.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/widget/compoents/bottoms/deff_button.dart';
 import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
 
+// ignore: camel_case_types
 class changePass extends StatefulWidget {
   const changePass({super.key});
 
@@ -12,6 +15,7 @@ class changePass extends StatefulWidget {
   State<changePass> createState() => _chnagePassState();
 }
 
+// ignore: camel_case_types
 class _chnagePassState extends State<changePass> {
   SignUpController signUpController = SignUpController();
   @override

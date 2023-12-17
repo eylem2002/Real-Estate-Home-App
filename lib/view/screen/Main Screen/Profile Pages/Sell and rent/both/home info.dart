@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import, override_on_non_overriding_member, non_constant_identifier_names, annotate_overrides, camel_case_types, body_might_complete_normally_nullable, sized_box_for_whitespace, file_names
+
 import 'package:flutter/material.dart';
 import 'package:new_batic/controller/Home_controller.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';

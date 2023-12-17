@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_getters_setters
+// ignore_for_file: unnecessary_getters_setters, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 

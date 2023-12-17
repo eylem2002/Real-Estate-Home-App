@@ -1,5 +1,6 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/location.dart';
 import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
 import 'package:new_batic/view/widget/compoents/bottoms/deff_button.dart';
@@ -52,7 +53,7 @@ class _CompleteSellHomeScreenState extends State<CompleteSellHomeScreen> {
         child: Padding(
           padding:  EdgeInsets.only(left: widthNHeight0(context, 1)*0.035, right: widthNHeight0(context, 1)*0.035),
           child: Center(
-            child: Container(
+            child: SizedBox(
               width: widthNHeight0(context, 1) * 0.9,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,7 +69,7 @@ class _CompleteSellHomeScreenState extends State<CompleteSellHomeScreen> {
                       ),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: widthNHeight0(context, 1) * 0.89,
                     child:  Text(
                       'This helps your agent prepare the most accurate home estimate.',

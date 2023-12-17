@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_string_interpolations
+
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:new_batic/core/class/prodect.dart';
@@ -104,7 +106,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "\JOD ${widget.product.price}",
+                                    "JOD ${widget.product.price}",
                                     style: const TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.w600,
@@ -128,7 +130,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                           SizedBox(
                                               width: widthNHeight0(context, 0) *
                                                   0.01),
-                                          Text("\ ${widget.product.bed}",
+                                          Text(" ${widget.product.bed}",
                                               style: TextStyle(
                                                   fontFamily: "kadwa",
                                                   fontSize: widthNHeight0(
@@ -149,7 +151,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                           SizedBox(
                                               width: widthNHeight0(context, 0) *
                                                   0.01),
-                                          Text("\ ${widget.product.bath}",
+                                          Text(" ${widget.product.bath}",
                                               style: TextStyle(
                                                   fontFamily: "kadwa",
                                                   fontSize: widthNHeight0(
@@ -183,7 +185,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                       height:
                                           widthNHeight0(context, 1) * 0.028),
                                   Text(
-                                    "\ ${widget.product.title}",
+                                    " ${widget.product.title}",
                                     style: const TextStyle(
                                       fontSize: 10,
                                       fontWeight: FontWeight.w600,
@@ -231,7 +233,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 height: widthNHeight0(context, 1) * 0.04,
                               ),
                               Text(
-                                "\ ${widget.product.details_seller}",
+                                " ${widget.product.details_seller}",
                                 style: const TextStyle(
                                   fontSize: 19,
                                   fontWeight: FontWeight.w600,
@@ -243,7 +245,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 height: widthNHeight0(context, 1) * 0.02,
                               ),
                               Text(
-                                "\ ${widget.product.description}",
+                                "${widget.product.description}",
                                 style: const TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -283,7 +285,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                           width:
                                               widthNHeight0(context, 0) * 0.15),
                                       Text(
-                                        "\ ${widget.product.Type}",
+                                        " ${widget.product.Type}",
                                         style: const TextStyle(
                                           fontSize: 12,
                                           fontFamily: "Kadwa",
@@ -310,7 +312,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                           width: widthNHeight0(context, 0) *
                                               0.124),
                                       Text(
-                                        "\ ${widget.product.Purpose}",
+                                        " ${widget.product.Purpose}",
                                         style: const TextStyle(
                                           fontSize: 12,
                                           fontFamily: "Kadwa",
@@ -337,7 +339,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                           width: widthNHeight0(context, 0) *
                                               0.114),
                                       Text(
-                                        "\ ${widget.product.Added}",
+                                        " ${widget.product.Added}",
                                         style: const TextStyle(
                                           fontSize: 12,
                                           fontFamily: "Kadwa",
@@ -409,7 +411,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                           width: widthNHeight0(context, 0) *
                                               0.034),
                                       Text(
-                                        "\ ${widget.product.parking}",
+                                        "${widget.product.parking}",
                                         style: const TextStyle(
                                           fontSize: 12,
                                           fontFamily: "Kadwa",
@@ -436,7 +438,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                           width:
                                               widthNHeight0(context, 0) * 0.09),
                                       Text(
-                                        "\ ${widget.product.balcony}",
+                                        " ${widget.product.balcony}",
                                         style: const TextStyle(
                                           fontSize: 12,
                                           fontFamily: "Kadwa",
@@ -463,7 +465,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                           width: widthNHeight0(context, 0) *
                                               0.075),
                                       Text(
-                                        "\ ${widget.product.buliding_name}",
+                                        " ${widget.product.buliding_name}",
                                         style: const TextStyle(
                                           fontSize: 12,
                                           fontFamily: "Kadwa",
@@ -490,7 +492,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                           width:
                                               widthNHeight0(context, 0) * 0.09),
                                       Text(
-                                        "\ ${widget.product.year_bulid}",
+                                        " ${widget.product.year_bulid}",
                                         style: const TextStyle(
                                           fontSize: 12,
                                           fontFamily: "Kadwa",
@@ -517,7 +519,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                           width: widthNHeight0(context, 0) *
                                               0.108),
                                       Text(
-                                        "\ ${widget.product.total_flour}",
+                                        " ${widget.product.total_flour}",
                                         style: const TextStyle(
                                           fontSize: 12,
                                           fontFamily: "Kadwa",
@@ -544,7 +546,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                           width:
                                               widthNHeight0(context, 0) * 0.12),
                                       Text(
-                                        "\ ${widget.product.elevetors}",
+                                        " ${widget.product.elevetors}",
                                         style: const TextStyle(
                                           fontSize: 12,
                                           fontFamily: "Kadwa",
@@ -571,7 +573,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                           width:
                                               widthNHeight0(context, 0) * 0.06),
                                       Text(
-                                        "\ ${widget.product.disabled}",
+                                        " ${widget.product.disabled}",
                                         style: const TextStyle(
                                           fontSize: 12,
                                           fontFamily: "Kadwa",

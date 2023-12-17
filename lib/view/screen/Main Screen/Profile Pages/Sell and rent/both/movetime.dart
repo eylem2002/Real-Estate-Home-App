@@ -1,9 +1,9 @@
-import 'package:flutter/foundation.dart';
+// ignore_for_file: unused_field
+
 import 'package:flutter/material.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/home%20info.dart';
 import 'package:new_batic/view/widget/compoents/bottoms/deff_button.dart';
-import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
 
 class MoveTime extends StatefulWidget {
   const MoveTime({super.key});
@@ -73,7 +73,7 @@ class _MoveTimeState extends State<MoveTime> {
                               color: Color(0xff263238)),
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: widthNHeight0(context, 1) * 0.89,
                         child: Text(
                           'Our agent will provide the best guidance based on your timeline',

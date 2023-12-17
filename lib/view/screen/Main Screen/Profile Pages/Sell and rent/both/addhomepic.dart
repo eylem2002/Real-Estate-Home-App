@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously, use_key_in_widget_constructors, sort_child_properties_last
+
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
@@ -25,8 +27,8 @@ class HomeImages extends StatefulWidget {
 }
 
 class _HomeImages extends State<HomeImages> {
-  List<Uint8List> _images = [];
-  List<File> _selectedImages = [];
+  final List<Uint8List> _images = [];
+  final List<File> _selectedImages = [];
 
   @override
   Widget build(BuildContext context) {

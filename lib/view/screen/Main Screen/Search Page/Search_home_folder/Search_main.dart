@@ -39,22 +39,19 @@ class _Search_MainState extends State<Search_Main> {
         
       ),
       
-      body: Container(
+      body: SingleChildScrollView(
+        
+        // Removed padding from here
+        child: Column(
       
-        child: SingleChildScrollView(
-          
-          // Removed padding from here
-          child: Column(
-
-            children: [
-              Divider(height: 1, color: Colors.grey[300]),
-              const Header(),
-              Container(
-                height: widthNHeight0(context, 0)*0.03,
-              ),
-              const BodySearch(),
-            ],
-          ),
+          children: [
+            Divider(height: 1, color: Colors.grey[300]),
+            const Header(),
+            Container(
+              height: widthNHeight0(context, 0)*0.03,
+            ),
+            const BodySearch(),
+          ],
         ),
       ),
     );
