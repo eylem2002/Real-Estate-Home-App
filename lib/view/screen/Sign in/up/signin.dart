@@ -222,7 +222,7 @@ class _LogInState extends State<LogIn> {
 
     if (user != null) {
       print("User is successfully Signin");
-      Navigator.push(
+      Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) => const CustomeBottomNavBar(),

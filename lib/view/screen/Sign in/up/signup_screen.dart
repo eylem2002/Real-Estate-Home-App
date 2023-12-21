@@ -112,6 +112,12 @@ class _SingUpScreenState extends State<SingUpScreen> {
                             if (value!.isEmpty) {
                               return 'Email must not be empty ';
                             }
+                              bool emailValid = RegExp(
+                                      r"^[a-zA-Z0-9.a-zA-Z0-9.1#$&'*+-/=?^_ {|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                  .hasMatch(value);
+                              if (!emailValid) {
+                                return "Enter valid Email";
+                              }
                             return null;
                           },
                           str: ''),
@@ -135,6 +141,9 @@ class _SingUpScreenState extends State<SingUpScreen> {
                             if (value!.isEmpty) {
                               return 'Password must not be empty ';
                             }
+                            if (value.length < 7) {
+                                return "Password length should be more than 7 characters";
+                              } 
                             return null;
                           },
                           str: '')
@@ -213,7 +222,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const CustomeBottomNavBar(),
+            builder: (context) => const LogIn(),
           ));
     } else {
       print("error is happend");
