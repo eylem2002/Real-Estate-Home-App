@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
+import 'package:new_batic/core/services/EnterSevices.dart';
 
-import '../screen/Sign in/up/signin.dart';
+
 
 class SearchAreaWidget extends StatelessWidget {
   const SearchAreaWidget({

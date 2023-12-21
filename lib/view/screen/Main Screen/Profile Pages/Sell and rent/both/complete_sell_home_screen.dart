@@ -1,8 +1,9 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/location.dart';
-import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
+
 import 'package:new_batic/view/widget/compoents/bottoms/deff_button.dart';
 
 class CompleteSellHomeScreen extends StatefulWidget {

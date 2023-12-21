@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_batic/core/class/prodect.dart';
-import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
+import 'package:new_batic/core/services/EnterSevices.dart';
+
 
 class FloorPlan extends StatefulWidget {
   final Product product;

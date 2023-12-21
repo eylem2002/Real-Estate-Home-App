@@ -4,9 +4,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:new_batic/controller/signup_controller.dart';
+import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/features/Auth/user_auth/firebase_auth/firebase_auth.dart';
 import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
-import 'package:new_batic/view/widget/BottomNavBar.dart';
+
 import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
 import '../../../../core/constant/imageAsses.dart';
 import '../../../widget/compoents/bottoms/deff_button.dart';
@@ -165,7 +166,8 @@ class _SingUpScreenState extends State<SingUpScreen> {
                       onPressed: () {
                          if (signUpController.formKey.currentState!.validate()) {
                       
-                            _signUp();
+                            // _signUp();
+                              _signUp(context);
                       
                         }
                       },
@@ -207,25 +209,78 @@ class _SingUpScreenState extends State<SingUpScreen> {
     );
   }
 
-  void _signUp() async {
-    String firstname = signUpController.firstName.text;
-    String lastname = signUpController.secondName.text;
-    String email = signUpController.email.text;
-    String pass = signUpController.password.text;
-    String phone = signUpController.phone.text;
+  void _signUp(BuildContext context) async {
+  String firstname = signUpController.firstName.text;
+  String lastname = signUpController.secondName.text;
+  String email = signUpController.email.text;
+  String pass = signUpController.password.text;
+  String phone = signUpController.phone.text;
 
+  try {
     User? user = await _auth.signupwithemailandpassword(email, pass);
 
     if (user != null) {
       print("User is successfully created");
-      // ignore: use_build_context_synchronously
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const LogIn(),
-          ));
+
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const LogIn(),
+        ),
+      );
+
+
+
     } else {
-      print("error is happend");
+      print("Error occurred during sign up");
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Sign Up Error"),
+            content: Text("An error occurred during sign up."),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text("OK"),
+              ),
+            ],
+          );
+        },
+      );
+    }
+  } catch (e) {
+    if (e is FirebaseAuthException) {
+      print("Error occurred: $e");
+
+      String errorMessage = "An error occurred during sign up.";
+
+      if (e.code == 'email-already-in-use') {
+        errorMessage = "The account already exists for that email.";
+      }
+
+    
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Error message"),
+            content: Text(errorMessage),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text("OK"),
+              ),
+            ],
+          );
+        },
+      );
     }
   }
+}
 }

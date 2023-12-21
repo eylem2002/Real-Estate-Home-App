@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:new_batic/core/constant/imageAsses.dart';
+import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/features/Auth/user_auth/firebase_auth/firebase_auth.dart';
 import 'package:new_batic/view/widget/BottomNavBar.dart';
 import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
@@ -222,7 +223,7 @@ class _LogInState extends State<LogIn> {
 
     if (user != null) {
       print("User is successfully Signin");
-      Navigator.pushReplacement(
+       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) => const CustomeBottomNavBar(),
@@ -255,13 +256,4 @@ class _LogInState extends State<LogIn> {
 
 }
 
-double widthNHeight0(BuildContext context, int number) {
-  if (number == 0) {
-    return MediaQuery.of(context).size.height;
-  } else {
-    return MediaQuery.of(context).size.width;
-  }
 
-
-  
-}

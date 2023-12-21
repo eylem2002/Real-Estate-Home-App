@@ -1,8 +1,9 @@
 // ignore_for_file: sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/complete_sell_home_screen.dart';
-import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
+
 import 'package:new_batic/view/widget/compoents/bottoms/deff_button.dart';
 
 class SellHomeScreen extends StatefulWidget {

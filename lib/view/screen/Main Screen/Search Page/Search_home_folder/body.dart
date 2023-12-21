@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_batic/core/class/prodect.dart';
-import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
+import 'package:new_batic/core/services/EnterSevices.dart';
+
 import 'package:new_batic/view/screen/details/details_screen.dart';
 import 'package:new_batic/view/widget/prodectCard.dart';
 

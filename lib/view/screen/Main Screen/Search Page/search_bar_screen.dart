@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Search%20Page/Search_home_folder/Search_main.dart';
-import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
+
 import 'package:new_batic/view/widget/BottomNavBar.dart';
 
 import '../../../widget/compoents/defaultFormField.dart';

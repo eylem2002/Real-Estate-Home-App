@@ -7,6 +7,7 @@ import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%2
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/firstBox/ChnagePass.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/firstBox/personalDetils_screen.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/sell%20Home/sell_home_screen.dart';
+import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
 import 'package:new_batic/view/screen/Sign%20in/up/signup_screen.dart';
 
 class ScreenProfile extends StatefulWidget {
@@ -422,14 +423,14 @@ class _EngineerScreenState extends State<ScreenProfile> {
                     height: widthNHeight0(context, 1) * 0.04,
                   ),
                   GestureDetector(
-                    onTap: () {
+                    onTap: () async {
                       print("sign out");
-                      FirebaseAuth.instance.signOut();
+                    await  FirebaseAuth.instance.signOut();
                        Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                      const SingUpScreen(),
+                                      const LogIn(),
                                 ),
                               );
                       
