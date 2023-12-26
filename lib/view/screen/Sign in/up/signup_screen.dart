@@ -1,5 +1,8 @@
 // ignore_for_file: unused_local_variable, annotate_overrides
 
+import 'dart:convert';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -35,6 +38,17 @@ class _SingUpScreenState extends State<SingUpScreen> {
     signUpController.password.dispose();
     super.dispose();
   }
+
+// Future addUserDetails(
+// String firstName, String lastName, String email, int age)
+// await FirebaseFirestore. instance.collection('users').add({
+// 'first name': firstName,
+// "last name': lastName,
+// 'email': email,
+// 'age': age,
+// });
+// }
+
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,6 +144,12 @@ class _SingUpScreenState extends State<SingUpScreen> {
                             if (value!.isEmpty) {
                               return 'Phone must not be empty ';
                             }
+                             bool phoneExp=RegExp(r'^\d{10}$').hasMatch(value);
+                         
+                            if(!phoneExp){
+                                return 'Phone number is not valid ';
+                            }
+                            
                             return null;
                           },
                           str: ''),
@@ -223,7 +243,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
       print("User is successfully created");
 
 
-      Navigator.pushReplacement(
+      Navigator.pushReplacement( 
         context,
         MaterialPageRoute(
           builder: (context) => const LogIn(),
@@ -234,23 +254,24 @@ class _SingUpScreenState extends State<SingUpScreen> {
 
     } else {
       print("Error occurred during sign up");
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Sign Up Error"),
-            content: Text("An error occurred during sign up."),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text("OK"),
-              ),
-            ],
-          );
-        },
-      );
+      ScaffoldMessenger.of(context).showSnackBar(
+  SnackBar(
+    content: Text("The Email is used in another account",  textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),),
+     backgroundColor: Colors.red,
+    duration: Duration(seconds: 3),
+    // margin: EdgeInsets.only(bottom: 20),
+    action: SnackBarAction(
+      label: '',
+    
+      textColor: Colors.white,
+      
+      onPressed: () {
+        // Do something when the user presses the action button
+      },
+    ),
+  ),
+);
+
     }
   } catch (e) {
     if (e is FirebaseAuthException) {

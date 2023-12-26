@@ -103,6 +103,7 @@ class _LogInState extends State<LogIn> {
                             
                             passController: textController.controllerPass,
                             labelText: 'password',
+                          
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return "Enter Password";
@@ -184,11 +185,12 @@ class _LogInState extends State<LogIn> {
                        
                         TextButton(
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const SingUpScreen(),
-                                  ));
+                                Navigator.of(context).pushNamed("signup");
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //       builder: (context) => const SingUpScreen(),
+                              //     ));
                             },
                             child: Text(
                               "Sign Up",
@@ -223,11 +225,12 @@ class _LogInState extends State<LogIn> {
 
     if (user != null) {
       print("User is successfully Signin");
-       Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const CustomeBottomNavBar(),
-          ));
+        Navigator.of(context).pushReplacementNamed("search_home_bar");
+      //  Navigator.pushReplacement(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) => const CustomeBottomNavBar(),
+      //     ));
     } 
     else {
       print("error is happend");

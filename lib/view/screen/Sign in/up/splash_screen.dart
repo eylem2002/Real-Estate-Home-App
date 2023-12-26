@@ -17,15 +17,20 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Timer(
       const Duration(seconds: 3),
-      () => (FirebaseAuth.instance.currentUser!=null) ? Navigator.pushReplacement(// &&FirebaseAuth.instance.currentUser!.emailVerified
-          context,
-          MaterialPageRoute(
-            builder: (context) => const CustomeBottomNavBar(),
-          )): Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const LogIn(),
-          )),
+      () => (FirebaseAuth.instance.currentUser != null)  // &&FirebaseAuth.instance.currentUser!.emailVerified
+          ? Navigator.of(context).pushReplacementNamed("search_home_bar")
+          // Navigator.push(
+          //     // &&FirebaseAuth.instance.currentUser!.emailVerified
+          //     context,
+          //     MaterialPageRoute(
+          //       builder: (context) => const CustomeBottomNavBar(),
+          //     ))
+          : Navigator.of(context).pushReplacementNamed("signin")
+          // Navigator.pushReplacement(
+          //     context,
+          //     MaterialPageRoute(
+          //       builder: (context) => const LogIn(),
+          //     )),
     );
     super.initState();
   }
@@ -35,7 +40,8 @@ class _SplashScreenState extends State<SplashScreen> {
     return SizedBox(
       width: widthNHeight0(context, 1),
       height: widthNHeight0(context, 0),
-      child: Image.asset(fit: BoxFit.cover, 'assets/images/png_pic/batik_splash.png'),
+      child: Image.asset(
+          fit: BoxFit.cover, 'assets/images/png_pic/batik_splash.png'),
     );
   }
 }
