@@ -2,22 +2,14 @@
 
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
-import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/MapSetup.dart';
-// class SharedData {
-//   static final SharedData _instance = SharedData._internal();
+    List<String> imges_home = [];
 
-//   factory SharedData() {
-//     return _instance;
-//   }
 
-//   SharedData._internal();
-
-//   double longg = 0;
-//   double latt = 0;
-// }
+List<File> sharedImageList2 = [];
 
 class HomeImages extends StatefulWidget {
   const HomeImages({Key? key});
@@ -37,20 +29,20 @@ class _HomeImages extends State<HomeImages> {
         leading: Container(
           padding: EdgeInsets.all(widthNHeight0(context, 1) * 0.02),
           child: Center(
-            child: CircleAvatar(
-              backgroundColor: Colors.black,
-              radius: 15,
-              child: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: Icon(
-                  Icons.arrow_back_ios_new_outlined,
-                  color: Colors.white,
-                  size: widthNHeight0(context, 1) * 0.04,
-                ),
-              ),
-            ),
+            // child: CircleAvatar(
+            //   backgroundColor: Colors.black,
+            //   radius: 15,
+            //   child: IconButton(
+            //     onPressed: () {
+            //       Navigator.of(context).pop();
+            //     },
+            //     icon: Icon(
+            //       Icons.arrow_back_ios_new_outlined,
+            //       color: Colors.white,
+            //       size: widthNHeight0(context, 1) * 0.04,
+            //     ),
+            //   ),
+            // ),
           ),
         ),
         backgroundColor: Colors.white,
@@ -141,12 +133,14 @@ class _HomeImages extends State<HomeImages> {
       height:widthNHeight0(context, 1)*0.14,
       width: widthNHeight0(context, 0)*0.15,
       child: FloatingActionButton(
-        onPressed: () {
-           Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const MapSetUp(),
-                        ));
+      onPressed: () async {
+                    await uploadImagesToStorage2();
+
+  Navigator.of(context).pushReplacementNamed("map_setup");
+        
+
+
+
         },
         child: Text(
           "Next",
@@ -245,4 +239,33 @@ class _HomeImages extends State<HomeImages> {
 
     Navigator.of(context).pop();
   }
+
+
+
+    Future<void> uploadImagesToStorage2() async {
+
+
+    try {
+      for (int i = 0; i < sharedImageList2.length; i++) {
+        File imageFile = sharedImageList2[i];
+        String imageName = DateTime.now().millisecondsSinceEpoch.toString();
+
+        Reference refStorage2 = FirebaseStorage.instance.ref().child('images/$imageName.jpg');
+        UploadTask uploadTask = refStorage2.putFile(imageFile);
+
+        TaskSnapshot taskSnapshot = await uploadTask;
+        String imageUrl = await taskSnapshot.ref.getDownloadURL();
+
+        imges_home.add(imageUrl);
+        
+      print(imges_home);
+      }
+
+     
+    } catch (error) {
+      print('Error uploading images to Firebase Storage: $error');
+    }
+  }
+
+  
 }

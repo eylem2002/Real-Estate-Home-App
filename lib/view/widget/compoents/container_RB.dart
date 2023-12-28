@@ -22,7 +22,7 @@ class ContainerRB extends StatelessWidget {
 decoration: BoxDecoration(  borderRadius: BorderRadius.circular(10), color: const Color(0xFFF0F2F6),),
      width: widthNHeight0(context, 1)*0.44 ,
      
-      height: widthNHeight0(context, 0)*0.29 ,
+      height: widthNHeight0(context, 0)*0.34 ,
      
       padding: const EdgeInsets.only(top:25.0),
       child: Column(

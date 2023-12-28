@@ -61,7 +61,7 @@ class _ProductCardState extends State<ProductCard> {
                               left: widthNHeight0(context, 1) * 0.02,
                               height: widthNHeight0(context, 1)*0.085,
                               child: Container(
-                                padding: const EdgeInsets.all(8.0),
+                                padding:  EdgeInsets.all( widthNHeight0(context, 1)*0.01,),
                                 decoration: BoxDecoration(
                                   color: Color(0xffF0F2F6),
                                   shape: BoxShape.rectangle,

@@ -1,7 +1,10 @@
 // ignore_for_file: unused_import, override_on_non_overriding_member, non_constant_identifier_names, annotate_overrides, camel_case_types, body_might_complete_normally_nullable, sized_box_for_whitespace, file_names
-
+//5
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:new_batic/controller/Home_controller.dart';
+import 'package:new_batic/core/class/Fire_Store.dart';
+import 'package:new_batic/core/class/sharedData.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/addPlanfloor.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/movetime.dart';
@@ -16,32 +19,36 @@ class HomeInfo extends StatefulWidget {
 }
 
 class _homeInfoState extends State<HomeInfo> {
+
   HomeConroller homeconroller = HomeConroller();
   @override
   String selectedValue = '';
   String Furnished = '';
   String selectedGovernorates = '';
-  
+  String s1="",s2="";
+
+    List<dynamic> Alloptions3 = [];
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: Container(
           padding: EdgeInsets.all(widthNHeight0(context, 1) * 0.02),
           child: Center(
-            child: CircleAvatar(
-              backgroundColor: Colors.black,
-              radius: 15,
-              child: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: Icon(
-                  Icons.arrow_back_ios_new_outlined,
-                  color: Colors.white,
-                  size: widthNHeight0(context, 1) * 0.04,
-                ),
-              ),
-            ),
+            // child: CircleAvatar(
+            //   backgroundColor: Colors.black,
+            //   radius: 15,
+            //   child: IconButton(
+            //     onPressed: () {
+            //       Navigator.of(context).pop();
+            //     },
+            //     icon: Icon(
+            //       Icons.arrow_back_ios_new_outlined,
+            //       color: Colors.white,
+            //       size: widthNHeight0(context, 1) * 0.04,
+            //     ),
+            //   ),
+            // ),
           ),
         ),
         backgroundColor: Colors.white,
@@ -116,6 +123,7 @@ class _homeInfoState extends State<HomeInfo> {
                                     width: widthNHeight0(context, 0) * 0.2,
                                     passToggle: false,
                                     maxlog: 6,
+                                    
                                     validator: (value) {
                                       if (value!.isEmpty) {
                                         return 'Enter the Sq.Ft';
@@ -349,16 +357,19 @@ class _homeInfoState extends State<HomeInfo> {
                         ),
                         isExpanded: true,
                         iconSize: 30,
-                        value: Furnished,
+                        value: s1,
                         onChanged: (String? newValue) {
                           setState(() {
-                            Furnished = newValue!;
+                            s1 = newValue!;
                           });
                         },
                         items: <String>['', 'Yes', 'No']
                             .map<DropdownMenuItem<String>>((String value) {
+                                 
                           return DropdownMenuItem<String>(
+                            
                             value: value,
+                        
                             child: Text(value,style: TextStyle(fontSize: widthNHeight0(context, 1)*0.045),),
                           );
                         }).toList(),
@@ -400,19 +411,25 @@ class _homeInfoState extends State<HomeInfo> {
                         ),
                         isExpanded: true,
                         iconSize: 30,
-                        value: selectedGovernorates,
+                        value: s2,
                         onChanged: (String? newValue) {
                           setState(() {
-                            selectedGovernorates = newValue!;
+                            s2 = newValue!;
                           });
                         },
                         items: <String>['', 'Yes', 'No']
                             .map<DropdownMenuItem<String>>((String value) {
+                                
                           return DropdownMenuItem<String>(
+                            
                             value: value,
                             child: Text(value,style: TextStyle(fontSize: widthNHeight0(context, 1)*0.045),),
+                            
                           );
+                         
+                          
                         }).toList(),
+                        
                       ),
                     ),
                   ),
@@ -443,12 +460,24 @@ class _homeInfoState extends State<HomeInfo> {
                                 homeconroller.price.text.isNotEmpty &&
                                 homeconroller.elevetor.text.isNotEmpty &&
                                 homeconroller.year.text.isNotEmpty) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => const ImagePick(),
-                                ),
-                              );
+
+                                  Alloptions3.add( homeconroller.sqft.text);
+                                           Alloptions3.add( homeconroller.builtarea.text);
+                                           Alloptions3.add( homeconroller.Ownership.text);
+                                            Alloptions3.add( homeconroller.total.text);
+                                                   Alloptions3.add( homeconroller.balcony.text);
+                                                       Alloptions3.add( homeconroller.price.text);
+                                                   Alloptions3.add( homeconroller.elevetor.text);
+                                                    Alloptions3.add( homeconroller.year.text);
+                                                      Alloptions3.add(s1);
+                                                     Alloptions3.add(s2);
+shared_data.add({'add_home_info':Alloptions3 });
+print(shared_data[4]['add_home_info']);
+                  
+                    
+
+  Navigator.of(context).pushReplacementNamed("image_pick");
+                             
                             } else {
                               showDialog(
                                 context: context,

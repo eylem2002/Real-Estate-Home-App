@@ -596,6 +596,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             defaultButton3(
+                                fontSize: widthNHeight0(context, 1)*0.044,
                               text: 'Floor Plan', //FloorPlan
                               width: widthNHeight0(context, 1) * 0.36,
                               borderRadius: 5,
@@ -613,6 +614,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               borderWidth: 0,
                             ),
                             defaultButton3(
+                                   fontSize: widthNHeight0(context, 1)*0.045,
                               text: 'View Map', //MapScreenLocation
                               width: widthNHeight0(context, 1) * 0.36,
                               borderRadius: 5,
@@ -637,6 +639,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             defaultButton3(
+                                fontSize: widthNHeight0(context, 1)*0.05,
                               text: 'Services',
                               width: widthNHeight0(context, 1) * 0.36,
                               borderRadius: 5,
@@ -657,6 +660,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               borderWidth: 0,
                             ),
                             defaultButton4(
+                            
                               text: 'Call',
                               width: widthNHeight0(context, 1) * 0.36,
                               borderRadius: 5,

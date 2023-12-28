@@ -2,7 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:new_batic/controller/Home_controller.dart';
-import 'package:new_batic/view/widget/BottomNavBar.dart';
+import 'package:new_batic/core/class/addListToFirestore_withimage.dart';
+import 'package:new_batic/core/class/sharedData.dart';
+import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/addPlanfloor.dart';
+import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/addhomepic.dart';
 import 'package:new_batic/view/widget/compoents/bottoms/deff_button.dart';
 import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
@@ -25,20 +28,20 @@ class _MapSetUpState extends State<MapSetUp> {
         leading: Container(
           padding: EdgeInsets.all(widthNHeight0(context, 1) * 0.02),
           child: Center(
-            child: CircleAvatar(
-              backgroundColor: Colors.black,
-              radius: 15,
-              child: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: Icon(
-                  Icons.arrow_back_ios_new_outlined,
-                  color: Colors.white,//32.482289, 36.001511
-                  size: widthNHeight0(context, 1) * 0.04,
-                ),
-              ),
-            ),
+            // child: CircleAvatar(
+            //   backgroundColor: Colors.black,
+            //   radius: 15,
+            //   child: IconButton(
+            //     onPressed: () {
+            //       Navigator.of(context).pop();
+            //     },
+            //     icon: Icon(
+            //       Icons.arrow_back_ios_new_outlined,
+            //       color: Colors.white,//32.482289, 36.001511
+            //       size: widthNHeight0(context, 1) * 0.04,
+            //     ),
+            //   ),
+            // ),
           ),
         ),
         backgroundColor: Colors.white,
@@ -167,6 +170,7 @@ class _MapSetUpState extends State<MapSetUp> {
                       ),
                       Center(
                         child: defaultButton(
+                          fontSize: widthNHeight0(context, 1)*0.05,
                           text: 'Show me the location',
                           font_bor: FontWeight.bold,
                           textalign: TextAlign.center,
@@ -233,14 +237,21 @@ class _MapSetUpState extends State<MapSetUp> {
                                   double.tryParse(homeconroller.lati.text) ?? 0;
 
                               if (longitude != 0 && latitude != 0) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => CustomeBottomNavBar(
+shared_data.add({'long_map':longitude});
+shared_data.add({'lati_map':latitude});
+ addListToFirestore_withimage(shared_data, imageUrls,imges_home);
+      shared_data.clear();
+      imges_home.clear();
+      imageUrls.clear();
+                                  Navigator.of(context).pushReplacementNamed("custome_bottomNavBar");
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //     builder: (context) => CustomeBottomNavBar(
                                      
-                                    ),
-                                  ),
-                                );
+                                //     ),
+                                //   ),
+                                // );
                               } else {
                                 showDialog(
                                   context: context,

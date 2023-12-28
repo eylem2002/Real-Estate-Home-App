@@ -1,11 +1,15 @@
-// ignore_for_file: use_build_context_synchronously, use_key_in_widget_constructors, sort_child_properties_last, file_names
-
 import 'dart:io';
 import 'dart:typed_data';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:new_batic/core/services/EnterSevices.dart';
-import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/addhomepic.dart';
+import 'package:new_batic/core/class/addListToFirestore_withimage.dart';
+import 'package:new_batic/core/class/sharedData.dart';
+
+List<File> sharedImageList = [];
+  List<String> imageUrls = [];
 
 class ImagePick extends StatefulWidget {
   const ImagePick({Key? key});
@@ -15,31 +19,17 @@ class ImagePick extends StatefulWidget {
 }
 
 class _PickImageState extends State<ImagePick> {
-final  List<Uint8List> _images = [];
- final List<File> _selectedImages = [];
+  final List<Uint8List> _images = [];
+  final List<File> _selectedImages = [];
+  File? file;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: Container(
-          padding: EdgeInsets.all(widthNHeight0(context, 1) * 0.02),
-          child: Center(
-            child: CircleAvatar(
-              backgroundColor: Colors.black,
-              radius: 15,
-              child: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: Icon(
-                  Icons.arrow_back_ios_new_outlined,
-                  color: Colors.white,
-                  size: widthNHeight0(context, 1) * 0.04,
-                ),
-              ),
-            ),
-          ),
+          padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.02),
+          child: Center(),
         ),
         backgroundColor: Colors.white,
         title: Column(
@@ -47,7 +37,7 @@ final  List<Uint8List> _images = [];
             Text(
               'Floor Plan',
               style: TextStyle(
-                fontSize: widthNHeight0(context, 1) * 0.065,
+                fontSize: MediaQuery.of(context).size.width * 0.065,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Kadwa',
               ),
@@ -58,7 +48,7 @@ final  List<Uint8List> _images = [];
       body: Column(
         children: [
           Divider(
-              height: widthNHeight0(context, 1) * 0.01,
+              height: MediaQuery.of(context).size.width * 0.01,
               color: Colors.grey[300]),
           Expanded(
             child: GridView.builder(
@@ -122,25 +112,19 @@ final  List<Uint8List> _images = [];
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: const EdgeInsets.all(16.0), 
+              padding: const EdgeInsets.all(16.0),
               child: SizedBox(
-                height: widthNHeight0(context, 1) * 0.14,
-                width: widthNHeight0(context, 0) * 0.15,
+                height: MediaQuery.of(context).size.width * 0.14,
+                width: MediaQuery.of(context).size.width * 0.15,
                 child: FloatingActionButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HomeImages(),
-                        ));
+                  onPressed: () async {
+                    await uploadImagesToStorage();
+                    Navigator.of(context).pushReplacementNamed("home_images");
                   },
                   child: Text(
-                    "Next",
-                    style: TextStyle(
-                        fontFamily: "kadwa",
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600),
-                  ),
+          "Next",
+          style: TextStyle(fontFamily: "kadwa", color: Colors.white,fontWeight: FontWeight.w600),
+        ),
                   backgroundColor: Color(0xff6482C4),
                 ),
               ),
@@ -207,22 +191,23 @@ final  List<Uint8List> _images = [];
     );
   }
 
-  // Gallery
-  Future _pickImageFromGallery() async {
+  Future<void> _pickImageFromGallery() async {
     final returnImage =
         await ImagePicker().pickImage(source: ImageSource.gallery);
+    file = File(returnImage!.path);
+
     if (returnImage == null) return;
 
     setState(() {
       _selectedImages.add(File(returnImage.path));
       _images.add(File(returnImage.path).readAsBytesSync());
+      sharedImageList.add(File(returnImage.path));
     });
 
-    Navigator.of(context).pop(); // Close the modal sheet
+    Navigator.of(context).pop();
   }
 
-  // Camera
-  Future _pickImageFromCamera() async {
+  Future<void> _pickImageFromCamera() async {
     final returnImage =
         await ImagePicker().pickImage(source: ImageSource.camera);
     if (returnImage == null) return;
@@ -230,8 +215,36 @@ final  List<Uint8List> _images = [];
     setState(() {
       _selectedImages.add(File(returnImage.path));
       _images.add(File(returnImage.path).readAsBytesSync());
+      sharedImageList.add(File(returnImage.path));
     });
 
     Navigator.of(context).pop();
   }
+
+  Future<void> uploadImagesToStorage() async {
+  
+
+    try {
+      for (int i = 0; i < sharedImageList.length; i++) {
+        File imageFile = sharedImageList[i];
+        String imageName = DateTime.now().millisecondsSinceEpoch.toString();
+
+        Reference refStorage =
+            FirebaseStorage.instance.ref().child('images/$imageName.jpg');
+        UploadTask uploadTask = refStorage.putFile(imageFile);
+
+        TaskSnapshot taskSnapshot = await uploadTask;
+        String imageUrl = await taskSnapshot.ref.getDownloadURL();
+
+        imageUrls.add(imageUrl);
+      }
+
+     
+      // shared_data.clear();
+    } catch (error) {
+      print('Error uploading images to Firebase Storage: $error');
+    }
+  }
+
+
 }

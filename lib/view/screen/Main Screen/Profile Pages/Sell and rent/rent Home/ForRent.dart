@@ -1,6 +1,7 @@
-// ignore_for_file: non_constant_identifier_names, annotate_overrides, unused_field, file_names
+// ignore_for_file: non_constant_identifier_names, annotate_overrides, unused_field, file_names, unused_local_variable
 
 import 'package:flutter/material.dart';
+import 'package:new_batic/core/class/UserData.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/complete_sell_home_screen.dart';
 import 'package:new_batic/view/widget/compoents/bottoms/deff_button.dart';
@@ -13,7 +14,10 @@ class RentScreen extends StatefulWidget {
 }
 
 class _RentScreenState extends State<RentScreen> {
+  
   static String rent_for="Monthly";
+
+
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
@@ -77,6 +81,8 @@ class _RentScreenState extends State<RentScreen> {
                         text: 'Monthly',
                         onPressed: () {
                           rent_for="Monthly";
+
+                       
                           // Navigator.push(
                           //     context,
                           //     MaterialPageRoute(
@@ -117,6 +123,8 @@ class _RentScreenState extends State<RentScreen> {
                           
                           onPressed: () {
                              
+                             UserData userData=UserData();
+
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(

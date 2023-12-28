@@ -6,9 +6,8 @@ import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/rent%20Home/ForRent.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/firstBox/ChnagePass.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/firstBox/personalDetils_screen.dart';
-import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/sell%20Home/sell_home_screen.dart';
 import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
-import 'package:new_batic/view/screen/Sign%20in/up/signup_screen.dart';
+
 
 class ScreenProfile extends StatefulWidget {
   const ScreenProfile({super.key});
@@ -207,12 +206,9 @@ class _EngineerScreenState extends State<ScreenProfile> {
                           ),
                           InkWell(
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const SellHomeScreen(),
-                                ),
-                              );
+                             
+                               Navigator.of(context).pushReplacementNamed("sellhome");
+                             
                             },
                             child: Padding(
                               padding: EdgeInsets.only(right: 17),

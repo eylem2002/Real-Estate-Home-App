@@ -6,10 +6,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:new_batic/core/constant/imageAsses.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/features/Auth/user_auth/firebase_auth/firebase_auth.dart';
-import 'package:new_batic/view/widget/BottomNavBar.dart';
 import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
 import '../../../../controller/login_controller.dart';
-import 'signup_screen.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({super.key});
@@ -62,19 +60,20 @@ class _LogInState extends State<LogIn> {
                     ),
                   
                     SizedBox(
-                      height: widthNHeight0(context, 0) * 0.28,
+                      
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                         children: [
                           Container(
                             margin: EdgeInsets.only(
-                                right: widthNHeight0(context, 1) * 0.65,
-                                bottom: widthNHeight0(context, 0) * 0.01),
-                            child: const Text(
+                              left: widthNHeight0(context, 1) * 0.02,
+                                right: widthNHeight0(context, 1) * 0.6,
+                                bottom: widthNHeight0(context, 0) * 0.02),
+                            child:  Text(
                               "Sign In",
                               style: TextStyle(
-                                  fontSize: 29,
+                                  fontSize: widthNHeight0(context, 1) * 0.075,
                                   color: Color(0xff263238),
                                   fontWeight: FontWeight.w600,
                                   fontFamily: 'Kadwa'),
@@ -98,6 +97,8 @@ class _LogInState extends State<LogIn> {
                             },
                             str: "Batic@gmail.com",
                           ),
+
+                           SizedBox(height: widthNHeight0(context, 1)*0.05,),///
                           TextFormFieldWidget(
                             passToggle: true,
                             
