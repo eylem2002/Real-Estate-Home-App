@@ -6,10 +6,12 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
-    List<String> imges_home = [];
+    List<String> imgeshome = [];
 
 
 List<File> sharedImageList2 = [];
+  final List<File> _selectedImages2 = [];
+
 
 class HomeImages extends StatefulWidget {
   const HomeImages({Key? key});
@@ -19,8 +21,8 @@ class HomeImages extends StatefulWidget {
 }
 
 class _HomeImages extends State<HomeImages> {
-  final List<Uint8List> _images = [];
-  final List<File> _selectedImages = [];
+  final List<Uint8List> _images2 = [];
+
 
   @override
   Widget build(BuildContext context) {
@@ -68,9 +70,9 @@ class _HomeImages extends State<HomeImages> {
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
               ),
-              itemCount: _images.length + 1,
+              itemCount: _images2.length + 1,
               itemBuilder: (context, index) {
-                if (index == _images.length) {
+                if (index == _images2.length) {
                 
                   return IconButton(
                     onPressed: () {
@@ -95,7 +97,7 @@ class _HomeImages extends State<HomeImages> {
                           child: Container(
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                image: MemoryImage(_images[index]),
+                                image: MemoryImage(_images2[index]),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -107,8 +109,8 @@ class _HomeImages extends State<HomeImages> {
                           child: IconButton(
                             onPressed: () {
                               setState(() {
-                                _images.removeAt(index);
-                                _selectedImages.removeAt(index);
+                                _images2.removeAt(index);
+                                _selectedImages2.removeAt(index);
                               });
                             },
                             icon: Icon(
@@ -134,7 +136,7 @@ class _HomeImages extends State<HomeImages> {
       width: widthNHeight0(context, 0)*0.15,
       child: FloatingActionButton(
       onPressed: () async {
-                    await uploadImagesToStorage2();
+                    await uploadImagesToStorage();
 
   Navigator.of(context).pushReplacementNamed("map_setup");
         
@@ -219,8 +221,9 @@ class _HomeImages extends State<HomeImages> {
     if (returnImage == null) return;
 
     setState(() {
-      _selectedImages.add(File(returnImage.path));
-      _images.add(File(returnImage.path).readAsBytesSync());
+      _selectedImages2.add(File(returnImage.path));//sharedImageList2
+      _images2.add(File(returnImage.path).readAsBytesSync());
+      sharedImageList2.add(File(returnImage.path));
     });
 
     Navigator.of(context).pop();// Close the modal sheet
@@ -233,8 +236,9 @@ class _HomeImages extends State<HomeImages> {
     if (returnImage == null) return;
 
     setState(() {
-      _selectedImages.add(File(returnImage.path));
-      _images.add(File(returnImage.path).readAsBytesSync());
+      _selectedImages2.add(File(returnImage.path));
+      _images2.add(File(returnImage.path).readAsBytesSync());
+            sharedImageList2.add(File(returnImage.path));
     });
 
     Navigator.of(context).pop();
@@ -242,30 +246,34 @@ class _HomeImages extends State<HomeImages> {
 
 
 
-    Future<void> uploadImagesToStorage2() async {
+  Future<void> uploadImagesToStorage() async {
 
 
     try {
       for (int i = 0; i < sharedImageList2.length; i++) {
+          print("imageUrl");
         File imageFile = sharedImageList2[i];
+
         String imageName = DateTime.now().millisecondsSinceEpoch.toString();
 
-        Reference refStorage2 = FirebaseStorage.instance.ref().child('images/$imageName.jpg');
-        UploadTask uploadTask = refStorage2.putFile(imageFile);
+        Reference refStorage =
+            FirebaseStorage.instance.ref().child('images/$imageName.jpg');
+        UploadTask uploadTask = refStorage.putFile(imageFile);
 
         TaskSnapshot taskSnapshot = await uploadTask;
         String imageUrl = await taskSnapshot.ref.getDownloadURL();
 
-        imges_home.add(imageUrl);
-        
-      print(imges_home);
+        imgeshome.add(imageUrl);
+
       }
 
      
+      // shared_data.clear();
     } catch (error) {
       print('Error uploading images to Firebase Storage: $error');
     }
   }
+
 
   
 }

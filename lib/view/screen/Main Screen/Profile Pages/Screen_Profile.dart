@@ -207,7 +207,7 @@ class _EngineerScreenState extends State<ScreenProfile> {
                           InkWell(
                             onTap: () {
                              
-                               Navigator.of(context).pushReplacementNamed("sellhome");
+                               Navigator.of(context).pushNamed("sellhome");//////sell home
                              
                             },
                             child: Padding(

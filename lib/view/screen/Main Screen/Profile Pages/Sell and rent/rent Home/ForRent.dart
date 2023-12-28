@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:new_batic/core/class/UserData.dart';
+import 'package:new_batic/core/class/sharedData.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/complete_sell_home_screen.dart';
 import 'package:new_batic/view/widget/compoents/bottoms/deff_button.dart';
@@ -81,15 +82,6 @@ class _RentScreenState extends State<RentScreen> {
                         text: 'Monthly',
                         onPressed: () {
                           rent_for="Monthly";
-
-                       
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //       builder: (context) => const CompleteSellHomeScreen(),
-                          //     )
-
-                          //     );
                         },
                         width: widthNHeight0(context, 0) * 0.165,
                         borderWidth: 10,
@@ -101,13 +93,7 @@ class _RentScreenState extends State<RentScreen> {
                         text: 'Yearly',
                         onPressed: () {
                              rent_for="Yearly";
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //       builder: (context) => const CompleteSellHomeScreen(),
-                          //     )
-
-                          //     );
+                        
                         },
                         width: widthNHeight0(context, 0) * 0.165,
                         borderWidth: 10,
@@ -123,15 +109,12 @@ class _RentScreenState extends State<RentScreen> {
                           
                           onPressed: () {
                              
-                             UserData userData=UserData();
+                              shared_data.add({'rent_Time': rent_for});
+        print(shared_data[0]['rent_Time']);
+                        
+                             Navigator.of(context).pushReplacementNamed("BothPages");
 
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const CompleteSellHomeScreen(),
-                                )
-                   
-                                );
+
                           },
                           width: widthNHeight0(context, 0) * 0.15,
                           borderWidth: 4,

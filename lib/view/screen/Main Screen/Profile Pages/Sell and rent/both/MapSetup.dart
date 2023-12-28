@@ -239,9 +239,9 @@ class _MapSetUpState extends State<MapSetUp> {
                               if (longitude != 0 && latitude != 0) {
 shared_data.add({'long_map':longitude});
 shared_data.add({'lati_map':latitude});
- addListToFirestore_withimage(shared_data, imageUrls,imges_home);
+ addListToFirestore_withimage(shared_data,imgeshome, imageUrls);
       shared_data.clear();
-      imges_home.clear();
+      imgeshome.clear();
       imageUrls.clear();
                                   Navigator.of(context).pushReplacementNamed("custome_bottomNavBar");
                                 // Navigator.push(

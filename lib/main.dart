@@ -42,6 +42,8 @@ class MyApp extends StatelessWidget {
         "map_setup": (context) => MapSetUp(),
         "home_images": (context) => HomeImages(),
         "custome_bottomNavBar": (context) => CustomeBottomNavBar(),
+        "BothPages": (context) => CompleteSellHomeScreen(),
+
       },
     );
   }

@@ -8,8 +8,9 @@ Future<void> addListToFirestore_withimage(
 
       await collectionReference.doc().set({
         'dataList': dataList,
+        
+        'imges_home':imges_home,
         'imageUrls': imageUrls,
-        'imges_home':imges_home
       });
 
       print('List of maps and image URLs added to Firestore.');

@@ -1,15 +1,12 @@
 import 'dart:io';
 import 'dart:typed_data';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:new_batic/core/class/addListToFirestore_withimage.dart';
-import 'package:new_batic/core/class/sharedData.dart';
+
 
 List<File> sharedImageList = [];
-  List<String> imageUrls = [];
+    List<String> imageUrls = [];
 
 class ImagePick extends StatefulWidget {
   const ImagePick({Key? key});
@@ -222,7 +219,7 @@ class _PickImageState extends State<ImagePick> {
   }
 
   Future<void> uploadImagesToStorage() async {
-  
+
 
     try {
       for (int i = 0; i < sharedImageList.length; i++) {

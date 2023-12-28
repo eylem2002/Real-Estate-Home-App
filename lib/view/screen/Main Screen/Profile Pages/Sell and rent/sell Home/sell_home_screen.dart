@@ -28,20 +28,20 @@ class _SellHomeScreenState extends State<SellHomeScreen> {
         leading: Container(
           padding: const EdgeInsets.all(9),
           child: Center(
-            // child: CircleAvatar(
-            //   backgroundColor: Colors.black,
-            //   radius: 15,
-            //   child: IconButton(
-            //     onPressed: () {
-            //       Navigator.of(context).pop();
-            //     },
-            //     icon: Icon(
-            //       Icons.arrow_back_ios_new_outlined,
-            //       color: Colors.white,
-            //       size: 15,
-            //     ),
-            //   ),
-            // ),
+            child: CircleAvatar(
+              backgroundColor: Colors.black,
+              radius: 15,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: Icon(
+                  Icons.arrow_back_ios_new_outlined,
+                  color: Colors.white,
+                  size: 15,
+                ),
+              ),
+            ),
           ),
         ),
         backgroundColor: Colors.white,
