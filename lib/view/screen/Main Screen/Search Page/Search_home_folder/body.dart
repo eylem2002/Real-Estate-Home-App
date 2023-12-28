@@ -16,9 +16,14 @@ class BodySearch extends StatefulWidget {
 class _BodySearchState extends State<BodySearch> {
   @override
   Widget build(BuildContext context) {
+    demoProducts.forEach((element) { 
+      print('========${element.title}');
+    });
+   
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Column(
+
         children: [
           ...List.generate(
             demoProducts.length,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:new_batic/core/class/prodect.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Search%20Page/Search_home_folder/Search_main.dart';
 
@@ -36,12 +37,14 @@ class SearchBarScreen extends StatelessWidget {
                               MaterialPageRoute(
                                 builder: (context) => const CustomeBottomNavBar(),
                               )),
+                           
                           child: SizedBox(
                             width: widthNHeight0(context, 0) * 0.025,
                             height: widthNHeight0(context, 1) * 0.09,
                              
                             child: Image.asset('assets/images/png_pic/close.png'),
                           ),
+                          
                         ),
                       ),
                       TextFormFieldWidget(

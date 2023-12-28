@@ -116,7 +116,7 @@ class _PickImageState extends State<ImagePick> {
                 child: FloatingActionButton(
                   onPressed: () async {
                     await uploadImagesToStorage();
-                    Navigator.of(context).pushReplacementNamed("home_images");
+                    Navigator.of(context).pushNamed("home_images");
                   },
                   child: Text(
           "Next",
