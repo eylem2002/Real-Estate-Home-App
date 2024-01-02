@@ -98,7 +98,7 @@ class _location_bothState extends State<location_both> {
                         height: widthNHeight0(context, 1) * 0.04,
                       ),
                       Text(
-                        "Street Name",
+                        "Phone Number",
                         style: TextStyle(color: Color(0xff6B7378)),
                       ),
                       SizedBox(
@@ -110,7 +110,7 @@ class _location_bothState extends State<location_both> {
                         passToggle: false,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Enter the Street Name';
+                            return 'Enter the ';
                           }
 
                           return null;

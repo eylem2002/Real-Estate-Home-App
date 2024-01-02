@@ -12,19 +12,25 @@ class Search_Main extends StatefulWidget {
   State<Search_Main> createState() => _Search_MainState();
 }
 class _Search_MainState extends State<Search_Main> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        
         title: Text("Batic"),
+        
            leading: Container(
+            
           padding: const EdgeInsets.all(9),
           child: Center(
             child: CircleAvatar(
+              
               backgroundColor: Colors.black,
               radius: 15,
               child: IconButton(
                 onPressed: () {
+                  
                   Navigator.of(context).pop();
                 },
                 icon: Icon(
@@ -47,7 +53,9 @@ class _Search_MainState extends State<Search_Main> {
           children: [
             Divider(height: 1, color: Colors.grey[300]),
             const Header(),
+            
             Container(
+              
               height: widthNHeight0(context, 0)*0.03,
             ),
             const BodySearch(),

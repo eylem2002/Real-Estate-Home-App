@@ -54,8 +54,10 @@ class _ProductCardState extends State<ProductCard> {
                         padding: const EdgeInsets.only(right: 0),
                         child: Stack(
                           children: [
+                     
+                            Image.network(widget.product.images[0], fit: BoxFit.fill), // here is the error
                             
-                            Image.asset(widget.product.images[0], fit: BoxFit.fill),
+                            
                             Positioned(
                               top: widthNHeight0(context, 0) * 0.01,
                               left: widthNHeight0(context, 1) * 0.02,

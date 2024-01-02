@@ -83,7 +83,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           decoration: BoxDecoration(
                             color: Colors.amber,
                           ),
-                          child: Image.asset(image, fit: BoxFit.fill),
+                          child: Image.network(image, fit: BoxFit.fill),
                         );
                       },
                     );

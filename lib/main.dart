@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:new_batic/core/class/test.dart';
+
 import 'package:new_batic/firebase_options.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/MapSetup.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/addPlanfloor.dart';
@@ -11,8 +12,8 @@ import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%2
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/sell%20Home/sell_home_screen.dart';
 import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
 import 'package:new_batic/view/screen/Sign%20in/up/signup_screen.dart';
-import 'package:new_batic/view/screen/Sign%20in/up/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:new_batic/view/screen/Sign%20in/up/splash_screen.dart';
 import 'package:new_batic/view/widget/BottomNavBar.dart';
 
 Future<void> main() async {
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Test(),
+      home: CustomeBottomNavBar(),
+      
     
       routes: {
         
