@@ -19,15 +19,14 @@ class HomeInfo extends StatefulWidget {
 }
 
 class _homeInfoState extends State<HomeInfo> {
-
   HomeConroller homeconroller = HomeConroller();
   @override
   String selectedValue = '';
   String Furnished = '';
   String selectedGovernorates = '';
-  String s1="",s2="";
+  String s1 = "", s2 = "",s3="";
 
-    List<dynamic> Alloptions3 = [];
+  List<dynamic> Alloptions3 = [];
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,21 +34,21 @@ class _homeInfoState extends State<HomeInfo> {
         leading: Container(
           padding: EdgeInsets.all(widthNHeight0(context, 1) * 0.02),
           child: Center(
-            // child: CircleAvatar(
-            //   backgroundColor: Colors.black,
-            //   radius: 15,
-            //   child: IconButton(
-            //     onPressed: () {
-            //       Navigator.of(context).pop();
-            //     },
-            //     icon: Icon(
-            //       Icons.arrow_back_ios_new_outlined,
-            //       color: Colors.white,
-            //       size: widthNHeight0(context, 1) * 0.04,
-            //     ),
-            //   ),
-            // ),
-          ),
+              // child: CircleAvatar(
+              //   backgroundColor: Colors.black,
+              //   radius: 15,
+              //   child: IconButton(
+              //     onPressed: () {
+              //       Navigator.of(context).pop();
+              //     },
+              //     icon: Icon(
+              //       Icons.arrow_back_ios_new_outlined,
+              //       color: Colors.white,
+              //       size: widthNHeight0(context, 1) * 0.04,
+              //     ),
+              //   ),
+              // ),
+              ),
         ),
         backgroundColor: Colors.white,
         title: Text('Home Info',
@@ -123,7 +122,6 @@ class _homeInfoState extends State<HomeInfo> {
                                     width: widthNHeight0(context, 0) * 0.2,
                                     passToggle: false,
                                     maxlog: 6,
-                                    
                                     validator: (value) {
                                       if (value!.isEmpty) {
                                         return 'Enter the Sq.Ft';
@@ -270,172 +268,205 @@ class _homeInfoState extends State<HomeInfo> {
                           SizedBox(
                             height: widthNHeight0(context, 1) * 0.03,
                           ),
+                     
+                          //line num4
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "Elevators",
-                                    style: TextStyle(color: Color(0xff6B7378)),
+                                    'Disabled Services',
+                                    style: TextStyle(
+                                      fontSize:
+                                          widthNHeight0(context, 1) * 0.033,
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Kadwa',
+                                    ),
                                   ),
-                                  TextFormWidget(
-                                    maxlog: 2,
-                                    height: widthNHeight0(context, 1) * 0.2,
-                                    width: widthNHeight0(context, 0) * 0.2,
-                                    passToggle: false,
-                                    validator: (value) {
-                                      if (value!.isEmpty) {
-                                        return 'Enter the Elevators num';
-                                      }
-                                    },
-                                    passController: homeconroller.elevetor,
-                                    str: '',
+                                  SizedBox(
+                                    height: widthNHeight0(context, 1) * 0.018,
+                                  ),
+                                  Container(
+                                    width: widthNHeight0(context, 1) * 0.4,
+                                    height: widthNHeight0(context, 1) * 0.119,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: Color(0xff6482C4)),
+                                        borderRadius: BorderRadius.circular(5)),
+                                    child: Padding(
+                                      padding:
+                                          const EdgeInsets.only(left: 15.0),
+                                      child: DropdownButton<String>(
+                                        style: const TextStyle(
+                                          fontSize: 20,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w500,
+                                          fontFamily: 'Kadwa',
+                                        ),
+                                        isExpanded: true,
+                                        iconSize: 30,
+                                        value: s1,
+                                        onChanged: (String? newValue) {
+                                          setState(() {
+                                            s1 = newValue!;
+                                          });
+                                        },
+                                        items: <String>['', 'Yes', 'No']
+                                            .map<DropdownMenuItem<String>>(
+                                                (String value) {
+                                          return DropdownMenuItem<String>(
+                                            value: value,
+                                            child: Text(
+                                              value,
+                                              style: TextStyle(
+                                                  fontSize: widthNHeight0(
+                                                          context, 1) *
+                                                      0.045),
+                                            ),
+                                          );
+                                        }).toList(),
+                                      ),
+                                    ),
                                   ),
                                 ],
-                              ),
+                              )
+
+                              ///
+                              ,
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "Year of build",
-                                    style: TextStyle(color: Color(0xff6B7378)),
+                                    'Parking availability',
+                                    style: TextStyle(
+                                      fontSize:
+                                          widthNHeight0(context, 1) * 0.033,
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Kadwa',
+                                    ),
                                   ),
-                                  TextFormWidget(
-                                    maxlog: 4,
-                                    height: widthNHeight0(context, 1) * 0.2,
-                                    width: widthNHeight0(context, 0) * 0.2,
-                                    passToggle: false,
-                                    validator: (value) {
-                                      if (value!.isEmpty) {
-                                        return 'Enter the Year of build';
-                                      }
-                                    },
-                                    passController: homeconroller.year,
-                                    str: '',
+                                  SizedBox(
+                                    height: widthNHeight0(context, 1) * 0.018,
+                                  ),
+                                  Container(
+                                    width: widthNHeight0(context, 1) * 0.4,
+                                    height: widthNHeight0(context, 1) * 0.119,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: Color(0xff6482C4)),
+                                        borderRadius: BorderRadius.circular(5)),
+                                    child: Padding(
+                                      padding:
+                                          const EdgeInsets.only(left: 15.0),
+                                      child: DropdownButton<String>(
+                                        style: const TextStyle(
+                                          fontSize: 20,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w500,
+                                          fontFamily: 'Kadwa',
+                                        ),
+                                        isExpanded: true,
+                                        iconSize: 30,
+                                        value: s2,
+                                        onChanged: (String? newValue) {
+                                          setState(() {
+                                            s2 = newValue!;
+                                          });
+                                        },
+                                        items: <String>['', 'Yes', 'No']
+                                            .map<DropdownMenuItem<String>>(
+                                                (String value) {
+                                          return DropdownMenuItem<String>(
+                                            value: value,
+                                            child: Text(
+                                              value,
+                                              style: TextStyle(
+                                                  fontSize: widthNHeight0(
+                                                          context, 1) *
+                                                      0.045),
+                                            ),
+                                          );
+                                        }).toList(),
+                                      ),
+                                    ),
                                   ),
                                 ],
                               )
                             ],
-                          ),
-                          //line num4
-                          Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          ),     
+                          SizedBox(        height: widthNHeight0(context, 1) * 0.06,),
+                           Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                             Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                 Text('Disabled Services',
-                    style: TextStyle(
-                         fontSize: widthNHeight0(context, 1)*0.033,
-                      color: Colors.grey,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Kadwa',
-                    ),
-                  ),
-                   SizedBox(
-                      height: widthNHeight0(context, 1)*0.018,
-                  ),
-                             Container(
-                    width: widthNHeight0(context, 1)*0.4,
-                    height: widthNHeight0(context, 1)*0.119,
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xff6482C4)),
-                        borderRadius: BorderRadius.circular(5)
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 15.0),
-                      child: DropdownButton<String>(
-                        style:const TextStyle(
-                          fontSize: 20,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: 'Kadwa',
-                        ),
-                        isExpanded: true,
-                        iconSize: 30,
-                        value: s1,
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            s1 = newValue!;
-                          });
-                        },
-                        items: <String>['', 'Yes', 'No']
-                            .map<DropdownMenuItem<String>>((String value) {
-                                 
-                          return DropdownMenuItem<String>(
-                            
-                            value: value,
-                        
-                            child: Text(value,style: TextStyle(fontSize: widthNHeight0(context, 1)*0.045),),
-                          );
-                        }).toList(),
-                      ),
-                    ),
-                  ),
-                              ],
-                             )
-                             ///
-                             , Column(
-                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                 Text('Parking availability',
-                    style: TextStyle(
-                         fontSize: widthNHeight0(context, 1)*0.033,
-                      color: Colors.grey,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Kadwa',
-                    ),
-                  ),
-                   SizedBox(
-                      height: widthNHeight0(context, 1)*0.018,
-                  ),
-                             Container(
-                    width: widthNHeight0(context, 1)*0.4,
-                    height: widthNHeight0(context, 1)*0.119,
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xff6482C4)),
-                        borderRadius: BorderRadius.circular(5)
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 15.0),
-                      child: DropdownButton<String>(
-                        style:const TextStyle(
-                          fontSize: 20,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: 'Kadwa',
-                        ),
-                        isExpanded: true,
-                        iconSize: 30,
-                        value: s2,
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            s2 = newValue!;
-                          });
-                        },
-                        items: <String>['', 'Yes', 'No']
-                            .map<DropdownMenuItem<String>>((String value) {
-                                
-                          return DropdownMenuItem<String>(
-                            
-                            value: value,
-                            child: Text(value,style: TextStyle(fontSize: widthNHeight0(context, 1)*0.045),),
-                            
-                          );
-                         
-                          
-                        }).toList(),
-                        
-                      ),
-                    ),
-                  ),
-                              ],
-                             )
-                          ],)
+                               Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Elevators',
+                                    style: TextStyle(
+                                      fontSize:
+                                          widthNHeight0(context, 1) * 0.033,
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Kadwa',
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: widthNHeight0(context, 1) * 0.018,
+                                  ),
+                                  Container(
+                                    width: widthNHeight0(context, 1) * 0.4,
+                                    height: widthNHeight0(context, 1) * 0.119,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: Color(0xff6482C4)),
+                                        borderRadius: BorderRadius.circular(5)),
+                                    child: Padding(
+                                      padding:
+                                          const EdgeInsets.only(left: 15.0),
+                                      child: DropdownButton<String>(
+                                        style: const TextStyle(
+                                          fontSize: 20,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w500,
+                                          fontFamily: 'Kadwa',
+                                        ),
+                                        isExpanded: true,
+                                        iconSize: 30,
+                                        value: s3,
+                                        onChanged: (String? newValue) {
+                                          setState(() {
+                                            s3 = newValue!;
+                                          });
+                                        },
+                                        items: <String>['', 'Yes', 'No']
+                                            .map<DropdownMenuItem<String>>(
+                                                (String value) {
+                                          return DropdownMenuItem<String>(
+                                            value: value,
+                                            child: Text(
+                                              value,
+                                              style: TextStyle(
+                                                  fontSize: widthNHeight0(
+                                                          context, 1) *
+                                                      0.045),
+                                            ),
+                                          );
+                                        }).toList(),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              
+                            ],
+                          ),
 
 
                           
@@ -457,27 +488,25 @@ class _homeInfoState extends State<HomeInfo> {
                                 homeconroller.Ownership.text.isNotEmpty &&
                                 homeconroller.total.text.isNotEmpty &&
                                 homeconroller.balcony.text.isNotEmpty &&
-                                homeconroller.price.text.isNotEmpty &&
-                                homeconroller.elevetor.text.isNotEmpty &&
-                                homeconroller.year.text.isNotEmpty) {
+                                homeconroller.price.text.isNotEmpty 
+                              ) {
 
-                                  Alloptions3.add( homeconroller.sqft.text);
-                                           Alloptions3.add( homeconroller.builtarea.text);
-                                           Alloptions3.add( homeconroller.Ownership.text);
-                                            Alloptions3.add( homeconroller.total.text);
-                                                   Alloptions3.add( homeconroller.balcony.text);
-                                                       Alloptions3.add( homeconroller.price.text);
-                                                   Alloptions3.add( homeconroller.elevetor.text);
-                                                    Alloptions3.add( homeconroller.year.text);
-                                                      Alloptions3.add(s1);
-                                                     Alloptions3.add(s2);
-shared_data.add({'add_home_info':Alloptions3 });
-print(shared_data[4]['add_home_info']);
-                  
-                    
+                                  if(s1.isEmpty)s1="Yes"; if(s2.isEmpty)s2="Yes"; if(s3.isEmpty)s3="Yes";
+                              Alloptions3.add(homeconroller.sqft.text);
+                              Alloptions3.add(homeconroller.builtarea.text);
+                              Alloptions3.add(homeconroller.Ownership.text);
+                              Alloptions3.add(homeconroller.total.text);
+                              Alloptions3.add(homeconroller.balcony.text);
+                              Alloptions3.add(homeconroller.price.text);
+                              Alloptions3.add(s3);
+                              // Alloptions3.add(homeconroller.year.text);
+                              Alloptions3.add(s1);
+                              Alloptions3.add(s2);
+                              shared_data.add({'add_home_info': Alloptions3});
+                              print(shared_data[4]['add_home_info']);
 
-  Navigator.of(context).pushReplacementNamed("image_pick");
-                             
+                              Navigator.of(context)
+                                  .pushReplacementNamed("image_pick");
                             } else {
                               showDialog(
                                 context: context,

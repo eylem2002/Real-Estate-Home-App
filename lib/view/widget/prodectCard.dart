@@ -109,7 +109,7 @@ class _ProductCardState extends State<ProductCard> {
                             Row(
                             
                               children: [
-                                Icon(Icons.airline_seat_individual_suite_rounded, size: widthNHeight0(context, 1) * 0.04),
+                                Icon(Icons.bed_outlined, size: widthNHeight0(context, 1) * 0.04),
                                  SizedBox(width: widthNHeight0(context, 0)*0.01),
                                 Text(" ${widget.product.bed}", style: TextStyle(fontFamily: "kadwa", fontSize: widthNHeight0(context, 1) * 0.027)),
                               ],
@@ -118,7 +118,7 @@ class _ProductCardState extends State<ProductCard> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Icon(Icons.bathtub_rounded, size: widthNHeight0(context, 1) * 0.04),
+                                Icon(Icons.bathtub_outlined, size: widthNHeight0(context, 1) * 0.04),
                                 SizedBox(width: widthNHeight0(context, 0)*0.01),
                                 Text( " ${widget.product.bath}", style: TextStyle(fontFamily: "kadwa", fontSize: widthNHeight0(context, 1) * 0.027)),
                               ],

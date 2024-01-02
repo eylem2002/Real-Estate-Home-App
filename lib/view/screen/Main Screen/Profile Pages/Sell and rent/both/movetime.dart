@@ -174,13 +174,13 @@ class _MoveTimeState extends State<MoveTime> {
                           height: widthNHeight0(context, 1) * 0.065,
                         ),
                         defaultButton(
-                          text: 'Ready to Move',
+                          text: 'Ready',
                           function: () {
                             // if (signUpController.formKey.currentState!
                             //     .validate()) {}
                           },
                           onPressed: () {
-                            timemove = "Ready to Move";
+                            timemove = "Ready";
                           },
                           borderWidth: 10,
                           fontSize: widthNHeight0(context, 1) * 0.045,

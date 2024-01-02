@@ -116,7 +116,7 @@ class _location_bothState extends State<location_both> {
                           return null;
                         },
                         passController: signUpController.firstName,
-                        str: 'Amman,Star Street',
+                        str: '07******',
                       ),
                       SizedBox(
                         height: widthNHeight0(context, 1) * 0.034,

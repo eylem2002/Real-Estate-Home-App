@@ -124,7 +124,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                         children: [
                                           Icon(
                                               Icons
-                                                  .airline_seat_individual_suite_rounded,
+                                                  .bed_outlined,
                                               size: widthNHeight0(context, 1) *
                                                   0.04),
                                           SizedBox(
@@ -145,7 +145,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Icon(Icons.bathtub_rounded,
+                                          Icon(Icons.bathtub_outlined,
                                               size: widthNHeight0(context, 1) *
                                                   0.04),
                                           SizedBox(
@@ -278,12 +278,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "Type",
+                                        "Built Uparea",
                                         style: TextStyle(fontFamily: "kadwa"),
                                       ),
                                       SizedBox(
                                           width:
-                                              widthNHeight0(context, 0) * 0.15),
+                                              widthNHeight0(context, 0) * 0.088),
                                       Text(
                                         " ${widget.product.Type}",
                                         style: const TextStyle(
