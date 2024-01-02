@@ -11,13 +11,9 @@ class FloorPlan extends StatefulWidget {
   State<FloorPlan> createState() => _FloorPlanState();
 }
 
-class _FloorPlanState extends State<FloorPlan> { 
-
+class _FloorPlanState extends State<FloorPlan> {
   @override
   Widget build(BuildContext context) {
-
-               
-              
     return Scaffold(
       appBar: AppBar(
         title: Text("Batic"),
@@ -48,42 +44,34 @@ class _FloorPlanState extends State<FloorPlan> {
             color: Colors.grey[300],
           ),
           Padding(
-            padding: EdgeInsets.all(widthNHeight0(context, 1) * 0.06),
+            padding: EdgeInsets.all(widthNHeight0(context, 1) * 0.04),
             child: Column(
               children: [
-                
                 Container(
-                  height: widthNHeight0(context, 1) * 0.5,
+                  height: MediaQuery.of(context).size.height,
                   child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
+                    physics: AlwaysScrollableScrollPhysics(),
+                    scrollDirection: Axis.vertical,
                     itemCount: widget.product.images2.length,
-                    
                     itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: const EdgeInsets.symmetric(horizontal: 1),
-                        child: Image.network(
-                          widget.product.images2[index],
-                       
-                          fit: BoxFit.fill,
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 9.0),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          child: Image.network(
+                            widget.product.images2[index],
+                            fit: BoxFit.fill,
+                          ),
                         ),
                       );
                     },
                   ),
-                  
                 ),
               ],
             ),
-            
           ),
-          
         ],
-        
       ),
-      
     );
-    
   }
 }
-
-

@@ -26,12 +26,23 @@ Future<List<Product>> getProducts() async {
           )
           
           );
-
+          
+         
        List<dynamic> dataList = element.get('dataList');
         List<String> idList =[];
         idList.add(element.id);
 
-      List<DataListModel> dataListModels = []; // here is All the data is stored
+          for (var dataElement in idList) {
+        // Check if the ID already exists in demoProducts
+        if (demoProducts.any((product) => product.id == dataElement)) {
+        
+continue;
+
+        }
+          
+        
+
+      List<DataListModel> dataListModels = []; 
 
 
  DateTime now = DateTime.now();
@@ -280,7 +291,7 @@ if( Homelocation_list[2]!=null){
     disabled: var_Disabled,
   ),);
 
-
+          }
 
     }
 
