@@ -48,7 +48,7 @@ class _FloorPlanState extends State<FloorPlan> {
             child: Column(
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.height,
+                  height: MediaQuery.of(context).size.height-140,
                   child: ListView.builder(
                     physics: AlwaysScrollableScrollPhysics(),
                     scrollDirection: Axis.vertical,
