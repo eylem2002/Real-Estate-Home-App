@@ -7,7 +7,6 @@ import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/screen/details/details_screen.dart';
 import 'package:new_batic/view/widget/Myhomecard.dart';
 import 'package:new_batic/view/widget/prodectCard.dart';
-
 class MyHome extends StatefulWidget {
   const MyHome({Key? key}) : super(key: key);
 
@@ -18,6 +17,7 @@ class MyHome extends StatefulWidget {
 class _MyHomeState extends State<MyHome> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   late String uid;
+  bool moon = false;
 
   @override
   void initState() {
@@ -42,6 +42,7 @@ class _MyHomeState extends State<MyHome> {
       (index) {
         // Check if the product belongs to the authenticated user
         if (demoProducts[index].ussid == uid) {
+          moon = true;
           return Padding(
             padding: const EdgeInsets.all(0),
             child: MyHomecard(
@@ -62,35 +63,73 @@ class _MyHomeState extends State<MyHome> {
             ),
           );
         } else {
-          // If the product doesn't belong to the user, return an empty container
+          moon = false;
+          print("%%%%%%%%%%%%%");
           return Container();
         }
       },
     );
 
-    return Padding(
-      padding: EdgeInsets.only(top: widthNHeight0(context, 1) * 0.2),
-      child: Scaffold(
+    return 
+     
+      Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "MyHomes",
+            style: TextStyle(fontFamily: "Kadwa", fontWeight: FontWeight.w600),
+          ),
+          automaticallyImplyLeading: false,
+          
+        ),
         body: SingleChildScrollView(
+          
           scrollDirection: Axis.vertical,
           child: Column(
+            
             children: [
-              if (homeWidgets.isNotEmpty)
-                ...homeWidgets,
-              if (homeWidgets.isEmpty)
-                Center(
-                  child: Text(
-                    'No homes to show',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                ),
-              SizedBox(
-                height: widthNHeight0(context, 1) * 0.1,
-              ),
+               Divider(
+            height: 1,
+            color: Colors.grey[300],
+          ),
+              if (moon) ...homeWidgets,
+              if (moon == false)
+                Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: widthNHeight0(context, 1) * 0.5),
+                      child: Center(
+                        child: Column(
+                          children: [
+                            Text(
+                              "SELL OR RENT YOUR HOME NOW!",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Color(0xff6482C4),
+                                fontFamily: "Kadwa",
+                                fontWeight: FontWeight.bold,
+                                fontSize: 17,
+                              ),
+                            ),
+                            SizedBox(height: 8),
+                            Text(
+                              "It looks like you haven’t sold or rented \nany homes just yet.",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: "Kadwa",
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                )
             ],
           ),
         ),
-      ),
+    
     );
   }
 }

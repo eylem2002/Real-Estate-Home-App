@@ -37,11 +37,24 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: widthNHeight0(context, 1),
-      height: widthNHeight0(context, 0),
-      child: Image.asset(
-          fit: BoxFit.cover, 'assets/images/png_pic/batik_splash.png'),
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color(0xFFCDD9F4), Color(0xFFF0F2F6),Color(0xFFEBEEF6),Color(0xFFEFF1F6),Color(0xFFCDD9F4),Color(0xFFF0F2F6)],
+          ),
+        ),
+        child: Center(
+          child: Image.asset(
+            'assets/images/png_pic/batic_text.png',
+            width: 300, 
+            height: 300,
+            fit: BoxFit.contain,
+          ),
+        ),
+      ),
     );
   }
 }
