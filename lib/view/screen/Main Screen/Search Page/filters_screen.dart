@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:new_batic/core/class/type.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Search%20Page/Search_home_folder/Search_main.dart';
 
@@ -18,6 +19,7 @@ class FiltersScreen extends StatefulWidget {
 }
 
 class _FiltersScreenState extends State<FiltersScreen> {
+  int selectedIndex = 0;
   FilterController filterController = FilterController();
 
   String? selectedGovernorates;
@@ -53,7 +55,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Text(
-                'Buy',
+                '$ttype',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontSize: 20,
@@ -63,131 +65,143 @@ class _FiltersScreenState extends State<FiltersScreen> {
               ),
             ),
             const Divider(),
-           Padding(
-             padding:  EdgeInsets.only(left: widthNHeight0(context, 1)*0.02,right: widthNHeight0(context, 1)*0.02),
-             child: Column(
-              
-              
-              children: [
-             
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+            Padding(
+              padding: EdgeInsets.only(
+                  left: widthNHeight0(context, 1) * 0.02,
+                  right: widthNHeight0(context, 1) * 0.02),
+              child: Column(
                 children: [
-                  SizedBox(
-                    child: Text(
-                      'Search Area',
-                      style: TextStyle(
-                          fontFamily: 'Kadwa',
-                          fontWeight: FontWeight.bold,
-                          fontSize: widthNHeight0(context, 1) * 0.05),
-                    ),
-                  ),
-                  const SizedBox(),
-                  Container(
-                    width: widthNHeight0(context, 1) * 0.4,
-                    height: widthNHeight0(context, 0) * 0.05,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xffF0F2F6)),
-                      color: Color(0xffF0F2F6),
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 15.0),
-                      child: DropdownButton<String>(
-                        style: const TextStyle(
-                          fontSize: 20,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: 'Kadwa',
-                        ),
-                        isExpanded: true,
-                        iconSize: 30,
-                        value: selectedGovernorates,
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            selectedGovernorates = newValue!;
-                          });
-                        },
-                        items: <String>[
-                          'Any',
-                          'Amman',
-                          'Irbid',
-                          'Zarqa',
-                          'Balqa',
-                          'Mafraq',
-                          'Jerash',
-                          'Ajloun',
-                          'Karak',
-                          'Tafilah',
-                          'Aqaba',
-                          'Madaba'
-                        ].map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const Divider(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  SizedBox(
-                    width: widthNHeight0(context, 1) * 0.4,
-                    child: Text(
-                      'Bedrooms',
-                      style: TextStyle(
-                          fontFamily: 'Kadwa',
-                          fontWeight: FontWeight.bold,
-                          fontSize: widthNHeight0(context, 1) * 0.05),
-                    ),
-                  ),
-                  const SizedBox(),
-                  // const SearchAreaWidget(
-                  //   text: 'Any',
-                  // ),
-                  Container(
-                    width: widthNHeight0(context, 1) * 0.4,
-                    height: widthNHeight0(context, 1) * 0.119,
-                    decoration: BoxDecoration(
-                       border: Border.all(color: Color(0xffF0F2F6)),
-                      color: Color(0xffF0F2F6),
-                        borderRadius: BorderRadius.circular(5)),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 15.0),
-                      child: DropdownButton<int>(
-                        style: TextStyle(
-                          fontSize: widthNHeight0(context, 1) * 0.043,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: 'Kadwa',
-                        ),
-                        isExpanded: true,
-                        value: Bedrooms,
-                        iconSize: 30,
-                        onChanged: (int? newValue) {
-                          setState(() {
-                            Bedrooms = newValue!;
-                          });
-                        },
-                        items: List<DropdownMenuItem<int>>.generate(
-                          10, // Change this number based on your range of numbers
-                          (index) => DropdownMenuItem<int>(
-                            value: index + 1,
-                            child: Text((index + 1).toString()),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: widthNHeight0(context, 1) * 0.02),
+                        child: SizedBox(
+                          child: Text(
+                            'Search Area',
+                            style: TextStyle(
+                                fontFamily: 'Kadwa',
+                                fontWeight: FontWeight.bold,
+                                fontSize: widthNHeight0(context, 1) * 0.05),
                           ),
                         ),
                       ),
-                    ),
+                      SizedBox(
+                        width: widthNHeight0(context, 0) * 0.055,
+                      ),
+                      Container(
+                        width: widthNHeight0(context, 1) * 0.4,
+                        height: widthNHeight0(context, 0) * 0.05,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Color(0xffF0F2F6)),
+                          color: Color(0xffF0F2F6),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 15.0),
+                          child: DropdownButton<String>(
+                            style: const TextStyle(
+                              fontSize: 20,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: 'Kadwa',
+                            ),
+                            isExpanded: true,
+                            iconSize: 30,
+                            value: selectedGovernorates,
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                selectedGovernorates = newValue!;
+                                Area = newValue;
+                              });
+                            },
+                            items: <String>[
+                              'Any',
+                              'Amman',
+                              'Irbid',
+                              'Zarqa',
+                              'Balqa',
+                              'Mafraq',
+                              'Jerash',
+                              'Ajloun',
+                              'Karak',
+                              'Tafilah',
+                              'Aqaba',
+                              'Madaba'
+                            ].map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Divider(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: widthNHeight0(context, 1) * 0.018),
+                        child: SizedBox(
+                          width: widthNHeight0(context, 1) * 0.4,
+                          child: Text(
+                            'Bedrooms',
+                            style: TextStyle(
+                                fontFamily: 'Kadwa',
+                                fontWeight: FontWeight.bold,
+                                fontSize: widthNHeight0(context, 1) * 0.05),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(),
+                      // const SearchAreaWidget(
+                      //   text: 'Any',
+                      // ),
+                      Container(
+                        width: widthNHeight0(context, 1) * 0.4,
+                        height: widthNHeight0(context, 1) * 0.119,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Color(0xffF0F2F6)),
+                            color: Color(0xffF0F2F6),
+                            borderRadius: BorderRadius.circular(5)),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 15.0),
+                          child: DropdownButton<int>(
+                            style: TextStyle(
+                              fontSize: widthNHeight0(context, 1) * 0.043,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: 'Kadwa',
+                            ),
+                            isExpanded: true,
+                            value: Bedrooms,
+                            iconSize: 30,
+                            onChanged: (int? newValue) {
+                              setState(() {
+                                Bedrooms = newValue!;
+                                bednumber = newValue;
+                              });
+                            },
+                            items: List<DropdownMenuItem<int>>.generate(
+                              10, // Change this number based on your range of numbers
+                              (index) => DropdownMenuItem<int>(
+                                value: index + 1,
+                                child: Text((index + 1).toString()),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-             ],),
-           ),
+            ),
             const Divider(),
             SizedBox(
               width: widthNHeight0(context, 1) * 0.87,
@@ -211,6 +225,8 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 setState(() {
                   filterController.currentSliderValueMin = values.start;
                   filterController.currentSliderValueMax = values.end;
+                  price_start = values.start;
+                  price_end = values.end;
                 });
               },
             ),
@@ -270,33 +286,51 @@ class _FiltersScreenState extends State<FiltersScreen> {
               ),
             ),
             SizedBox(
-              height: widthNHeight0(context, 0) * 0.07,
-              child: ListView.builder(
-                padding: EdgeInsets.only(
-                    left: widthNHeight0(context, 1) * (0.13 / 2)),
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: filterController.building.length,
-                itemBuilder: (context, index) {
-                  return Row(
-                    children: [
-                      SearchAreaWidget(
-                        text: filterController.building[index],
-                        iconData: Icons.abc,
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      )
-                    ],
-                  );
-                },
+              height: widthNHeight0(context, 0) * 0.01,
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  buildItem("Any", 0),
+                  SizedBox(width: widthNHeight0(context, 1) * 0.02),
+                  buildItem("New", 1),
+                  SizedBox(width: widthNHeight0(context, 1) * 0.02),
+                  buildItem("5+", 2),
+                  SizedBox(width: widthNHeight0(context, 1) * 0.02),
+                  buildItem("10+", 3),
+                ],
               ),
             ),
+            // SizedBox(
+            //   height: widthNHeight0(context, 0) * 0.07,
+            //   child: ListView.builder(
+            //     padding: EdgeInsets.only(
+            //         left: widthNHeight0(context, 1) * (0.13 / 2)),
+            //     shrinkWrap: true,
+            //     scrollDirection: Axis.horizontal,
+            //     itemCount: filterController.building.length,
+            //     itemBuilder: (context, index) {
+            //       return Row(
+            //         children: [
+            //           SearchAreaWidget(
+            //             text: filterController.building[index],
+            //             iconData: Icons.abc,
+            //           ),
+            //           const SizedBox(
+            //             width: 5,
+            //           )
+            //         ],
+            //       );
+            //     },
+            //   ),
+            // ),
             const Divider(),
             SizedBox(
               width: widthNHeight0(context, 1) * 0.87,
               child: Text(
-                'Propert Type',
+                'Furnished',
                 style: TextStyle(
                     fontFamily: 'Kadwa',
                     fontWeight: FontWeight.bold,
@@ -305,22 +339,25 @@ class _FiltersScreenState extends State<FiltersScreen> {
             ),
             SizedBox(height: widthNHeight0(context, 0) * 0.015),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: List.generate(filterController.propert.length, (index) {
-                return Row(
-                  children: [
-                    PropertWidget(
-                        text: filterController.propert[index].text,
-                        path: filterController.propert[index].path),
-                    if (index != filterController.propert.length - 1) ...[
-                      SizedBox(
-                        width: widthNHeight0(context, 1) * 0.1,
-                      )
-                    ]
-                  ],
+                return PropertWidget(
+                  propertModel: filterController.propert[index],
+                  onTap: () {
+                    setState(() {
+                      filterController.toggleSelection(index);
+                      if(index==0){
+                        Furnfished="NO";
+
+                      }
+                      else   {Furnfished="Yes";}
+                    });
+                  },
                 );
               }),
             ),
+
             SizedBox(
               height: widthNHeight0(context, 0) * 0.02,
             ),
@@ -334,15 +371,11 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   background: Colors.white,
                   textColor: Colors.black,
                   onPressed: () {
-
-
-
                     Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const CustomeBottomNavBar (),
-                                ));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CustomeBottomNavBar(),
+                        ));
                   },
                   borderWidth: 0,
                 ),
@@ -357,20 +390,62 @@ class _FiltersScreenState extends State<FiltersScreen> {
                         builder: (context) => const Search_Main(),
                       )),
                   onPressed: () {
-Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const Search_Main(),
-                                ));
-
-
-
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Search_Main(),
+                        ));
                   },
                   borderWidth: 0,
                 ),
               ],
             )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildItem(String text, int index) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectedIndex = index;
+          if (index == 0) {
+            Age = "Any";
+          } else if (index == 1) {
+            Age = "New";
+          } else if (index == 2) {
+            Age = "5+";
+          } else if (index == 3) {
+            Age = "10+";
+          }
+        });
+      },
+      child: Container(
+        height: widthNHeight0(context, 0) * 0.05,
+        width: widthNHeight0(context, 1) * 0.25,
+        decoration: BoxDecoration(
+          color: selectedIndex == index
+              ? Color.fromARGB(255, 229, 234, 247)
+              : Color(0xffF0F2F6),
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
+        ),
+        child: Column(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Center(
+                child: Text(
+                  text,
+                  style: TextStyle(
+                      fontFamily: 'Kadwa',
+                      fontWeight: FontWeight.bold,
+                      fontSize: widthNHeight0(context, 1) * 0.04,
+                      color: Colors.black),
+                ),
+              ),
+            ),
           ],
         ),
       ),

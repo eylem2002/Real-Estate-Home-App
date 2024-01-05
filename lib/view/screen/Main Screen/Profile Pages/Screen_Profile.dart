@@ -47,16 +47,9 @@ class _EngineerScreenState extends State<ScreenProfile> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Hello ${'Alaa'}',
-                    style: TextStyle(
-                      fontSize: widthNHeight0(context, 1) * 0.064,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Kadwa',
-                    ),
-                  ),
+                 
                   SizedBox(
-                    height: widthNHeight0(context, 1) * 0.04,
+                    height: widthNHeight0(context, 1) * 0.05,
                   ),
                   Container(
                     width: double.infinity,

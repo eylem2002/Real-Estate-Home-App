@@ -19,10 +19,12 @@ class location_both extends StatefulWidget {
 class _location_bothState extends State<location_both> {
   String str1 = "";
   String str2 = "";
+  bool flag = false;
   List<dynamic> Alloptions3 = [];
   TextEditingController moreDetailsController = TextEditingController();
 
-  SignUpController signUpController = SignUpController();
+  SignUpController something = SignUpController();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +58,8 @@ class _location_bothState extends State<location_both> {
       ),
       body: SingleChildScrollView(
         child: Form(
-          key: signUpController.formKey,
+          key: something.formKey,
+          
           child: Column(
             children: [
               Divider(
@@ -105,19 +108,35 @@ class _location_bothState extends State<location_both> {
                         height: widthNHeight0(context, 1) * 0.02,
                       ),
                       TextFormWidget(
-                        height: widthNHeight0(context, 1) * 0.2,
-                        width: double.infinity,
-                        passToggle: false,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Enter the ';
-                          }
+                          passToggle: false,
+                          passController: something.phone,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Phone must not be empty ';
+                            }
+                            // bool phoneExp = RegExp(r'^\d{10}$').hasMatch(value);
 
-                          return null;
-                        },
-                        passController: signUpController.firstName,
-                        str: '07******',
-                      ),
+                            // if (!phoneExp) {
+                            //   return 'Phone number is not valid ';
+                            // }
+
+                            return null;
+                          },
+                          str: '079*******'),
+                      // TextFormWidget(
+                      //   height: widthNHeight0(context, 1) * 0.2,
+                      //   width: double.infinity,
+                      //   passToggle: false,
+                      //   validator: (value) {
+                      //     if (value!.isEmpty) {
+                      //       return 'Enter the ';
+                      //     }
+
+                      //     return null;
+                      //   },
+                      //   passController: signUpController.firstName,
+                      //   str: '07******',
+                      // ),
                       SizedBox(
                         height: widthNHeight0(context, 1) * 0.034,
                       ),
@@ -138,7 +157,7 @@ class _location_bothState extends State<location_both> {
                           }
                           return null;
                         },
-                        passController: signUpController.secondName,
+                        passController: something.secondName,
                         str: 'Starlink',
                       ),
                       SizedBox(
@@ -175,24 +194,29 @@ class _location_bothState extends State<location_both> {
                         child: defaultButton(
                           text: 'Next',
                           function: () {
-                            if (signUpController.formKey.currentState!
-                                .validate()) {}
+                            if (something.formKey.currentState!
+                                .validate()) {
+                                  
+                         
+                            }
                           },
                           onPressed: () {
-                            String moreDetails = moreDetailsController.text;
-                            str1 = signUpController.firstName.text;
-                            str2 = signUpController.secondName.text;
-                            Alloptions3.add(str1);
-                            Alloptions3.add(str2);
-                            Alloptions3.add(moreDetails);
-                            print(Alloptions3);
-                           
+                            if (something.formKey.currentState!
+                                .validate()) {
+                              String moreDetails = moreDetailsController.text;
+                              str1 = something.firstName.text;
+                              str2 = something.secondName.text;
+                              Alloptions3.add(str1);
+                              Alloptions3.add(str2);
+                              Alloptions3.add(moreDetails);
+                              print(Alloptions3);
 
-                            shared_data.add({'home_location': Alloptions3});
-                            print(shared_data[2]['home_location']);
+                              shared_data.add({'home_location': Alloptions3});
+                              print(shared_data[2]['home_location']);
 
-                            Navigator.of(context)
-                                .pushReplacementNamed("movetime_page");
+                              Navigator.of(context)
+                                  .pushReplacementNamed("movetime_page");
+                            }
                           },
                           borderWidth: 10,
                           width: widthNHeight0(context, 1) * 0.5,

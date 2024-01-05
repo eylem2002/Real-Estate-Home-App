@@ -48,7 +48,7 @@ class _HeaderState extends State<Header> {
             ),
           ),
         ),
-        SizedBox(height: widthNHeight0(context, 0) * 0.030),
+        SizedBox(height: widthNHeight0(context, 0) * 0.020),
         SingleChildScrollView(
           
           scrollDirection: Axis.horizontal,
@@ -70,7 +70,7 @@ class _HeaderState extends State<Header> {
   child: Container(
     padding: EdgeInsets.all(5),
     height: widthNHeight0(context, 1)*0.14,
-    width:widthNHeight0(context, 0)*0.16 ,
+    width:widthNHeight0(context, 0)*0.14,
   
     decoration: BoxDecoration(
       color: const Color(0xFFCCD8F4),
@@ -94,7 +94,7 @@ class _HeaderState extends State<Header> {
   child: Container(
     padding: EdgeInsets.all(5),
     height: widthNHeight0(context, 1)*0.14,
-    width:widthNHeight0(context, 0)*0.16 ,
+     width:widthNHeight0(context, 0)*0.14,
     decoration: BoxDecoration(
       color: const Color(0xFFCCD8F4),
       borderRadius: BorderRadius.circular(5.0),
@@ -116,7 +116,7 @@ class _HeaderState extends State<Header> {
   child: Container(
     padding: EdgeInsets.all(5),
     height: widthNHeight0(context, 1)*0.14,
-    width:widthNHeight0(context, 0)*0.16 ,
+     width:widthNHeight0(context, 0)*0.14,
     decoration: BoxDecoration(
       color: const Color(0xFFCCD8F4),
       borderRadius: BorderRadius.circular(5.0),

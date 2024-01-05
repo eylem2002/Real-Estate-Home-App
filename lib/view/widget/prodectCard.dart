@@ -61,7 +61,7 @@ class _ProductCardState extends State<ProductCard> {
                             Positioned(
                               top: widthNHeight0(context, 0) * 0.01,
                               left: widthNHeight0(context, 1) * 0.02,
-                              height: widthNHeight0(context, 1)*0.085,
+                              height: widthNHeight0(context, 1)*0.084,
                               child: Container(
                                 padding:  EdgeInsets.all( widthNHeight0(context, 1)*0.01,),
                                 decoration: BoxDecoration(
@@ -85,6 +85,7 @@ class _ProductCardState extends State<ProductCard> {
                     ),
                   ),
                 ),
+                SizedBox(height: widthNHeight0(context, 1)*0.02,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -147,19 +148,7 @@ class _ProductCardState extends State<ProductCard> {
                     ),
                     Column(
                       children: [
-                        InkWell(
-                          borderRadius: BorderRadius.circular(50),
-                          onTap: () {},
-                          child: Container(
-                            alignment: Alignment.center,
-                            height: widthNHeight0(context, 1) * 0.12,
-                            width: widthNHeight0(context, 0) * 0.043,
-                            child: Icon(
-                              Icons.screen_share_sharp,
-                              size: widthNHeight0(context, 1) * 0.06,
-                            ),
-                          ),
-                        ),
+                     
                         InkWell(
                           borderRadius: BorderRadius.circular(50),
                           onTap: () {

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:new_batic/core/class/prodect.dart';
+import 'package:new_batic/core/class/type.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Search%20Page/filters_screen.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Search%20Page/search_bar_screen.dart';
@@ -18,6 +19,7 @@ class Search_Page extends StatefulWidget {
 final TextEditingController _controller = TextEditingController();
 
 class _Home_pageState extends State<Search_Page> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,6 +92,7 @@ class _Home_pageState extends State<Search_Page> {
                   
                   GestureDetector(
                     onTap: () {
+                       ttype="Buy";
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -105,11 +108,12 @@ class _Home_pageState extends State<Search_Page> {
                   ),
                   GestureDetector(
                     onTap: () {
+                      ttype="Rent";
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                              FiltersScreen(), ////here change to filter page name
+                              FiltersScreen(), 
                         ),
                       );
                     },
