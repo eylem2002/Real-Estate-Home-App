@@ -54,10 +54,12 @@ final userRepo=Get.put(UserRepository());
     _email = value;
   }
 
-Future<void> createUser(UserModel user) async {
- await userRepo.createUser(user);
-  // phoneAuthentication(user.phoneNo);
-      // Get.to(()=>const OTPScreen());
-}
+// Future<void> createUser(UserModel user) async {
+//  await userRepo.createUser(user);
+//   // phoneAuthentication(user.phoneNo);
+//       // Get.to(()=>const OTPScreen());
+     
+
+// }
 
 }

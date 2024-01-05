@@ -2,9 +2,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/instance_manager.dart';
 import 'package:new_batic/controller/signup_controller.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/features/Auth/user_auth/firebase_auth/firebase_auth.dart';
+import 'package:new_batic/model/user_model.dart';
+import 'package:new_batic/repository/user_repository/user_repository.dart';
 import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
 
 import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
@@ -244,6 +248,10 @@ class _SingUpScreenState extends State<SingUpScreen> {
 
     if (user != null) {
       print("User is successfully created");
+
+final user=UserModel(firstName: signUpController.firstName.text,secondName: signUpController.secondName.text,email:signUpController.email.text,password:  signUpController.password.text,phoneNo:signUpController.phone.text );
+final userRepo=Get.put(UserRepository());
+await userRepo.createUser(user);
 
 
       Navigator.pushReplacement( 

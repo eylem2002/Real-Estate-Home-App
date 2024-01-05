@@ -1,8 +1,8 @@
 // ignore_for_file: file_names
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:new_batic/core/class/prodect.dart';
-import 'package:new_batic/core/class/type.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/screen/details/details_screen.dart';
 import 'package:new_batic/view/widget/prodectCard.dart';
@@ -15,6 +15,20 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State<MyHome> {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+
+  void inputData() {
+   final User? user = auth.currentUser;
+ if (user != null) {
+    final uid = user.uid;
+    // here you write the codes to input the data into Firestore
+  } else {
+    // Handle the case when the user is not authenticated
+    print('User is not authenticated');
+  }
+  // here you write the codes to input the data into firestore
+}
+
   @override
   Widget build(BuildContext context) {
     return  Padding(
@@ -28,13 +42,8 @@ class _MyHomeState extends State<MyHome> {
               ...List.generate(
                 demoProducts.length,
                 (index) {
-                  String inpu = demoProducts[index].details_seller;
-                  List<String> parts = inpu.split("||");
-                  String firstPart = parts.isNotEmpty ? parts[0].trim() : "";
-               
-                 
-               
-                   
+
+
                     return Padding(
                       padding: const EdgeInsets.all(0),
                       child: ProductCard(
@@ -57,7 +66,7 @@ class _MyHomeState extends State<MyHome> {
                   
                 
           
-                
+                 
                 },
               ),
               SizedBox(

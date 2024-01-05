@@ -17,6 +17,10 @@ class ScreenProfile extends StatefulWidget {
 }
 
 class _EngineerScreenState extends State<ScreenProfile> {
+  FirebaseAuth auth = FirebaseAuth.instance;
+  signOut() async {
+        await auth.signOut();
+      }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -413,7 +417,9 @@ class _EngineerScreenState extends State<ScreenProfile> {
                   ),
                   GestureDetector(
                     onTap: () async {
-                        await  FirebaseAuth.instance.signOut();
+                        // await  FirebaseAuth.instance.signOut();
+                        signOut();
+                    
                       print("sign out");
                   
                        Navigator.push(
