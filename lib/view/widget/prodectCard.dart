@@ -55,8 +55,15 @@ class _ProductCardState extends State<ProductCard> {
                         child: Stack(
                           children: [
                      
-                            Image.network(widget.product.images[0], fit: BoxFit.fill), // here is the error
-                            
+                           // Image.network(widget.product.images[0], fit: BoxFit.fill), // here is the error
+                          ClipRRect(
+  borderRadius: BorderRadius.circular(5),
+  child: Image.network(
+    widget.product.images[0],
+    fit: BoxFit.fill,
+  ),
+),
+  
                             
                             Positioned(
                               top: widthNHeight0(context, 0) * 0.01,

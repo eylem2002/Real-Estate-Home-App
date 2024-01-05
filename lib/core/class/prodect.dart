@@ -7,6 +7,7 @@ const String description =
     "Luxurious 2-Bedroom Oasis in Binghatti Gate, JVC Discover a haven of elegance in this 2-bedroom apartment spanning 543 sq. ft. at Binghatti Gate, Jumeirah Village Circle. Revel in modern luxury and exceptional amenities.";
 
 class Product {
+  final String ussid;
   final String id;
   final String title, description, details_seller;
   final List<dynamic> images;
@@ -29,6 +30,7 @@ class Product {
   double long, late;
 
   Product({
+    this.ussid="",
     this.long = 0,
     this.late = 0,
     this.parking = "",

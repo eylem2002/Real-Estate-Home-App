@@ -46,6 +46,7 @@ continue;
 
  DateTime now = DateTime.now();
  int currentYear = now.year;
+ String useriid="";
 double var_long=0;
 double var_lati=0;
 String var_rent_buy="";
@@ -214,7 +215,7 @@ if( Homelocation_list[2]!=null){
 
 
         
-        double d1 = 0, d2 = 0;
+        double d1 = 0, d2 = 0; String d3="";
 
         if (dataElement['long_map'] == null)
          {
@@ -244,6 +245,18 @@ if( Homelocation_list[2]!=null){
         }
 
         // print('---------------------$var_lati');
+        if (dataElement['userid'] == null)
+          {
+             d3 = "";
+            useriid="";
+          }
+         
+        else
+        {
+            d3 = dataElement['userid'];
+            useriid=dataElement['userid'];
+
+        }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -254,11 +267,14 @@ if( Homelocation_list[2]!=null){
             addTimeMove: dataElement['add_time_move'].toString(),
             addHomeInfo: homeInfo_list,
             longMap: d1,
-            latMap: d2));
+            latMap: d2,
+            userID:d3
+            ));
 
 
       }
               demoProducts.add( new Product(
+    ussid:useriid,
     long: var_long,
     late: var_lati,
     phone: var_phone,
@@ -352,6 +368,7 @@ class DataListModel {
   final List addHomeInfo;
   final double longMap;
   final double latMap;
+  final String userID;
 
   DataListModel(
       {required this.rentTime,
@@ -360,5 +377,6 @@ class DataListModel {
       required this.addTimeMove,
       required this.addHomeInfo,
       required this.longMap,
-      required this.latMap});
+      required this.latMap,
+      required this.userID});
 }

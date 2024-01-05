@@ -214,6 +214,7 @@ class _MoveTimeState extends State<MoveTime> {
                       borderWidth: 10,
                       width: widthNHeight0(context, 1) * 0.5,
                       height: widthNHeight0(context, 1) * 0.12,
+                   
                       borderRadius: 5,
                     ),
                   ),

@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:new_batic/controller/Home_controller.dart';
 import 'package:new_batic/core/class/addListToFirestore_withimage.dart';
@@ -20,7 +21,19 @@ class MapSetUp extends StatefulWidget {
 
 class _MapSetUpState extends State<MapSetUp> {
   HomeConroller homeconroller = HomeConroller();
-
+  final FirebaseAuth auth = FirebaseAuth.instance;
+ String  uid ="";
+  void inputData() {
+   final User? user = auth.currentUser;
+ if (user != null) {
+   uid = user.uid;
+    // here you write the codes to input the data into Firestore
+  } else {
+    // Handle the case when the user is not authenticated
+    print('User is not authenticated');
+  }
+  // here you write the codes to input the data into firestore
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -235,10 +248,13 @@ class _MapSetUpState extends State<MapSetUp> {
                                   double.tryParse(homeconroller.longi.text) ?? 0;
                               double latitude =
                                   double.tryParse(homeconroller.lati.text) ?? 0;
-
+inputData();
                               if (longitude != 0 && latitude != 0) {
 shared_data.add({'long_map':longitude});
 shared_data.add({'lati_map':latitude});
+print(uid);
+shared_data.add({'userid':uid});
+
  addListToFirestore_withimage(shared_data,imgeshome, imageUrls);
       shared_data.clear();
       imgeshome.clear();
