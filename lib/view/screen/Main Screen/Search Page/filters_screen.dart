@@ -19,13 +19,22 @@ class FiltersScreen extends StatefulWidget {
 }
 
 class _FiltersScreenState extends State<FiltersScreen> {
+    
   int selectedIndex = 0;
   FilterController filterController = FilterController();
 
   String? selectedGovernorates;
   int Bedrooms = 1;
+  
   @override
   Widget build(BuildContext context) {
+     
+                    //   bednumber = 0;
+                    //   price_start = 50;
+                    //   price_end = 50;
+                    //   Age = "Any";
+                    //  // Furnfished = "Any";
+                    //   Area="Any";
     return Scaffold(
       appBar: AppBar(
         title: const Text('Filters', style: TextStyle(fontFamily: 'Kadwa')),
@@ -188,10 +197,10 @@ class _FiltersScreenState extends State<FiltersScreen> {
                               });
                             },
                             items: List<DropdownMenuItem<int>>.generate(
-                              10, // Change this number based on your range of numbers
+                              10, 
                               (index) => DropdownMenuItem<int>(
                                 value: index + 1,
-                                child: Text((index + 1).toString()),
+                                child: Text((index ).toString()),
                               ),
                             ),
                           ),
@@ -303,29 +312,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 ],
               ),
             ),
-            // SizedBox(
-            //   height: widthNHeight0(context, 0) * 0.07,
-            //   child: ListView.builder(
-            //     padding: EdgeInsets.only(
-            //         left: widthNHeight0(context, 1) * (0.13 / 2)),
-            //     shrinkWrap: true,
-            //     scrollDirection: Axis.horizontal,
-            //     itemCount: filterController.building.length,
-            //     itemBuilder: (context, index) {
-            //       return Row(
-            //         children: [
-            //           SearchAreaWidget(
-            //             text: filterController.building[index],
-            //             iconData: Icons.abc,
-            //           ),
-            //           const SizedBox(
-            //             width: 5,
-            //           )
-            //         ],
-            //       );
-            //     },
-            //   ),
-            // ),
+           
             const Divider(),
             SizedBox(
               width: widthNHeight0(context, 1) * 0.87,
@@ -348,10 +335,10 @@ class _FiltersScreenState extends State<FiltersScreen> {
                     setState(() {
                       filterController.toggleSelection(index);
                       if(index==0){
-                        Furnfished="NO";
+                        Furnfished="Not";
 
                       }
-                      else   {Furnfished="Yes";}
+                      else   {Furnfished="Fully";}
                     });
                   },
                 );
@@ -423,7 +410,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
         });
       },
       child: Container(
-        height: widthNHeight0(context, 0) * 0.05,
+        height: widthNHeight0(context, 0) * 0.055,
         width: widthNHeight0(context, 1) * 0.25,
         decoration: BoxDecoration(
           color: selectedIndex == index

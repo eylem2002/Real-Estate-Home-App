@@ -413,8 +413,9 @@ class _EngineerScreenState extends State<ScreenProfile> {
                   ),
                   GestureDetector(
                     onTap: () async {
+                        await  FirebaseAuth.instance.signOut();
                       print("sign out");
-                    await  FirebaseAuth.instance.signOut();
+                  
                        Navigator.push(
                                 context,
                                 MaterialPageRoute(

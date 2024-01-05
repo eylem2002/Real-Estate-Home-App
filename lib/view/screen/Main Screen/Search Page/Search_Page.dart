@@ -85,7 +85,7 @@ class _Home_pageState extends State<Search_Page> {
           Container(
             alignment: Alignment.topLeft,
             child: Padding(
-              padding:  EdgeInsets.only(top: widthNHeight0(context, 1)*0.1),//bl
+              padding:  EdgeInsets.only(top: widthNHeight0(context, 1)*0.1),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -97,14 +97,14 @@ class _Home_pageState extends State<Search_Page> {
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                              FiltersScreen(), //here change to filter page name
+                              FiltersScreen(),
                         ),
                       );
                     },
 
                     child: const ContainerRB(
                         pic: "assets/images/svg_pic/buy.svg",
-                        headText: "Buy"), //assets/images/png_pic/baticc.png
+                        headText: "Buy"),
                   ),
                   GestureDetector(
                     onTap: () {
@@ -120,7 +120,7 @@ class _Home_pageState extends State<Search_Page> {
                     child: const ContainerRB(
                         pic: "assets/images/svg_pic/rent.svg",
                         headText:
-                            "Rent"), //assets/images/svg_pic/rent_pic.svg/
+                            "Rent"),
                   ),
                 ],
               ),

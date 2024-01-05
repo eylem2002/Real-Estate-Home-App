@@ -66,6 +66,11 @@ class Product {
 
 List<Product> demoProducts = [
 
+];
+
+
+
+
   // Product(
   //   phone: "0798018827",
   //   long: 31.895647,
@@ -106,42 +111,3 @@ List<Product> demoProducts = [
   //   total_flour: "4",
   //   disabled: "YES",
   // ),
-  // Product(
-  //   long: 31.983136,
-  //   late: 35.924557,
-  //   phone: "0788018812",
-  //   id: 2,
-  //   images: [
-  //     "assets/images/png_pic/h111.png",
-  //     "assets/images/jpg_pic/h2.jpg",
-  //     "assets/images/jpg_pic/h3.jpg",
-  //   ],
-  //   images2: [
-  //     "assets/images/png_pic/ground.png",
-  //     "assets/images/png_pic/floor1.png",
-  //   ],
-  //   colors: [
-  //     Colors.white,
-  //   ],
-  //   title: "irbid, salaman street",
-  //   price: 30000,
-  //   bath: 1,
-  //   bed: 2,
-  //   square: 20.000,
-  //   details_seller: "Fully Furnished | Marina View | Ready to Moved",
-  //   Type: "Apartments",
-  //   Purpose: "For Rent",
-  //   Added: "5 Nov 2022",
-  //   description: description,
-  //   rating: 4.8,
-  //   isFavourite: false,
-  //   isPopular: true,
-  //   parking: "YES",
-  //   balcony: "120",
-  //   buliding_name: "Starlink",
-  //   year_bulid: "2023",
-  //   elevetors: "2",
-  //   total_flour: "4",
-  //   disabled: "YES",
-  // ),
-];

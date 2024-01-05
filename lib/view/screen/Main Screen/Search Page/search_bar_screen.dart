@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:new_batic/core/class/prodect.dart';
+import 'package:new_batic/core/class/type.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Search%20Page/Search_home_folder/Search_main.dart';
-
 import 'package:new_batic/view/widget/BottomNavBar.dart';
-
-import '../../../widget/compoents/defaultFormField.dart';
 import '../../../widget/compoents/bottoms/deff_button.dart';
-import '../../../widget/location_supported_widget.dart';
+
 
 class SearchBarScreen extends StatefulWidget {
   SearchBarScreen({super.key});
@@ -23,7 +20,15 @@ class _SearchBarScreenState extends State<SearchBarScreen> {
 
   @override
   Widget build(BuildContext context) {
+       ttype = "Any";
+                      bednumber = 0;
+                      price_start = 0;
+                      price_end = 0;
+                      Age = "Any";
+                      Furnfished = "Any";
+
     return Scaffold(
+      
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -32,7 +37,11 @@ class _SearchBarScreenState extends State<SearchBarScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top:widthNHeight0(context, 1) * 0.1 ,left:widthNHeight0(context, 1) * 0.035,right: widthNHeight0(context, 1) * 0.035,bottom: widthNHeight0(context, 1) * 0.027 ),
+                  padding: EdgeInsets.only(
+                      top: widthNHeight0(context, 1) * 0.1,
+                      left: widthNHeight0(context, 1) * 0.035,
+                      right: widthNHeight0(context, 1) * 0.035,
+                      bottom: widthNHeight0(context, 1) * 0.027),
                   child: Container(
                     width: widthNHeight0(context, 1) * 0.9,
                     height: widthNHeight0(context, 1) * 0.119,
@@ -50,15 +59,16 @@ class _SearchBarScreenState extends State<SearchBarScreen> {
                         ),
                         isExpanded: true,
                         iconSize: 30,
-                      
                         value: selectedGovernorates,
                         onChanged: (String? newValue) {
                           setState(() {
                             selectedGovernorates = newValue!;
+                             Area = newValue;
                           });
                         },
                         items: <String>[
                           '',
+                          'Any',
                           'Amman',
                           'Irbid',
                           'Zarqa',
@@ -75,7 +85,7 @@ class _SearchBarScreenState extends State<SearchBarScreen> {
                           return DropdownMenuItem<String>(
                             value: value,
                             child: Text(
-                               value.isNotEmpty ? value : 'Search for Area',
+                              value.isNotEmpty ? value : 'Search for Area',
                               style: TextStyle(
                                   fontSize: widthNHeight0(context, 1) * 0.045),
                             ),
@@ -86,15 +96,13 @@ class _SearchBarScreenState extends State<SearchBarScreen> {
                   ),
                 ),
                 const Divider(),
-              SizedBox(
-                      width: widthNHeight0(context, 1),
-                      height: widthNHeight0(context, 0)*0.4,
-                      child: Image(image: AssetImage("assets/images/png_pic/batic_text.png"),))//batic_text.png
-                     ,
-               
-              
-               
-               
+                SizedBox(
+                    width: widthNHeight0(context, 1),
+                    height: widthNHeight0(context, 0) * 0.4,
+                    child: Image(
+                      image: AssetImage("assets/images/png_pic/batic_text.png"),
+                    )) //batic_text.png
+                ,
               ],
             ),
             Padding(
@@ -104,42 +112,43 @@ class _SearchBarScreenState extends State<SearchBarScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   defaultButton(
-                    text: 'Rest',
+                    text: 'Back',
                     width: widthNHeight0(context, 1) * 0.3,
                     borderRadius: 5,
                     background: Colors.white,
                     textColor: Colors.black,
                     onPressed: () {
+
+                     
+
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => const CustomeBottomNavBar(),
                         ),
                       );
-                    }, borderWidth: 0,
+                    },
+                    borderWidth: 0,
                   ),
-                    
                   defaultButton(
-                   
-
-                    text: 'Done',
+                    text: 'Next',
                     width: widthNHeight0(context, 1) * 0.6,
                     borderRadius: 5,
                     onPressed: () {
+                      
                       Navigator.push(
+                        
                         context,
                         MaterialPageRoute(
                           builder: (context) => const Search_Main(),
                         ),
                       );
-                    }, borderWidth: 0,
+                    },
+                    borderWidth: 0,
                   ),
                 ],
               ),
             ),
-          
-       
-          
           ],
         ),
       ),

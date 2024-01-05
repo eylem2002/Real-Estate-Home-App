@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:new_batic/core/class/type.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Search%20Page/filters_screen.dart';
 class Header extends StatefulWidget {
@@ -34,8 +35,8 @@ class _HeaderState extends State<Header> {
                   color: Color(0xFF263238),
                 ),
                 SizedBox(width: widthNHeight0(context, 1) * 0.03),
-                const Text(
-                  'Amman', // Here is the text to be variable
+                 Text(
+                  '$Area', // Here is the text to be variable
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontFamily: 'Kadwa',

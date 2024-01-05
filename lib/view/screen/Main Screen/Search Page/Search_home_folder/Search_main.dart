@@ -55,8 +55,6 @@ print('Furnfished: $Furnfished');
       ),
       
       body: SingleChildScrollView(
-  
-        // Removed padding from here
         child: Column(
       
           children: [

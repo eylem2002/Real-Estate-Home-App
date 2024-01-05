@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:new_batic/core/class/prodect.dart';
 
 // class Test extends StatefulWidget {
@@ -52,7 +51,7 @@ double var_lati=0;
 String var_rent_buy="";
 String var_city="";
 int var_bulidingAge=0;
-int var_Bedrooms=0;
+int varbedrooms=0;
 int var_Bathrooms=0;
 String var_Furnished="",vrfr="";
 String var_phone="";
@@ -103,7 +102,7 @@ print(idd);
               var_bulidingAge=Alloption_list[2];
             }
      if( Alloption_list[3]!=null){
-              var_Bedrooms=Alloption_list[3];
+              varbedrooms=Alloption_list[3];
             }
              if( Alloption_list[4]!=null){
               var_Bathrooms=Alloption_list[4];
@@ -272,7 +271,7 @@ if( Homelocation_list[2]!=null){
     title: "The home in $var_city",
     price: "$var_price ",
     bath: var_Bathrooms,
-    bed: var_Bedrooms,
+    bed: varbedrooms,
     square: var_sqft,
     details_seller: "$vrfr Furnished || Move $var_timeMove",
     Type: var_area,//////////////

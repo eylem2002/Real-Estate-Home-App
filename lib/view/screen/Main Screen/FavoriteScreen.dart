@@ -78,7 +78,7 @@ class FavoriteScreen extends StatefulWidget {
                                   (product) => ProductCard(
                                     product: product,
                                     onPress: () {
-                                      // add action
+                                     
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
@@ -93,12 +93,12 @@ class FavoriteScreen extends StatefulWidget {
                                             .indexWhere((p) => p.id == product.id);
                   
                                         if (isFavourite) {
-                                          // Add the product to favorites
+                                         
                                           if (productIndex == -1) {
                                             favoriteProducts.add(product);
                                           }
                                         } else {
-                                          // Remove the product from favorites
+                                      
                                           if (productIndex != -1) {
                                             favoriteProducts.removeAt(productIndex);
                                           }

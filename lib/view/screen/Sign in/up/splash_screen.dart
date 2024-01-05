@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Timer(
-      const Duration(seconds: 3),
+      const Duration(seconds: 10),
       () => (FirebaseAuth.instance.currentUser != null)  // &&FirebaseAuth.instance.currentUser!.emailVerified
           ? Navigator.of(context).pushReplacementNamed("search_home_bar")
           // Navigator.push(
