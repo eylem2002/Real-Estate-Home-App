@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:new_batic/core/class/test.dart';
 
 import 'package:new_batic/firebase_options.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/MapSetup.dart';

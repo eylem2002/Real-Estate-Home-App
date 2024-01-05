@@ -1,7 +1,6 @@
 // Updated PropertModel class
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:new_batic/core/class/type.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/model/propert_model.dart';
 
@@ -12,7 +11,7 @@ class PropertWidget extends StatelessWidget {
   final PropertModel propertModel;
   final VoidCallback onTap;
 
-  PropertWidget({
+  const PropertWidget({super.key, 
     required this.propertModel,
     required this.onTap,
   });

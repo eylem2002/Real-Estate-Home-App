@@ -4,7 +4,7 @@ import 'package:new_batic/view/widget/compoents/bottoms/deff_button.dart';
 import 'package:new_batic/view/widget/compoents/bottoms/deff_button2.dart';
 
 class EnterServices extends StatefulWidget {
-  const EnterServices({Key? key, required this.lon, required this.lat}) : super(key: key);
+  const EnterServices({super.key, required this.lon, required this.lat});
   final double lon, lat;
 
   @override

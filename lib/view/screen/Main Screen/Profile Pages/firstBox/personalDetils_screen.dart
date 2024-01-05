@@ -1,5 +1,7 @@
 // ignore_for_file: file_names
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:new_batic/controller/login_controller.dart';
 import 'package:new_batic/controller/signup_controller.dart';
@@ -67,7 +69,7 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                     Padding(
                       padding: const EdgeInsets.only(top: 15.0),
                       child: const Text(
-                        'Name',
+                        'First Name',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -76,7 +78,7 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                       ),
                     ),
                     TextFormWidget(
-                      height: widthNHeight0(context, 1)*0.2,
+                      height: widthNHeight0(context, 1) * 0.2,
                       width: double.infinity,
                       passToggle: false,
                       validator: (value) {
@@ -88,7 +90,33 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                       passController: signUpController.firstName,
                       str: 'Batic',
                     ),
-                     SizedBox(height:   widthNHeight0(context, 1)*0.008,),
+                    SizedBox(
+                      height: widthNHeight0(context, 1) * 0.008,
+                    ),
+                    const Text(
+                      'Second Name',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Kadwa',
+                      ),
+                    ),
+                    TextFormWidget(
+                      height: widthNHeight0(context, 1) * 0.2,
+                      width: double.infinity,
+                      passToggle: false,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return ' Name must not be empty ';
+                        }
+                        return null;
+                      },
+                      passController: signUpController.secondName,
+                      str: 'Home',
+                    ),
+                    SizedBox(
+                      height: widthNHeight0(context, 1) * 0.008,
+                    ),
                     const Text(
                       'Email Address',
                       style: TextStyle(
@@ -97,8 +125,8 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                         fontFamily: 'Kadwa',
                       ),
                     ),
-                    TextFormWidget(
-                       height: widthNHeight0(context, 1)*0.2,
+                    TextFormWidget44(
+                      height: widthNHeight0(context, 1) * 0.2,
                       width: double.infinity,
                       passToggle: false,
                       validator: (value) {
@@ -110,7 +138,9 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                       passController: signUpController.email,
                       str: 'Batic@gmail.com',
                     ),
-                    SizedBox(height:   widthNHeight0(context, 1)*0.008,),
+                    SizedBox(
+                      height: widthNHeight0(context, 1) * 0.008,
+                    ),
                     const Text(
                       'Phone',
                       style: TextStyle(
@@ -120,7 +150,7 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                       ),
                     ),
                     TextFormWidget(
-                       height: widthNHeight0(context, 1)*0.2,
+                      height: widthNHeight0(context, 1) * 0.2,
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'Phone must not be empty ';
@@ -132,37 +162,56 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                       passController: signUpController.phone,
                       str: '0798972344',
                     ),
-                     SizedBox(height:   widthNHeight0(context, 1)*0.008,),
-                    const Text(
-                      'Country',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Kadwa',
-                      ),
+                    SizedBox(
+                      height: widthNHeight0(context, 1) * 0.008,
                     ),
-                    TextFormWidget(
-                      height: widthNHeight0(context, 1)*0.2,
-                      width: double.infinity,
-                      passToggle: false,
-                      validator: (value) {},
-                      passController: signUpController.secondName,
-                      str: 'Jordan',
-                    ),
-                     SizedBox(height:   widthNHeight0(context, 1)*0.05,),
-                    
-                    
                     Center(
                       child: defaultButton(
                         text: 'Update',
-                        function: () {
-                          if (signUpController.formKey.currentState!
-                              .validate()) {}
+                        function: () {},
+                        onPressed: () async {
+                          try {
+                            if (signUpController.formKey.currentState!
+                                .validate()) {
+                              User? user = FirebaseAuth.instance.currentUser;
+                              
+
+                              if (user != null) {
+                                
+                                await FirebaseFirestore.instance
+                                    .collection('Users')
+                                    .doc(user.uid)
+                                    .update({
+                                  'FirstName': signUpController.firstName.text,
+                                  // 'SecondName': signUpController.secondName.text,
+                                  // 'Email': signUpController.email.text,
+                                  // 'Phone': signUpController.phone.text,
+                                });
+                                print(FirebaseFirestore.instance
+                                    .collection('Users')
+                                    .doc(user.uid));
+
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                        'User information updated successfully!'),
+                                  ),
+                                );
+                              }
+                            }
+                          } catch (e) {
+                            print('Error updating user information: $e');
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                    'An error occurred while updating user information.'),
+                              ),
+                            );
+                          }
                         },
-                        onPressed: () {},
                         borderWidth: 10,
-                        width: widthNHeight0(context, 1)*0.6,
-                        height: widthNHeight0(context, 1)*0.12,
+                        width: widthNHeight0(context, 1) * 0.6,
+                        height: widthNHeight0(context, 1) * 0.12,
                         borderRadius: 5,
                       ),
                     ),

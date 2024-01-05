@@ -22,7 +22,7 @@ class FavoriteScreen extends StatefulWidget {
       appBar: AppBar(
         title: Text(
           "Saved",
-          style: TextStyle(fontFamily: "Kadwa", fontWeight: FontWeight.w600),
+          style: TextStyle(fontFamily: "Kadwa", fontWeight: FontWeight.w600,  fontSize: widthNHeight0(context, 1) * 0.06,),
           
         ),
          automaticallyImplyLeading: false,
@@ -47,7 +47,7 @@ class FavoriteScreen extends StatefulWidget {
                           child: Center(
                               child: Column(
                                
-                                children: [
+                                children: const [
                                   Text(
                                     "SAVE YOUR FAVOURITE PROPERTIES NOW!",
                                     textAlign: TextAlign.center,

@@ -102,8 +102,7 @@ class _ProductCardState extends State<MyHomecard> {
                                 style: ElevatedButton.styleFrom(
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  primary: Color(0xffCCD8F4).withOpacity(0.35),
+                                  ), backgroundColor: Color(0xffCCD8F4).withOpacity(0.35),
                                 ),
                                 child: Text(
                                   'Delete',
@@ -156,8 +155,7 @@ class _ProductCardState extends State<MyHomecard> {
                             style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5),
-                              ),
-                              primary: Color(0xff6482C4),
+                              ), backgroundColor: Color(0xff6482C4),
                             ),
                             child: Text(
                               'Edit',
@@ -174,8 +172,7 @@ class _ProductCardState extends State<MyHomecard> {
                             style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5),
-                              ),
-                              primary: Color(0xff6482C4),
+                              ), backgroundColor: Color(0xff6482C4),
                             ),
                             child: Text(
                               'Request',

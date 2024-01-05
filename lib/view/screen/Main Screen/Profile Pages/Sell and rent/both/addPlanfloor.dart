@@ -9,7 +9,7 @@ List<File> sharedImageList = [];
     List<String> imageUrls = [];
 
 class ImagePick extends StatefulWidget {
-  const ImagePick({Key? key});
+  const ImagePick({super.key, Key? key});
 
   @override
   State<ImagePick> createState() => _PickImageState();
@@ -118,11 +118,11 @@ class _PickImageState extends State<ImagePick> {
                     await uploadImagesToStorage();
                     Navigator.of(context).pushNamed("home_images");
                   },
+                  backgroundColor: Color(0xff6482C4),
                   child: Text(
           "Next",
           style: TextStyle(fontFamily: "kadwa", color: Colors.white,fontWeight: FontWeight.w600),
         ),
-                  backgroundColor: Color(0xff6482C4),
                 ),
               ),
             ),
@@ -192,8 +192,6 @@ class _PickImageState extends State<ImagePick> {
     final returnImage =
         await ImagePicker().pickImage(source: ImageSource.gallery);
     file = File(returnImage!.path);
-
-    if (returnImage == null) return;
 
     setState(() {
       _selectedImages.add(File(returnImage.path));

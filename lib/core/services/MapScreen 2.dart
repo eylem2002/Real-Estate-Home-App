@@ -109,7 +109,7 @@ class _MapScreenState extends State<MapScreenLocation> {
           children: [
             Stack(
               children: [
-                Container(
+                SizedBox(
                   height: _getHeight(context),
                   child: GoogleMap(
                     myLocationButtonEnabled: true,

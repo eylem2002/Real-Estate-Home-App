@@ -5,7 +5,7 @@ import 'package:new_batic/core/services/EnterSevices.dart';
 class FloorPlan extends StatefulWidget {
   final Product product;
 
-  const FloorPlan({Key? key, required this.product}) : super(key: key);
+  const FloorPlan({super.key, required this.product});
 
   @override
   State<FloorPlan> createState() => _FloorPlanState();
@@ -47,7 +47,7 @@ class _FloorPlanState extends State<FloorPlan> {
             padding: EdgeInsets.all(widthNHeight0(context, 1) * 0.04),
             child: Column(
               children: [
-                Container(
+                SizedBox(
                   height: MediaQuery.of(context).size.height-140,
                   child: ListView.builder(
                     physics: AlwaysScrollableScrollPhysics(),
@@ -56,7 +56,7 @@ class _FloorPlanState extends State<FloorPlan> {
                     itemBuilder: (BuildContext context, int index) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(vertical: 9.0),
-                        child: Container(
+                        child: SizedBox(
                           width: MediaQuery.of(context).size.width,
                           child: Image.network(
                             widget.product.images2[index],

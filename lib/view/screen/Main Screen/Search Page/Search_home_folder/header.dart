@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:new_batic/core/class/type.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
-import 'package:new_batic/view/screen/Main%20Screen/Search%20Page/filters_screen.dart';
 class Header extends StatefulWidget {
-  const Header({Key? key}) : super(key: key);
+  const Header({super.key});
 
   @override
   State<Header> createState() => _HeaderState();
@@ -36,7 +35,7 @@ class _HeaderState extends State<Header> {
                 ),
                 SizedBox(width: widthNHeight0(context, 1) * 0.03),
                  Text(
-                  '$Area', // Here is the text to be variable
+                  Area, // Here is the text to be variable
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontFamily: 'Kadwa',

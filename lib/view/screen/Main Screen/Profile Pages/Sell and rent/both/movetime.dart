@@ -4,7 +4,7 @@ import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/widget/compoents/bottoms/deff_button.dart';
 
 class MoveTime extends StatefulWidget {
-  const MoveTime({Key? key}) : super(key: key);
+  const MoveTime({super.key});
 
   @override
   _MoveTimeState createState() => _MoveTimeState();

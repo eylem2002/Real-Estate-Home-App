@@ -6,9 +6,8 @@ import 'package:new_batic/core/class/prodect.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/screen/details/details_screen.dart';
 import 'package:new_batic/view/widget/Myhomecard.dart';
-import 'package:new_batic/view/widget/prodectCard.dart';
 class MyHome extends StatefulWidget {
-  const MyHome({Key? key}) : super(key: key);
+  const MyHome({super.key});
 
   @override
   State<MyHome> createState() => _MyHomeState();
@@ -76,7 +75,7 @@ class _MyHomeState extends State<MyHome> {
         appBar: AppBar(
           title: Text(
             "MyHomes",
-            style: TextStyle(fontFamily: "Kadwa", fontWeight: FontWeight.w600),
+            style: TextStyle(fontFamily: "Kadwa", fontWeight: FontWeight.w600,  fontSize: widthNHeight0(context, 1) * 0.06,),
           ),
           automaticallyImplyLeading: false,
           
@@ -100,7 +99,7 @@ class _MyHomeState extends State<MyHome> {
                           top: widthNHeight0(context, 1) * 0.5),
                       child: Center(
                         child: Column(
-                          children: [
+                          children: const [
                             Text(
                               "SELL OR RENT YOUR HOME NOW!",
                               textAlign: TextAlign.center,

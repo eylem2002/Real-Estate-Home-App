@@ -1,5 +1,4 @@
 import 'package:new_batic/model/propert_model.dart';
-import 'package:new_batic/view/widget/propert_widget.dart';
 
 class FilterController {
   double _currentSliderValueMin = 60000;

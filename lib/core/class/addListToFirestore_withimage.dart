@@ -1,7 +1,7 @@
   import 'package:cloud_firestore/cloud_firestore.dart';
 
 Future<void> addListToFirestore_withimage(
-      List<Map<String, dynamic>> dataList, List<String> imageUrls,List <String>imges_home ) async {
+      List<Map<String, dynamic>> dataList, List<String> imageUrls,List <String>imgesHome ) async {
     try {
       CollectionReference collectionReference =
           FirebaseFirestore.instance.collection('House');
@@ -9,7 +9,7 @@ Future<void> addListToFirestore_withimage(
       await collectionReference.doc().set({
         'dataList': dataList,
         
-        'imges_home':imges_home,
+        'imges_home':imgesHome,
         'imageUrls': imageUrls,
       });
 

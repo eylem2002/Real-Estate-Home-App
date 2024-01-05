@@ -1,9 +1,6 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:new_batic/core/services/EnterSevices.dart';
-import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
-import 'package:new_batic/view/widget/BottomNavBar.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -43,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color(0xFFCDD9F4), Color(0xFFF0F2F6),Color(0xFFEBEEF6),Color(0xFFEFF1F6),Color(0xFFCDD9F4),Color(0xFFF0F2F6)],
+            colors: const [Color(0xFFCDD9F4), Color(0xFFF0F2F6),Color(0xFFEBEEF6),Color(0xFFEFF1F6),Color(0xFFCDD9F4),Color(0xFFF0F2F6)],
           ),
         ),
         child: Center(

@@ -7,7 +7,7 @@ import '../../../widget/compoents/bottoms/deff_button.dart';
 
 
 class SearchBarScreen extends StatefulWidget {
-  SearchBarScreen({super.key});
+  const SearchBarScreen({super.key});
 
   @override
   State<SearchBarScreen> createState() => _SearchBarScreenState();

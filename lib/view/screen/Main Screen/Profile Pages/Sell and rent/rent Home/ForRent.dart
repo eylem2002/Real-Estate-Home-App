@@ -31,6 +31,7 @@ class _RentScreenState extends State<RentScreen> {
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

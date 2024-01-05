@@ -281,7 +281,7 @@ class _SellHomeScreenState extends State<SellHomeScreen> {
   }
 
   void updateSelectedReasons(String reason) {
-    if(reason==null)reason="Other";
+    reason ??= "Other";
     if (selectedReasons.contains(reason)) {
       selectedReasons.remove(reason);
     } else {

@@ -11,7 +11,7 @@ class MapScreen extends StatefulWidget {
   final String servicesName;
   final double lon, lat;
 
-  const MapScreen({Key? key, required this.servicesName, required this.lon, required this.lat}) : super(key: key);
+  const MapScreen({super.key, required this.servicesName, required this.lon, required this.lat});
 
   @override
   _MapScreenState createState() => _MapScreenState();
@@ -33,7 +33,7 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('$str_service'),
+        title: Text(str_service),
         leading: Container(
           padding: const EdgeInsets.all(9),
           child: Center(
@@ -101,7 +101,7 @@ class _MapScreenState extends State<MapScreen> {
         children: [
           Stack(
             children: [
-              Container(
+              SizedBox(
                 height: _getHeight(context),
                 child: GoogleMap(
                   myLocationButtonEnabled: true,
@@ -112,7 +112,7 @@ class _MapScreenState extends State<MapScreen> {
                   rotateGesturesEnabled: true,
                   tiltGesturesEnabled: false,
                   myLocationEnabled: true,
-                  gestureRecognizers: Set()..add(Factory<PanGestureRecognizer>(() => PanGestureRecognizer())),
+                  gestureRecognizers: <dynamic>{}..add(Factory<PanGestureRecognizer>(() => PanGestureRecognizer())),
                   mapType: currentMapType,
                   initialCameraPosition: cam_pos,
                   

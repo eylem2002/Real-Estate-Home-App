@@ -64,7 +64,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Text(
-                '$ttype',
+                ttype,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontSize: 20,

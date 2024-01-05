@@ -25,9 +25,9 @@ class _BodySearchState extends State<BodySearch> {
 
   @override
   Widget build(BuildContext context) {
-    demoProducts.forEach((element) {
+    for (var element in demoProducts) {
       print('========${element.title}');
-    });
+    }
 
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,

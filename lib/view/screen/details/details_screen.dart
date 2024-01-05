@@ -6,7 +6,6 @@ import 'package:new_batic/core/class/prodect.dart';
 import 'package:new_batic/core/functions/call.dart';
 import 'package:new_batic/core/services/MapScreen%202.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
-import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/addhomepic.dart';
 import 'package:new_batic/view/screen/details/floorplan.dart';
 import 'package:new_batic/view/widget/compoents/bottoms/deff_button%203.dart';
 import 'package:new_batic/view/widget/compoents/bottoms/deff_button%204.dart';
@@ -16,7 +15,7 @@ import 'package:new_batic/view/widget/compoents/bottoms/deff_button%204.dart';
 
 class DetailsScreen extends StatefulWidget {
  
-  const DetailsScreen({Key? key, required this.product}) : super(key: key);
+  const DetailsScreen({super.key, required this.product});
 
   final Product product;
  
