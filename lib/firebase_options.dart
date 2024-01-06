@@ -79,3 +79,4 @@ class DefaultFirebaseOptions {
     iosBundleId: 'com.example.newBatic.RunnerTests',
   );
 }
+

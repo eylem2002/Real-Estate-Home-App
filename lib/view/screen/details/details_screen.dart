@@ -6,7 +6,6 @@ import 'package:new_batic/core/class/prodect.dart';
 import 'package:new_batic/core/functions/call.dart';
 import 'package:new_batic/core/services/MapScreen%202.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
-import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/addhomepic.dart';
 import 'package:new_batic/view/screen/details/floorplan.dart';
 import 'package:new_batic/view/widget/compoents/bottoms/deff_button%203.dart';
 import 'package:new_batic/view/widget/compoents/bottoms/deff_button%204.dart';
@@ -16,7 +15,7 @@ import 'package:new_batic/view/widget/compoents/bottoms/deff_button%204.dart';
 
 class DetailsScreen extends StatefulWidget {
  
-  const DetailsScreen({Key? key, required this.product}) : super(key: key);
+  const DetailsScreen({super.key, required this.product});
 
   final Product product;
  
@@ -83,7 +82,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           decoration: BoxDecoration(
                             color: Colors.amber,
                           ),
-                          child: Image.asset(image, fit: BoxFit.fill),
+                          child: Image.network(image, fit: BoxFit.fill),
                         );
                       },
                     );
@@ -124,7 +123,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                         children: [
                                           Icon(
                                               Icons
-                                                  .airline_seat_individual_suite_rounded,
+                                                  .bed_outlined,
                                               size: widthNHeight0(context, 1) *
                                                   0.04),
                                           SizedBox(
@@ -145,7 +144,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Icon(Icons.bathtub_rounded,
+                                          Icon(Icons.bathtub_outlined,
                                               size: widthNHeight0(context, 1) *
                                                   0.04),
                                           SizedBox(
@@ -278,12 +277,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "Type",
+                                        "Built Uparea",
                                         style: TextStyle(fontFamily: "kadwa"),
                                       ),
                                       SizedBox(
                                           width:
-                                              widthNHeight0(context, 0) * 0.15),
+                                              widthNHeight0(context, 0) * 0.088),
                                       Text(
                                         " ${widget.product.Type}",
                                         style: const TextStyle(
@@ -596,6 +595,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             defaultButton3(
+                                fontSize: widthNHeight0(context, 1)*0.044,
                               text: 'Floor Plan', //FloorPlan
                               width: widthNHeight0(context, 1) * 0.36,
                               borderRadius: 5,
@@ -613,6 +613,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               borderWidth: 0,
                             ),
                             defaultButton3(
+                                   fontSize: widthNHeight0(context, 1)*0.045,
                               text: 'View Map', //MapScreenLocation
                               width: widthNHeight0(context, 1) * 0.36,
                               borderRadius: 5,
@@ -637,6 +638,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             defaultButton3(
+                                fontSize: widthNHeight0(context, 1)*0.05,
                               text: 'Services',
                               width: widthNHeight0(context, 1) * 0.36,
                               borderRadius: 5,
@@ -657,6 +659,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               borderWidth: 0,
                             ),
                             defaultButton4(
+                            
                               text: 'Call',
                               width: widthNHeight0(context, 1) * 0.36,
                               borderRadius: 5,

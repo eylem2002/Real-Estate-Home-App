@@ -1,9 +1,6 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:new_batic/core/services/EnterSevices.dart';
-import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
-import 'package:new_batic/view/widget/BottomNavBar.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,7 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Timer(
-      const Duration(seconds: 3),
+      const Duration(seconds: 5),
       () => (FirebaseAuth.instance.currentUser != null)  // &&FirebaseAuth.instance.currentUser!.emailVerified
           ? Navigator.of(context).pushReplacementNamed("search_home_bar")
           // Navigator.push(
@@ -37,11 +34,24 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: widthNHeight0(context, 1),
-      height: widthNHeight0(context, 0),
-      child: Image.asset(
-          fit: BoxFit.cover, 'assets/images/png_pic/batik_splash.png'),
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: const [Color(0xFFCDD9F4), Color(0xFFF0F2F6),Color(0xFFEBEEF6),Color(0xFFEFF1F6),Color(0xFFCDD9F4),Color(0xFFF0F2F6)],
+          ),
+        ),
+        child: Center(
+          child: Image.asset(
+            'assets/images/png_pic/batic_text.png',
+            width: 300, 
+            height: 300,
+            fit: BoxFit.contain,
+          ),
+        ),
+      ),
     );
   }
 }

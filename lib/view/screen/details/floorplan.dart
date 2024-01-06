@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:new_batic/core/class/prodect.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 
-
 class FloorPlan extends StatefulWidget {
   final Product product;
 
-  const FloorPlan({Key? key, required this.product}) : super(key: key);
+  const FloorPlan({super.key, required this.product});
 
   @override
   State<FloorPlan> createState() => _FloorPlanState();
@@ -16,7 +15,7 @@ class _FloorPlanState extends State<FloorPlan> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
+      appBar: AppBar(
         title: Text("Batic"),
         leading: Container(
           padding: const EdgeInsets.all(9),
@@ -38,25 +37,41 @@ class _FloorPlanState extends State<FloorPlan> {
           ),
         ),
       ),
-      body:
-        ListView(
-          children: [
-            Divider(height: 3,color: Colors.grey[300],),
-         Padding(
-        
-        padding:  EdgeInsets.all(widthNHeight0(context, 1)*0.06),
-           child: Column(
-             children: [
-               Image.asset(widget.product.images2[0], fit: BoxFit.fill),
-               SizedBox(height: widthNHeight0(context, 1)*0.09,),
-                  Image.asset(widget.product.images2[1], fit: BoxFit.fill),
-             ],
-           ),
-         ),
-            // Add more images if needed
-          ],
-        ),
-    
+      body: ListView(
+        children: [
+          Divider(
+            height: 3,
+            color: Colors.grey[300],
+          ),
+          Padding(
+            padding: EdgeInsets.all(widthNHeight0(context, 1) * 0.04),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height-140,
+                  child: ListView.builder(
+                    physics: AlwaysScrollableScrollPhysics(),
+                    scrollDirection: Axis.vertical,
+                    itemCount: widget.product.images2.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 9.0),
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          child: Image.network(
+                            widget.product.images2[index],
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

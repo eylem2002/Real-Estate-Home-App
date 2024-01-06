@@ -1,18 +1,19 @@
-// ignore_for_file: unnecessary_getters_setters
+import 'package:new_batic/model/propert_model.dart';
 
-import '../model/propert_model.dart';
-
-class FilterController{
+class FilterController {
   double _currentSliderValueMin = 60000;
   double _currentSliderValueMax = 250000;
+
   final List<String> building = ['Any', 'New', '5+', '10+'];
   final List<PropertModel> propert = [
     PropertModel(
-        text: 'Detached',
-        path: 'assets/images/svg_pic/undraw_sweet_home_dkhr 5.svg'),
+      text: 'NO',
+      imagePath: 'assets/images/svg_pic/undraw_building_re_xfcm.svg',
+    ),
     PropertModel(
-        text: 'Apartments',
-        path: 'assets/images/svg_pic/undraw_coming_home_re_ausc 2.svg')
+      text: 'Yes',
+      imagePath: 'assets/images/svg_pic/Group 9.svg',
+    ),
   ];
 
   double get currentSliderValueMin => _currentSliderValueMin;
@@ -25,5 +26,11 @@ class FilterController{
 
   set currentSliderValueMax(double value) {
     _currentSliderValueMax = value;
+  }
+
+  void toggleSelection(int index) {
+    for (int i = 0; i < propert.length; i++) {
+      propert[i].isSelected = (i == index);
+    }
   }
 }

@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, unused_element, camel_case_types, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
+import 'package:new_batic/core/class/type.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Search%20Page/filters_screen.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Search%20Page/search_bar_screen.dart';
@@ -17,6 +18,7 @@ class Search_Page extends StatefulWidget {
 final TextEditingController _controller = TextEditingController();
 
 class _Home_pageState extends State<Search_Page> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +28,7 @@ class _Home_pageState extends State<Search_Page> {
           Stack(
             children: [
               SizedBox(
-                height: widthNHeight0(context, 0) * .44,
+                height: widthNHeight0(context, 0) * .46,
                 width: widthNHeight0(context, 0) * .6,
                 child: Image.asset(
                     fit: BoxFit.cover, 'assets/images/png_pic/baticc.png'),
@@ -35,13 +37,14 @@ class _Home_pageState extends State<Search_Page> {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(
-                        top: widthNHeight0(context, 0) * 0.36,
+                        top: widthNHeight0(context, 0) * 0.375,
                         left: widthNHeight0(context, 0) * 0.03,
                         right: widthNHeight0(context, 0) * 0.03),
                     child: Container(
                       child: GestureDetector(
                         onTap: () {
-                          // Navigate to the search page here
+                             
+                         
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -51,17 +54,17 @@ class _Home_pageState extends State<Search_Page> {
                         },
                         child: Container(
                           width: widthNHeight0(context, 1) * 0.85,
-                          height: widthNHeight0(context, 0) * 0.066,
+                          height: widthNHeight0(context, 0) * 0.075,
                           decoration: BoxDecoration(
                             color: const Color(0xFFF0F2F6),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 15.0, horizontal: 10.0),
-                          child: const Row(
+                          child:  Row(
                             children: [
                               Icon(Icons.search),
-                              SizedBox(width: 10.0),
+                              SizedBox(width: widthNHeight0(context, 0)*0.01),
                               Text(
                                 'Search Area / location',
                                 style: TextStyle(
@@ -81,40 +84,42 @@ class _Home_pageState extends State<Search_Page> {
           Container(
             alignment: Alignment.topLeft,
             child: Padding(
-              padding: const EdgeInsets.only(top: 70),
+              padding:  EdgeInsets.only(top: widthNHeight0(context, 1)*0.1),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   
                   GestureDetector(
                     onTap: () {
+                       ttype="Buy";
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                              FiltersScreen(), //here change to filter page name
+                              FiltersScreen(),
                         ),
                       );
                     },
 
                     child: const ContainerRB(
                         pic: "assets/images/svg_pic/buy.svg",
-                        headText: "Buy"), //assets/images/png_pic/baticc.png
+                        headText: "Buy"),
                   ),
                   GestureDetector(
                     onTap: () {
+                      ttype="Rent";
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                              FiltersScreen(), ////here change to filter page name
+                              FiltersScreen(), 
                         ),
                       );
                     },
                     child: const ContainerRB(
                         pic: "assets/images/svg_pic/rent.svg",
                         headText:
-                            "Rent"), //assets/images/svg_pic/rent_pic.svg/
+                            "Rent"),
                   ),
                 ],
               ),

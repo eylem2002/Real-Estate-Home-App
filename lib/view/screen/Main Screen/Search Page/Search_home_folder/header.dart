@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:new_batic/core/class/type.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
-import 'package:new_batic/view/screen/Main%20Screen/Search%20Page/filters_screen.dart';
-import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
-
 class Header extends StatefulWidget {
-  const Header({Key? key}) : super(key: key);
+  const Header({super.key});
 
   @override
   State<Header> createState() => _HeaderState();
@@ -36,8 +34,8 @@ class _HeaderState extends State<Header> {
                   color: Color(0xFF263238),
                 ),
                 SizedBox(width: widthNHeight0(context, 1) * 0.03),
-                const Text(
-                  'Amman', // Here is the text to be variable
+                 Text(
+                  Area, // Here is the text to be variable
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontFamily: 'Kadwa',
@@ -50,67 +48,85 @@ class _HeaderState extends State<Header> {
             ),
           ),
         ),
-        SizedBox(height: widthNHeight0(context, 0) * 0.030),
-        SizedBox(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  // Navigate to the home page here
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => home(),
-                  //   ),
-                  // );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFCCD8F4),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                ),
-                child: buildButtonContent(Icons.arrow_upward, 'Sort'),
-              ),
-                ElevatedButton(
-                onPressed: () {
-                  // Navigate to the Map page here
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => FiltersScreen(),
-                  //   ),
-                  // );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFCCD8F4),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                ),
-                child: buildButtonContent(Icons.arrow_downward_sharp, 'Sort'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // Navigate to the filter page here
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => FiltersScreen(),
-                    ),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFCCD8F4),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                ),
-                child: buildButtonContent(Icons.loop, 'Filter'),
-              ),
-            
-            ],
+        SizedBox(height: widthNHeight0(context, 0) * 0.020),
+        SingleChildScrollView(
+          
+          scrollDirection: Axis.horizontal,
+          child: SizedBox(
+            child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+               GestureDetector(
+  onTap: () {
+    // Navigate to the home page here
+    // Navigator.push(
+    //   context,
+    //   MaterialPageRoute(
+    //     builder: (context) => home(),
+    //   ),
+    // );
+  },
+  child: Container(
+    padding: EdgeInsets.all(5),
+    height: widthNHeight0(context, 1)*0.14,
+    width:widthNHeight0(context, 0)*0.14,
+  
+    decoration: BoxDecoration(
+      color: const Color(0xFFCCD8F4),
+      borderRadius: BorderRadius.circular(5.0),
+    ),
+    child: buildButtonContent(Icons.arrow_upward, 'Sort'),
+  ),
+),
+
+               SizedBox(width: widthNHeight0(context, 1)*0.01,),
+                      GestureDetector(
+  onTap: () {
+    // Navigate to the home page here
+    // Navigator.push(
+    //   context,
+    //   MaterialPageRoute(
+    //     builder: (context) => home(),
+    //   ),
+    // );
+  },
+  child: Container(
+    padding: EdgeInsets.all(5),
+    height: widthNHeight0(context, 1)*0.14,
+     width:widthNHeight0(context, 0)*0.14,
+    decoration: BoxDecoration(
+      color: const Color(0xFFCCD8F4),
+      borderRadius: BorderRadius.circular(5.0),
+    ),
+    child: buildButtonContent(Icons.arrow_downward, 'Sort'),
+  ),
+),
+               SizedBox(width: widthNHeight0(context, 1)*0.01,),
+                   GestureDetector(
+  onTap: () {
+    // Navigate to the home page here
+    // Navigator.push(
+    //   context,
+    //   MaterialPageRoute(
+    //     builder: (context) => home(),
+    //   ),
+    // );
+  },
+  child: Container(
+    padding: EdgeInsets.all(5),
+    height: widthNHeight0(context, 1)*0.14,
+     width:widthNHeight0(context, 0)*0.14,
+    decoration: BoxDecoration(
+      color: const Color(0xFFCCD8F4),
+      borderRadius: BorderRadius.circular(5.0),
+    ),
+    child: buildButtonContent(Icons.loop, 'Filter'),
+  ),
+),
+              
+              ],
+            ),
           ),
         ),
       ],

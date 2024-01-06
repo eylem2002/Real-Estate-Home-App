@@ -4,7 +4,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/instance_manager.dart';
-import 'package:new_batic/model/user_model.dart';
 import 'package:new_batic/repository/user_repository/user_repository.dart';
 
 class SignUpController{
@@ -54,10 +53,12 @@ final userRepo=Get.put(UserRepository());
     _email = value;
   }
 
-Future<void> createUser(UserModel user) async {
- await userRepo.createUser(user);
-  // phoneAuthentication(user.phoneNo);
-      // Get.to(()=>const OTPScreen());
-}
+// Future<void> createUser(UserModel user) async {
+//  await userRepo.createUser(user);
+//   // phoneAuthentication(user.phoneNo);
+//       // Get.to(()=>const OTPScreen());
+     
+
+// }
 
 }

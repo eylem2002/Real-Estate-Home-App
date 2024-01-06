@@ -6,9 +6,8 @@ import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/rent%20Home/ForRent.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/firstBox/ChnagePass.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/firstBox/personalDetils_screen.dart';
-import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/sell%20Home/sell_home_screen.dart';
 import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
-import 'package:new_batic/view/screen/Sign%20in/up/signup_screen.dart';
+
 
 class ScreenProfile extends StatefulWidget {
   const ScreenProfile({super.key});
@@ -18,6 +17,10 @@ class ScreenProfile extends StatefulWidget {
 }
 
 class _EngineerScreenState extends State<ScreenProfile> {
+  FirebaseAuth auth = FirebaseAuth.instance;
+  signOut() async {
+        await auth.signOut();
+      }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +28,7 @@ class _EngineerScreenState extends State<ScreenProfile> {
         title: Center(
           child: Text('Account',
               style: TextStyle(
-                fontSize: widthNHeight0(context, 1) * 0.066,
+                fontSize: widthNHeight0(context, 1) * 0.06,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Kadwa',
               )),
@@ -48,16 +51,9 @@ class _EngineerScreenState extends State<ScreenProfile> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Hello ${'Alaa'}',
-                    style: TextStyle(
-                      fontSize: widthNHeight0(context, 1) * 0.064,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Kadwa',
-                    ),
-                  ),
+                 
                   SizedBox(
-                    height: widthNHeight0(context, 1) * 0.04,
+                    height: widthNHeight0(context, 1) * 0.05,
                   ),
                   Container(
                     width: double.infinity,
@@ -207,12 +203,9 @@ class _EngineerScreenState extends State<ScreenProfile> {
                           ),
                           InkWell(
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const SellHomeScreen(),
-                                ),
-                              );
+                             
+                               Navigator.of(context).pushNamed("sellhome");//////sell home
+                             
                             },
                             child: Padding(
                               padding: EdgeInsets.only(right: 17),
@@ -424,8 +417,11 @@ class _EngineerScreenState extends State<ScreenProfile> {
                   ),
                   GestureDetector(
                     onTap: () async {
+                        // await  FirebaseAuth.instance.signOut();
+                        signOut();
+                    
                       print("sign out");
-                    await  FirebaseAuth.instance.signOut();
+                  
                        Navigator.push(
                                 context,
                                 MaterialPageRoute(

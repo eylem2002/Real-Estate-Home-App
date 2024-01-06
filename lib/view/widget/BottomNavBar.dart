@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:get/state_manager.dart';
+import 'package:new_batic/core/class/test.dart';
+
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Screen_Profile.dart';
 import 'package:new_batic/view/screen/Main%20Screen/FavoriteScreen.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Search%20Page/Search_Page.dart';
@@ -65,9 +67,14 @@ class CustomeBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+      //fetchProducts();
+        getProducts();
+      // Test();
     final controller = Get.put(NavigationController());
     return Scaffold(
+      
       bottomNavigationBar: Obx(
+        
         () => NavigationBar(
           backgroundColor: Color(0xffF0F2F6),
           height: 80,
@@ -105,11 +112,13 @@ class CustomeBottomNavBar extends StatelessWidget {
         ),
       ),
       body: Obx(() => controller.screens[controller.selectedIndex.value]),
+      
     );
   }
 }
 
 class NavigationController extends GetxController {
+
   final Rx<int> selectedIndex = 0.obs;// here the first value was zero
   final screens = [
      const Search_Page(),

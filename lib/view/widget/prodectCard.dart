@@ -54,14 +54,23 @@ class _ProductCardState extends State<ProductCard> {
                         padding: const EdgeInsets.only(right: 0),
                         child: Stack(
                           children: [
+                     
+                           // Image.network(widget.product.images[0], fit: BoxFit.fill), // here is the error
+                          ClipRRect(
+  borderRadius: BorderRadius.circular(5),
+  child: Image.network(
+    widget.product.images[0],
+    fit: BoxFit.fill,
+  ),
+),
+  
                             
-                            Image.asset(widget.product.images[0], fit: BoxFit.fill),
                             Positioned(
                               top: widthNHeight0(context, 0) * 0.01,
                               left: widthNHeight0(context, 1) * 0.02,
-                              height: widthNHeight0(context, 1)*0.085,
+                              height: widthNHeight0(context, 1)*0.084,
                               child: Container(
-                                padding: const EdgeInsets.all(8.0),
+                                padding:  EdgeInsets.all( widthNHeight0(context, 1)*0.01,),
                                 decoration: BoxDecoration(
                                   color: Color(0xffF0F2F6),
                                   shape: BoxShape.rectangle,
@@ -83,6 +92,7 @@ class _ProductCardState extends State<ProductCard> {
                     ),
                   ),
                 ),
+                SizedBox(height: widthNHeight0(context, 1)*0.02,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -107,7 +117,7 @@ class _ProductCardState extends State<ProductCard> {
                             Row(
                             
                               children: [
-                                Icon(Icons.airline_seat_individual_suite_rounded, size: widthNHeight0(context, 1) * 0.04),
+                                Icon(Icons.bed_outlined, size: widthNHeight0(context, 1) * 0.04),
                                  SizedBox(width: widthNHeight0(context, 0)*0.01),
                                 Text(" ${widget.product.bed}", style: TextStyle(fontFamily: "kadwa", fontSize: widthNHeight0(context, 1) * 0.027)),
                               ],
@@ -116,7 +126,7 @@ class _ProductCardState extends State<ProductCard> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Icon(Icons.bathtub_rounded, size: widthNHeight0(context, 1) * 0.04),
+                                Icon(Icons.bathtub_outlined, size: widthNHeight0(context, 1) * 0.04),
                                 SizedBox(width: widthNHeight0(context, 0)*0.01),
                                 Text( " ${widget.product.bath}", style: TextStyle(fontFamily: "kadwa", fontSize: widthNHeight0(context, 1) * 0.027)),
                               ],
@@ -145,19 +155,7 @@ class _ProductCardState extends State<ProductCard> {
                     ),
                     Column(
                       children: [
-                        InkWell(
-                          borderRadius: BorderRadius.circular(50),
-                          onTap: () {},
-                          child: Container(
-                            alignment: Alignment.center,
-                            height: widthNHeight0(context, 1) * 0.12,
-                            width: widthNHeight0(context, 0) * 0.043,
-                            child: Icon(
-                              Icons.screen_share_sharp,
-                              size: widthNHeight0(context, 1) * 0.06,
-                            ),
-                          ),
-                        ),
+                     
                         InkWell(
                           borderRadius: BorderRadius.circular(50),
                           onTap: () {

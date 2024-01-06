@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_string_interpolations, prefer_collection_literals, non_constant_identifier_names, library_private_types_in_public_api, use_super_parameters
+
 import 'dart:async';
 
 
@@ -102,58 +104,60 @@ class _MapScreenState extends State<MapScreenLocation> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Stack(
-            children: [
-              Container(
-                height: _getHeight(context),
-                child: GoogleMap(
-                  myLocationButtonEnabled: true,
-                  zoomControlsEnabled: true,
-                  zoomGesturesEnabled: true,
-                  scrollGesturesEnabled: true,
-                  mapToolbarEnabled: false,
-                  rotateGesturesEnabled: true,
-                  tiltGesturesEnabled: false,
-                  myLocationEnabled: true,
-                  gestureRecognizers: Set()
-                    ..add(Factory<PanGestureRecognizer>(
-                        () => PanGestureRecognizer())),
-                  mapType: currentMapType,
-                  initialCameraPosition: cam_pos,
-                  onMapCreated: (GoogleMapController controller) {
-                    if (!_controller.isCompleted) {
-                      _controller.complete(controller);
-                      mapController = controller;
-                      performNearbySearch(controller, 'your_place_type');
-                    }
-                  },
-                  markers: markers,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                SizedBox(
+                  height: _getHeight(context),
+                  child: GoogleMap(
+                    myLocationButtonEnabled: true,
+                    zoomControlsEnabled: true,
+                    zoomGesturesEnabled: true,
+                    scrollGesturesEnabled: true,
+                    mapToolbarEnabled: false,
+                    rotateGesturesEnabled: true,
+                    tiltGesturesEnabled: false,
+                    myLocationEnabled: true,
+                    gestureRecognizers: Set()
+                      ..add(Factory<PanGestureRecognizer>(
+                          () => PanGestureRecognizer())),
+                    mapType: currentMapType,
+                    initialCameraPosition: cam_pos,
+                    onMapCreated: (GoogleMapController controller) {
+                      if (!_controller.isCompleted) {
+                        _controller.complete(controller);
+                        mapController = controller;
+                        performNearbySearch(controller, 'your_place_type');
+                      }
+                    },
+                    markers: markers,
+                  ),
                 ),
-              ),
-            ],
-          ),
-          SizedBox(height: widthNHeight0(context, 0) * 0.05),
-          Container(
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: Color(0xff1A3166),
-              borderRadius: BorderRadius.circular(20),
+              ],
             ),
-            height: widthNHeight0(context, 0) * 0.13,
-            width: widthNHeight0(context, 1) * 0.85,
-            child: Text(
-              "You can see home location ",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-                fontFamily: 'Kadwa',
+            SizedBox(height: widthNHeight0(context, 0) * 0.05),
+            Container(
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: Color(0xff1A3166),
+                borderRadius: BorderRadius.circular(20),
               ),
-              textAlign: TextAlign.center,
+              height: widthNHeight0(context, 0) * 0.13,
+              width: widthNHeight0(context, 1) * 0.85,
+              child: Text(
+                "You can see home location ",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontFamily: 'Kadwa',
+                ),
+                textAlign: TextAlign.center,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

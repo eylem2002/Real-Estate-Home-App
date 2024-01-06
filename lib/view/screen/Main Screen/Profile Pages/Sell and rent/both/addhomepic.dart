@@ -2,22 +2,16 @@
 
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
-import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/MapSetup.dart';
-// class SharedData {
-//   static final SharedData _instance = SharedData._internal();
+    List<String> imgeshome = [];
 
-//   factory SharedData() {
-//     return _instance;
-//   }
 
-//   SharedData._internal();
+List<File> sharedImageList2 = [];
+  final List<File> _selectedImages2 = [];
 
-//   double longg = 0;
-//   double latt = 0;
-// }
 
 class HomeImages extends StatefulWidget {
   const HomeImages({Key? key});
@@ -27,8 +21,8 @@ class HomeImages extends StatefulWidget {
 }
 
 class _HomeImages extends State<HomeImages> {
-  final List<Uint8List> _images = [];
-  final List<File> _selectedImages = [];
+  final List<Uint8List> _images2 = [];
+
 
   @override
   Widget build(BuildContext context) {
@@ -37,20 +31,20 @@ class _HomeImages extends State<HomeImages> {
         leading: Container(
           padding: EdgeInsets.all(widthNHeight0(context, 1) * 0.02),
           child: Center(
-            child: CircleAvatar(
-              backgroundColor: Colors.black,
-              radius: 15,
-              child: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: Icon(
-                  Icons.arrow_back_ios_new_outlined,
-                  color: Colors.white,
-                  size: widthNHeight0(context, 1) * 0.04,
-                ),
-              ),
-            ),
+            // child: CircleAvatar(
+            //   backgroundColor: Colors.black,
+            //   radius: 15,
+            //   child: IconButton(
+            //     onPressed: () {
+            //       Navigator.of(context).pop();
+            //     },
+            //     icon: Icon(
+            //       Icons.arrow_back_ios_new_outlined,
+            //       color: Colors.white,
+            //       size: widthNHeight0(context, 1) * 0.04,
+            //     ),
+            //   ),
+            // ),
           ),
         ),
         backgroundColor: Colors.white,
@@ -76,9 +70,9 @@ class _HomeImages extends State<HomeImages> {
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
               ),
-              itemCount: _images.length + 1,
+              itemCount: _images2.length + 1,
               itemBuilder: (context, index) {
-                if (index == _images.length) {
+                if (index == _images2.length) {
                 
                   return IconButton(
                     onPressed: () {
@@ -103,7 +97,7 @@ class _HomeImages extends State<HomeImages> {
                           child: Container(
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                image: MemoryImage(_images[index]),
+                                image: MemoryImage(_images2[index]),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -115,8 +109,8 @@ class _HomeImages extends State<HomeImages> {
                           child: IconButton(
                             onPressed: () {
                               setState(() {
-                                _images.removeAt(index);
-                                _selectedImages.removeAt(index);
+                                _images2.removeAt(index);
+                                _selectedImages2.removeAt(index);
                               });
                             },
                             icon: Icon(
@@ -141,12 +135,14 @@ class _HomeImages extends State<HomeImages> {
       height:widthNHeight0(context, 1)*0.14,
       width: widthNHeight0(context, 0)*0.15,
       child: FloatingActionButton(
-        onPressed: () {
-           Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const MapSetUp(),
-                        ));
+      onPressed: () async {
+                    await uploadImagesToStorage();
+
+  Navigator.of(context).pushReplacementNamed("map_setup");
+        
+
+
+
         },
         child: Text(
           "Next",
@@ -225,8 +221,9 @@ class _HomeImages extends State<HomeImages> {
     if (returnImage == null) return;
 
     setState(() {
-      _selectedImages.add(File(returnImage.path));
-      _images.add(File(returnImage.path).readAsBytesSync());
+      _selectedImages2.add(File(returnImage.path));//sharedImageList2
+      _images2.add(File(returnImage.path).readAsBytesSync());
+      sharedImageList2.add(File(returnImage.path));
     });
 
     Navigator.of(context).pop();// Close the modal sheet
@@ -239,10 +236,44 @@ class _HomeImages extends State<HomeImages> {
     if (returnImage == null) return;
 
     setState(() {
-      _selectedImages.add(File(returnImage.path));
-      _images.add(File(returnImage.path).readAsBytesSync());
+      _selectedImages2.add(File(returnImage.path));
+      _images2.add(File(returnImage.path).readAsBytesSync());
+            sharedImageList2.add(File(returnImage.path));
     });
 
     Navigator.of(context).pop();
   }
+
+
+
+  Future<void> uploadImagesToStorage() async {
+
+
+    try {
+      for (int i = 0; i < sharedImageList2.length; i++) {
+          print("imageUrl");
+        File imageFile = sharedImageList2[i];
+
+        String imageName = DateTime.now().millisecondsSinceEpoch.toString();
+
+        Reference refStorage =
+            FirebaseStorage.instance.ref().child('images/$imageName.jpg');
+        UploadTask uploadTask = refStorage.putFile(imageFile);
+
+        TaskSnapshot taskSnapshot = await uploadTask;
+        String imageUrl = await taskSnapshot.ref.getDownloadURL();
+
+        imgeshome.add(imageUrl);
+
+      }
+
+     
+      // shared_data.clear();
+    } catch (error) {
+      print('Error uploading images to Firebase Storage: $error');
+    }
+  }
+
+
+  
 }
