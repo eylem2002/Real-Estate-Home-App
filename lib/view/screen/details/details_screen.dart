@@ -15,7 +15,7 @@ import 'package:new_batic/view/widget/compoents/bottoms/deff_button%204.dart';
 
 class DetailsScreen extends StatefulWidget {
  
-  const DetailsScreen({super.key, required this.product});
+  const DetailsScreen({Key? key, required this.product}) : super(key: key);
 
   final Product product;
  

@@ -186,8 +186,8 @@ str=element.id;
                              // User? user = FirebaseAuth.instance.currentUser;
                              // print(user!.uid);
 
-                              if (str != null) {
-                                
+                              if (str != "") {
+                              FirebaseAuth.instance.currentUser?.updateEmail( signUpController.email.text.toString());
                                 await FirebaseFirestore.instance.collection('Users').doc(str).update({
                                   'FirstName': signUpController.firstName.text.toString(),
                                   'SecondName': signUpController.secondName.text.toString(),
