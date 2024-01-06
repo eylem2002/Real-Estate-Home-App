@@ -74,6 +74,7 @@ class _BodySearchState extends State<BodySearch> {
                   child: ProductCard(
                     product: demoProducts[index],
                     onPress: () {
+                    //  print('Lllllllllllllll ${demoProducts[index].long}');
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -81,6 +82,7 @@ class _BodySearchState extends State<BodySearch> {
                               product: demoProducts[
                                   index]), //// move to the prodect page detailes
                         ),
+                        
                       );
                     },
                     onFavoriteChanged: (bool isFavorite) {

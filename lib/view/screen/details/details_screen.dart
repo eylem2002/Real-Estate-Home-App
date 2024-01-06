@@ -29,10 +29,11 @@ class _DetailsScreenState extends State<DetailsScreen> {
   int selectedImage = 0;
 
   Key? get key => null;
-  double lon = 0, lat = 0;
+
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         title: Text("Batic"),
@@ -80,7 +81,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           width: MediaQuery.of(context).size.width,
                           margin: const EdgeInsets.symmetric(horizontal: 5),
                           decoration: BoxDecoration(
-                            color: Colors.amber,
+                          color: Color(0xFFF0F2F6),
                           ),
                           child: Image.network(image, fit: BoxFit.fill),
                         );
@@ -647,6 +648,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               onPressed: () {
                                 widget.product.long;
                                widget.product.late;
+                               
+                                print('9999999999999999999 ${widget.product.late}');
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(

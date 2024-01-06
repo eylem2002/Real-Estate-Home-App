@@ -30,8 +30,6 @@ class Product {
 
   Product({
     this.ussid="",
-    this.long = 0,
-    this.late = 0,
     this.parking = "",
     this.balcony = "",
     this.phone = "",
@@ -57,6 +55,8 @@ class Product {
     required this.bath,
     required this.bed,
     required this.square,
+    this.long = 1,
+    this.late = 1,
   });
 
 

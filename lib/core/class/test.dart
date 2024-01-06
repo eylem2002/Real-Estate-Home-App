@@ -222,44 +222,36 @@ if( homelocationList[2]!=null){
         
         double d1 = 0, d2 = 0; String d3="";
 
-        if (dataElement['long_map'] == null)
-         {
-           varLong= 0;
-          d1 = 0;
-         }
-        else
-        {
-          varLong= dataElement['long_map'];
+
+
+        if (dataElement.containsKey('long_map') &&
+            dataElement['long_map'] != null) {
+
+         varLong= dataElement['long_map'];
               d1 = dataElement['long_map'];
+
         }
+
+       
       
 
       //  print('+++++++++++++++++++++++$var_long');
 
-          if (dataElement['lati_map'] == null)
-          {
-             d2 = 0;
-            varLati=0;
-          }
-         
-        else
-        {
-            d2 = dataElement['lati_map'];
-            varLati=dataElement['lati_map'];
+          if (dataElement.containsKey('lati_map') &&
+            dataElement['lati_map'] != null) {
+
+         varLati= dataElement['lati_map'];
+              d2 = dataElement['lati_map'];
 
         }
 
-        // print('---------------------$var_lati');
-        if (dataElement['userid'] == null)
-          {
-             d3 = "";
-            useriid="";
-          }
-         
-        else
-        {
-            d3 = dataElement['userid'];
-            useriid=dataElement['userid'];
+       // print('---------------------${dataElement['lati_map']}');
+
+         if (dataElement.containsKey('userid') &&
+            dataElement['userid'] != null) {
+
+         useriid= dataElement['userid'];
+              d3 = dataElement['userid'];
 
         }
 
