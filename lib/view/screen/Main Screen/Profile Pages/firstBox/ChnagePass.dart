@@ -106,7 +106,7 @@ class _chnagePassState extends State<changePass> {
                     height: widthNHeight0(context, 1) * 0.015,
                   ),
                   TextFormWidget(
-                  height: widthNHeight0(context, 1)*0.2,
+                    height: widthNHeight0(context, 1) * 0.2,
                     width: double.infinity,
                     passToggle: true,
                     validator: (value) {
@@ -124,61 +124,74 @@ class _chnagePassState extends State<changePass> {
                     height: widthNHeight0(context, 1) * 0.2,
                   ),
                   Center(
-                      child: defaultButton(
-                        text: 'Update',
-                        function: () {},
-                        onPressed: () async {
-                          try {
-                            String str="";
-                             final getData = await FirebaseFirestore.instance.collection('Users').get();
-    List<QueryDocumentSnapshot> Useer = getData.docs;
+                    child: defaultButton(
+                      text: 'Update',
+                      function: () {},
+                      onPressed: () async {
+                        try {
+                          String str = "";
+                          final getData = await FirebaseFirestore.instance
+                              .collection('Users')
+                              .get();
+                          List<QueryDocumentSnapshot> Useer = getData.docs;
 
-    for (var element in Useer) 
-    { 
-str=element.id;
-    }
-    
-          
+                          for (var element in Useer) {
+                            str = element.id;
+                          }
 
-                            if (signUpController.formKey.currentState!
-                                .validate()) {
-                             
+                          if (signUpController.formKey.currentState!
+                                  .validate() &&
+                              signUpController.password.text
+                                  .toString()
+                                  .isNotEmpty &&
+                              signUpController.password.text
+                                      .toString()
+                                      .length >=
+                                  8) {
+                            if (str != "") {
+                              FirebaseAuth.instance.currentUser?.updatePassword(
+                                  signUpController.password.text.toString());
+                              await FirebaseFirestore.instance
+                                  .collection('Users')
+                                  .doc(str)
+                                  .update({
+                                'Password':
+                                    signUpController.password.text.toString(),
+                              });
 
-                              if (str != null) {
-                                FirebaseAuth.instance.currentUser?.updatePassword( signUpController.password.text.toString());
-                                await FirebaseFirestore.instance.collection('Users').doc(str).update({
-                                  'Password': signUpController.password.text.toString(),
-                                  
-                                });
-                               
-
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                        'User Password updated successfully!'),
-                                        backgroundColor: Colors.green,
-                                  ),
-                                );
-                              }
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                      'User Password updated successfully!'),
+                                  backgroundColor: Colors.green,
+                                ),
+                              );
                             }
-                          } catch (e) {
-                            print('Error updating user Password: $e');
+                          } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: Text(
-                                    'An error occurred while updating user Password.'),
-                                     backgroundColor: Colors.red,
+                                content: Text('Enter Valid Password'),
+                                backgroundColor: Colors.red,
                               ),
-                              
                             );
                           }
-                        },
-                        borderWidth: 10,
-                        width: widthNHeight0(context, 1) * 0.6,
-                        height: widthNHeight0(context, 1) * 0.12,
-                        borderRadius: 5,
-                      ),
+                        } catch (e) {
+                          print('Error updating user Password: $e');
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                  'An error occurred while updating user Password.'),
+                              backgroundColor: Colors.red,
+                            ),
+                          );
+                        }
+                      },
+                      borderWidth: 10,
+                      width: widthNHeight0(context, 1) * 0.6,
+                      height: widthNHeight0(context, 1) * 0.12,
+                      borderRadius: 5,
                     ),
+                  ),
                 ],
               ),
             ),

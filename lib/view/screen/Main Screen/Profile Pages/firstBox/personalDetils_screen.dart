@@ -182,13 +182,17 @@ str=element.id;
           
 
                             if (signUpController.formKey.currentState!
-                                .validate()) {
-                             // User? user = FirebaseAuth.instance.currentUser;
-                             // print(user!.uid);
+                                .validate() && signUpController.firstName.text.toString().isNotEmpty && signUpController.secondName.text.toString().isNotEmpty
+                                &&signUpController.email.text.toString().isNotEmpty&&  signUpController.phone.text.toString().isNotEmpty
+                                 ) 
+                                {
+                            //  User? user = FirebaseAuth.instance.currentUser;
+                            //  print(user!.uid);
 
                               if (str != "") {
                               FirebaseAuth.instance.currentUser?.updateEmail( signUpController.email.text.toString());
                                 await FirebaseFirestore.instance.collection('Users').doc(str).update({
+
                                   'FirstName': signUpController.firstName.text.toString(),
                                   'SecondName': signUpController.secondName.text.toString(),
                                   'Email': signUpController.email.text.toString(),
@@ -204,6 +208,16 @@ str=element.id;
                                   ),
                                 );
                               }
+                            }
+                            else {
+                               ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                    'All the fields should not be empty'),
+                                     backgroundColor: Colors.red,
+                              ),
+                              
+                            );
                             }
                           } catch (e) {
                             print('Error updating user information: $e');
