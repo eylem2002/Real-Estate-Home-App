@@ -1,4 +1,4 @@
-// ignore_for_file: use_super_parameters
+// ignore_for_file: use_super_parameters, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
 import 'package:new_batic/core/class/prodect.dart';

@@ -171,30 +171,36 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                         function: () {},
                         onPressed: () async {
                           try {
+                            String str="";
+                             final getData = await FirebaseFirestore.instance.collection('Users').get();
+    List<QueryDocumentSnapshot> Useer = getData.docs;
+
+    for (var element in Useer) 
+    { 
+str=element.id;
+    }
+          
+
                             if (signUpController.formKey.currentState!
                                 .validate()) {
-                              User? user = FirebaseAuth.instance.currentUser;
-                              
+                             // User? user = FirebaseAuth.instance.currentUser;
+                             // print(user!.uid);
 
-                              if (user != null) {
+                              if (str != null) {
                                 
-                                await FirebaseFirestore.instance
-                                    .collection('Users')
-                                    .doc(user.uid)
-                                    .update({
-                                  'FirstName': signUpController.firstName.text,
-                                  // 'SecondName': signUpController.secondName.text,
-                                  // 'Email': signUpController.email.text,
-                                  // 'Phone': signUpController.phone.text,
+                                await FirebaseFirestore.instance.collection('Users').doc(str).update({
+                                  'FirstName': signUpController.firstName.text.toString(),
+                                  'SecondName': signUpController.secondName.text.toString(),
+                                  'Email': signUpController.email.text.toString(),
+                                  'Phone': signUpController.phone.text.toString(),
                                 });
-                                print(FirebaseFirestore.instance
-                                    .collection('Users')
-                                    .doc(user.uid));
+                               
 
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
                                         'User information updated successfully!'),
+                                        backgroundColor: Colors.green,
                                   ),
                                 );
                               }
@@ -205,7 +211,9 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                               SnackBar(
                                 content: Text(
                                     'An error occurred while updating user information.'),
+                                     backgroundColor: Colors.red,
                               ),
+                              
                             );
                           }
                         },

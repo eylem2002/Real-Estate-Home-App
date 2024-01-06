@@ -1,6 +1,7 @@
 // ignore: file_names
 // ignore_for_file: file_names
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:new_batic/controller/signup_controller.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
@@ -122,19 +123,61 @@ class _chnagePassState extends State<changePass> {
                     height: widthNHeight0(context, 1) * 0.2,
                   ),
                   Center(
-                    child: defaultButton(
-                      text: 'Update',
-                      function: () {
-                        if (signUpController.formKey.currentState!
-                            .validate()) {}
-                      },
-                      onPressed: () {},
-                      borderWidth: 10,
-                      width: widthNHeight0(context, 1) * 0.65,
-                      height: widthNHeight0(context, 1) * 0.12,
-                      borderRadius: 5,
+                      child: defaultButton(
+                        text: 'Update',
+                        function: () {},
+                        onPressed: () async {
+                          try {
+                            String str="";
+                             final getData = await FirebaseFirestore.instance.collection('Users').get();
+    List<QueryDocumentSnapshot> Useer = getData.docs;
+
+    for (var element in Useer) 
+    { 
+str=element.id;
+    }
+          
+
+                            if (signUpController.formKey.currentState!
+                                .validate()) {
+                             // User? user = FirebaseAuth.instance.currentUser;
+                             // print(user!.uid);
+
+                              if (str != null) {
+                                
+                                await FirebaseFirestore.instance.collection('Users').doc(str).update({
+                                  'Password': signUpController.password.text.toString(),
+                                  
+                                });
+                               
+
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                        'User Password updated successfully!'),
+                                        backgroundColor: Colors.green,
+                                  ),
+                                );
+                              }
+                            }
+                          } catch (e) {
+                            print('Error updating user Password: $e');
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                    'An error occurred while updating user Password.'),
+                                     backgroundColor: Colors.red,
+                              ),
+                              
+                            );
+                          }
+                        },
+                        borderWidth: 10,
+                        width: widthNHeight0(context, 1) * 0.6,
+                        height: widthNHeight0(context, 1) * 0.12,
+                        borderRadius: 5,
+                      ),
                     ),
-                  ),
                 ],
               ),
             ),

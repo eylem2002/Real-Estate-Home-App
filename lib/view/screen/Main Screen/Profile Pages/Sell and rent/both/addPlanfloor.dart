@@ -9,7 +9,7 @@ List<File> sharedImageList = [];
     List<String> imageUrls = [];
 
 class ImagePick extends StatefulWidget {
-  const ImagePick({super.key, Key? key});
+const ImagePick({Key? key});
 
   @override
   State<ImagePick> createState() => _PickImageState();
