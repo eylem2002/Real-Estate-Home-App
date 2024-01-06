@@ -9,7 +9,7 @@ List<File> sharedImageList = [];
     List<String> imageUrls = [];
 
 class ImagePick extends StatefulWidget {
-  const ImagePick({super.key, Key? key});
+   const ImagePick({Key? key});
 
   @override
   State<ImagePick> createState() => _PickImageState();
@@ -123,6 +123,7 @@ class _PickImageState extends State<ImagePick> {
           "Next",
           style: TextStyle(fontFamily: "kadwa", color: Colors.white,fontWeight: FontWeight.w600),
         ),
+       
                 ),
               ),
             ),
@@ -192,7 +193,7 @@ class _PickImageState extends State<ImagePick> {
     final returnImage =
         await ImagePicker().pickImage(source: ImageSource.gallery);
     file = File(returnImage!.path);
-
+ if (returnImage == null) return;
     setState(() {
       _selectedImages.add(File(returnImage.path));
       _images.add(File(returnImage.path).readAsBytesSync());
