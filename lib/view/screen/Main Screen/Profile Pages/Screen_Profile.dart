@@ -85,7 +85,7 @@ class _EngineerScreenState extends State<ScreenProfile> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                      const PersdonalDetilsScreen(),
+                                       PersdonalDetilsScreen(),
                                 ),
                               );
                             },

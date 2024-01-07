@@ -247,88 +247,134 @@ class _SingUpScreenState extends State<SingUpScreen> {
   String pass = signUpController.password.text;
   String phone = signUpController.phone.text;
 
-  try {
-    User? user = await _auth.signupwithemailandpassword(email, pass);
+  void _signUp(BuildContext context) async {
+  String firstname = signUpController.firstName.text;
+  String lastname = signUpController.secondName.text;
+  String email = signUpController.email.text;
+  String pass = signUpController.password.text;
+  String phone = signUpController.phone.text;
 
-
-
-
-    if (user != null) {
-      print("User is successfully created");
-
-final user=UserModel(firstName: signUpController.firstName.text,secondName: signUpController.secondName.text,email:signUpController.email.text,password:  signUpController.password.text,phoneNo:signUpController.phone.text );
-final userRepo=Get.put(UserRepository());
-await userRepo.createUser(user);
-
-if(mounted){
-
-      Navigator.pushReplacement( 
-        context,
-        MaterialPageRoute(
-          builder: (context) => const LogIn(),
-        ),
-      );
-
-}
-
-
-    } else {
-      print("Error occurred during sign up");
-if(mounted){
-        ScaffoldMessenger.of(context).showSnackBar(
-  SnackBar(
-    content: Text("The Email is used in another account",  textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),),
-     backgroundColor: Colors.red,
-    duration: Duration(seconds: 3),
-    // margin: EdgeInsets.only(bottom: 20),
-    action: SnackBarAction(
-      label: '',
-    
-      textColor: Colors.white,
-      
-      onPressed: () {
+try {
+        User? user = await _auth.signupwithemailandpassword(email, pass);
        
-      },
-    ),
-  ),
-);
-}
+        if (user != null) {
+          print("User is successfully created");
 
-    }
-  } 
-  
-  
-  catch (e) {
-    if (e is FirebaseAuthException) {
-      print("Error occurred: $e");
-
-      String errorMessage = "An error occurred during sign up.";
-
-      if (e.code == 'email-already-in-use') {
-        errorMessage = "The account already exists for that email.";
-      }
-
-    if(mounted){
-
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Error message"),
-            content: Text(errorMessage),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text("OK"),
-              ),
-            ],
+          final userModel = UserModel(
+            firstName: firstname,
+            secondName: lastname,
+            email: email,
+            password: pass,
+            phoneNo: phone,
+            id: user.uid, // Assign the UID as the document ID in Firestore
           );
-        },
-      );
-    }
+
+          final userRepo = Get.put(UserRepository());
+          await userRepo.createUser(userModel);
+
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const LogIn(),
+            ),
+          );
+        } else {
+          print("Error occurred during sign up");
+          // ... your error handling logic
+        }
+      } catch (e) {
+        if (e is FirebaseAuthException) {
+          print("Error occurred: $e");
+
+          // ... your error handling logic
+        }
+      }
     }
   }
 }
-}
+
+//   try {
+//     User? user = await _auth.signupwithemailandpassword(email, pass);
+
+
+
+
+//     if (user != null) {
+//       print("User is successfully created");
+
+// final user=UserModel(firstName: signUpController.firstName.text,secondName: signUpController.secondName.text,email:signUpController.email.text,password:  signUpController.password.text,phoneNo:signUpController.phone.text );
+// final userRepo=Get.put(UserRepository());
+// await userRepo.createUser(user);
+
+// if(mounted){
+
+//       Navigator.pushReplacement( 
+//         context,
+//         MaterialPageRoute(
+//           builder: (context) => const LogIn(),
+//         ),
+//       );
+
+// }
+
+
+//     } else {
+//       print("Error occurred during sign up");
+// if(mounted){
+//         ScaffoldMessenger.of(context).showSnackBar(
+//   SnackBar(
+//     content: Text("The Email is used in another account",  textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),),
+//      backgroundColor: Colors.red,
+//     duration: Duration(seconds: 3),
+//     // margin: EdgeInsets.only(bottom: 20),
+//     action: SnackBarAction(
+//       label: '',
+    
+//       textColor: Colors.white,
+      
+//       onPressed: () {
+       
+//       },
+//     ),
+//   ),
+// );
+// }
+
+//     }
+//   } 
+  
+  
+//   catch (e) {
+//     if (e is FirebaseAuthException) {
+//       print("Error occurred: $e");
+
+//       String errorMessage = "An error occurred during sign up.";
+
+//       if (e.code == 'email-already-in-use') {
+//         errorMessage = "The account already exists for that email.";
+//       }
+
+//     if(mounted){
+
+//       showDialog(
+//         context: context,
+//         builder: (BuildContext context) {
+//           return AlertDialog(
+//             title: Text("Error message"),
+//             content: Text(errorMessage),
+//             actions: [
+//               TextButton(
+//                 onPressed: () {
+//                   Navigator.of(context).pop();
+//                 },
+//                 child: Text("OK"),
+//               ),
+//             ],
+//           );
+//         },
+//       );
+//     }
+//     }
+//   }
+// }
+// }

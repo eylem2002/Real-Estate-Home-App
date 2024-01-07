@@ -15,14 +15,14 @@ class MyHomecard extends StatefulWidget {
     required this.product,
     required this.onPress,
     required this.onFavoriteChanged,
-        required this.onDeletePressed,
+    required this.onDeletePressed,
   }) : super(key: key);
 
   final double width, aspectRatio;
   final Product product;
   final VoidCallback onPress;
   final Function(bool isFavourite) onFavoriteChanged;
-    final Function() onDeletePressed;
+  final Function() onDeletePressed;
 
   @override
   // ignore: library_private_types_in_public_api
@@ -75,9 +75,9 @@ class _ProductCardState extends State<MyHomecard> {
       print('Error deleting home: $e');
     }
 
-   if(mounted){
-     setState(() {});
-   }
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   void onEditPressed() {
@@ -90,9 +90,6 @@ class _ProductCardState extends State<MyHomecard> {
 
   @override
   Widget build(BuildContext context) {
-
-   
-
     return Column(
       children: [
         Container(
@@ -153,8 +150,35 @@ class _ProductCardState extends State<MyHomecard> {
                               right: widthNHeight0(context, 1) * 0.02,
                               child: ElevatedButton(
                                 onPressed: () {
-                                  onDeletePressed();
-                                  widget.onDeletePressed();
+                                  showDialog(
+                                  
+                                    context: context,
+                                    builder: (BuildContext context) {
+
+                                      return AlertDialog(
+                                       backgroundColor: Color(0xff6482C4),
+                                        title: Text('Confirm Deletion',style: TextStyle(color: Colors.white),),
+                                        content: Text(
+                                            'Are you sure you want to delete this Home?',style: TextStyle(color: Colors.white),),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: Text('Cancel',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                              onDeletePressed();
+                                              widget.onDeletePressed();
+                                            },
+                                            child: Text('OK',style: TextStyle(color: Color.fromARGB(255, 255, 32, 16),fontWeight: FontWeight.bold),),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
                                 },
                                 style: ElevatedButton.styleFrom(
                                   shape: RoundedRectangleBorder(
