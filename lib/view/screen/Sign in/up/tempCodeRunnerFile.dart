@@ -23,16 +23,11 @@ class SingUpScreen extends StatefulWidget {
 }
 
 class _SingUpScreenState extends State<SingUpScreen> {
-  //SignUpController signUpController = SignUpController();
-  late SignUpController signUpController;
+  SignUpController signUpController = SignUpController();
 
   final FirebaseAuthService _auth = FirebaseAuthService();
   bool flag = false;
-@override
-  void initState() {
-    super.initState();
-    signUpController = SignUpController(); 
-  }
+
   @override
   void dispose() {
     signUpController.firstName.dispose();
@@ -250,9 +245,6 @@ class _SingUpScreenState extends State<SingUpScreen> {
   try {
     User? user = await _auth.signupwithemailandpassword(email, pass);
 
-
-
-
     if (user != null) {
       print("User is successfully created");
 
@@ -287,7 +279,7 @@ if(mounted){
       textColor: Colors.white,
       
       onPressed: () {
-       
+        // Do something when the user presses the action button
       },
     ),
   ),
@@ -295,10 +287,7 @@ if(mounted){
 }
 
     }
-  } 
-  
-  
-  catch (e) {
+  } catch (e) {
     if (e is FirebaseAuthException) {
       print("Error occurred: $e");
 

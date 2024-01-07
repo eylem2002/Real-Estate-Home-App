@@ -226,7 +226,9 @@ class _LogInState extends State<LogIn> {
 
     if (user != null) {
       print("User is successfully Signin");
-        Navigator.of(context).pushReplacementNamed("search_home_bar");
+      if(mounted){
+          Navigator.of(context).pushReplacementNamed("search_home_bar");
+      }
       //  Navigator.pushReplacement(
       //     context,
       //     MaterialPageRoute(
@@ -239,7 +241,7 @@ class _LogInState extends State<LogIn> {
   showDialog(
     context: context,
     builder: (BuildContext context) {
-      // Return the AlertDialog
+ 
       return AlertDialog(
         title: Text("Error"),
         content: Text("An error has occurred.  don't have an account?"),

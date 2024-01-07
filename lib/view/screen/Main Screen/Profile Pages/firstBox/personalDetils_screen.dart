@@ -200,17 +200,19 @@ str=element.id;
                                 });
                                
 
-                                ScaffoldMessenger.of(context).showSnackBar(
+                                if(mounted){
+                                  ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
                                         'User information updated successfully!'),
                                         backgroundColor: Colors.green,
                                   ),
-                                );
+                                );}
                               }
                             }
                             else {
-                               ScaffoldMessenger.of(context).showSnackBar(
+                          if(mounted){
+                                 ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
                                     'All the fields should not be empty'),
@@ -218,10 +220,12 @@ str=element.id;
                               ),
                               
                             );
+                          }
                             }
                           } catch (e) {
                             print('Error updating user information: $e');
-                            ScaffoldMessenger.of(context).showSnackBar(
+                          if(mounted){
+                              ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
                                     'An error occurred while updating user information.'),
@@ -229,6 +233,7 @@ str=element.id;
                               ),
                               
                             );
+                          }
                           }
                         },
                         borderWidth: 10,
