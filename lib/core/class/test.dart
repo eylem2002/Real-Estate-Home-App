@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:new_batic/core/class/prodect.dart';
+import 'package:new_batic/core/class/sharedData.dart';
 
 // class Test extends StatefulWidget {
 //   const Test({super.key});
@@ -28,11 +29,12 @@ Future<List<Product>> getProducts() async {
           
          
        List<dynamic> dataList = element.get('dataList');
+       someth=element.get('dataList');
+
         List<String> idList =[];
         idList.add(element.id);
 
           for (var dataElement in idList) {
-        // Check if the ID already exists in demoProducts
         if (demoProducts.any((product) => product.id == dataElement)) {
         
 continue;
@@ -252,6 +254,8 @@ if( homelocationList[2]!=null){
 
          useriid= dataElement['userid'];
               d3 = dataElement['userid'];
+              
+              allUsers.add(useriid);
 
         }
 

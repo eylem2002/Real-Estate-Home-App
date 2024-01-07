@@ -122,6 +122,7 @@ class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;// here the first value was zero
   final screens = [
      const Search_Page(),
+
     const FavoriteScreen(),
     const MyHome(), 
      const ScreenProfile(),

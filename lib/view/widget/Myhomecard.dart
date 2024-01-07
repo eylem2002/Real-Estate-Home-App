@@ -1,7 +1,10 @@
 // ignore_for_file: use_super_parameters, avoid_unnecessary_containers
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:new_batic/core/class/prodect.dart';
+import 'package:new_batic/core/class/sharedData.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 
 class MyHomecard extends StatefulWidget {
@@ -9,6 +12,7 @@ class MyHomecard extends StatefulWidget {
     Key? key,
     this.width = 300,
     this.aspectRatio = 1.76,
+
     required this.product,
     required this.onPress,
     required this.onFavoriteChanged,
@@ -25,9 +29,53 @@ class MyHomecard extends StatefulWidget {
 }
 
 class _ProductCardState extends State<MyHomecard> {
-  void onDeletePressed() {
-    print('delete button pressed');
+     String userId="";
+void onDeletePressed() async {
+  print('Delete button pressed');
+
+try {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  final User? user = auth.currentUser;
+  final uid = user?.uid;
+  print(uid);
+
+  QuerySnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore.instance
+      .collection('House')
+      .get();
+
+  print('Number of documents: ${snapshot.size}');
+int counter=0;
+  for (QueryDocumentSnapshot<Map<String, dynamic>> doc in snapshot.docs) {
+    List<dynamic>? dataList = doc['dataList'];
+counter++;
+  if(dataList != null ){
+    String str=dataList[7].toString();
+
+   
+  int openingBraceIndex = str.indexOf("{");
+  int closingBraceIndex = str.indexOf("}");
+
+  // Extract the part between "{" and "}"
+   userId = str.substring(openingBraceIndex + 1, closingBraceIndex).trim();
+
+//  print('$counter + $userId');
+
   }
+
+// print('%%%%%%%%%%%%%%%%$uid');
+
+    if (dataList != null  && userId == 'userid: ${uid.toString()}') {
+      await doc.reference.delete();
+      print('Home deleted successfully');
+    }
+  }
+} catch (e) {
+  print('Error deleting home: $e');
+
+}
+
+}
+
 
   void onEditPressed() {
     print('Edit button pressed');
