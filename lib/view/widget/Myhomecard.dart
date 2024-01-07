@@ -12,16 +12,17 @@ class MyHomecard extends StatefulWidget {
     Key? key,
     this.width = 300,
     this.aspectRatio = 1.76,
-
     required this.product,
     required this.onPress,
     required this.onFavoriteChanged,
+        required this.onDeletePressed,
   }) : super(key: key);
 
   final double width, aspectRatio;
   final Product product;
   final VoidCallback onPress;
   final Function(bool isFavourite) onFavoriteChanged;
+    final Function() onDeletePressed;
 
   @override
   // ignore: library_private_types_in_public_api
@@ -29,53 +30,55 @@ class MyHomecard extends StatefulWidget {
 }
 
 class _ProductCardState extends State<MyHomecard> {
-     String userId="";
-void onDeletePressed() async {
-  print('Delete button pressed');
+  String userId = "";
+  void onDeletePressed() async {
+    print('Delete button pressed');
 
-try {
-  final FirebaseAuth auth = FirebaseAuth.instance;
-  final User? user = auth.currentUser;
-  final uid = user?.uid;
-  print(uid);
+    try {
+      final FirebaseAuth auth = FirebaseAuth.instance;
+      final User? user = auth.currentUser;
+      final uid = user?.uid;
+      print(uid);
 
-  QuerySnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore.instance
-      .collection('House')
-      .get();
+      QuerySnapshot<Map<String, dynamic>> snapshot =
+          await FirebaseFirestore.instance.collection('House').get();
 
-  print('Number of documents: ${snapshot.size}');
-int counter=0;
-  for (QueryDocumentSnapshot<Map<String, dynamic>> doc in snapshot.docs) {
-    List<dynamic>? dataList = doc['dataList'];
-counter++;
-  if(dataList != null ){
-    String str=dataList[7].toString();
+      print('Number of documents: ${snapshot.size}');
+      int counter = 0;
+      for (QueryDocumentSnapshot<Map<String, dynamic>> doc in snapshot.docs) {
+        List<dynamic>? dataList = doc['dataList'];
+        counter++;
+        String homeId = widget.product.id;
+        if (dataList != null) {
+          String str = dataList[7].toString();
 
-   
-  int openingBraceIndex = str.indexOf("{");
-  int closingBraceIndex = str.indexOf("}");
+          int openingBraceIndex = str.indexOf("{");
+          int closingBraceIndex = str.indexOf("}");
 
-  // Extract the part between "{" and "}"
-   userId = str.substring(openingBraceIndex + 1, closingBraceIndex).trim();
+          userId =
+              str.substring(openingBraceIndex + 1, closingBraceIndex).trim();
 
 //  print('$counter + $userId');
-
-  }
+        }
 
 // print('%%%%%%%%%%%%%%%%$uid');
 
-    if (dataList != null  && userId == 'userid: ${uid.toString()}') {
-      await doc.reference.delete();
-      print('Home deleted successfully');
+        if (dataList != null &&
+            userId == 'userid: ${uid.toString()}' &&
+            homeId == doc.id) {
+          await doc.reference.delete();
+
+          print('Home deleted successfully');
+        }
+      }
+    } catch (e) {
+      print('Error deleting home: $e');
     }
+
+   if(mounted){
+     setState(() {});
+   }
   }
-} catch (e) {
-  print('Error deleting home: $e');
-
-}
-
-}
-
 
   void onEditPressed() {
     print('Edit button pressed');
@@ -87,6 +90,9 @@ counter++;
 
   @override
   Widget build(BuildContext context) {
+
+   
+
     return Column(
       children: [
         Container(
@@ -146,11 +152,16 @@ counter++;
                               bottom: widthNHeight0(context, 1) * 0.02,
                               right: widthNHeight0(context, 1) * 0.02,
                               child: ElevatedButton(
-                                onPressed: onDeletePressed,
+                                onPressed: () {
+                                  onDeletePressed();
+                                  widget.onDeletePressed();
+                                },
                                 style: ElevatedButton.styleFrom(
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(5),
-                                  ), backgroundColor: Color(0xffCCD8F4).withOpacity(0.35),
+                                  ),
+                                  backgroundColor:
+                                      Color(0xffCCD8F4).withOpacity(0.35),
                                 ),
                                 child: Text(
                                   'Delete',
@@ -203,7 +214,8 @@ counter++;
                             style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5),
-                              ), backgroundColor: Color(0xff6482C4),
+                              ),
+                              backgroundColor: Color(0xff6482C4),
                             ),
                             child: Text(
                               'Edit',
@@ -220,7 +232,8 @@ counter++;
                             style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5),
-                              ), backgroundColor: Color(0xff6482C4),
+                              ),
+                              backgroundColor: Color(0xff6482C4),
                             ),
                             child: Text(
                               'Request',

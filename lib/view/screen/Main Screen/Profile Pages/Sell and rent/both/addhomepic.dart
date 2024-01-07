@@ -134,6 +134,8 @@ class _HomeImages extends State<HomeImages> {
                   onPressed: () async {
                     await uploadImagesToStorage();
 
+                    // Navigator.of(context).pushReplacementNamed("map_setup");
+
                     if (sharedImageList2.isNotEmpty) {
                       Navigator.of(context).pushReplacementNamed("map_setup");
                     } else {
@@ -230,12 +232,12 @@ class _HomeImages extends State<HomeImages> {
     if (returnImage == null) return;
 
     setState(() {
-      _selectedImages2.add(File(returnImage.path)); //sharedImageList2
+      _selectedImages2.add(File(returnImage.path));
       _images2.add(File(returnImage.path).readAsBytesSync());
       sharedImageList2.add(File(returnImage.path));
     });
 
-    Navigator.of(context).pop(); // Close the modal sheet
+    Navigator.of(context).pop();
   }
 
   // Camera
