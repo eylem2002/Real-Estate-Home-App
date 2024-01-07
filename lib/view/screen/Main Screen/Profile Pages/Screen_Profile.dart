@@ -3,6 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
+import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Legal/aboutUS.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/rent%20Home/ForRent.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/firstBox/ChnagePass.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/firstBox/personalDetils_screen.dart';
@@ -320,13 +321,8 @@ class _EngineerScreenState extends State<ScreenProfile> {
                           ),
                           InkWell(
                             onTap: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) =>
-                              //         const PersdonalDetilsScreen(),
-                              //   ),
-                              // );
+                             Navigator.of(context)
+                            .pushNamed("Terms");
                             },
                             child: Padding(
                               padding: EdgeInsets.only(right: 17),
@@ -365,11 +361,13 @@ class _EngineerScreenState extends State<ScreenProfile> {
                           ),
                          InkWell(
                             onTap: () {
+                               Navigator.of(context)
+                            .pushNamed("AboutUs");
                               // Navigator.push(
                               //   context,
                               //   MaterialPageRoute(
                               //     builder: (context) =>
-                              //         const PersdonalDetilsScreen(),
+                              //         const Aboutus(),
                               //   ),
                               // );
                             },
