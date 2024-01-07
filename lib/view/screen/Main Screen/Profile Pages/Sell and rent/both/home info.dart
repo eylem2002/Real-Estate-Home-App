@@ -129,6 +129,7 @@ class _homeInfoState extends State<HomeInfo> {
                                     },
                                     passController: homeconroller.sqft,
                                     str: '',
+                                 
                                   ),
                                 ],
                               ),

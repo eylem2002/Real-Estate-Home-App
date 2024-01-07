@@ -255,14 +255,28 @@ class _SellHomeScreenState extends State<SellHomeScreen> {
                     onPressed: () {
         
         
-                    
-        
+                    if(selectedReasons.isNotEmpty){
+
           Navigator.of(context).pushReplacementNamed("complete_page");
         
         
         
         shared_data.add({'sellingReasons': selectedReasons});
         print(shared_data[0]['sellingReasons']);
+                    }
+                    else {
+
+                     ScaffoldMessenger.of(context).showSnackBar(
+  SnackBar(
+    content: Center(
+      child: Text('Choose one',style: TextStyle(fontWeight: FontWeight.bold),),
+    ),
+    backgroundColor: Colors.red,
+  ),
+);
+
+                    }
+        
         
                       
                           

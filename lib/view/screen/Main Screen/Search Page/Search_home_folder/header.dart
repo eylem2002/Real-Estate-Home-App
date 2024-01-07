@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:new_batic/core/class/type.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
+import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/rent%20Home/ForRent.dart';
+import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/sell%20Home/sell_home_screen.dart';
+import 'package:new_batic/view/screen/Main%20Screen/Search%20Page/filters_screen.dart';
 class Header extends StatefulWidget {
   const Header({super.key});
 
@@ -59,13 +62,12 @@ class _HeaderState extends State<Header> {
               children: [
                GestureDetector(
   onTap: () {
-    // Navigate to the home page here
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => home(),
-    //   ),
-    // );
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => SellHomeScreen(),
+      ),
+    );
   },
   child: Container(
     padding: EdgeInsets.all(5),
@@ -76,20 +78,20 @@ class _HeaderState extends State<Header> {
       color: const Color(0xFFCCD8F4),
       borderRadius: BorderRadius.circular(5.0),
     ),
-    child: buildButtonContent(Icons.arrow_upward, 'Sort'),
+    child: buildButtonContent(Icons.sell_outlined, 'Sell Home'),
   ),
 ),
 
                SizedBox(width: widthNHeight0(context, 1)*0.01,),
                       GestureDetector(
   onTap: () {
-    // Navigate to the home page here
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => home(),
-    //   ),
-    // );
+   
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => RentScreen(),
+      ),
+    );
   },
   child: Container(
     padding: EdgeInsets.all(5),
@@ -99,19 +101,19 @@ class _HeaderState extends State<Header> {
       color: const Color(0xFFCCD8F4),
       borderRadius: BorderRadius.circular(5.0),
     ),
-    child: buildButtonContent(Icons.arrow_downward, 'Sort'),
+    child: buildButtonContent(Icons.real_estate_agent_outlined, 'Rent home'),
   ),
 ),
                SizedBox(width: widthNHeight0(context, 1)*0.01,),
                    GestureDetector(
   onTap: () {
-    // Navigate to the home page here
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => home(),
-    //   ),
-    // );
+ 
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => FiltersScreen(),
+      ),
+    );
   },
   child: Container(
     padding: EdgeInsets.all(5),

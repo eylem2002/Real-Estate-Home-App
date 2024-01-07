@@ -3,13 +3,13 @@ import 'dart:typed_data';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
+import 'package:new_batic/core/services/EnterSevices.dart';
 
 List<File> sharedImageList = [];
-    List<String> imageUrls = [];
+List<String> imageUrls = [];
 
 class ImagePick extends StatefulWidget {
-const ImagePick({Key? key});
+  const ImagePick({Key? key});
 
   @override
   State<ImagePick> createState() => _PickImageState();
@@ -111,18 +111,40 @@ class _PickImageState extends State<ImagePick> {
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: SizedBox(
-                height: MediaQuery.of(context).size.width * 0.14,
-                width: MediaQuery.of(context).size.width * 0.15,
+                height: widthNHeight0(context, 1) * 0.14,
+                width: widthNHeight0(context, 0) * 0.15,
+
+                
                 child: FloatingActionButton(
                   onPressed: () async {
                     await uploadImagesToStorage();
-                    Navigator.of(context).pushNamed("home_images");
+
+                    if (mounted) {
+                      if (sharedImageList.isNotEmpty) {
+                        Navigator.of(context).pushNamed("home_images");
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Center(
+                              child: Text(
+                                'Choose one',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            backgroundColor: Colors.red,
+                          ),
+                        );
+                      }
+                    }
                   },
                   backgroundColor: Color(0xff6482C4),
                   child: Text(
-          "Next",
-          style: TextStyle(fontFamily: "kadwa", color: Colors.white,fontWeight: FontWeight.w600),
-        ),
+                    "Next",
+                    style: TextStyle(
+                        fontFamily: "kadwa",
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600),
+                  ),
                 ),
               ),
             ),
@@ -199,7 +221,9 @@ class _PickImageState extends State<ImagePick> {
       sharedImageList.add(File(returnImage.path));
     });
 
-    Navigator.of(context).pop();
+    if (mounted) {
+      Navigator.of(context).pop();
+    }
   }
 
   Future<void> _pickImageFromCamera() async {
@@ -213,12 +237,12 @@ class _PickImageState extends State<ImagePick> {
       sharedImageList.add(File(returnImage.path));
     });
 
-    Navigator.of(context).pop();
+    if (mounted) {
+      Navigator.of(context).pop();
+    }
   }
 
   Future<void> uploadImagesToStorage() async {
-
-
     try {
       for (int i = 0; i < sharedImageList.length; i++) {
         File imageFile = sharedImageList[i];
@@ -234,12 +258,9 @@ class _PickImageState extends State<ImagePick> {
         imageUrls.add(imageUrl);
       }
 
-     
       // shared_data.clear();
     } catch (error) {
       print('Error uploading images to Firebase Storage: $error');
     }
   }
-
-
 }
