@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:new_batic/controller/login_controller.dart';
 import 'package:new_batic/controller/signup_controller.dart';
-import 'package:new_batic/core/class/sharedData.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
 import 'package:new_batic/view/widget/compoents/bottoms/deff_button.dart';
@@ -20,9 +19,84 @@ class PersdonalDetilsScreen extends StatefulWidget {
 class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
   SignUpController signUpController = SignUpController();
   TextController textController = TextController();
+  String firstNamee = "", secondName = "", emailAddress = "", phoneNu = "",passVal="";
+
+  Future<String> resetEmail(String newEmail) async {
+    try {
+      User? firebaseUser = FirebaseAuth.instance.currentUser;
+
+      if (firebaseUser != null) {
+        await firebaseUser.updateEmail(newEmail);
+        return 'Success';
+      } else {
+        return 'User not signed in.';
+      }
+    } catch (error) {
+      return 'Error: $error';
+    }
+  }
+
+  Future<String> resetPassword(String newPassword) async {
+    try {
+      User? firebaseUser = FirebaseAuth.instance.currentUser;
+
+      if (firebaseUser != null) {
+        await firebaseUser.updatePassword(newPassword);
+        return 'Success';
+      } else {
+        return 'User not signed in.';
+      }
+    } catch (error) {
+      return 'Error: $error';
+    }
+  }
+
+  Future<void> fetchUserData() async {
+    String currentEmail = FirebaseAuth.instance.currentUser?.email ?? '';
+
+    try {
+      QuerySnapshot<Object?> querySnapshot = await FirebaseFirestore.instance
+          .collection('Users')
+          .where('Email', isEqualTo: currentEmail)
+          .get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        DocumentSnapshot<Object?> userSnapshot = querySnapshot.docs.first;
+
+        Map<String, dynamic>? userData =
+            userSnapshot.data() as Map<String, dynamic>?;
+
+        if (userData != null) {
+          setState(() {
+            firstNamee = userData['FirstName'] ?? "";
+            secondName = userData['SecondName'] ?? "";
+            emailAddress = userData['Email'] ?? "";
+            phoneNu = userData['Phone'] ?? "";
+            passVal= userData['Password'] ?? "";
+          });
+        } else {
+          print('User data is null.');
+        }
+      } else {
+        print('No user found with the current email.....');
+      }
+    } catch (error) {
+      print('Error querying user document: $error');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUserData();
+  }
 
   @override
   Widget build(BuildContext context) {
+    if (mounted) {
+      fetchUserData();
+    }
+
     return Scaffold(
       appBar: AppBar(
         leading: Container(
@@ -89,7 +163,7 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                         return null;
                       },
                       passController: signUpController.firstName,
-                      str: 'Batic',
+                      str: firstNamee,
                     ),
                     SizedBox(
                       height: widthNHeight0(context, 1) * 0.008,
@@ -113,7 +187,7 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                         return null;
                       },
                       passController: signUpController.secondName,
-                      str: 'Home',
+                      str: secondName,
                     ),
                     SizedBox(
                       height: widthNHeight0(context, 1) * 0.008,
@@ -137,7 +211,7 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                         return null;
                       },
                       passController: signUpController.email,
-                      str: 'Batic@gmail.com',
+                      str: emailAddress,
                     ),
                     SizedBox(
                       height: widthNHeight0(context, 1) * 0.008,
@@ -161,7 +235,31 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                       width: double.infinity,
                       passToggle: false,
                       passController: signUpController.phone,
-                      str: '0798972344',
+                      str: phoneNu,
+                    ),
+                    SizedBox(
+                      height: widthNHeight0(context, 1) * 0.008,
+                    ),
+                      const Text(
+                      'Password',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Kadwa',
+                      ),
+                    ),
+                    TextFormWidget(
+                      height: widthNHeight0(context, 1) * 0.2,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Password must not be empty ';
+                        }
+                        return null;
+                      },
+                      width: double.infinity,
+                      passToggle: false,
+                      passController: signUpController.password,
+                      str: passVal,
                     ),
                     SizedBox(
                       height: widthNHeight0(context, 1) * 0.008,
@@ -169,89 +267,67 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                     Center(
                       child: defaultButton(
                         text: 'Update',
-                        function: () {},
                         onPressed: () async {
                           try {
-                            String str = "";
-                            final getData = await FirebaseFirestore.instance
-                                .collection('Users')
-                                .get();
-                            List<QueryDocumentSnapshot> Useer = getData.docs;
+                            String currentEmail =
+                                FirebaseAuth.instance.currentUser?.email ?? '';
 
-                            for (var element in Useer) {
-print(element.id);
-                              // FirebaseFirestore.instance
-                              //     .collection('users')
-                              //     .where('Email', sharedEmail)
-                              //     .get()
-                              //     .then((str) => element.id);
-                            }
-
-                            if (signUpController.formKey.currentState!.validate() &&
-                                signUpController.firstName.text
-                                    .toString()
-                                    .isNotEmpty &&
-                                signUpController.secondName.text
-                                    .toString()
-                                    .isNotEmpty &&
-                                signUpController.email.text
-                                    .toString()
-                                    .isNotEmpty &&
-                                signUpController.phone.text
-                                    .toString()
-                                    .isNotEmpty) {
-                              //  User? user = FirebaseAuth.instance.currentUser;
-                              //  print(user!.uid);
-
-                              if (str != "") {
-                                FirebaseAuth.instance.currentUser?.updateEmail(
-                                    signUpController.email.text.toString());
+                            // Fetch the document ID to the current user's email
+                            QuerySnapshot<Object?> querySnapshot =
                                 await FirebaseFirestore.instance
                                     .collection('Users')
-                                    .doc(str)
-                                    .update({
-                                  'FirstName': signUpController.firstName.text
-                                      .toString(),
-                                  'SecondName': signUpController.secondName.text
-                                      .toString(),
-                                  'Email':
-                                      signUpController.email.text.toString(),
-                                  'Phone':
-                                      signUpController.phone.text.toString(),
-                                });
+                                    .where('Email', isEqualTo: currentEmail)
+                                    .get();
 
-                                if (mounted) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                          'User information updated successfully!'),
-                                      backgroundColor: Colors.green,
-                                    ),
-                                  );
-                                }
-                              }
-                            } else {
-                              if (mounted) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                        'All the fields should not be empty'),
-                                    backgroundColor: Colors.red,
-                                  ),
-                                );
-                              }
-                            }
-                          } catch (e) {
-                            print('Error updating user information: $e');
-                            if (mounted) {
+                            if (querySnapshot.docs.isNotEmpty) {
+                              // Use the first document found (assuming email is unique)
+                              DocumentSnapshot<Object?> userSnapshot =
+                                  querySnapshot.docs.first;
+                              String documentId = userSnapshot.id;
+
+                              // Update user information in Firestore
+                              await FirebaseFirestore.instance
+                                  .collection('Users')
+                                  .doc(documentId)
+                                  .update({
+                                'FirstName':
+                                    signUpController.firstName.text.toString(),
+                                'SecondName':
+                                    signUpController.secondName.text.toString(),
+                                'Email': signUpController.email.text.toString(),
+                                'Phone': signUpController.phone.text.toString(),
+                                'Password': signUpController.password.text.toString(),
+                              });
+                                  //EmailAuthProvider.credential(email: signUpController.email.text.toString(), password:     signUpController.password.text.toString()  );
+
+                              resetEmail(
+                                  signUpController.email.text.toString());
+                              resetPassword(
+                                  signUpController.password.text.toString());
+                                  FirebaseAuth.instance.currentUser?.updateEmail( signUpController.email.text.toString());
+                                  FirebaseAuth.instance.currentUser?.updatePassword( signUpController.password.text.toString());
+
+
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
-                                      'An error occurred while updating user information.'),
-                                  backgroundColor: Colors.red,
+                                      'User information updated successfully!'),
+                                  backgroundColor: Colors.green,
                                 ),
                               );
+                            } else {
+                              print(
+                                  'No user found with the current email.....');
                             }
+                          } catch (e) {
+                            print('Error updating user information: $e');
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                    'An error occurred while updating user information.'),
+                                backgroundColor: Colors.red,
+                              ),
+                            );
                           }
                         },
                         borderWidth: 10,

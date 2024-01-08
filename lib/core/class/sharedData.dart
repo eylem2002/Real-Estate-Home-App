@@ -8,3 +8,5 @@ List<Map<String, dynamic>> shared_data=[];
 
 
   String sharedEmail="";
+
+   String   firstNamee = "",secondName="",emailAddress="",phoneNu="";
