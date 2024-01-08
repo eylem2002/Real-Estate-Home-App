@@ -10,7 +10,6 @@ import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/firstBox/Chn
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/firstBox/personalDetils_screen.dart';
 import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
 
-
 class ScreenProfile extends StatefulWidget {
   const ScreenProfile({super.key});
 
@@ -21,8 +20,9 @@ class ScreenProfile extends StatefulWidget {
 class _EngineerScreenState extends State<ScreenProfile> {
   FirebaseAuth auth = FirebaseAuth.instance;
   signOut() async {
-        await auth.signOut();
-      }
+    await auth.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,9 +34,8 @@ class _EngineerScreenState extends State<ScreenProfile> {
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Kadwa',
               )),
-              
         ),
-         automaticallyImplyLeading: false,
+        automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -53,7 +52,6 @@ class _EngineerScreenState extends State<ScreenProfile> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                 
                   SizedBox(
                     height: widthNHeight0(context, 1) * 0.05,
                   ),
@@ -82,13 +80,68 @@ class _EngineerScreenState extends State<ScreenProfile> {
                           ),
                           InkWell(
                             onTap: () {
-                              Navigator.push(
+                              if (FirebaseAuth
+                                  .instance.currentUser!.isAnonymous) {
+                               showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      backgroundColor: Color(0xff6482C4),
+                                      content: Text(
+                                        'You Have To Sign In First \nTo See Your Personal Details!',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize:
+                                              widthNHeight0(context, 1) * 0.035,
+                                          fontFamily: 'Kadwa',
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      actions: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                                signOut();
+                                                print("sign out");
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        const LogIn(),
+                                                  ),
+                                                );
+                                              },
+                                              child: Text(
+                                                'SignIn',
+                                                style: TextStyle(
+                                                     fontFamily: 'Kadwa',
+                                                  color: Colors.white,
+                                                  fontSize: widthNHeight0(
+                                                          context, 1) *
+                                                      0.035,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              } else {
+                                 Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                       PersdonalDetilsScreen(),
+                                  builder: (context) => PersdonalDetilsScreen(),
                                 ),
                               );
+                              }
+                             
                             },
                             child: Padding(
                               padding: EdgeInsets.only(right: 17),
@@ -122,7 +175,6 @@ class _EngineerScreenState extends State<ScreenProfile> {
                               ),
                             ),
                           ),
-                       
                           SizedBox(
                             height: widthNHeight0(context, 1) * 0.05,
                           ),
@@ -131,8 +183,7 @@ class _EngineerScreenState extends State<ScreenProfile> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                       CalculatorScreen(),
+                                  builder: (context) => CalculatorScreen(),
                                 ),
                               );
                             },
@@ -171,8 +222,6 @@ class _EngineerScreenState extends State<ScreenProfile> {
                           SizedBox(
                             height: widthNHeight0(context, 1) * 0.05,
                           ),
-                         
-                        
                         ],
                       ),
                     ),
@@ -205,9 +254,63 @@ class _EngineerScreenState extends State<ScreenProfile> {
                           ),
                           InkWell(
                             onTap: () {
-                             
-                               Navigator.of(context).pushNamed("sellhome");//////sell home
-                             
+                              if (FirebaseAuth
+                                  .instance.currentUser!.isAnonymous) {
+                               showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      backgroundColor: Color(0xff6482C4),
+                                      content: Text(
+                                        'You Have To Sign In First \nTo Sell Your Home!',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize:
+                                              widthNHeight0(context, 1) * 0.035,
+                                          fontFamily: 'Kadwa',
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      actions: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                                signOut();
+                                                print("sign out");
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        const LogIn(),
+                                                  ),
+                                                );
+                                              },
+                                              child: Text(
+                                                'SignIn',
+                                                style: TextStyle(
+                                                     fontFamily: 'Kadwa',
+                                                  color: Colors.white,
+                                                  fontSize: widthNHeight0(
+                                                          context, 1) *
+                                                      0.035,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              } else {
+                                Navigator.of(context)
+                                    .pushNamed("sellhome"); //////sell home
+                              }
                             },
                             child: Padding(
                               padding: EdgeInsets.only(right: 17),
@@ -246,13 +349,68 @@ class _EngineerScreenState extends State<ScreenProfile> {
                           ),
                           InkWell(
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const RentScreen(),
-                                ),
-                              );
+                              if (FirebaseAuth
+                                  .instance.currentUser!.isAnonymous) {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      backgroundColor: Color(0xff6482C4),
+                                      content: Text(
+                                        'You Have To Sign In First \nTo List Your Home For Rent!',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize:
+                                              widthNHeight0(context, 1) * 0.035,
+                                          fontFamily: 'Kadwa',
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      actions: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                                signOut();
+                                                print("sign out");
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        const LogIn(),
+                                                  ),
+                                                );
+                                              },
+                                              child: Text(
+                                                
+                                                'SignIn',
+                                                style: TextStyle(
+                                                     fontFamily: 'Kadwa',
+                                                  color: Colors.white,
+                                                  fontSize: widthNHeight0(
+                                                          context, 1) *
+                                                      0.035,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              } else {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const RentScreen(),
+                                  ),
+                                );
+                              }
                             },
                             child: Padding(
                               padding: EdgeInsets.only(right: 17),
@@ -316,14 +474,12 @@ class _EngineerScreenState extends State<ScreenProfile> {
                               fontFamily: 'Kadwa',
                             ),
                           ),
-                         
                           SizedBox(
                             height: widthNHeight0(context, 1) * 0.05,
                           ),
                           InkWell(
                             onTap: () {
-                             Navigator.of(context)
-                            .pushNamed("Terms");
+                              Navigator.of(context).pushNamed("Terms");
                             },
                             child: Padding(
                               padding: EdgeInsets.only(right: 17),
@@ -357,13 +513,12 @@ class _EngineerScreenState extends State<ScreenProfile> {
                               ),
                             ),
                           ),
-                           SizedBox(
+                          SizedBox(
                             height: widthNHeight0(context, 1) * 0.05,
                           ),
-                         InkWell(
+                          InkWell(
                             onTap: () {
-                               Navigator.of(context)
-                            .pushNamed("AboutUs");
+                              Navigator.of(context).pushNamed("AboutUs");
                               // Navigator.push(
                               //   context,
                               //   MaterialPageRoute(
@@ -404,7 +559,7 @@ class _EngineerScreenState extends State<ScreenProfile> {
                               ),
                             ),
                           ),
-                            SizedBox(
+                          SizedBox(
                             height: widthNHeight0(context, 1) * 0.05,
                           ),
                         ],
@@ -416,19 +571,17 @@ class _EngineerScreenState extends State<ScreenProfile> {
                   ),
                   GestureDetector(
                     onTap: () async {
-                        // await  FirebaseAuth.instance.signOut();
-                        signOut();
-                    
+                      // await  FirebaseAuth.instance.signOut();
+                      signOut();
+
                       print("sign out");
-                  
-                       Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const LogIn(),
-                                ),
-                              );
-                      
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LogIn(),
+                        ),
+                      );
                     },
                     child: Container(
                       width: double.infinity,

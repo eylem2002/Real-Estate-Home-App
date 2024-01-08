@@ -145,58 +145,58 @@ class _ProductCardState extends State<MyHomecard> {
                                 ),
                               ),
                             ),
-                            Positioned(
-                              bottom: widthNHeight0(context, 1) * 0.02,
-                              right: widthNHeight0(context, 1) * 0.02,
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  showDialog(
+                            // Positioned(
+                            //   bottom: widthNHeight0(context, 1) * 0.02,
+                            //   right: widthNHeight0(context, 1) * 0.02,
+                            //   child: ElevatedButton(
+                            //     onPressed: () {
+                            //       showDialog(
                                   
-                                    context: context,
-                                    builder: (BuildContext context) {
+                            //         context: context,
+                            //         builder: (BuildContext context) {
 
-                                      return AlertDialog(
-                                       backgroundColor: Color(0xff6482C4),
-                                        title: Text('Confirm Deletion',style: TextStyle(color: Colors.white),),
-                                        content: Text(
-                                            'Are you sure you want to delete this Home?',style: TextStyle(color: Colors.white),),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.of(context).pop();
-                                            },
-                                            child: Text('Cancel',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
-                                          ),
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.of(context).pop();
-                                              onDeletePressed();
-                                              widget.onDeletePressed();
-                                            },
-                                            child: Text('OK',style: TextStyle(color: Color.fromARGB(255, 255, 32, 16),fontWeight: FontWeight.bold),),
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                  );
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  backgroundColor:
-                                      Color(0xffCCD8F4).withOpacity(0.35),
-                                ),
-                                child: Text(
-                                  'Delete',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                    fontFamily: "Kadwa",
-                                  ),
-                                ),
-                              ),
-                            ),
+                            //           return AlertDialog(
+                            //            backgroundColor: Color(0xff6482C4),
+                            //             title: Text('Confirm Deletion',style: TextStyle(color: Colors.white),),
+                            //             content: Text(
+                            //                 'Are you sure you want to delete this Home?',style: TextStyle(color: Colors.white),),
+                            //             actions: [
+                            //               TextButton(
+                            //                 onPressed: () {
+                            //                   Navigator.of(context).pop();
+                            //                 },
+                            //                 child: Text('Cancel',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                            //               ),
+                            //               TextButton(
+                            //                 onPressed: () {
+                            //                   Navigator.of(context).pop();
+                            //                   onDeletePressed();
+                            //                   widget.onDeletePressed();
+                            //                 },
+                            //                 child: Text('OK',style: TextStyle(color: Color.fromARGB(255, 255, 32, 16),fontWeight: FontWeight.bold),),
+                            //               ),
+                            //             ],
+                            //           );
+                            //         },
+                            //       );
+                            //     },
+                            //     style: ElevatedButton.styleFrom(
+                            //       shape: RoundedRectangleBorder(
+                            //         borderRadius: BorderRadius.circular(5),
+                            //       ),
+                            //       backgroundColor:
+                            //           Color(0xffCCD8F4).withOpacity(0.35),
+                            //     ),
+                            //     child: Text(
+                            //       'Delete',
+                            //       style: TextStyle(
+                            //         color: Colors.white,
+                            //         fontWeight: FontWeight.w600,
+                            //         fontFamily: "Kadwa",
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),
@@ -234,7 +234,39 @@ class _ProductCardState extends State<MyHomecard> {
                       child: Row(
                         children: [
                           ElevatedButton(
-                            onPressed: onEditPressed,
+                            onPressed:(){
+
+
+                               showDialog(
+                                  
+                                    context: context,
+                                    builder: (BuildContext context) {
+
+                                      return AlertDialog(
+                                       backgroundColor: Color(0xff6482C4),
+                                        title: Text('Confirm Deletion',style: TextStyle(color: Colors.white),),
+                                        content: Text(
+                                            'Are you sure you want to delete this Home?',style: TextStyle(color: Colors.white),),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: Text('Cancel',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                              onDeletePressed();
+                                              widget.onDeletePressed();
+                                            },
+                                            child: Text('OK',style: TextStyle(color: Color.fromARGB(255, 255, 32, 16),fontWeight: FontWeight.bold),),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                            },
                             style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5),
@@ -242,7 +274,7 @@ class _ProductCardState extends State<MyHomecard> {
                               backgroundColor: Color(0xff6482C4),
                             ),
                             child: Text(
-                              'Edit',
+                              'Delete',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w600,

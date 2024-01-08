@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:new_batic/controller/login_controller.dart';
 import 'package:new_batic/controller/signup_controller.dart';
+import 'package:new_batic/core/class/sharedData.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
 import 'package:new_batic/view/widget/compoents/bottoms/deff_button.dart';
@@ -171,69 +172,86 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                         function: () {},
                         onPressed: () async {
                           try {
-                            String str="";
-                             final getData = await FirebaseFirestore.instance.collection('Users').get();
-    List<QueryDocumentSnapshot> Useer = getData.docs;
+                            String str = "";
+                            final getData = await FirebaseFirestore.instance
+                                .collection('Users')
+                                .get();
+                            List<QueryDocumentSnapshot> Useer = getData.docs;
 
-    for (var element in Useer) 
-    { 
-str=element.id;
-    }
-          
+                            for (var element in Useer) {
+print(element.id);
+                              // FirebaseFirestore.instance
+                              //     .collection('users')
+                              //     .where('Email', sharedEmail)
+                              //     .get()
+                              //     .then((str) => element.id);
+                            }
 
-                            if (signUpController.formKey.currentState!
-                                .validate() && signUpController.firstName.text.toString().isNotEmpty && signUpController.secondName.text.toString().isNotEmpty
-                                &&signUpController.email.text.toString().isNotEmpty&&  signUpController.phone.text.toString().isNotEmpty
-                                 ) 
-                                {
-                            //  User? user = FirebaseAuth.instance.currentUser;
-                            //  print(user!.uid);
+                            if (signUpController.formKey.currentState!.validate() &&
+                                signUpController.firstName.text
+                                    .toString()
+                                    .isNotEmpty &&
+                                signUpController.secondName.text
+                                    .toString()
+                                    .isNotEmpty &&
+                                signUpController.email.text
+                                    .toString()
+                                    .isNotEmpty &&
+                                signUpController.phone.text
+                                    .toString()
+                                    .isNotEmpty) {
+                              //  User? user = FirebaseAuth.instance.currentUser;
+                              //  print(user!.uid);
 
                               if (str != "") {
-                              FirebaseAuth.instance.currentUser?.updateEmail( signUpController.email.text.toString());
-                                await FirebaseFirestore.instance.collection('Users').doc(str).update({
-
-                                  'FirstName': signUpController.firstName.text.toString(),
-                                  'SecondName': signUpController.secondName.text.toString(),
-                                  'Email': signUpController.email.text.toString(),
-                                  'Phone': signUpController.phone.text.toString(),
+                                FirebaseAuth.instance.currentUser?.updateEmail(
+                                    signUpController.email.text.toString());
+                                await FirebaseFirestore.instance
+                                    .collection('Users')
+                                    .doc(str)
+                                    .update({
+                                  'FirstName': signUpController.firstName.text
+                                      .toString(),
+                                  'SecondName': signUpController.secondName.text
+                                      .toString(),
+                                  'Email':
+                                      signUpController.email.text.toString(),
+                                  'Phone':
+                                      signUpController.phone.text.toString(),
                                 });
-                               
 
-                                if(mounted){
+                                if (mounted) {
                                   ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                          'User information updated successfully!'),
+                                      backgroundColor: Colors.green,
+                                    ),
+                                  );
+                                }
+                              }
+                            } else {
+                              if (mounted) {
+                                ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
-                                        'User information updated successfully!'),
-                                        backgroundColor: Colors.green,
+                                        'All the fields should not be empty'),
+                                    backgroundColor: Colors.red,
                                   ),
-                                );}
+                                );
                               }
-                            }
-                            else {
-                          if(mounted){
-                                 ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                    'All the fields should not be empty'),
-                                     backgroundColor: Colors.red,
-                              ),
-                              
-                            );
-                          }
                             }
                           } catch (e) {
                             print('Error updating user information: $e');
-                          if(mounted){
+                            if (mounted) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                    'An error occurred while updating user information.'),
-                                     backgroundColor: Colors.red,
-                              ),
-                              
-                            );
-                          }
+                                SnackBar(
+                                  content: Text(
+                                      'An error occurred while updating user information.'),
+                                  backgroundColor: Colors.red,
+                                ),
+                              );
+                            }
                           }
                         },
                         borderWidth: 10,

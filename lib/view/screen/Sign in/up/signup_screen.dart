@@ -239,142 +239,88 @@ class _SingUpScreenState extends State<SingUpScreen> {
       ),
     );
   }
-
-  void _signUp(BuildContext context) async {
+void _signUp(BuildContext context) async {
   String firstname = signUpController.firstName.text;
   String lastname = signUpController.secondName.text;
   String email = signUpController.email.text;
   String pass = signUpController.password.text;
   String phone = signUpController.phone.text;
 
-  void _signUp(BuildContext context) async {
-  String firstname = signUpController.firstName.text;
-  String lastname = signUpController.secondName.text;
-  String email = signUpController.email.text;
-  String pass = signUpController.password.text;
-  String phone = signUpController.phone.text;
+  try {
+    User? user = await _auth.signupwithemailandpassword(email, pass);
 
-try {
-        User? user = await _auth.signupwithemailandpassword(email, pass);
-       
-        if (user != null) {
-          print("User is successfully created");
+    if (user != null) {
+      print("User is successfully created");
 
-          final userModel = UserModel(
-            firstName: firstname,
-            secondName: lastname,
-            email: email,
-            password: pass,
-            phoneNo: phone,
-            id: user.uid, // Assign the UID as the document ID in Firestore
-          );
+      final user = UserModel(
+        firstName: signUpController.firstName.text,
+        secondName: signUpController.secondName.text,
+        email: signUpController.email.text,
+        password: signUpController.password.text,
+        phoneNo: signUpController.phone.text,
+      );
+      final userRepo = Get.put(UserRepository());
+      await userRepo.createUser(user);
 
-          final userRepo = Get.put(UserRepository());
-          await userRepo.createUser(userModel);
-
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const LogIn(),
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const LogIn(),
+          ),
+        );
+      }
+    } else {
+      print("Error occurred during sign up");
+      if (mounted ) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              "The Email is used in another account",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
-          );
-        } else {
-          print("Error occurred during sign up");
-          // ... your error handling logic
-        }
-      } catch (e) {
-        if (e is FirebaseAuthException) {
-          print("Error occurred: $e");
+            backgroundColor: Colors.red,
+            duration: Duration(seconds: 3),
+            action: SnackBarAction(
+              label: '',
+              textColor: Colors.white,
+              onPressed: () {},
+            ),
+          ),
+        );
+      }
+    }
+  } catch (e) {
+    if (e is FirebaseAuthException) {
+      print("Error occurred: $e");
 
-          // ... your error handling logic
-        }
+      String errorMessage = "An error occurred during sign up.";
+
+      if (e.code == 'email-already-in-use') {
+        errorMessage = "The account already exists for that email.";
+      }
+
+      if (mounted) {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Error message"),
+              content: Text(errorMessage),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text("OK"),
+                ),
+              ],
+            );
+          },
+        );
       }
     }
   }
 }
-
-//   try {
-//     User? user = await _auth.signupwithemailandpassword(email, pass);
-
-
-
-
-//     if (user != null) {
-//       print("User is successfully created");
-
-// final user=UserModel(firstName: signUpController.firstName.text,secondName: signUpController.secondName.text,email:signUpController.email.text,password:  signUpController.password.text,phoneNo:signUpController.phone.text );
-// final userRepo=Get.put(UserRepository());
-// await userRepo.createUser(user);
-
-// if(mounted){
-
-//       Navigator.pushReplacement( 
-//         context,
-//         MaterialPageRoute(
-//           builder: (context) => const LogIn(),
-//         ),
-//       );
-
-// }
-
-
-//     } else {
-//       print("Error occurred during sign up");
-// if(mounted){
-//         ScaffoldMessenger.of(context).showSnackBar(
-//   SnackBar(
-//     content: Text("The Email is used in another account",  textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),),
-//      backgroundColor: Colors.red,
-//     duration: Duration(seconds: 3),
-//     // margin: EdgeInsets.only(bottom: 20),
-//     action: SnackBarAction(
-//       label: '',
-    
-//       textColor: Colors.white,
-      
-//       onPressed: () {
-       
-//       },
-//     ),
-//   ),
-// );
-// }
-
-//     }
-//   } 
-  
-  
-//   catch (e) {
-//     if (e is FirebaseAuthException) {
-//       print("Error occurred: $e");
-
-//       String errorMessage = "An error occurred during sign up.";
-
-//       if (e.code == 'email-already-in-use') {
-//         errorMessage = "The account already exists for that email.";
-//       }
-
-//     if(mounted){
-
-//       showDialog(
-//         context: context,
-//         builder: (BuildContext context) {
-//           return AlertDialog(
-//             title: Text("Error message"),
-//             content: Text(errorMessage),
-//             actions: [
-//               TextButton(
-//                 onPressed: () {
-//                   Navigator.of(context).pop();
-//                 },
-//                 child: Text("OK"),
-//               ),
-//             ],
-//           );
-//         },
-//       );
-//     }
-//     }
-//   }
-// }
-// }
+}

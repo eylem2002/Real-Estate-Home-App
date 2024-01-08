@@ -5,3 +5,6 @@ List<Map<String, dynamic>> shared_data=[];
 
 
   List<dynamic> allUsers =[];
+
+
+  String sharedEmail="";
