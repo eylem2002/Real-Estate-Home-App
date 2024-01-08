@@ -154,22 +154,22 @@ class _LogInState extends State<LogIn> {
                             ),
                           ),
                         ),
-                        Container(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              TextButton(
-                                  onPressed: () {},
-                                  child: Text(
-                                    "Forgot Password",
-                                    style: TextStyle(
-                                        color: Colors.grey[600],
-                                        fontFamily: 'Kadwa'),
-                                  ))
-                            ],
-                          ),
-                        ),
+                        // Container(
+                        //   alignment: Alignment.center,
+                        //   child: Row(
+                        //     mainAxisAlignment: MainAxisAlignment.center,
+                        //     children: [
+                        //       TextButton(
+                        //           onPressed: () {},
+                        //           child: Text(
+                        //             "Forgot Password",
+                        //             style: TextStyle(
+                        //                 color: Colors.grey[600],
+                        //                 fontFamily: 'Kadwa'),
+                        //           ))
+                        //     ],
+                        //   ),
+                        // ),
                       ],
                     ),
                     Row(

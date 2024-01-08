@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Legal/aboutUS.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/rent%20Home/ForRent.dart';
+import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/calculator.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/firstBox/ChnagePass.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/firstBox/personalDetils_screen.dart';
 import 'package:new_batic/view/screen/Sign%20in/up/signin.dart';
@@ -131,7 +132,7 @@ class _EngineerScreenState extends State<ScreenProfile> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                      const changePass(),
+                                       CalculatorScreen(),
                                 ),
                               );
                             },
@@ -143,13 +144,13 @@ class _EngineerScreenState extends State<ScreenProfile> {
                                 children: [
                                   Row(
                                     children: [
-                                      Icon(Icons.lock,
+                                      Icon(Icons.calculate,
                                           color: Color(0xff263238)),
                                       SizedBox(
                                           width: widthNHeight0(context, 0) *
                                               0.015),
                                       Text(
-                                        'Change Password',
+                                        'Real Estate Calculator',
                                         style: TextStyle(
                                           fontSize:
                                               widthNHeight0(context, 1) * 0.038,
