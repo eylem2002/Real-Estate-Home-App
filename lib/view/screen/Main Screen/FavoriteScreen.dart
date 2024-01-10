@@ -20,12 +20,15 @@ class FavoriteScreen extends StatefulWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Saved",
-          style: TextStyle(fontFamily: "Kadwa", fontWeight: FontWeight.w600,  fontSize: widthNHeight0(context, 1) * 0.06,),
-          
+        title: Center(
+          child: Text('Saved',
+              style: TextStyle(
+                fontSize: widthNHeight0(context, 1) * 0.06,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Kadwa',
+              )),
         ),
-         automaticallyImplyLeading: false,
+        automaticallyImplyLeading: false,
       ),
       body: Column(
         children: [

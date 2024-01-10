@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously, curly_braces_in_flow_control_structures, use_key_in_widget_constructors
+
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -213,17 +215,16 @@ class _PickImageState extends State<ImagePick> {
   Future<void> _pickImageFromGallery() async {
     final returnImage =
         await ImagePicker().pickImage(source: ImageSource.gallery);
-    file = File(returnImage!.path);
-
+        if(returnImage!=null)
+    file = File(returnImage.path);
+ if (returnImage == null) return;
     setState(() {
       _selectedImages.add(File(returnImage.path));
       _images.add(File(returnImage.path).readAsBytesSync());
       sharedImageList.add(File(returnImage.path));
     });
 
-    if (mounted) {
-      Navigator.of(context).pop();
-    }
+    Navigator.of(context).pop();
   }
 
   Future<void> _pickImageFromCamera() async {
@@ -237,12 +238,12 @@ class _PickImageState extends State<ImagePick> {
       sharedImageList.add(File(returnImage.path));
     });
 
-    if (mounted) {
-      Navigator.of(context).pop();
-    }
+    Navigator.of(context).pop();
   }
 
   Future<void> uploadImagesToStorage() async {
+
+
     try {
       for (int i = 0; i < sharedImageList.length; i++) {
         File imageFile = sharedImageList[i];
@@ -258,9 +259,12 @@ class _PickImageState extends State<ImagePick> {
         imageUrls.add(imageUrl);
       }
 
+     
       // shared_data.clear();
     } catch (error) {
       print('Error uploading images to Firebase Storage: $error');
     }
   }
+
+
 }

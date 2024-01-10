@@ -28,7 +28,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     double homePrice = double.tryParse(homePriceController.text) ?? 0;
 
     if (salary - expenses >= homePrice) {
-      result = 'You can afford the home!';
+      result = 'You can Rent the home!';
     } else {
       result = 'The home may be too expensive for you.';
     }

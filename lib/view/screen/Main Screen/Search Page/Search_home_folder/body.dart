@@ -67,7 +67,7 @@ class _BodySearchState extends State<BodySearch> {
                   if((demoProducts[index].title == "The home in $Area") || (Area == "Any")){
                     if((bednumber == 0) || (demoProducts[index].bed == bednumber)){
                         if(check==true ){
-                if((int.parse(demoProducts[index].price)  <= price_end && int.parse(demoProducts[index].price)  >=price_start ) || (price_start==0 && price_end==0) )
+                if((double.parse(demoProducts[index].price)  <= price_end && double.parse(demoProducts[index].price)  >=price_start ) || (price_start==0 && price_end==0) )
                 {
                 return Padding(
                   padding: const EdgeInsets.all(0),

@@ -332,7 +332,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "Added on",
+                                        "Added by",
                                         style: TextStyle(fontFamily: "kadwa"),
                                       ),
                                       SizedBox(

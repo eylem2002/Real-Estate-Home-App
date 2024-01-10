@@ -136,9 +136,11 @@ class _HomeImages extends State<HomeImages> {
 
                     // Navigator.of(context).pushReplacementNamed("map_setup");
 
-                    if (sharedImageList2.isNotEmpty) {
-                      Navigator.of(context).pushReplacementNamed("map_setup");
-                    } else {
+                   if (sharedImageList2 != null) {
+  Navigator.of(context).pushReplacementNamed("map_setup");
+}
+
+                     else {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Center(

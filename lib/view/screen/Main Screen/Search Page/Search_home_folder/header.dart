@@ -131,7 +131,7 @@ class _HeaderState extends State<Header> {
                       color: const Color(0xFFCCD8F4),
                       borderRadius: BorderRadius.circular(5.0),
                     ),
-                    child: buildButtonContent(Icons.sell_outlined, 'Sell Home'),
+                    child: buildButtonContent(Icons.sell_outlined, 'Sell'),
                   ),
                 ),
                 SizedBox(
@@ -206,7 +206,7 @@ class _HeaderState extends State<Header> {
                       borderRadius: BorderRadius.circular(5.0),
                     ),
                     child: buildButtonContent(
-                        Icons.real_estate_agent_outlined, 'Rent home'),
+                        Icons.real_estate_agent_outlined, 'Rent'),
                   ),
                 ),
                 SizedBox(

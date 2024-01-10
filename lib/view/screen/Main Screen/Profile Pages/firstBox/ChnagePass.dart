@@ -133,9 +133,9 @@ class _chnagePassState extends State<changePass> {
                           final getData = await FirebaseFirestore.instance
                               .collection('Users')
                               .get();
-                          List<QueryDocumentSnapshot> Useer = getData.docs;
+                          List<QueryDocumentSnapshot> useer = getData.docs;
 
-                          for (var element in Useer) {
+                          for (var element in useer) {
                             str = element.id;
                           }
 

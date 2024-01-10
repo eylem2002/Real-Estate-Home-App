@@ -101,13 +101,16 @@ class _MyHomeState extends State<MyHome> {
      
       Scaffold(
         appBar: AppBar(
-          title: Text(
-            "MyHomes",
-            style: TextStyle(fontFamily: "Kadwa", fontWeight: FontWeight.w600,  fontSize: widthNHeight0(context, 1) * 0.06,),
-          ),
-          automaticallyImplyLeading: false,
-          
+        title: Center(
+          child: Text('My Home',
+              style: TextStyle(
+                fontSize: widthNHeight0(context, 1) * 0.06,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Kadwa',
+              )),
         ),
+        automaticallyImplyLeading: false,
+      ),
         body: SingleChildScrollView(
           
           scrollDirection: Axis.vertical,

@@ -12,11 +12,11 @@ class CompleteSellHomeScreen extends StatefulWidget {
   @override
   State<CompleteSellHomeScreen> createState() => _CompleteSellHomeScreenState();
 }
-
+//
 class _CompleteSellHomeScreenState extends State<CompleteSellHomeScreen> {
-  String selectedValue = '';
-  String Furnished = '';
-  String selectedGovernorates = '';
+  String selectedValue = 'Buy';
+  String Furnished = 'Yes';
+  String selectedGovernorates = 'Amman';
   int BuildingAge = 1;
   int Bedrooms = 1;
   int Bathrooms = 1;
