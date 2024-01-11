@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:new_batic/core/class/sharedData.dart';
 import 'package:new_batic/core/constant/imageAsses.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
-import 'package:new_batic/features/Auth/user_auth/firebase_auth/firebase_auth.dart';
+import 'package:new_batic/core/services/firebase_auth.dart';
 import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
 import '../../../../controller/login_controller.dart';
 

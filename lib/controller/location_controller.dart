@@ -4,8 +4,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/instance_manager.dart';
+import 'package:new_batic/core/services/user_repository.dart';
 
-import 'package:new_batic/repository/user_repository/user_repository.dart';
 
 class LocationController{
 

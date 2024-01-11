@@ -7,7 +7,7 @@ import 'package:new_batic/controller/login_controller.dart';
 import 'package:new_batic/controller/signup_controller.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
-import 'package:new_batic/view/widget/compoents/bottoms/deff_button.dart';
+
 
 class PersdonalDetilsScreen extends StatefulWidget {
   const PersdonalDetilsScreen({super.key});
@@ -152,7 +152,7 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                         ),
                       ),
                     ),
-                    TextFormWidget(
+                    TextFormWidgetRead(
                       height: widthNHeight0(context, 1) * 0.2,
                       width: double.infinity,
                       passToggle: false,
@@ -176,7 +176,7 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                         fontFamily: 'Kadwa',
                       ),
                     ),
-                    TextFormWidget(
+                    TextFormWidgetRead(
                       height: widthNHeight0(context, 1) * 0.2,
                       width: double.infinity,
                       passToggle: false,
@@ -200,7 +200,7 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                         fontFamily: 'Kadwa',
                       ),
                     ),
-                    TextFormWidget44(
+                    TextFormWidgetRead(
                       height: widthNHeight0(context, 1) * 0.2,
                       width: double.infinity,
                       passToggle: false,
@@ -224,7 +224,7 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                         fontFamily: 'Kadwa',
                       ),
                     ),
-                    TextFormWidget(
+                    TextFormWidgetRead(
                       height: widthNHeight0(context, 1) * 0.2,
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -248,7 +248,7 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                         fontFamily: 'Kadwa',
                       ),
                     ),
-                    TextFormWidget(
+                    TextFormWidgetRead(
                       height: widthNHeight0(context, 1) * 0.2,
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -256,6 +256,7 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                         }
                         return null;
                       },
+                      
                       width: double.infinity,
                       passToggle: false,
                       passController: signUpController.password,
@@ -264,78 +265,10 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                     SizedBox(
                       height: widthNHeight0(context, 1) * 0.008,
                     ),
-                    Center(
-                      child: defaultButton(
-                        text: 'Update',
-                        onPressed: () async {
-                          try {
-                            String currentEmail =
-                                FirebaseAuth.instance.currentUser?.email ?? '';
+                  
+  
 
-                            // Fetch the document ID to the current user's email
-                            QuerySnapshot<Object?> querySnapshot =
-                                await FirebaseFirestore.instance
-                                    .collection('Users')
-                                    .where('Email', isEqualTo: currentEmail)
-                                    .get();
-
-                            if (querySnapshot.docs.isNotEmpty) {
-                              // Use the first document found (assuming email is unique)
-                              DocumentSnapshot<Object?> userSnapshot =
-                                  querySnapshot.docs.first;
-                              String documentId = userSnapshot.id;
-
-                              // Update user information in Firestore
-                              await FirebaseFirestore.instance
-                                  .collection('Users')
-                                  .doc(documentId)
-                                  .update({
-                                'FirstName':
-                                    signUpController.firstName.text.toString(),
-                                'SecondName':
-                                    signUpController.secondName.text.toString(),
-                                'Email': signUpController.email.text.toString(),
-                                'Phone': signUpController.phone.text.toString(),
-                                'Password': signUpController.password.text.toString(),
-                              });
-                                  //EmailAuthProvider.credential(email: signUpController.email.text.toString(), password:     signUpController.password.text.toString()  );
-
-                              resetEmail(
-                                  signUpController.email.text.toString());
-                              resetPassword(
-                                  signUpController.password.text.toString());
-                                  FirebaseAuth.instance.currentUser?.updateEmail( signUpController.email.text.toString());
-                                  FirebaseAuth.instance.currentUser?.updatePassword( signUpController.password.text.toString());
-
-
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                      'User information updated successfully!'),
-                                  backgroundColor: Colors.green,
-                                ),
-                              );
-                            } else {
-                              print(
-                                  'No user found with the current email.....');
-                            }
-                          } catch (e) {
-                            print('Error updating user information: $e');
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                    'An error occurred while updating user information.'),
-                                backgroundColor: Colors.red,
-                              ),
-                            );
-                          }
-                        },
-                        borderWidth: 10,
-                        width: widthNHeight0(context, 1) * 0.6,
-                        height: widthNHeight0(context, 1) * 0.12,
-                        borderRadius: 5,
-                      ),
-                    ),
+                   
                   ],
                 ),
               ),
