@@ -23,16 +23,11 @@ class SingUpScreen extends StatefulWidget {
 }
 
 class _SingUpScreenState extends State<SingUpScreen> {
-  //SignUpController signUpController = SignUpController();
-  late SignUpController signUpController;
+  SignUpController signUpController = SignUpController();
 
   final FirebaseAuthService _auth = FirebaseAuthService();
   bool flag = false;
-@override
-  void initState() {
-    super.initState();
-    signUpController = SignUpController(); 
-  }
+
   @override
   void dispose() {
     signUpController.firstName.dispose();
@@ -239,7 +234,8 @@ class _SingUpScreenState extends State<SingUpScreen> {
       ),
     );
   }
-void _signUp(BuildContext context) async {
+
+  void _signUp(BuildContext context) async {
   String firstname = signUpController.firstName.text;
   String lastname = signUpController.secondName.text;
   String email = signUpController.email.text;
@@ -252,44 +248,44 @@ void _signUp(BuildContext context) async {
     if (user != null) {
       print("User is successfully created");
 
-      final user = UserModel(
-        firstName: signUpController.firstName.text,
-        secondName: signUpController.secondName.text,
-        email: signUpController.email.text,
-        password: signUpController.password.text,
-        phoneNo: signUpController.phone.text,
-      );
-      final userRepo = Get.put(UserRepository());
-      await userRepo.createUser(user);
+final user=UserModel(firstName: signUpController.firstName.text,secondName: signUpController.secondName.text,email:signUpController.email.text,password:  signUpController.password.text,phoneNo:signUpController.phone.text );
+final userRepo=Get.put(UserRepository());
+await userRepo.createUser(user);
 
-      if (mounted) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const LogIn(),
-          ),
-        );
-      }
+if(mounted){
+
+      Navigator.pushReplacement( 
+        context,
+        MaterialPageRoute(
+          builder: (context) => const LogIn(),
+        ),
+      );
+
+}
+
+
     } else {
       print("Error occurred during sign up");
-      if (mounted ) {
+if(mounted){
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              "The Email is used in another account",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            backgroundColor: Colors.red,
-            duration: Duration(seconds: 3),
-            action: SnackBarAction(
-              label: '',
-              textColor: Colors.white,
-              onPressed: () {},
-            ),
-          ),
-        );
-      }
+  SnackBar(
+    content: Text("The Email is used in another account",  textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),),
+     backgroundColor: Colors.red,
+    duration: Duration(seconds: 3),
+    // margin: EdgeInsets.only(bottom: 20),
+    action: SnackBarAction(
+      label: '',
+    
+      textColor: Colors.white,
+      
+      onPressed: () {
+        // Do something when the user presses the action button
+      },
+    ),
+  ),
+);
+}
+
     }
   } catch (e) {
     if (e is FirebaseAuthException) {
@@ -301,25 +297,26 @@ void _signUp(BuildContext context) async {
         errorMessage = "The account already exists for that email.";
       }
 
-      if (mounted) {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text("Error message"),
-              content: Text(errorMessage),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Text("OK"),
-                ),
-              ],
-            );
-          },
-        );
-      }
+    if(mounted){
+
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Error message"),
+            content: Text(errorMessage),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text("OK"),
+              ),
+            ],
+          );
+        },
+      );
+    }
     }
   }
 }

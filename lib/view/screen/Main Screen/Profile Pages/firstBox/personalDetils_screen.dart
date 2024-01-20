@@ -7,7 +7,7 @@ import 'package:new_batic/controller/login_controller.dart';
 import 'package:new_batic/controller/signup_controller.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
-import 'package:new_batic/view/widget/compoents/bottoms/deff_button.dart';
+
 
 class PersdonalDetilsScreen extends StatefulWidget {
   const PersdonalDetilsScreen({super.key});
@@ -19,9 +19,84 @@ class PersdonalDetilsScreen extends StatefulWidget {
 class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
   SignUpController signUpController = SignUpController();
   TextController textController = TextController();
+  String firstNamee = "", secondName = "", emailAddress = "", phoneNu = "",passVal="";
+
+  Future<String> resetEmail(String newEmail) async {
+    try {
+      User? firebaseUser = FirebaseAuth.instance.currentUser;
+
+      if (firebaseUser != null) {
+        await firebaseUser.updateEmail(newEmail);
+        return 'Success';
+      } else {
+        return 'User not signed in.';
+      }
+    } catch (error) {
+      return 'Error: $error';
+    }
+  }
+
+  Future<String> resetPassword(String newPassword) async {
+    try {
+      User? firebaseUser = FirebaseAuth.instance.currentUser;
+
+      if (firebaseUser != null) {
+        await firebaseUser.updatePassword(newPassword);
+        return 'Success';
+      } else {
+        return 'User not signed in.';
+      }
+    } catch (error) {
+      return 'Error: $error';
+    }
+  }
+
+  Future<void> fetchUserData() async {
+    String currentEmail = FirebaseAuth.instance.currentUser?.email ?? '';
+
+    try {
+      QuerySnapshot<Object?> querySnapshot = await FirebaseFirestore.instance
+          .collection('Users')
+          .where('Email', isEqualTo: currentEmail)
+          .get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        DocumentSnapshot<Object?> userSnapshot = querySnapshot.docs.first;
+
+        Map<String, dynamic>? userData =
+            userSnapshot.data() as Map<String, dynamic>?;
+
+        if (userData != null) {
+          setState(() {
+            firstNamee = userData['FirstName'] ?? "";
+            secondName = userData['SecondName'] ?? "";
+            emailAddress = userData['Email'] ?? "";
+            phoneNu = userData['Phone'] ?? "";
+            passVal= userData['Password'] ?? "";
+          });
+        } else {
+          print('User data is null.');
+        }
+      } else {
+        print('No user found with the current email.....');
+      }
+    } catch (error) {
+      print('Error querying user document: $error');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUserData();
+  }
 
   @override
   Widget build(BuildContext context) {
+    if (mounted) {
+      fetchUserData();
+    }
+
     return Scaffold(
       appBar: AppBar(
         leading: Container(
@@ -77,7 +152,7 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                         ),
                       ),
                     ),
-                    TextFormWidget(
+                    TextFormWidgetRead(
                       height: widthNHeight0(context, 1) * 0.2,
                       width: double.infinity,
                       passToggle: false,
@@ -88,7 +163,7 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                         return null;
                       },
                       passController: signUpController.firstName,
-                      str: 'Batic',
+                      str: firstNamee,
                     ),
                     SizedBox(
                       height: widthNHeight0(context, 1) * 0.008,
@@ -101,7 +176,7 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                         fontFamily: 'Kadwa',
                       ),
                     ),
-                    TextFormWidget(
+                    TextFormWidgetRead(
                       height: widthNHeight0(context, 1) * 0.2,
                       width: double.infinity,
                       passToggle: false,
@@ -112,7 +187,7 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                         return null;
                       },
                       passController: signUpController.secondName,
-                      str: 'Home',
+                      str: secondName,
                     ),
                     SizedBox(
                       height: widthNHeight0(context, 1) * 0.008,
@@ -125,7 +200,7 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                         fontFamily: 'Kadwa',
                       ),
                     ),
-                    TextFormWidget44(
+                    TextFormWidgetRead(
                       height: widthNHeight0(context, 1) * 0.2,
                       width: double.infinity,
                       passToggle: false,
@@ -136,7 +211,7 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                         return null;
                       },
                       passController: signUpController.email,
-                      str: 'Batic@gmail.com',
+                      str: emailAddress,
                     ),
                     SizedBox(
                       height: widthNHeight0(context, 1) * 0.008,
@@ -149,7 +224,7 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                         fontFamily: 'Kadwa',
                       ),
                     ),
-                    TextFormWidget(
+                    TextFormWidgetRead(
                       height: widthNHeight0(context, 1) * 0.2,
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -160,61 +235,40 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                       width: double.infinity,
                       passToggle: false,
                       passController: signUpController.phone,
-                      str: '0798972344',
+                      str: phoneNu,
                     ),
                     SizedBox(
                       height: widthNHeight0(context, 1) * 0.008,
                     ),
-                    Center(
-                      child: defaultButton(
-                        text: 'Update',
-                        function: () {},
-                        onPressed: () async {
-                          try {
-                            if (signUpController.formKey.currentState!
-                                .validate()) {
-                              User? user = FirebaseAuth.instance.currentUser;
-                              
-
-                              if (user != null) {
-                                
-                                await FirebaseFirestore.instance
-                                    .collection('Users')
-                                    .doc(user.uid)
-                                    .update({
-                                  'FirstName': signUpController.firstName.text,
-                                  // 'SecondName': signUpController.secondName.text,
-                                  // 'Email': signUpController.email.text,
-                                  // 'Phone': signUpController.phone.text,
-                                });
-                                print(FirebaseFirestore.instance
-                                    .collection('Users')
-                                    .doc(user.uid));
-
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                        'User information updated successfully!'),
-                                  ),
-                                );
-                              }
-                            }
-                          } catch (e) {
-                            print('Error updating user information: $e');
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                    'An error occurred while updating user information.'),
-                              ),
-                            );
-                          }
-                        },
-                        borderWidth: 10,
-                        width: widthNHeight0(context, 1) * 0.6,
-                        height: widthNHeight0(context, 1) * 0.12,
-                        borderRadius: 5,
+                      const Text(
+                      'Password',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Kadwa',
                       ),
                     ),
+                    TextFormWidgetRead(
+                      height: widthNHeight0(context, 1) * 0.2,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Password must not be empty ';
+                        }
+                        return null;
+                      },
+                      
+                      width: double.infinity,
+                      passToggle: false,
+                      passController: signUpController.password,
+                      str: passVal,
+                    ),
+                    SizedBox(
+                      height: widthNHeight0(context, 1) * 0.008,
+                    ),
+                  
+  
+
+                   
                   ],
                 ),
               ),

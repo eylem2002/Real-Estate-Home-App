@@ -25,6 +25,20 @@ return credential.user;
 }
 return null;
   }
+
+  Future signinAnon ()async{
+    try{
+    UserCredential result = await _auth.signInAnonymously();
+    final User? user = result.user;
+      
+      return user;
+    }
+    catch(e){
+      print(e.toString());
+      return null;
+
+    }
+  }
   
   
 }

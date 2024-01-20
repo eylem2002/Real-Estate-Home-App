@@ -15,7 +15,7 @@ import 'package:new_batic/view/widget/compoents/bottoms/deff_button%204.dart';
 
 class DetailsScreen extends StatefulWidget {
  
-  const DetailsScreen({super.key, required this.product});
+  const DetailsScreen({Key? key, required this.product}) : super(key: key);
 
   final Product product;
  
@@ -29,10 +29,11 @@ class _DetailsScreenState extends State<DetailsScreen> {
   int selectedImage = 0;
 
   Key? get key => null;
-  double lon = 0, lat = 0;
+
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         title: Text("Batic"),
@@ -80,7 +81,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           width: MediaQuery.of(context).size.width,
                           margin: const EdgeInsets.symmetric(horizontal: 5),
                           decoration: BoxDecoration(
-                            color: Colors.amber,
+                          color: Color(0xFFF0F2F6),
                           ),
                           child: Image.network(image, fit: BoxFit.fill),
                         );
@@ -331,7 +332,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "Added on",
+                                        "Added by",
                                         style: TextStyle(fontFamily: "kadwa"),
                                       ),
                                       SizedBox(
@@ -647,6 +648,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               onPressed: () {
                                 widget.product.long;
                                widget.product.late;
+                               
+                                print('9999999999999999999 ${widget.product.late}');
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(

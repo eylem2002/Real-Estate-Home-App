@@ -1,15 +1,17 @@
+// ignore_for_file: use_build_context_synchronously, curly_braces_in_flow_control_structures, use_key_in_widget_constructors
+
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
+import 'package:new_batic/core/services/EnterSevices.dart';
 
 List<File> sharedImageList = [];
-    List<String> imageUrls = [];
+List<String> imageUrls = [];
 
 class ImagePick extends StatefulWidget {
-   const ImagePick({Key? key});
+  const ImagePick({Key? key});
 
   @override
   State<ImagePick> createState() => _PickImageState();
@@ -111,19 +113,44 @@ class _PickImageState extends State<ImagePick> {
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: SizedBox(
-                height: MediaQuery.of(context).size.width * 0.14,
-                width: MediaQuery.of(context).size.width * 0.15,
+                height: widthNHeight0(context, 1) * 0.14,
+                width: widthNHeight0(context, 0) * 0.15,
+
+                
                 child: FloatingActionButton(
+                  
                   onPressed: () async {
+                    print("object1");
                     await uploadImagesToStorage();
-                    Navigator.of(context).pushNamed("home_images");
+
+                    if (mounted) {
+                      if (sharedImageList.isNotEmpty) {
+                        Navigator.of(context).pushNamed("home_images");
+                        print("object");
+                      } 
+                      else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Center(
+                              child: Text(
+                                'Choose one',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            backgroundColor: Colors.red,
+                          ),
+                        );
+                      }
+                    }
                   },
                   backgroundColor: Color(0xff6482C4),
                   child: Text(
-          "Next",
-          style: TextStyle(fontFamily: "kadwa", color: Colors.white,fontWeight: FontWeight.w600),
-        ),
-       
+                    "Next",
+                    style: TextStyle(
+                        fontFamily: "kadwa",
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600),
+                  ),
                 ),
               ),
             ),
@@ -192,7 +219,8 @@ class _PickImageState extends State<ImagePick> {
   Future<void> _pickImageFromGallery() async {
     final returnImage =
         await ImagePicker().pickImage(source: ImageSource.gallery);
-    file = File(returnImage!.path);
+        if(returnImage!=null)
+    file = File(returnImage.path);
  if (returnImage == null) return;
     setState(() {
       _selectedImages.add(File(returnImage.path));

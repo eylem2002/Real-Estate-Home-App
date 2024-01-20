@@ -1,7 +1,10 @@
-// ignore_for_file: use_super_parameters
+// ignore_for_file: use_super_parameters, avoid_unnecessary_containers
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:new_batic/core/class/prodect.dart';
+import 'package:new_batic/core/class/sharedData.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 
 class MyHomecard extends StatefulWidget {
@@ -12,12 +15,14 @@ class MyHomecard extends StatefulWidget {
     required this.product,
     required this.onPress,
     required this.onFavoriteChanged,
+    required this.onDeletePressed,
   }) : super(key: key);
 
   final double width, aspectRatio;
   final Product product;
   final VoidCallback onPress;
   final Function(bool isFavourite) onFavoriteChanged;
+  final Function() onDeletePressed;
 
   @override
   // ignore: library_private_types_in_public_api
@@ -25,8 +30,54 @@ class MyHomecard extends StatefulWidget {
 }
 
 class _ProductCardState extends State<MyHomecard> {
-  void onDeletePressed() {
-    print('delete button pressed');
+  String userId = "";
+  void onDeletePressed() async {
+    print('Delete button pressed');
+
+    try {
+      final FirebaseAuth auth = FirebaseAuth.instance;
+      final User? user = auth.currentUser;
+      final uid = user?.uid;
+      print(uid);
+
+      QuerySnapshot<Map<String, dynamic>> snapshot =
+          await FirebaseFirestore.instance.collection('House').get();
+
+      print('Number of documents: ${snapshot.size}');
+      int counter = 0;
+      for (QueryDocumentSnapshot<Map<String, dynamic>> doc in snapshot.docs) {
+        List<dynamic>? dataList = doc['dataList'];
+        counter++;
+        String homeId = widget.product.id;
+        if (dataList != null) {
+          String str = dataList[7].toString();
+
+          int openingBraceIndex = str.indexOf("{");
+          int closingBraceIndex = str.indexOf("}");
+
+          userId =
+              str.substring(openingBraceIndex + 1, closingBraceIndex).trim();
+
+//  print('$counter + $userId');
+        }
+
+// print('%%%%%%%%%%%%%%%%$uid');
+
+        if (dataList != null &&
+            userId == 'userid: ${uid.toString()}' &&
+            homeId == doc.id) {
+          await doc.reference.delete();
+
+          print('Home deleted successfully');
+        }
+      }
+    } catch (e) {
+      print('Error deleting home: $e');
+    }
+
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   void onEditPressed() {
@@ -94,26 +145,58 @@ class _ProductCardState extends State<MyHomecard> {
                                 ),
                               ),
                             ),
-                            Positioned(
-                              bottom: widthNHeight0(context, 1) * 0.02,
-                              right: widthNHeight0(context, 1) * 0.02,
-                              child: ElevatedButton(
-                                onPressed: onDeletePressed,
-                                style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5),
-                                  ), backgroundColor: Color(0xffCCD8F4).withOpacity(0.35),
-                                ),
-                                child: Text(
-                                  'Delete',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                    fontFamily: "Kadwa",
-                                  ),
-                                ),
-                              ),
-                            ),
+                            // Positioned(
+                            //   bottom: widthNHeight0(context, 1) * 0.02,
+                            //   right: widthNHeight0(context, 1) * 0.02,
+                            //   child: ElevatedButton(
+                            //     onPressed: () {
+                            //       showDialog(
+                                  
+                            //         context: context,
+                            //         builder: (BuildContext context) {
+
+                            //           return AlertDialog(
+                            //            backgroundColor: Color(0xff6482C4),
+                            //             title: Text('Confirm Deletion',style: TextStyle(color: Colors.white),),
+                            //             content: Text(
+                            //                 'Are you sure you want to delete this Home?',style: TextStyle(color: Colors.white),),
+                            //             actions: [
+                            //               TextButton(
+                            //                 onPressed: () {
+                            //                   Navigator.of(context).pop();
+                            //                 },
+                            //                 child: Text('Cancel',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                            //               ),
+                            //               TextButton(
+                            //                 onPressed: () {
+                            //                   Navigator.of(context).pop();
+                            //                   onDeletePressed();
+                            //                   widget.onDeletePressed();
+                            //                 },
+                            //                 child: Text('OK',style: TextStyle(color: Color.fromARGB(255, 255, 32, 16),fontWeight: FontWeight.bold),),
+                            //               ),
+                            //             ],
+                            //           );
+                            //         },
+                            //       );
+                            //     },
+                            //     style: ElevatedButton.styleFrom(
+                            //       shape: RoundedRectangleBorder(
+                            //         borderRadius: BorderRadius.circular(5),
+                            //       ),
+                            //       backgroundColor:
+                            //           Color(0xffCCD8F4).withOpacity(0.35),
+                            //     ),
+                            //     child: Text(
+                            //       'Delete',
+                            //       style: TextStyle(
+                            //         color: Colors.white,
+                            //         fontWeight: FontWeight.w600,
+                            //         fontFamily: "Kadwa",
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),
@@ -151,14 +234,47 @@ class _ProductCardState extends State<MyHomecard> {
                       child: Row(
                         children: [
                           ElevatedButton(
-                            onPressed: onEditPressed,
+                            onPressed:(){
+
+
+                               showDialog(
+                                  
+                                    context: context,
+                                    builder: (BuildContext context) {
+
+                                      return AlertDialog(
+                                       backgroundColor: Color(0xff6482C4),
+                                        title: Text('Confirm Deletion',style: TextStyle(color: Colors.white),),
+                                        content: Text(
+                                            'Are you sure you want to delete this Home?',style: TextStyle(color: Colors.white),),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: Text('Cancel',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                              onDeletePressed();
+                                              widget.onDeletePressed();
+                                            },
+                                            child: Text('OK',style: TextStyle(color: Color.fromARGB(255, 255, 32, 16),fontWeight: FontWeight.bold),),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                            },
                             style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5),
-                              ), backgroundColor: Color(0xff6482C4),
+                              ),
+                              backgroundColor: Color(0xff6482C4),
                             ),
                             child: Text(
-                              'Edit',
+                              'Delete',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w600,
@@ -172,7 +288,8 @@ class _ProductCardState extends State<MyHomecard> {
                             style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5),
-                              ), backgroundColor: Color(0xff6482C4),
+                              ),
+                              backgroundColor: Color(0xff6482C4),
                             ),
                             child: Text(
                               'Request',

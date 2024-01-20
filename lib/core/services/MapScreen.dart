@@ -11,7 +11,7 @@ class MapScreen extends StatefulWidget {
   final String servicesName;
   final double lon, lat;
 
-   const MapScreen({Key? key, required this.servicesName, required this.lon, required this.lat}) : super(key: key);
+ const MapScreen({Key? key, required this.servicesName, required this.lon, required this.lat}) : super(key: key);
 
   @override
   _MapScreenState createState() => _MapScreenState();
@@ -112,7 +112,7 @@ class _MapScreenState extends State<MapScreen> {
                   rotateGesturesEnabled: true,
                   tiltGesturesEnabled: false,
                   myLocationEnabled: true,
-                 gestureRecognizers: Set()..add(Factory<PanGestureRecognizer>(() => PanGestureRecognizer())),
+                gestureRecognizers: Set()..add(Factory<PanGestureRecognizer>(() => PanGestureRecognizer())),
                   mapType: currentMapType,
                   initialCameraPosition: cam_pos,
                   

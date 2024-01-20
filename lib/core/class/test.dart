@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:new_batic/core/class/prodect.dart';
+import 'package:new_batic/core/class/sharedData.dart';
 
 // class Test extends StatefulWidget {
 //   const Test({super.key});
@@ -21,298 +22,252 @@ Future<List<Product>> getProducts() async {
           id: element.id,
           dataList: element.get('dataList'),
           imageUrls: element.get('imageUrls'),
-          imagesHome: element.get('imges_home')
-          )
-          
-          );
-          
-         
-       List<dynamic> dataList = element.get('dataList');
-        List<String> idList =[];
-        idList.add(element.id);
+          imagesHome: element.get('imges_home')));
 
-          for (var dataElement in idList) {
-        // Check if the ID already exists in demoProducts
+      List<dynamic> dataList = element.get('dataList');
+      someth = element.get('dataList');
+
+      List<String> idList = [];
+      idList.add(element.id);
+
+      for (var dataElement in idList) {
         if (demoProducts.any((product) => product.id == dataElement)) {
-        
-continue;
-
+          continue;
         }
-          
-        
 
-      List<DataListModel> dataListModels = []; 
+        List<DataListModel> dataListModels = [];
 
-
- DateTime now = DateTime.now();
- int currentYear = now.year;
- String useriid="";
-double varLong=0;
-double varLati=0;
-String varRentBuy="";
-String varCity="";
-int varBulidingage=0;
-int varbedrooms=0;
-int varBathrooms=0;
-String varFurnished="",vrfr="";
-String varPhone="";
-String varBuildingName="";
-String  varDetails="";
-String varTimemove="";
-String varSqft="";
-String varOwnername="";
-String varTotalfloor="";
-String varBalcony="";
-String varPrice="";
-String varDisabled="";
-String varPark="";
-String varElevators="";
-String varArea="";
-String idd="";
+        DateTime now = DateTime.now();
+        int currentYear = now.year;
+        String useriid = "";
+        double varLong = 0;
+        double varLati = 0;
+        String varRentBuy = "";
+        String varCity = "";
+        int varBulidingage = 0;
+        int varbedrooms = 0;
+        int varBathrooms = 0;
+        String varFurnished = "", vrfr = "";
+        String varPhone = "";
+        String varBuildingName = "";
+        String varDetails = "";
+        String varTimemove = "";
+        String varSqft = "";
+        String varOwnername = "";
+        String varTotalfloor = "";
+        String varBalcony = "";
+        String varPrice = "";
+        String varDisabled = "";
+        String varPark = "";
+        String varElevators = "";
+        String varArea = "";
+        String idd = "";
 
 // print(house[0].id);
-  for (var dataElement in idList) 
-  {
-idd=dataElement;
-print(idd);
-  }
+        for (var dataElement in idList) {
+          idd = dataElement;
+          print('ooooooooooooooooooo$idd'); //home id (document name)
+        }
 
+        for (var dataElement in dataList) {
+          // print(dataElement['rent_Time']);
 
+          List<dynamic> alloptionList = [];
+          if (dataElement.containsKey('Alloptions') &&
+              dataElement['Alloptions'] != null) {
+            List<dynamic> alloptions = dataElement['Alloptions'];
 
-      for (var dataElement in dataList) {
-       // print(dataElement['rent_Time']);
-
-        List<dynamic> alloptionList = [];
-        if (dataElement.containsKey('Alloptions') &&
-            dataElement['Alloptions'] != null) {
-          List<dynamic> alloptions = dataElement['Alloptions'];
-
-          for (var s2 in alloptions) {
-         //   print(s2);
-            alloptionList.add(s2);  
-          }
-          
-          if( alloptionList[0]!=null){
-              varRentBuy=alloptionList[0];
-            } 
-
-          if( alloptionList[1]!=null){
-              varCity=alloptionList[1];
+            for (var s2 in alloptions) {
+              //   print(s2);
+              alloptionList.add(s2);
             }
-              if( alloptionList[2]!=null){
-              varBulidingage=alloptionList[2];
+
+            if (alloptionList[0] != null) {
+              varRentBuy = alloptionList[0];
             }
-     if( alloptionList[3]!=null){
-              varbedrooms=alloptionList[3];
+
+            if (alloptionList[1] != null) {
+              varCity = alloptionList[1];
             }
-             if( alloptionList[4]!=null){
-              varBathrooms=alloptionList[4];
+            if (alloptionList[2] != null) {
+              varBulidingage = alloptionList[2];
             }
-             if( alloptionList[5]!=null){
-              varFurnished=alloptionList[5];
-            }      if (varFurnished=="Yes") {
-              vrfr="Fully";
+            if (alloptionList[3] != null) {
+              varbedrooms = alloptionList[3];
+            }
+            if (alloptionList[4] != null) {
+              varBathrooms = alloptionList[4];
+            }
+            if (alloptionList[5] != null) {
+              varFurnished = alloptionList[5];
+            }
+            if (varFurnished == "Yes") {
+              vrfr = "Fully";
             } else {
-              vrfr="Not";
+              vrfr = "Not";
             }
-
-
-        }
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        List<dynamic> homelocationList = [];
-        if (dataElement.containsKey('home_location') &&
-            dataElement['home_location'] != null) {
-          List<dynamic> alloptions = dataElement['home_location'];
-
-
-          for (var s3 in alloptions) {
-           // print("===========${s3}");
-            homelocationList.add(s3);
           }
 
-  if( homelocationList[0]!=null){
-              varPhone=homelocationList[0];
-            } 
-            
-  if( homelocationList[1]!=null){
-              varBuildingName=homelocationList[1];
-            } 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-if( homelocationList[2]!=null){
-              varDetails=homelocationList[2];
-            } 
-  //  print("@@@@@@@@@@@ $var_details");
+          List<dynamic> homelocationList = [];
+          if (dataElement.containsKey('home_location') &&
+              dataElement['home_location'] != null) {
+            List<dynamic> alloptions = dataElement['home_location'];
 
-        }
+            for (var s3 in alloptions) {
+              // print("===========${s3}");
+              homelocationList.add(s3);
+            }
 
+            if (homelocationList[0] != null) {
+              varPhone = homelocationList[0];
+            }
 
+            if (homelocationList[1] != null) {
+              varBuildingName = homelocationList[1];
+            }
 
+            if (homelocationList[2] != null) {
+              varDetails = homelocationList[2];
+            }
+            //  print("@@@@@@@@@@@ $var_details");
+          }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // print(dataElement['add_time_move']);
-       if(dataElement['add_time_move']!=null) {
-         varTimemove=dataElement['add_time_move'];
-       }
-      
+          // print(dataElement['add_time_move']);
+          if (dataElement['add_time_move'] != null) {
+            varTimemove = dataElement['add_time_move'];
+          }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //add_home_info
 
-        List<dynamic> homeinfoList = [];
+          List<dynamic> homeinfoList = [];
 
-        if (dataElement.containsKey('add_home_info') &&
-            dataElement['add_home_info'] != null) {
-          List<dynamic> alloptions = dataElement['add_home_info'];
+          if (dataElement.containsKey('add_home_info') &&
+              dataElement['add_home_info'] != null) {
+            List<dynamic> alloptions = dataElement['add_home_info'];
 
-          for (var s4 in alloptions) {
-            // print("===========${s4}");
-            homeinfoList.add(s4);
+            for (var s4 in alloptions) {
+              // print("===========${s4}");
+              homeinfoList.add(s4);
+            }
+
+            if (homeinfoList[0] != null) {
+              varSqft = homeinfoList[0].toString();
+            }
+            if (homeinfoList[1] != null) {
+              varArea = homeinfoList[1].toString();
+            }
+
+            if (homeinfoList[2] != null) {
+              varOwnername = homeinfoList[2].toString();
+            }
+
+            if (homeinfoList[3] != null) {
+              varTotalfloor = homeinfoList[3].toString();
+            }
+
+            if (homeinfoList[4] != null) {
+              varBalcony = homeinfoList[4].toString();
+            }
+
+            if (homeinfoList[5] != null) {
+              varPrice = homeinfoList[5].toString();
+            }
+
+            if (homeinfoList[6] != null) {
+              varDisabled = homeinfoList[6].toString();
+            }
+
+            if (homeinfoList[6] != null) {
+              varDisabled = homeinfoList[6].toString();
+            }
+            if (homeinfoList[7] != null) {
+              varPark = homeinfoList[7].toString();
+            }
+            if (homeinfoList[8] != null) {
+              varElevators = homeinfoList[8].toString();
+            }
+            //  print("@@@@@@@@@@@ $var_area");
           }
-
-          if( homeinfoList[0]!=null){
-              varSqft=homeinfoList[0].toString();
-            } 
-             if( homeinfoList[1]!=null){
-              varArea=homeinfoList[1].toString();
-            } 
-   
-    if( homeinfoList[2]!=null){
-              varOwnername=homeinfoList[2].toString();
-            } 
-
-            if( homeinfoList[3]!=null){
-              varTotalfloor=homeinfoList[3].toString();
-            } 
-
-             if( homeinfoList[4]!=null){
-              varBalcony=homeinfoList[4].toString();
-            } 
-
-             if( homeinfoList[5]!=null){
-              varPrice=homeinfoList[5].toString();
-            } 
-           
- if( homeinfoList[6]!=null){
-              varDisabled=homeinfoList[6].toString();
-            } 
-           
-
-
-             if( homeinfoList[6]!=null){
-              varDisabled=homeinfoList[6].toString();
-            } 
-            if( homeinfoList[7]!=null){
-              varPark=homeinfoList[7].toString();
-            } 
-              if( homeinfoList[8]!=null){
-              varElevators=homeinfoList[8].toString();
-            } 
-  //  print("@@@@@@@@@@@ $var_area");
-
-
-
-
-
-        }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+          double d1 = 0, d2 = 0;
+          String d3 = "";
 
-        
-        double d1 = 0, d2 = 0; String d3="";
-
-        if (dataElement['long_map'] == null)
-         {
-           varLong= 0;
-          d1 = 0;
-         }
-        else
-        {
-          varLong= dataElement['long_map'];
-              d1 = dataElement['long_map'];
-        }
-      
-
-      //  print('+++++++++++++++++++++++$var_long');
-
-          if (dataElement['lati_map'] == null)
-          {
-             d2 = 0;
-            varLati=0;
+          if (dataElement.containsKey('long_map') &&
+              dataElement['long_map'] != null) {
+            varLong = dataElement['long_map'];
+            d1 = dataElement['long_map'];
           }
-         
-        else
-        {
+
+          //  print('+++++++++++++++++++++++$var_long');
+
+          if (dataElement.containsKey('lati_map') &&
+              dataElement['lati_map'] != null) {
+            varLati = dataElement['lati_map'];
             d2 = dataElement['lati_map'];
-            varLati=dataElement['lati_map'];
-
-        }
-
-        // print('---------------------$var_lati');
-        if (dataElement['userid'] == null)
-          {
-             d3 = "";
-            useriid="";
           }
-         
-        else
-        {
-            d3 = dataElement['userid'];
-            useriid=dataElement['userid'];
 
-        }
+          // print('---------------------${dataElement['lati_map']}');
+
+          if (dataElement.containsKey('userid') &&
+              dataElement['userid'] != null) {
+            useriid = dataElement['userid'];
+            d3 = dataElement['userid'];
+
+            allUsers.add(useriid);
+          }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        dataListModels.add(DataListModel(
-            rentTime: dataElement['rent_Time'].toString(),
-            allOption: alloptionList,
-            homeLocation: homelocationList,
-            addTimeMove: dataElement['add_time_move'].toString(),
-            addHomeInfo: homeinfoList,
-            longMap: d1,
-            latMap: d2,
-            userID:d3
-            ));
-
-
+          dataListModels.add(DataListModel(
+              rentTime: dataElement['rent_Time'].toString(),
+              allOption: alloptionList,
+              homeLocation: homelocationList,
+              addTimeMove: dataElement['add_time_move'].toString(),
+              addHomeInfo: homeinfoList,
+              longMap: d1,
+              latMap: d2,
+              userID: d3));
+        }
+        demoProducts.add(
+          Product(
+            ussid: useriid,
+            long: varLong,
+            late: varLati,
+            phone: varPhone,
+            id: idd,
+            images: element.get('imageUrls'),
+            images2: element.get('imges_home'),
+            colors: [
+              Colors.white,
+            ],
+            title: "The home in $varCity",
+            price: "$varPrice ",
+            bath: varBathrooms,
+            bed: varbedrooms,
+            square: varSqft,
+            details_seller: "$vrfr Furnished || Move $varTimemove",
+            Type: varArea, //////////////
+            Purpose: "For $varRentBuy",
+            Added: varOwnername,
+            description: varDetails,
+            rating: 4.8,
+            isFavourite: false,
+            isPopular: true,
+            parking: varPark,
+            balcony: '$varBalcony sqft',
+            buliding_name: varBuildingName,
+            year_bulid: "${currentYear - varBulidingage}",
+            elevetors: varElevators,
+            total_flour: varTotalfloor,
+            disabled: varDisabled,
+          ),
+        );
       }
-              demoProducts.add( Product(
-    ussid:useriid,
-    long: varLong,
-    late: varLati,
-    phone: varPhone,
-    id: idd,
-    images:element.get('imageUrls'),
-    images2: element.get('imges_home'),
-    colors: [
-      Colors.white,
-    ],
-    title: "The home in $varCity",
-    price: "$varPrice ",
-    bath: varBathrooms,
-    bed: varbedrooms,
-    square: varSqft,
-    details_seller: "$vrfr Furnished || Move $varTimemove",
-    Type: varArea,//////////////
-    Purpose: "For $varRentBuy",
-    Added: varOwnername,
-    description: varDetails,
-    rating: 4.8,
-    isFavourite: false,
-    isPopular: true,
-    parking: varPark,
-    balcony: '$varBalcony sqft',
-    buliding_name: varBuildingName,
-    year_bulid: "${currentYear-varBulidingage}",
-    elevetors: varElevators,
-    total_flour: varTotalfloor,
-    disabled: varDisabled,
-  ),);
-
-          }
-
     }
 
     return products;
@@ -357,10 +312,8 @@ class HouseModel {
   final List imagesHome;
 
   HouseModel(
-
-      {
-         required this.id,
-        required this.dataList,
+      {required this.id,
+      required this.dataList,
       required this.imageUrls,
       required this.imagesHome});
 }

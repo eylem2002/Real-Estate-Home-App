@@ -6,12 +6,11 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
-    List<String> imgeshome = [];
 
+List<String> imgeshome = [];
 
 List<File> sharedImageList2 = [];
-  final List<File> _selectedImages2 = [];
-
+final List<File> _selectedImages2 = [];
 
 class HomeImages extends StatefulWidget {
   const HomeImages({Key? key});
@@ -23,7 +22,6 @@ class HomeImages extends StatefulWidget {
 class _HomeImages extends State<HomeImages> {
   final List<Uint8List> _images2 = [];
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,21 +29,21 @@ class _HomeImages extends State<HomeImages> {
         leading: Container(
           padding: EdgeInsets.all(widthNHeight0(context, 1) * 0.02),
           child: Center(
-            // child: CircleAvatar(
-            //   backgroundColor: Colors.black,
-            //   radius: 15,
-            //   child: IconButton(
-            //     onPressed: () {
-            //       Navigator.of(context).pop();
-            //     },
-            //     icon: Icon(
-            //       Icons.arrow_back_ios_new_outlined,
-            //       color: Colors.white,
-            //       size: widthNHeight0(context, 1) * 0.04,
-            //     ),
-            //   ),
-            // ),
-          ),
+              // child: CircleAvatar(
+              //   backgroundColor: Colors.black,
+              //   radius: 15,
+              //   child: IconButton(
+              //     onPressed: () {
+              //       Navigator.of(context).pop();
+              //     },
+              //     icon: Icon(
+              //       Icons.arrow_back_ios_new_outlined,
+              //       color: Colors.white,
+              //       size: widthNHeight0(context, 1) * 0.04,
+              //     ),
+              //   ),
+              // ),
+              ),
         ),
         backgroundColor: Colors.white,
         title: Column(
@@ -63,8 +61,9 @@ class _HomeImages extends State<HomeImages> {
       ),
       body: Column(
         children: [
-                  Divider(height:  widthNHeight0(context, 1) * 0.01, color: Colors.grey[300]),
-
+          Divider(
+              height: widthNHeight0(context, 1) * 0.01,
+              color: Colors.grey[300]),
           Expanded(
             child: GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -73,7 +72,6 @@ class _HomeImages extends State<HomeImages> {
               itemCount: _images2.length + 1,
               itemBuilder: (context, index) {
                 if (index == _images2.length) {
-                
                   return IconButton(
                     onPressed: () {
                       showImagePickerOption(context);
@@ -81,7 +79,6 @@ class _HomeImages extends State<HomeImages> {
                     icon: Icon(Icons.add_a_photo),
                   );
                 } else {
-                 
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Stack(
@@ -126,33 +123,49 @@ class _HomeImages extends State<HomeImages> {
               },
             ),
           ),
-         
-        Align(
-  alignment: Alignment.bottomCenter,
-  child: Padding(
-    padding: const EdgeInsets.all(16.0), 
-    child: SizedBox(
-      height:widthNHeight0(context, 1)*0.14,
-      width: widthNHeight0(context, 0)*0.15,
-      child: FloatingActionButton(
-      onPressed: () async {
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: SizedBox(
+                height: widthNHeight0(context, 1) * 0.14,
+                width: widthNHeight0(context, 0) * 0.15,
+                child: FloatingActionButton(
+                  onPressed: () async {
                     await uploadImagesToStorage();
 
+                    // Navigator.of(context).pushReplacementNamed("map_setup");
+
+                   if (sharedImageList2 != null) {
   Navigator.of(context).pushReplacementNamed("map_setup");
-        
+}
 
-
-
-        },
-        child: Text(
-          "Next",
-          style: TextStyle(fontFamily: "kadwa", color: Colors.white,fontWeight: FontWeight.w600),
-        ),
-        backgroundColor: Color(0xff6482C4),
-      ),
-    ),
-  ),
-),
+                     else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Center(
+                            child: Text(
+                              'Choose Image',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          backgroundColor: Colors.red,
+                        ),
+                      );
+                    }
+                  },
+                  child: Text(
+                    "Next",
+                    style: TextStyle(
+                        fontFamily: "kadwa",
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600),
+                  ),
+                  backgroundColor: Color(0xff6482C4),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -221,12 +234,12 @@ class _HomeImages extends State<HomeImages> {
     if (returnImage == null) return;
 
     setState(() {
-      _selectedImages2.add(File(returnImage.path));//sharedImageList2
+      _selectedImages2.add(File(returnImage.path));
       _images2.add(File(returnImage.path).readAsBytesSync());
       sharedImageList2.add(File(returnImage.path));
     });
 
-    Navigator.of(context).pop();// Close the modal sheet
+    Navigator.of(context).pop();
   }
 
   // Camera
@@ -238,20 +251,16 @@ class _HomeImages extends State<HomeImages> {
     setState(() {
       _selectedImages2.add(File(returnImage.path));
       _images2.add(File(returnImage.path).readAsBytesSync());
-            sharedImageList2.add(File(returnImage.path));
+      sharedImageList2.add(File(returnImage.path));
     });
 
     Navigator.of(context).pop();
   }
 
-
-
   Future<void> uploadImagesToStorage() async {
-
-
     try {
       for (int i = 0; i < sharedImageList2.length; i++) {
-          print("imageUrl");
+        print("imageUrl");
         File imageFile = sharedImageList2[i];
 
         String imageName = DateTime.now().millisecondsSinceEpoch.toString();
@@ -264,16 +273,11 @@ class _HomeImages extends State<HomeImages> {
         String imageUrl = await taskSnapshot.ref.getDownloadURL();
 
         imgeshome.add(imageUrl);
-
       }
 
-     
       // shared_data.clear();
     } catch (error) {
       print('Error uploading images to Firebase Storage: $error');
     }
   }
-
-
-  
 }

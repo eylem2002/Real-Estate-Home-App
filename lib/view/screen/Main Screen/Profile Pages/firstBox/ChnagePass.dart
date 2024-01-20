@@ -1,6 +1,8 @@
 // ignore: file_names
 // ignore_for_file: file_names
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:new_batic/controller/signup_controller.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
@@ -65,36 +67,36 @@ class _chnagePassState extends State<changePass> {
                 //mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Old Password",
-                    style: TextStyle(
-                        fontFamily: "kadwa",
-                        fontWeight: FontWeight.w600,
-                        fontSize: widthNHeight0(context, 1) * 0.045),
-                  ),
-                  SizedBox(
-                    height: widthNHeight0(context, 1) * 0.015,
-                  ),
-                  TextFormWidget(
-                    height: widthNHeight0(context, 1)*0.2,
-                    width: double.infinity,
-                    passToggle: false,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Password must not be empty ';
-                      } else if (value < 8) {
-                        return 'Password must not greater than 8';
-                      }
-                      return null;
-                    },
-                    passController: signUpController.email,
-                    str: 'Batic',
-                  ),
+                  // Text(
+                  //   "New Password",
+                  //   style: TextStyle(
+                  //       fontFamily: "kadwa",
+                  //       fontWeight: FontWeight.w600,
+                  //       fontSize: widthNHeight0(context, 1) * 0.045),
+                  // ),
+                  // SizedBox(
+                  //   height: widthNHeight0(context, 1) * 0.015,
+                  // ),
+                  // TextFormWidget(
+                  //   height: widthNHeight0(context, 1)*0.2,
+                  //   width: double.infinity,
+                  //   passToggle: false,
+                  //   validator: (value) {
+                  //     if (value!.isEmpty) {
+                  //       return 'Password must not be empty ';
+                  //     } else if (value < 8) {
+                  //       return 'Password must not greater than 8';
+                  //     }
+                  //     return null;
+                  //   },
+                  //   passController: signUpController.email,
+                  //   str: 'Batic',
+                  // ),
                   SizedBox(
                     height: widthNHeight0(context, 1) * 0.03,
                   ),
                   Text(
-                    "New Password",
+                    "New Password ",
                     style: TextStyle(
                         fontFamily: "kadwa",
                         fontWeight: FontWeight.w600,
@@ -104,9 +106,9 @@ class _chnagePassState extends State<changePass> {
                     height: widthNHeight0(context, 1) * 0.015,
                   ),
                   TextFormWidget(
-                  height: widthNHeight0(context, 1)*0.2,
+                    height: widthNHeight0(context, 1) * 0.2,
                     width: double.infinity,
-                    passToggle: false,
+                    passToggle: true,
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Password must not be empty ';
@@ -124,13 +126,68 @@ class _chnagePassState extends State<changePass> {
                   Center(
                     child: defaultButton(
                       text: 'Update',
-                      function: () {
-                        if (signUpController.formKey.currentState!
-                            .validate()) {}
+                      function: () {},
+                      onPressed: () async {
+                        try {
+                          String str = "";
+                          final getData = await FirebaseFirestore.instance
+                              .collection('Users')
+                              .get();
+                          List<QueryDocumentSnapshot> useer = getData.docs;
+
+                          for (var element in useer) {
+                            str = element.id;
+                          }
+
+                          if (signUpController.formKey.currentState!
+                                  .validate() &&
+                              signUpController.password.text
+                                  .toString()
+                                  .isNotEmpty &&
+                              signUpController.password.text
+                                      .toString()
+                                      .length >=
+                                  8) {
+                            if (str != "") {
+                              FirebaseAuth.instance.currentUser?.updatePassword(
+                                  signUpController.password.text.toString());
+                              await FirebaseFirestore.instance
+                                  .collection('Users')
+                                  .doc(str)
+                                  .update({
+                                'Password':
+                                    signUpController.password.text.toString(),
+                              });
+
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                      'User Password updated successfully!'),
+                                  backgroundColor: Colors.green,
+                                ),
+                              );
+                            }
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text('Enter Valid Password'),
+                                backgroundColor: Colors.red,
+                              ),
+                            );
+                          }
+                        } catch (e) {
+                          print('Error updating user Password: $e');
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                  'An error occurred while updating user Password.'),
+                              backgroundColor: Colors.red,
+                            ),
+                          );
+                        }
                       },
-                      onPressed: () {},
                       borderWidth: 10,
-                      width: widthNHeight0(context, 1) * 0.65,
+                      width: widthNHeight0(context, 1) * 0.6,
                       height: widthNHeight0(context, 1) * 0.12,
                       borderRadius: 5,
                     ),

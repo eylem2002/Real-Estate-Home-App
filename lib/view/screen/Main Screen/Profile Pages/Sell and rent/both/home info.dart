@@ -8,6 +8,7 @@ import 'package:new_batic/core/class/sharedData.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/addPlanfloor.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/movetime.dart';
+import 'package:new_batic/view/widget/compoents/Textfiled2.dart';
 import 'package:new_batic/view/widget/compoents/bottoms/deff_button.dart';
 import 'package:new_batic/view/widget/compoents/defaultFormField.dart';
 
@@ -79,7 +80,7 @@ class _homeInfoState extends State<HomeInfo> {
                           top: widthNHeight0(context, 1) * 0.05,
                         ),
                         child: Text(
-                          'Let’s verify some home facts',
+                          'Let\'s verify some home facts',
                           style: TextStyle(
                               fontSize: widthNHeight0(context, 1) * 0.052,
                               fontWeight: FontWeight.bold,
@@ -117,7 +118,7 @@ class _homeInfoState extends State<HomeInfo> {
                                     "Sq.Ft",
                                     style: TextStyle(color: Color(0xff6B7378)),
                                   ),
-                                  TextFormWidget(
+                           TextFormWidget2(
                                     height: widthNHeight0(context, 1) * 0.2,
                                     width: widthNHeight0(context, 0) * 0.2,
                                     passToggle: false,
@@ -129,6 +130,8 @@ class _homeInfoState extends State<HomeInfo> {
                                     },
                                     passController: homeconroller.sqft,
                                     str: '',
+                                    
+                                 
                                   ),
                                 ],
                               ),
@@ -139,7 +142,7 @@ class _homeInfoState extends State<HomeInfo> {
                                     "Built-up-area",
                                     style: TextStyle(color: Color(0xff6B7378)),
                                   ),
-                                  TextFormWidget(
+                                  TextFormWidget2(
                                     height: widthNHeight0(context, 1) * 0.2,
                                     width: widthNHeight0(context, 0) * 0.2,
                                     passToggle: false,
@@ -192,7 +195,7 @@ class _homeInfoState extends State<HomeInfo> {
                                     "Total flour",
                                     style: TextStyle(color: Color(0xff6B7378)),
                                   ),
-                                  TextFormWidget(
+                                  TextFormWidget2(
                                     maxlog: 2,
                                     height: widthNHeight0(context, 1) * 0.2,
                                     width: widthNHeight0(context, 0) * 0.2,
@@ -224,8 +227,8 @@ class _homeInfoState extends State<HomeInfo> {
                                     "Balcony size",
                                     style: TextStyle(color: Color(0xff6B7378)),
                                   ),
-                                  TextFormWidget(
-                                    maxlog: 4,
+                                  TextFormWidget2(
+                                    maxlog: 6,
                                     height: widthNHeight0(context, 1) * 0.2,
                                     width: widthNHeight0(context, 0) * 0.2,
                                     passToggle: false,
@@ -246,8 +249,8 @@ class _homeInfoState extends State<HomeInfo> {
                                     "Price",
                                     style: TextStyle(color: Color(0xff6B7378)),
                                   ),
-                                  TextFormWidget(
-                                    maxlog: 6,
+                                  TextFormWidget2(
+                                    maxlog: 7,
                                     height: widthNHeight0(context, 1) * 0.2,
                                     width: widthNHeight0(context, 0) * 0.2,
                                     passToggle: false,

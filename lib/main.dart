@@ -1,6 +1,9 @@
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:flutter/material.dart';
 
 import 'package:new_batic/firebase_options.dart';
+import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Legal/Terms.dart';
+import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Legal/aboutUS.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/MapSetup.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/addPlanfloor.dart';
 import 'package:new_batic/view/screen/Main%20Screen/Profile%20Pages/Sell%20and%20rent/both/addhomepic.dart';
@@ -17,10 +20,26 @@ import 'package:new_batic/view/widget/BottomNavBar.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
 // void main() {
   runApp(const MyApp());
 }
+
+// Future<void> main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+//   await FirebaseAppCheck.instance
+//   // Your personal reCaptcha public key goes here:
+//       .activate(
+//     androidProvider: AndroidProvider.debug,
+//     appleProvider: AppleProvider.debug,
+//     webProvider: ReCaptchaV3Provider('AIzaSyCsYYniikTgWYe7nd0dTtjjnFcDYdwzyQQ'),
+//   );
+// // void main() {
+//   runApp(const MyApp());
+// }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -30,10 +49,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
-      
-    
       routes: {
-        
         "signin": (context) => LogIn(),
         "signup": (context) => SingUpScreen(),
         "search_home_bar": (context) => CustomeBottomNavBar(),
@@ -46,8 +62,9 @@ class MyApp extends StatelessWidget {
         "map_setup": (context) => MapSetUp(),
         "home_images": (context) => HomeImages(),
         "custome_bottomNavBar": (context) => CustomeBottomNavBar(),
-        "BothPages": (context) => CompleteSellHomeScreen(),
-
+        "BothPages": (context) => CompleteSellHomeScreen(), //Aboutus
+        "AboutUs": (context) => Aboutus(),
+         "Terms": (context) => Terms(),
       },
     );
   }

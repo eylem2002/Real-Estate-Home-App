@@ -6,6 +6,7 @@ import 'package:new_batic/core/class/prodect.dart';
 import 'package:new_batic/core/services/EnterSevices.dart';
 import 'package:new_batic/view/screen/details/details_screen.dart';
 import 'package:new_batic/view/widget/Myhomecard.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 class MyHome extends StatefulWidget {
   const MyHome({super.key});
 
@@ -22,6 +23,7 @@ class _MyHomeState extends State<MyHome> {
   void initState() {
     super.initState();
     fetchUserUid();
+   //  loadData();
   }
 
   void fetchUserUid() {
@@ -29,17 +31,41 @@ class _MyHomeState extends State<MyHome> {
     if (user != null) {
       uid = user.uid;
     } else {
-      // Handle the case when the user is not authenticated
       print('User is not authenticated');
     }
   }
+  void onDeletePressed(Product deletedProduct) {
+  setState(() {
+    demoProducts.remove(deletedProduct);
+   //  saveData();
+  });
+}
+// void saveData() async {
+//   SharedPreferences prefs = await SharedPreferences.getInstance();
+//   List<String> productsJsonList = demoProducts.map((product) => jsonEncode(product.toJson())).toList();
+//   prefs.setStringList('demoProducts', productsJsonList);
+// }
+
+// void loadData() async {
+//   SharedPreferences prefs = await SharedPreferences.getInstance();
+//   List<String>? productsJsonList = prefs.getStringList('demoProducts');
+//   if (productsJsonList != null) {
+//     demoProducts = productsJsonList.map((json) => Product.fromJson(jsonDecode(json))).toList();
+//   } else {
+//     demoProducts = []; // Initialize with an empty list if no data is found
+//   }
+// }
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
     List<Widget> homeWidgets = List.generate(
       demoProducts.length,
       (index) {
-        // Check if the product belongs to the authenticated user
+       
         if (demoProducts[index].ussid == uid) {
           moon = true;
           return Padding(
@@ -57,8 +83,10 @@ class _MyHomeState extends State<MyHome> {
                 );
               },
               onFavoriteChanged: (bool isFavorite) {
-                // Handle favorite changes
               },
+               onDeletePressed: () {
+            onDeletePressed(demoProducts[index]);
+          },
             ),
           );
         } else {
@@ -73,13 +101,16 @@ class _MyHomeState extends State<MyHome> {
      
       Scaffold(
         appBar: AppBar(
-          title: Text(
-            "MyHomes",
-            style: TextStyle(fontFamily: "Kadwa", fontWeight: FontWeight.w600,  fontSize: widthNHeight0(context, 1) * 0.06,),
-          ),
-          automaticallyImplyLeading: false,
-          
+        title: Center(
+          child: Text('My Home',
+              style: TextStyle(
+                fontSize: widthNHeight0(context, 1) * 0.06,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Kadwa',
+              )),
         ),
+        automaticallyImplyLeading: false,
+      ),
         body: SingleChildScrollView(
           
           scrollDirection: Axis.vertical,

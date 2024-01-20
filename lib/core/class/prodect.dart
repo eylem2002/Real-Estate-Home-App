@@ -30,8 +30,6 @@ class Product {
 
   Product({
     this.ussid="",
-    this.long = 0,
-    this.late = 0,
     this.parking = "",
     this.balcony = "",
     this.phone = "",
@@ -57,12 +55,71 @@ class Product {
     required this.bath,
     required this.bed,
     required this.square,
+    this.long = 1,
+    this.late = 1,
   });
 
 
   void toggleFavorite() {
     isFavourite = !isFavourite;
   }
+  // Map<String, dynamic> toJson() {
+  //   return {
+  //     'ussid': ussid,
+  //     'id': id,
+  //     'images': images,
+  //     'images2': images2,
+  //     'colors': colors.map((color) => color.value).toList(),
+  //     'rating': rating,
+  //     'isFavourite': isFavourite,
+  //     'isPopular': isPopular,
+  //     'title': title,
+  //     'price': price,
+  //     'description': description,
+  //     'bath': bath,
+  //     'bed': bed,
+  //     'square': square,
+  //     'long': long,
+  //     'late': late,
+  //     'parking': parking,
+  //     'balcony': balcony,
+  //     'buliding_name': buliding_name,
+  //     'year_bulid': year_bulid,
+  //     'total_flour': total_flour,
+  //     'elevetors': elevetors,
+  //     'disabled': disabled,
+  //   };
+  // }
+
+  // // Deserialize Product from JSON
+  // factory Product.fromJson(Map<String, dynamic> json) {
+  //   return Product(
+  //     ussid: json['ussid'] ?? "",
+  //     id: json['id'],
+  //     images: List<String>.from(json['images']),
+  //     images2: List<String>.from(json['images2']),
+  //     colors: (json['colors'] as List).map((color) => Color(color)).toList(),
+  //     rating: json['rating']?.toDouble() ?? 0.0,
+  //     isFavourite: json['isFavourite'] ?? false,
+  //     isPopular: json['isPopular'] ?? false,
+  //     title: json['title'],
+  //     price: json['price'],
+  //     description: json['description'],
+  //     bath: json['bath'],
+  //     bed: json['bed'],
+  //     square: json['square'],
+  //     long: json['long']?.toDouble() ?? 1,
+  //     late: json['late']?.toDouble() ?? 1,
+  //     parking: json['parking'] ?? "",
+  //     balcony: json['balcony'] ?? "",
+  //     buliding_name: json['buliding_name'] ?? "",
+  //     year_bulid: json['year_bulid'] ?? "",
+  //     total_flour: json['total_flour'] ?? "",
+  //     elevetors: json['elevetors'] ?? "",
+  //     disabled: json['disabled'] ?? "",
+  //   );
+  // }
+
 }
 
 List<Product> demoProducts = [
