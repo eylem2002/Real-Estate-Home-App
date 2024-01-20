@@ -118,13 +118,17 @@ class _PickImageState extends State<ImagePick> {
 
                 
                 child: FloatingActionButton(
+                  
                   onPressed: () async {
+                    print("object1");
                     await uploadImagesToStorage();
 
                     if (mounted) {
                       if (sharedImageList.isNotEmpty) {
                         Navigator.of(context).pushNamed("home_images");
-                      } else {
+                        print("object");
+                      } 
+                      else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Center(
