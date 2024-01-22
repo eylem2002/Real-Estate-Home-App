@@ -59,107 +59,98 @@ class _MyHomeState extends State<MyHome> {
 
 
 
-
-  @override
-  Widget build(BuildContext context) {
-    List<Widget> homeWidgets = List.generate(
-      demoProducts.length,
-      (index) {
-       
-        if (demoProducts[index].ussid == uid) {
-          moon = true;
-          return Padding(
-            padding: const EdgeInsets.all(0),
-            child: MyHomecard(
-              product: demoProducts[index],
-              onPress: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DetailsScreen(
-                      product: demoProducts[index],
-                    ),
+@override
+Widget build(BuildContext context) {
+  List<Widget> homeWidgets = List.generate(
+    demoProducts.length,
+    (index) {
+      if (demoProducts[index].ussid == uid) {
+        return Padding(
+          padding: const EdgeInsets.all(0),
+          child: MyHomecard(
+            product: demoProducts[index],
+            onPress: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailsScreen(
+                    product: demoProducts[index],
                   ),
-                );
-              },
-              onFavoriteChanged: (bool isFavorite) {
-              },
-               onDeletePressed: () {
-            onDeletePressed(demoProducts[index]);
-          },
-            ),
-          );
-        } else {
-          moon = false;
-          print("%%%%%%%%%%%%%");
-          return Container();
-        }
-      },
-    );
+                ),
+              );
+            },
+            onFavoriteChanged: (bool isFavorite) {},
+            onDeletePressed: () {
+              onDeletePressed(demoProducts[index]);
+            },
+          ),
+        );
+      } else {
+        return Container();
+      }
+    },
+  );
 
-    return 
-     
-      Scaffold(
-        appBar: AppBar(
-        title: Center(
-          child: Text('My Home',
-              style: TextStyle(
-                fontSize: widthNHeight0(context, 1) * 0.06,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Kadwa',
-              )),
+  return Scaffold(
+    appBar: AppBar(
+      title: Center(
+        child: Text(
+          'My Home',
+          style: TextStyle(
+            fontSize: widthNHeight0(context, 1) * 0.06,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Kadwa',
+          ),
         ),
-        automaticallyImplyLeading: false,
       ),
-        body: SingleChildScrollView(
-          
-          scrollDirection: Axis.vertical,
-          child: Column(
-            
-            children: [
-               Divider(
+      automaticallyImplyLeading: false,
+    ),
+    body: SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Column(
+        children: [
+          Divider(
             height: 1,
             color: Colors.grey[300],
           ),
-              if (moon) ...homeWidgets,
-              if (moon == false)
-                Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                          top: widthNHeight0(context, 1) * 0.5),
-                      child: Center(
-                        child: Column(
-                          children: const [
-                            Text(
-                              "SELL OR RENT YOUR HOME NOW!",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Color(0xff6482C4),
-                                fontFamily: "Kadwa",
-                                fontWeight: FontWeight.bold,
-                                fontSize: 17,
-                              ),
-                            ),
-                            SizedBox(height: 8),
-                            Text(
-                              "It looks like you haven’t sold or rented \nany homes just yet.",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontFamily: "Kadwa",
-                                fontSize: 16,
-                              ),
-                            ),
-                          ],
+          if (homeWidgets.isNotEmpty) ...homeWidgets,
+          if (homeWidgets.isEmpty)
+            Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(
+                      top: widthNHeight0(context, 1) * 0.5),
+                  child: Center(
+                    child: Column(
+                      children: const [
+                        Text(
+                          "SELL OR RENT YOUR HOME NOW!",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Color(0xff6482C4),
+                            fontFamily: "Kadwa",
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                          ),
                         ),
-                      ),
-                    )
-                  ],
+                        SizedBox(height: 8),
+                        Text(
+                          "It looks like you haven’t sold or rented \nany homes just yet.",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontFamily: "Kadwa",
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 )
-            ],
-          ),
-        ),
-    
-    );
-  }
+              ],
+            )
+        ],
+      ),
+    ),
+  );
+}
 }
