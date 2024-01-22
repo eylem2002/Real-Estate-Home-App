@@ -56,7 +56,7 @@ class _MyHomeState extends State<MyHome> {
 //   }
 // }
 
-
+bool haveOfnot=false;
 
 
 @override
@@ -65,6 +65,7 @@ Widget build(BuildContext context) {
     demoProducts.length,
     (index) {
       if (demoProducts[index].ussid == uid) {
+haveOfnot=true;
         return Padding(
           padding: const EdgeInsets.all(0),
           child: MyHomecard(
@@ -86,6 +87,7 @@ Widget build(BuildContext context) {
           ),
         );
       } else {
+       
         return Container();
       }
     },
@@ -113,8 +115,9 @@ Widget build(BuildContext context) {
             height: 1,
             color: Colors.grey[300],
           ),
-          if (homeWidgets.isNotEmpty) ...homeWidgets,
-          if (homeWidgets.isEmpty)
+          if (homeWidgets.isNotEmpty ) ...homeWidgets,
+          if (homeWidgets.isEmpty || haveOfnot==false )
+   
             Column(
               children: [
                 Padding(
