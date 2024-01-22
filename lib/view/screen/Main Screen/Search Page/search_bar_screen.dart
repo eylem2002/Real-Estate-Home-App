@@ -136,7 +136,7 @@ class _SearchBarScreenState extends State<SearchBarScreen> {
                     borderRadius: 5,
                     onPressed: () {
                       
-                      Navigator.push(
+                      Navigator.pushReplacement(//change2
                         
                         context,
                         MaterialPageRoute(

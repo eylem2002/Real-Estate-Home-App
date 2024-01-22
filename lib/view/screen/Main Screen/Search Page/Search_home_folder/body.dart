@@ -65,7 +65,9 @@ class _BodySearchState extends State<BodySearch> {
                 if((firstPart=='$Furnfished Furnished')  ||  (Furnfished=="Any") )
                 {
                   if((demoProducts[index].title == "The home in $Area") || (Area == "Any")){
-                    if((bednumber == 0) || (demoProducts[index].bed == bednumber)){
+                    if((bednumber == 0) || (demoProducts[index].bed == bednumber-1)){//add one
+                 print('bed numbers ${bednumber-1}');
+                    print('2222234232 ${demoProducts[index].bed}');
                         if(check==true ){
                 if((double.parse(demoProducts[index].price)  <= price_end && double.parse(demoProducts[index].price)  >=price_start ) || (price_start==0 && price_end==0) )
                 {

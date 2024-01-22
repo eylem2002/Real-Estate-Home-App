@@ -69,6 +69,7 @@ class CustomeBottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
       //fetchProducts();
         getProducts();
+        print("getProducts funtion");
       // Test();
     final controller = Get.put(NavigationController());
     return Scaffold(

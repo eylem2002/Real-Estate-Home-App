@@ -29,10 +29,10 @@ class _MapSetUpState extends State<MapSetUp> {
    uid = user.uid;
     // here you write the codes to input the data into Firestore
   } else {
-    // Handle the case when the user is not authenticated
+   
     print('User is not authenticated');
   }
-  // here you write the codes to input the data into firestore
+ 
 }
   @override
   Widget build(BuildContext context) {
