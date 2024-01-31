@@ -237,34 +237,34 @@ class _PersdonalDetilsScreenState extends State<PersdonalDetilsScreen> {
                       passController: signUpController.phone,
                       str: phoneNu,
                     ),
-                    SizedBox(
-                      height: widthNHeight0(context, 1) * 0.008,
-                    ),
-                      const Text(
-                      'Password',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Kadwa',
-                      ),
-                    ),
-                    TextFormWidgetRead(
-                      height: widthNHeight0(context, 1) * 0.2,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Password must not be empty ';
-                        }
-                        return null;
-                      },
+                    // SizedBox(
+                    //   height: widthNHeight0(context, 1) * 0.008,
+                    // ),
+                    //   const Text(
+                    //   'Password',
+                    //   style: TextStyle(
+                    //     fontSize: 18,
+                    //     fontWeight: FontWeight.bold,
+                    //     fontFamily: 'Kadwa',
+                    //   ),
+                    // ),
+                    // TextFormWidgetRead(
+                    //   height: widthNHeight0(context, 1) * 0.2,
+                    //   validator: (value) {
+                    //     if (value!.isEmpty) {
+                    //       return 'Password must not be empty ';
+                    //     }
+                    //     return null;
+                    //   },
                       
-                      width: double.infinity,
-                      passToggle: false,
-                      passController: signUpController.password,
-                      str: passVal,
-                    ),
-                    SizedBox(
-                      height: widthNHeight0(context, 1) * 0.008,
-                    ),
+                    //   width: double.infinity,
+                    //   passToggle: false,
+                    //   passController: signUpController.password,
+                    //   str: passVal,
+                    // ),
+                    // SizedBox(
+                    //   height: widthNHeight0(context, 1) * 0.008,
+                    // ),
                   
   
 
