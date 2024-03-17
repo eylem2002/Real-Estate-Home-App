@@ -11,13 +11,20 @@ But it's not just about information – our app is all about bringing people tog
 
 - Friendly UI.
 * Secure local accounts storage.
-+ Intuitive Tokens management.
-- Simplified staking & governance operations.
-* Offline signature supported.
 + Available for both IOS and Android.
-- Support any Substrate-based-blockchain to integrate as plugins.
+- 
 
+## **Getting Started**
+Dependencies
+* Flutter 3.16.1
++ Dart 3.2.1
+- DevTools 2.28.3
 
+To get started
+- Install the dependencies by running flutter pub get
+* In AndroidStudio or VsCode, run lib/main.dart with arguments --flavor=prod on Android Devices, or just run lib/main.dart with no arguments on IOS
 
 **Ensure every property detail is meticulously verified for your peace of mind  😄**
+
+
 
